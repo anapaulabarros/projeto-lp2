@@ -1,6 +1,7 @@
 package core;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,21 +20,29 @@ public class Usuario {
 	private List<Post> posts;
 	
 	
-	public Usuario(String nome, String email, String senha, Date dataNasc, String imagem, String telefone) {
+	public Usuario(String nome, String email, String senha, String dataNasc, String imagem, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.dataNasc = dataNasc;
+		try {
+			this.dataNasc = formataData(dataNasc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.imagem = imagem;
 		this.telefone = telefone;
 		posts = new ArrayList<Post>();
 	}
 	
-	public Usuario(String nome, String email, String senha, Date dataNasc, String telefone) {
+	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.dataNasc = dataNasc;
+		try {
+			this.dataNasc = formataData(dataNasc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		this.telefone = telefone;
 		posts = new ArrayList<Post>();
 		imagem = "../img/defaultImage.jpg";
@@ -91,6 +100,27 @@ public class Usuario {
 	public List<Post> getPosts() {
 		return posts;
 	}
+	
+	/** 
+     * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
+     * retorna null.
+     * @param data String no formato dd/MM/yyyy a ser formatada 
+     * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
+     * @throws Exception Caso a String esteja no formato errado 
+     */  
+    public static Date formataData(String data) throws Exception {   
+        if (data == null || data.equals(""))  
+            return null;  
+          
+        Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            date = (java.util.Date)formatter.parse(data);  
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    } 
 	
 	@Override
 	public String toString() {
