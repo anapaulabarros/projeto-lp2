@@ -20,7 +20,17 @@ public class Usuario {
 	private List<Post> posts;
 	
 	
-	public Usuario(String nome, String email, String senha, String dataNasc, String imagem, String telefone) {
+	public Usuario(String nome, String email, String senha, String dataNasc, String imagem, String telefone) throws Exception {
+		
+		if(nome == null || nome.equals(""))
+			throw new Exception("O nome nao pode ser nulo ou vazio.");
+		if(email == null || email.equals(""))
+			throw new Exception("O email nao pode ser nulo ou vazio.");
+		if(senha == null || senha.equals("") || senha.length() < 3)
+			throw new Exception("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
+		if(dataNasc == null || dataNasc.equals(""))
+			throw new Exception("A data de nascimento nao pode ser nula ou vazia.");
+		
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -34,7 +44,7 @@ public class Usuario {
 		posts = new ArrayList<Post>();
 	}
 	
-	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) {
+	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) throws Exception {
 		this(nome, email, senha, dataNasc, "resources/defaultImage.png", telefone);
 	}
 

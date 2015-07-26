@@ -11,7 +11,9 @@ public class SystemPop {
 		usuarios = new ArrayList<Usuario>();
 	}
 	
-	public void cadastraUsuario(Usuario novoUsuario) {
+	public void cadastraUsuario(Usuario novoUsuario) throws Exception {
+		if (getUsuarios().contains(novoUsuario))
+			throw new Exception("Usuário ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
 	}
 
