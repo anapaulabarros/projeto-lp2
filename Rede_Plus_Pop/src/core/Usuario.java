@@ -1,11 +1,15 @@
 package core;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Usuario {
-
+	
+	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
+	
 	private String nome;
 	private String email;
 	private String senha;
@@ -15,7 +19,7 @@ public class Usuario {
 	private List<Post> posts;
 	
 	
-	private Usuario(String nome, String email, String senha, Date dataNasc, String imagem, String telefone) {
+	public Usuario(String nome, String email, String senha, Date dataNasc, String imagem, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -25,7 +29,7 @@ public class Usuario {
 		posts = new ArrayList<Post>();
 	}
 	
-	private Usuario(String nome, String email, String senha, Date dataNasc, String telefone) {
+	public Usuario(String nome, String email, String senha, Date dataNasc, String telefone) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -75,8 +79,9 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 
-	public Date getDataNasc() {
-		return dataNasc;
+	public String getDataNasc() {
+		DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		return dataFormat.format(dataNasc);
 	}
 
 	public void setDataNasc(Date dataNasc) {
@@ -87,4 +92,13 @@ public class Usuario {
 		return posts;
 	}
 	
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + QUEBRA_DE_LINHA
+				+ "Email:  " + this.email + QUEBRA_DE_LINHA
+				+ "Senha:  *******" +  QUEBRA_DE_LINHA
+				+ "Telefone: " + this.telefone + QUEBRA_DE_LINHA 
+				+ "Data de Nascimento: " + getDataNasc() + QUEBRA_DE_LINHA
+				+ "Posts: " + this.posts;
+	}
 }
