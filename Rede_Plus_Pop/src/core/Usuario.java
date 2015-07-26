@@ -35,7 +35,7 @@ public class Usuario {
 	}
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) {
-		this(nome, email, senha, dataNasc, "../img/defaultImage.jpg", telefone);
+		this(nome, email, senha, dataNasc, "resources/defaultImage.png", telefone);
 	}
 
 	public String getNome() {
