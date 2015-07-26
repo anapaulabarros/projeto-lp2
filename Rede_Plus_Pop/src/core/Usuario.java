@@ -29,23 +29,13 @@ public class Usuario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		this.imagem = imagem;
 		this.telefone = telefone;
+		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 	}
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) {
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		try {
-			this.dataNasc = formataData(dataNasc);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		this.telefone = telefone;
-		posts = new ArrayList<Post>();
-		imagem = "../img/defaultImage.jpg";
+		this(nome, email, senha, dataNasc, "../img/defaultImage.jpg", telefone);
 	}
 
 	public String getNome() {
@@ -108,7 +98,7 @@ public class Usuario {
      * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
      * @throws Exception Caso a String esteja no formato errado 
      */  
-    public static Date formataData(String data) throws Exception {   
+    private static Date formataData(String data) throws Exception {   
         if (data == null || data.equals(""))  
             return null;  
           
