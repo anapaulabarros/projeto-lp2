@@ -69,7 +69,7 @@ public class Usuario {
 	}
 
 	public String getSenha() {
-		return senha;
+		return "A senha do usuario eh protegida.";
 	}
 
 	public void setSenha(String senha) {
