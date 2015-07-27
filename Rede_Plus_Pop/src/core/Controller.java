@@ -16,12 +16,15 @@ public class Controller {
 			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, telefone));
 		else
 			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, imagem,telefone));
-		return true;
-		
+		return true;	
 	}
 	
 	
 	public boolean login(String email, String senha) throws Exception {
 		return sistemaPop.login(email, senha);
+	}
+	
+	public boolean logout() throws Exception  {
+		return sistemaPop.logout();
 	}
 }

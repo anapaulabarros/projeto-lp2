@@ -25,7 +25,7 @@ public class SystemPop {
 			throw new Exception("Nao foi possivel realizar login. Um usuario com email: " + email + " nao existe.");
 		else{
 			if(usuario.getSenha().equals(senha)){
-				if (usuarioLogado != null){
+				if (usuarioLogado == null){
 					usuarioLogado = usuario;
 					return true;
 				}
@@ -40,6 +40,17 @@ public class SystemPop {
 		}
 	}
 	
+	
+	public boolean logout() throws Exception {
+		if(usuarioLogado == null)
+			throw new Exception("Nao eh possivel realizar logout. Nenhum usuario esta logado no +pop.");
+		usuarioLogado = null;
+		return true;
+	}
+	
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
 	
 	public Usuario buscaUsuario(String email) {
 		for (Usuario usuario : usuarios) {
