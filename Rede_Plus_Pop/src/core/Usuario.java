@@ -76,6 +76,9 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	/*
+	 * @return caminho com da imagem 
+	 * */
 	public String getImagem() {
 		return imagem;
 	}
