@@ -30,8 +30,7 @@ public class SystemPop {
 					return true;
 				}
 				else {
-					throw new Exception("Nao foi possivel realizar login. "
-							+ "Um usuario ja esta logado: " + usuario.getNome() + " login email="+ usuario.getEmail());
+					throw new Exception("Nao foi possivel realizar login. Um usuario ja esta logado.");
 				}	
 			}
 			else{
