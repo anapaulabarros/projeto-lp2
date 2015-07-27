@@ -62,4 +62,30 @@ public class SystemPop {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
+
+	public void alteraNome(String nomeNovo) throws Exception {
+		usuarioLogado.setNome(nomeNovo);
+	}
+
+	public void alteraEmail(String emailNovo) throws Exception {
+		usuarioLogado.setEmail(emailNovo);
+	}
+
+	public void alteraTelefone(String telNovo) {
+		usuarioLogado.setTelefone(telNovo);
+	}
+
+	public void alteraDataNasc(String dataNova) throws Exception {
+		usuarioLogado.setDataNasc(dataNova);
+	}
+
+	public void alteraImagem(String imagemNova) throws Exception {
+		usuarioLogado.setImagem(imagemNova);
+	}
+
+	public void alteraSenha(String senhaAntiga, String senhaNova) {
+		if (senhaAntiga.equals(usuarioLogado.getSenha())){
+			usuarioLogado.setSenha(senhaNova);
+		}
+	}
 }

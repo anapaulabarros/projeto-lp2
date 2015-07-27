@@ -99,8 +99,8 @@ public class Usuario {
 		return dataFormat.format(dataNasc);
 	}
 
-	public void setDataNasc(Date dataNasc) {
-		this.dataNasc = dataNasc;
+	public void setDataNasc(String dataNasc) throws Exception {
+		this.dataNasc = formataData(dataNasc);
 	}
 
 	public List<Post> getPosts() {
