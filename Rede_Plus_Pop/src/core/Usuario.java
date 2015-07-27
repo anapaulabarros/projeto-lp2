@@ -52,7 +52,9 @@ public class Usuario {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome) throws Exception {
+		if(nome == null || nome.equals(""))
+			throw new Exception("Nome nao pode ser nulo ou vazio.");
 		this.nome = nome;
 	}
 
@@ -60,7 +62,9 @@ public class Usuario {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws Exception {
+		if(email == null || email.equals(""))
+			throw new Exception("Email nao pode ser nulo ou vazio.");
 		this.email = email;
 	}
 
@@ -76,7 +80,9 @@ public class Usuario {
 		return imagem;
 	}
 
-	public void setImagem(String imagem) {
+	public void setImagem(String imagem) throws Exception {
+		if(nome == null || nome.equals(""))
+			throw new Exception("Imagem nao pode ser nula ou vazia.");
 		this.imagem = imagem;
 	}
 

@@ -19,4 +19,9 @@ public class Controller {
 		return true;
 		
 	}
+	
+	
+	public boolean login(String email, String senha) throws Exception {
+		return sistemaPop.login(email, senha);
+	}
 }

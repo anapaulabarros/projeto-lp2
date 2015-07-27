@@ -1,7 +1,3 @@
-import static org.junit.Assert.*;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.Assert;
 import org.junit.Test;
