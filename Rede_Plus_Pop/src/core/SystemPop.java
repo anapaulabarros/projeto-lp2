@@ -20,25 +20,35 @@ public class SystemPop {
 	}
 
 	public boolean login(String email, String senha) throws Exception {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getEmail().equals(email)) {
-				if (usuario.getSenha().equals(senha)) {
-					if (usuarioLogado != null){
-						usuarioLogado = usuario;
-						return true;
-					}
-					else {
-						throw new Exception("Nao foi possivel realizar login. "
-								+ "Um usuario ja esta logado: " + usuario.getNome() + " login email="+ usuario.getEmail() + " senha= " + usuario.getSenha());
-					}	
-				} else {
-					throw new Exception("Senha do usuario esta incorreta");
+		Usuario usuario = buscaUsuario(email);
+		if(usuario == null)
+			throw new Exception("Nao foi possivel realizar login. Um usuario com email: " + email + " nao existe.");
+		else{
+			if(usuario.getSenha().equals(senha)){
+				if (usuarioLogado != null){
+					usuarioLogado = usuario;
+					return true;
 				}
+				else {
+					throw new Exception("Nao foi possivel realizar login. "
+							+ "Um usuario ja esta logado: " + usuario.getNome() + " login email="+ usuario.getEmail() + " senha= " + usuario.getSenha());
+				}	
 			}
+			else{
+				throw new Exception("Senha do usuario esta incorreta");
+			}		
 		}
-		throw new Exception("Nao foi possivel realizar login. Um usuario com email: " + email + " nao existe.");
 	}
 	
+	
+	public Usuario buscaUsuario(String email) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getEmail().equals(email)) {
+				return usuario;
+			}
+		}
+		return null;
+	}
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
