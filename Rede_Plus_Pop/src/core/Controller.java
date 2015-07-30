@@ -2,6 +2,9 @@ package core;
 
 public class Controller {
 	
+	public static final String CURTIR = "Curtir";
+	public static final String REJETIAR = "Rejeitar";
+	
 	private SystemPop sistemaPop;
 	
 	
@@ -45,5 +48,17 @@ public class Controller {
 	
 	public void alteraSenha(String senhaAntiga, String senhaNova){
 		sistemaPop.alteraSenha(senhaAntiga, senhaNova);
+	}
+	
+	public void postar(String mensagem) throws Exception {
+		sistemaPop.postar(mensagem);
+	}
+	
+	public void curtir(int indexPost, String email) throws Exception {
+		sistemaPop.interagirComPost(indexPost, email, CURTIR);
+	}
+	
+	public void rejeitar(int indexPost, String email) throws Exception {
+		sistemaPop.interagirComPost(indexPost, email, REJETIAR);
 	}
 }

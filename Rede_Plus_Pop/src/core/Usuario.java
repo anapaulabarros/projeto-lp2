@@ -10,6 +10,8 @@ import java.util.List;
 public class Usuario {
 	
 	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
+	public static final String CURTIR = "Curtir";
+	public static final String REJETIAR = "Rejeitar";
 	
 	private String nome;
 	private String email;
@@ -74,9 +76,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	/*
-	 * @return caminho com da imagem 
-	 * */
 	public String getImagem() {
 		return imagem;
 	}
@@ -98,6 +97,17 @@ public class Usuario {
 
 	public List<Post> getPosts() {
 		return posts;
+	}
+	
+	public void postar(Post novoPost) throws Exception {
+		posts.add(novoPost);
+	}
+	
+	public void interagirPost(int indexPost, String opcao) {
+		if(opcao.equals(CURTIR))
+			posts.get(indexPost).setPopularidade(CURTIR);
+		if(opcao.equals(REJETIAR))
+			posts.get(indexPost).setPopularidade(REJETIAR);
 	}
 	
 	/** 

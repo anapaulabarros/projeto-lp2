@@ -1,10 +1,14 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SystemPop {
-
+	
+	public static final String CURTIR = "Curtir";
+	public static final String REJETIAR = "Rejeitar";
+	
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
 	
@@ -83,5 +87,35 @@ public class SystemPop {
 		if (senhaAntiga.equals(usuarioLogado.getSenha())){
 			usuarioLogado.setSenha(senhaNova);
 		}
+	}
+	
+	public void postar(String mensagem) throws Exception {
+		if(getUsuarioLogado() == null)
+			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuario logado.");
+		if(mensagem == null || mensagem.length() == 0)
+			throw new Exception("A mensagem nao pode ser nula ou vazia.");
+		if(mensagem.length() > 400)
+			throw new Exception("A mensagem nao pode ter mais de 400 caracteres.");
+		
+		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
+		getUsuarioLogado().postar(novoPost);
+	}
+	
+	
+	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws Exception {
+		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
+		if(usuarioLogado == null)
+			throw new Exception("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
+		if(usuarioLogado.getEmail().equals(emailAmigo))
+			throw new Exception("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
+		if(amigoDoUsuarioLogado == null)
+			throw new Exception("Nao existe nenhum usuario com o email fornecido.");
+		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
+			throw new Exception("Nao existe nenhum post no mural com esse indice.");
+		
+		if(opcao == CURTIR)
+			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
+		if(opcao == REJETIAR)
+			amigoDoUsuarioLogado.interagirPost(idPost, REJETIAR);
 	}
 }
