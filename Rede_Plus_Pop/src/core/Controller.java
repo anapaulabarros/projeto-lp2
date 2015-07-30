@@ -50,11 +50,24 @@ public class Controller {
 		sistemaPop.fechaSistema();
 	}
 
-	public String getInfoUsuario(String atributo) {
+	public String getInfoUsuario(String atributo) throws Exception {
 		return sistemaPop.getInfoUsuario(atributo);
 	}
 
 	public void atualizaPerfil(String atributo, String valor) throws Exception {
 		sistemaPop.atualizaPerfil(atributo, valor);		
 	}
+
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception {
+		sistemaPop.atualizaPerfil(atributo, valor, velhaSenha);
+	}
+
+	public String getPost(int post) {
+		return sistemaPop.getPost(post);
+	}
+
+	public String getPost(String atributo, int post) {
+		return sistemaPop.getPost(atributo, post);
+	}
+
 }

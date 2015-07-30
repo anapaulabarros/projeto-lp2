@@ -16,7 +16,7 @@ public class Facade {
 		controller.cadastraUsuario(nome, email, senha, dataNasc, imagem);
 	}
 	
-	public String getInfoUsuario(String atributo){
+	public String getInfoUsuario(String atributo) throws Exception{
 		return controller.getInfoUsuario(atributo);
 	}
 	
@@ -29,8 +29,20 @@ public class Facade {
 	}
 	
 	public void atualizaPerfil(String atributo, String valor) throws Exception{
-		//tive problema aqui com o atributo senha, que vai precisar da senha antiga
 		controller.atualizaPerfil(atributo, valor);
 	}
+	
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception{
+		controller.atualizaPerfil(atributo, valor, velhaSenha);
+	}
+	
+	public String getPost(int post){
+		return controller.getPost(post);
+	}
+	
+	public String getPost(String atributo, int post){
+		return controller.getPost(atributo, post);
+	}
+
 
 }

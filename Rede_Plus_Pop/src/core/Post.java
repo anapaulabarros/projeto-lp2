@@ -1,5 +1,7 @@
 package core;
 
+import java.text.Format;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -14,21 +16,28 @@ public class Post {
 	private int popularidade;
 	private int unlikes;
 	private Date dataPublicacao;
-	private Map<String, List<String>> listaHastag;
+	private List<String> listaHashtag;
 	
 	public Post(String mensagem, Date dataPublicao) throws Exception {
 		if(mensagem == null || mensagem.equals(""))
 			throw new Exception("A mensagem nao pode ser nula ou vazia.");
+		if(mensagem.length() > 200){
+			throw new Exception("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
+		}
 		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
 		popularidade = 0;
 		likes = 0;
 		unlikes = 0;
-		listaHastag = new HashMap<String, List<String>>();		
+		listaHashtag = new ArrayList<String>();		
 	}
 	
-	public Map<String, List<String>> getListaHastag() {
-		return listaHastag;
+	public String getListaHashtag() {
+		String retorno = "";
+		for (String hashtag: listaHashtag){
+			retorno = retorno + hashtag + ",";
+		}
+		return retorno;
 	}
 
 	public String getMensagem() {
@@ -47,8 +56,9 @@ public class Post {
 		return unlikes;
 	}
 
-	public Date getDataPublicacao() {
-		return dataPublicacao;
+	public String getDataPublicacao() {
+		//ajeitar esse negocio
+		return dataPublicacao.toString();
 	}
 
 	public void setPopularidade(String opcao) {
@@ -68,5 +78,9 @@ public class Post {
 	
 	public void setUnlike() {
 		this.unlikes += 1;
+	}
+	
+	public String toString(){
+		return this.mensagem + " (" + this.dataPublicacao + ")";
 	}
 }

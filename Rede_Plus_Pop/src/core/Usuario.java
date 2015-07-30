@@ -19,6 +19,7 @@ public class Usuario {
 	private String imagem;
 	private Date dataNasc;
 	private List<Post> posts;
+	private List<Usuario> amigos;
 	
 	/*
 	 * falta ajeitar os tratamentos:
@@ -47,6 +48,7 @@ public class Usuario {
 		}
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
+		this.amigos = new ArrayList<Usuario>();
 	}
 	
 	public Usuario(String nome, String email, String senha, String dataNasc) throws Exception {
@@ -74,7 +76,7 @@ public class Usuario {
 	}
 
 	public String getSenha() {
-		return "A senha dx usuarix eh protegida.";
+		return senha;
 	}
 
 	public void setSenha(String senha) {
@@ -104,6 +106,10 @@ public class Usuario {
 		return posts;
 	}
 	
+	public List<Usuario> getAmigos() {
+		return amigos;
+	}
+
 	public void postar(Post novoPost) throws Exception {
 		posts.add(novoPost);
 	}

@@ -19,7 +19,7 @@ public class SystemPop {
 	
 	public void cadastraUsuario(Usuario novoUsuario) throws Exception {
 		if (getUsuarios().contains(novoUsuario))
-			throw new Exception("Usuário ja esta cadastrado no +Pop.");
+			throw new Exception("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
 	}
 
@@ -68,15 +68,11 @@ public class SystemPop {
 	}
 	
 	public void postar(String mensagem) throws Exception {
-		if(getUsuarioLogado() == null)
-			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuario logado.");
-		if(mensagem == null || mensagem.length() == 0)
-			throw new Exception("A mensagem nao pode ser nula ou vazia.");
-		if(mensagem.length() > 400)
-			throw new Exception("A mensagem nao pode ter mais de 400 caracteres.");
-		
+		if(getUsuarioLogado() == null){
+			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
+		}
 		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
-		getUsuarioLogado().postar(novoPost);
+		usuarioLogado.postar(novoPost);
 	}
 	
 	
@@ -102,15 +98,14 @@ public class SystemPop {
 	}
 
 	public void fechaSistema() throws Exception {
-		//fechar sistema
 		if (usuarioLogado == null){
-			
+			//fechar sistema
 		}else{
 			throw new Exception("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
 		}
 	}
 
-	public String getInfoUsuario(String atributo) {
+	public String getInfoUsuario(String atributo) throws Exception {
 		if (atributo.equals("Nome")){
 			return usuarioLogado.getNome();
 		} else if (atributo.equals("Data de Nascimento")){
@@ -118,7 +113,7 @@ public class SystemPop {
 		} else if (atributo.equals("Foto")){
 			return usuarioLogado.getImagem();
 		} else if (atributo.equals("Senha")){
-			return usuarioLogado.getSenha();
+			throw new Exception("A senha dx usuarix eh protegida.");
 		}
 		return null;
 	}
@@ -132,5 +127,29 @@ public class SystemPop {
 			usuarioLogado.setNome(valor);
 		}
 		}
+	}
+
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception {
+		if (velhaSenha.equals(usuarioLogado.getSenha())){
+			usuarioLogado.setSenha(valor);
+		}else{
+			throw new Exception("Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
+		}
+	}
+	
+	public String getPost(int post) {
+		return usuarioLogado.getPosts().get(post).toString();
+	}
+
+	public String getPost(String atributo, int post) {
+		Post postAtual = usuarioLogado.getPosts().get(post);
+		if (atributo.equals("Conteudo")){
+			return postAtual.getMensagem();
+		} else if(atributo.equals("Data")){
+			return postAtual.getDataPublicacao();
+		} else if (atributo.equals("Hashtags")){
+			return postAtual.getListaHashtag();
+		}
+		return null;
 	}
 }
