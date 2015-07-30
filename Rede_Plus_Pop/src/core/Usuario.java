@@ -15,12 +15,11 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private String imagem;
-	private String telefone;
 	private Date dataNasc;
 	private List<Post> posts;
 	
 	
-	public Usuario(String nome, String email, String senha, String dataNasc, String imagem, String telefone) throws Exception {
+	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
 		
 		if(nome == null || nome.equals(""))
 			throw new Exception("O nome nao pode ser nulo ou vazio.");
@@ -39,13 +38,12 @@ public class Usuario {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		this.telefone = telefone;
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 	}
 	
-	public Usuario(String nome, String email, String senha, String dataNasc, String telefone) throws Exception {
-		this(nome, email, senha, dataNasc, "resources/defaultImage.png", telefone);
+	public Usuario(String nome, String email, String senha, String dataNasc) throws Exception {
+		this(nome, email, senha, dataNasc, "resources/defaultImage.png");
 	}
 
 	public String getNome() {
@@ -89,14 +87,6 @@ public class Usuario {
 		this.imagem = imagem;
 	}
 
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
 	public String getDataNasc() {
 		DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy"); 
 		return dataFormat.format(dataNasc);
@@ -135,8 +125,7 @@ public class Usuario {
 	public String toString() {
 		return "Nome: " + this.nome + QUEBRA_DE_LINHA
 				+ "Email:  " + this.email + QUEBRA_DE_LINHA
-				+ "Senha:  *******" +  QUEBRA_DE_LINHA
-				+ "Telefone: " + this.telefone + QUEBRA_DE_LINHA 
+				+ "Senha:  *******" +  QUEBRA_DE_LINHA 
 				+ "Data de Nascimento: " + getDataNasc() + QUEBRA_DE_LINHA
 				+ "Posts: " + this.posts;
 	}

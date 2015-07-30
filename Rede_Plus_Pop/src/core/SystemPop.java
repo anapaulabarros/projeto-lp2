@@ -71,10 +71,6 @@ public class SystemPop {
 		usuarioLogado.setEmail(emailNovo);
 	}
 
-	public void alteraTelefone(String telNovo) {
-		usuarioLogado.setTelefone(telNovo);
-	}
-
 	public void alteraDataNasc(String dataNova) throws Exception {
 		usuarioLogado.setDataNasc(dataNova);
 	}

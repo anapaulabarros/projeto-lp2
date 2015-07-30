@@ -10,12 +10,12 @@ public class Controller {
 	}
 	
 	
-	public void cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem, String telefone) throws Exception {
+	public void cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
 		
 		if(imagem == null || imagem.equals(""))
-			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, telefone));
+			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc));
 		else
-			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, imagem,telefone));
+			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, imagem));
 			
 	}
 	
@@ -33,10 +33,6 @@ public class Controller {
 	
 	public void alteraEmail(String emailNovo) throws Exception{
 		sistemaPop.alteraEmail(emailNovo);
-	}
-	
-	public void alteraTelefone(String telNovo){
-		sistemaPop.alteraTelefone(telNovo);
 	}
 	
 	public void alteraDataNasc(String dataNova) throws Exception{
