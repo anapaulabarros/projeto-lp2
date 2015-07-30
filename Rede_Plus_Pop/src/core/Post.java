@@ -1,5 +1,7 @@
 package core;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +41,7 @@ public class Post {
 		for (String hashtag: listaHashtag){
 			retorno = retorno + hashtag + ",";
 		}
-		return retorno;
+		return retorno.substring(0, retorno.length() - 1);
 	}
 
 	public String getMensagem() {
@@ -67,8 +69,8 @@ public class Post {
 	}
 
 	public String getDataPublicacao() {
-		//ajeitar esse negocio
-		return dataPublicacao.toString();
+		DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+		return dataFormat.format(dataPublicacao);
 	}
 
 	public void setPopularidade(String opcao) {
