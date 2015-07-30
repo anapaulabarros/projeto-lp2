@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Usuario {
 	
@@ -21,31 +23,23 @@ public class Usuario {
 	private List<Post> posts;
 	private List<Usuario> amigos;
 	
-	/*
-	 * falta ajeitar os tratamentos:
-	 * formato de email errado
-	 * formato de data errado
-	 * data inexistente (n sei se poderia cair no formato errado)
-	 */
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
 		
-		if(nome == null || nome.equals(""))
+		if(nome == null || nome.equals("") || nome.equals(" "))
 			throw new Exception("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
-		if(email == null || email.equals(""))
-			throw new Exception("O email nao pode ser nulo ou vazio.");
+		if(email == null || email.equals("") || validaEmail(email) == false)
+			throw new Exception("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 		if(senha == null || senha.equals("") || senha.length() < 3)
 			throw new Exception("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
-		if(dataNasc == null || dataNasc.equals(""))
-			throw new Exception("A data de nascimento nao pode ser nula ou vazia.");
+		if(dataNasc == null || dataNasc.equals("") || validaData(dataNasc) == false)
+			throw new Exception("Erro no cadastro de Usuarios. Data nao existe.");
+		if(validaDiaDaData(dataNasc) == false)
+			throw new Exception("Erro no cadastro de Usuarios. Formato de data esta invalida.");
 		
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		try {
-			this.dataNasc = formataData(dataNasc);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		this.dataNasc = formataData(dataNasc);
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
@@ -94,7 +88,7 @@ public class Usuario {
 	}
 
 	public String getDataNasc() {
-		DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		DateFormat dataFormat = new SimpleDateFormat("yyy-MM-dd"); 
 		return dataFormat.format(dataNasc);
 	}
 
@@ -142,6 +136,51 @@ public class Usuario {
         return date;  
     } 
 	
+    /** 
+     * Valida um email fornecido pelo usuario ao criar um novo usuario  
+     * retorna boolean Ex: alguem@mail - retorna false..
+     * @param email String 
+     * @return boolean true para emails validos e false para emails invalidos 
+     */
+    public boolean validaEmail(String email) {
+	    Pattern p = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$"); 
+	    Matcher emailFiltrado = p.matcher(email); 
+	    if (emailFiltrado.find()){
+	      return true;
+	    }
+	    return false;  
+	 }
+    
+    
+    /** 
+     * Valida uma data fornecida pelo usuario ao criar um novo usuario  
+     * retorna boolean Ex: 32/10/2010 - retorna false..
+     * @param data String 
+     * @return boolean true para datas validas e false para datas invalidas 
+     */
+    public boolean validaData(String data) {
+		String[] valores = data.split("/");
+		if(Integer.parseInt(valores[0]) < 1 || Integer.parseInt(valores[0]) > 31)
+			return false;
+		if(Integer.parseInt(valores[1]) < 1 || Integer.parseInt(valores[1]) > 12)
+			return false;
+		if(Integer.parseInt(valores[2]) < 1)
+			return false;
+		return true;
+	}
+    
+    /** 
+     * Valida o dia da data fornecida pelo usuario ao criar um novo usuario  
+     * retorna boolean Ex: 1510/10/2010 - retorna false.
+     * @param data String 
+     * @return boolean true para dias validos e false para dias invalidos 
+     */
+    public boolean validaDiaDaData(String data) {
+    	String[] dia = data.split("/");
+    	if(dia.length >= 4)
+			return false;
+    	return true;
+    }
 	@Override
 	public String toString() {
 		return "Nome: " + this.nome + QUEBRA_DE_LINHA
