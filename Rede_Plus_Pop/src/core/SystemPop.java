@@ -152,4 +152,15 @@ public class SystemPop {
 		}
 		return null;
 	}
+
+	public String getConteudoPost(int indice, int post) throws Exception {
+		Post postAtual = usuarioLogado.getPosts().get(post);
+		if (indice < 0){
+			throw new Exception("Requisicao invalida. O indice deve ser maior ou igual a zero.");
+		}
+		if (indice >= postAtual.getQuantidadeItens()){
+			throw new Exception("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
+		}
+		return postAtual.getConteudo(indice);
+	}
 }

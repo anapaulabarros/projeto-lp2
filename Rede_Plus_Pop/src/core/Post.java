@@ -1,17 +1,15 @@
 package core;
 
-import java.text.Format;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Post {
 	public static final String CURTIR = "Curtir";
 	public static final String REJEITAR = "Rejeitar";
 	
 	private String mensagem;
+	private List<String> conteudo;
 	private int likes;
 	private int popularidade;
 	private int unlikes;
@@ -25,6 +23,10 @@ public class Post {
 			throw new Exception("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
 		this.mensagem = mensagem;
+		this.conteudo = new ArrayList<String>();
+		for (String item: mensagem.split(" ")){
+			conteudo.add(item);
+		}
 		this.dataPublicacao = dataPublicao;
 		popularidade = 0;
 		likes = 0;
@@ -44,6 +46,14 @@ public class Post {
 		return mensagem;
 	}
 
+	public String getConteudo(int indice) {
+		return conteudo.get(indice);
+	}
+	
+	public int getQuantidadeItens(){
+		return this.conteudo.size();
+	}
+	
 	public int getLikes() {
 		return likes;
 	}

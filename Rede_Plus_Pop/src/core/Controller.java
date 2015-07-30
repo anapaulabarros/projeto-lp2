@@ -70,4 +70,9 @@ public class Controller {
 		return sistemaPop.getPost(atributo, post);
 	}
 
+
+	public String getConteudoPost(int indice, int post) throws Exception {
+		return sistemaPop.getConteudoPost(indice, post);
+	}
+
 }

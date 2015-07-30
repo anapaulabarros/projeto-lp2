@@ -43,6 +43,10 @@ public class Facade {
 	public String getPost(String atributo, int post){
 		return controller.getPost(atributo, post);
 	}
+	
+	public String getConteudoPost(int indice, int post) throws Exception{
+		return controller.getConteudoPost(indice, post);
+	}
 
 
 }
