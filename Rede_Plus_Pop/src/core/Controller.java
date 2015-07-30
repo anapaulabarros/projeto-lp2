@@ -46,7 +46,7 @@ public class Controller {
 		sistemaPop.iniciaSistema();		
 	}
 
-	public void fechaSistema() {
+	public void fechaSistema() throws Exception {
 		sistemaPop.fechaSistema();
 	}
 

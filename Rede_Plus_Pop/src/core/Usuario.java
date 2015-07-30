@@ -20,11 +20,16 @@ public class Usuario {
 	private Date dataNasc;
 	private List<Post> posts;
 	
-	
+	/*
+	 * falta ajeitar os tratamentos:
+	 * formato de email errado
+	 * formato de data errado
+	 * data inexistente (n sei se poderia cair no formato errado)
+	 */
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
 		
 		if(nome == null || nome.equals(""))
-			throw new Exception("O nome nao pode ser nulo ou vazio.");
+			throw new Exception("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 		if(email == null || email.equals(""))
 			throw new Exception("O email nao pode ser nulo ou vazio.");
 		if(senha == null || senha.equals("") || senha.length() < 3)
@@ -69,7 +74,7 @@ public class Usuario {
 	}
 
 	public String getSenha() {
-		return "A senha do usuario eh protegida.";
+		return "A senha dx usuarix eh protegida.";
 	}
 
 	public void setSenha(String senha) {

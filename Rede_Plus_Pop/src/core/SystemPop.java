@@ -26,7 +26,7 @@ public class SystemPop {
 	public boolean login(String email, String senha) throws Exception {
 		Usuario usuario = buscaUsuario(email);
 		if(usuario == null)
-			throw new Exception("Nao foi possivel realizar login. Um usuario com email: " + email + " nao existe.");
+			throw new Exception("Nao foi possivel realizar login. Um usuarix com email " + email + " nao esta cadastradx.");
 		else{
 			if(usuario.getSenha().equals(senha)){
 				if (usuarioLogado == null){
@@ -34,11 +34,11 @@ public class SystemPop {
 					return true;
 				}
 				else {
-					throw new Exception("Nao foi possivel realizar login. Um usuario ja esta logado.");
+					throw new Exception("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome());
 				}	
 			}
 			else{
-				throw new Exception("Senha do usuario esta incorreta");
+				throw new Exception("Nao foi possivel realizar login. Senha invalida.");
 			}		
 		}
 	}
@@ -46,7 +46,7 @@ public class SystemPop {
 	
 	public boolean logout() throws Exception {
 		if(usuarioLogado == null)
-			throw new Exception("Nao eh possivel realizar logout. Nenhum usuario esta logado no +pop.");
+			throw new Exception("Nao eh possivel realizar logout. Nenhum usuarix esta logadx no +pop.");
 		usuarioLogado = null;
 		return true;
 	}
@@ -101,8 +101,13 @@ public class SystemPop {
 		//iniciar sistema		
 	}
 
-	public void fechaSistema() {
+	public void fechaSistema() throws Exception {
 		//fechar sistema
+		if (usuarioLogado == null){
+			
+		}else{
+			throw new Exception("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
+		}
 	}
 
 	public String getInfoUsuario(String atributo) {
