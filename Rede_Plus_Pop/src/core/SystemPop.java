@@ -66,28 +66,6 @@ public class SystemPop {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
-	public void alteraNome(String nomeNovo) throws Exception {
-		usuarioLogado.setNome(nomeNovo);
-	}
-
-	public void alteraEmail(String emailNovo) throws Exception {
-		usuarioLogado.setEmail(emailNovo);
-	}
-
-	public void alteraDataNasc(String dataNova) throws Exception {
-		usuarioLogado.setDataNasc(dataNova);
-	}
-
-	public void alteraImagem(String imagemNova) throws Exception {
-		usuarioLogado.setImagem(imagemNova);
-	}
-
-	public void alteraSenha(String senhaAntiga, String senhaNova) {
-		if (senhaAntiga.equals(usuarioLogado.getSenha())){
-			usuarioLogado.setSenha(senhaNova);
-		}
-	}
 	
 	public void postar(String mensagem) throws Exception {
 		if(getUsuarioLogado() == null)
@@ -117,5 +95,37 @@ public class SystemPop {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
 		if(opcao == REJEITAR)
 			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR);
+	}
+
+	public void iniciaSistema() {
+		//iniciar sistema		
+	}
+
+	public void fechaSistema() {
+		//fechar sistema
+	}
+
+	public String getInfoUsuario(String atributo) {
+		if (atributo.equals("Nome")){
+			return usuarioLogado.getNome();
+		} else if (atributo.equals("Data de Nascimento")){
+			return usuarioLogado.getDataNasc();
+		} else if (atributo.equals("Foto")){
+			return usuarioLogado.getImagem();
+		} else if (atributo.equals("Senha")){
+			return usuarioLogado.getSenha();
+		}
+		return null;
+	}
+
+	public void atualizaPerfil(String atributo, String valor) throws Exception {
+		//falta os outros atributos
+		if (usuarioLogado == null){
+			throw new Exception("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
+		}else{
+		if (atributo.equals("Nome")){
+			usuarioLogado.setNome(valor);
+		}
+		}
 	}
 }

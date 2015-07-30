@@ -30,26 +30,6 @@ public class Controller {
 		sistemaPop.logout();
 	}
 	
-	public void alteraNome(String nomeNovo) throws Exception{
-		sistemaPop.alteraNome(nomeNovo);
-	}
-	
-	public void alteraEmail(String emailNovo) throws Exception{
-		sistemaPop.alteraEmail(emailNovo);
-	}
-	
-	public void alteraDataNasc(String dataNova) throws Exception{
-		sistemaPop.alteraDataNasc(dataNova);
-	}
-	
-	public void alteraImagem(String imagemNova) throws Exception{
-		sistemaPop.alteraImagem(imagemNova);
-	}
-	
-	public void alteraSenha(String senhaAntiga, String senhaNova){
-		sistemaPop.alteraSenha(senhaAntiga, senhaNova);
-	}
-	
 	public void postar(String mensagem) throws Exception {
 		sistemaPop.postar(mensagem);
 	}
@@ -60,5 +40,21 @@ public class Controller {
 	
 	public void rejeitar(int indexPost, String email) throws Exception {
 		sistemaPop.interagirComPost(indexPost, email, REJEITAR);
+	}
+
+	public void iniciaSistema() {
+		sistemaPop.iniciaSistema();		
+	}
+
+	public void fechaSistema() {
+		sistemaPop.fechaSistema();
+	}
+
+	public String getInfoUsuario(String atributo) {
+		return sistemaPop.getInfoUsuario(atributo);
+	}
+
+	public void atualizaPerfil(String atributo, String valor) throws Exception {
+		sistemaPop.atualizaPerfil(atributo, valor);		
 	}
 }
