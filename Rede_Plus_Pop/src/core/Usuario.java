@@ -11,7 +11,7 @@ public class Usuario {
 	
 	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
 	public static final String CURTIR = "Curtir";
-	public static final String REJETIAR = "Rejeitar";
+	public static final String REJEITAR = "Rejeitar";
 	
 	private String nome;
 	private String email;
@@ -106,8 +106,8 @@ public class Usuario {
 	public void interagirPost(int indexPost, String opcao) {
 		if(opcao.equals(CURTIR))
 			posts.get(indexPost).setPopularidade(CURTIR);
-		if(opcao.equals(REJETIAR))
-			posts.get(indexPost).setPopularidade(REJETIAR);
+		if(opcao.equals(REJEITAR))
+			posts.get(indexPost).setPopularidade(REJEITAR);
 	}
 	
 	/** 

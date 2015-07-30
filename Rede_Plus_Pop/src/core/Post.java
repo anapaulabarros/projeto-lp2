@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Post {
 	public static final String CURTIR = "Curtir";
-	public static final String REJETIAR = "Rejeitar";
+	public static final String REJEITAR = "Rejeitar";
 	
 	private String mensagem;
 	private int likes;
@@ -56,7 +56,7 @@ public class Post {
 			this.popularidade += 1;
 			setLike();
 		}
-		if(opcao == REJETIAR) {
+		if(opcao == REJEITAR) {
 			this.popularidade -= 1;
 			setUnlike();
 		}

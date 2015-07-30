@@ -7,7 +7,7 @@ import java.util.List;
 public class SystemPop {
 	
 	public static final String CURTIR = "Curtir";
-	public static final String REJETIAR = "Rejeitar";
+	public static final String REJEITAR = "Rejeitar";
 	
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
@@ -115,7 +115,7 @@ public class SystemPop {
 		
 		if(opcao == CURTIR)
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
-		if(opcao == REJETIAR)
-			amigoDoUsuarioLogado.interagirPost(idPost, REJETIAR);
+		if(opcao == REJEITAR)
+			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR);
 	}
 }

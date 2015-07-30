@@ -3,7 +3,7 @@ package core;
 public class Controller {
 	
 	public static final String CURTIR = "Curtir";
-	public static final String REJETIAR = "Rejeitar";
+	public static final String REJEITAR = "Rejeitar";
 	
 	private SystemPop sistemaPop;
 	
@@ -59,6 +59,6 @@ public class Controller {
 	}
 	
 	public void rejeitar(int indexPost, String email) throws Exception {
-		sistemaPop.interagirComPost(indexPost, email, REJETIAR);
+		sistemaPop.interagirComPost(indexPost, email, REJEITAR);
 	}
 }
