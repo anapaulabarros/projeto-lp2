@@ -27,6 +27,8 @@ public class Post {
 		if(mensagem.length() > 200){
 			throw new Exception("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
+		if(validaHastgs(mensagem) != null)
+			throw new Exception("Nao eh possivel criar o post. As hashtags devem comecar com '#'.Erro na hashtag: '" + validaHastgs(mensagem) + "'.");
 		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
 		for (String item: mensagem.split(" ")){
@@ -116,11 +118,11 @@ public class Post {
 	 * */
 	public List<String> filtraHastgs(String mensagem) {
 		List<String> listaDeHastags = new ArrayList<String>();
-		String[] palavras = mensagem.split(" ");
-		 for(int i = 0; i < palavras.length; i++) {
-			 if(palavras[i].contains("#"))
-				 listaDeHastags.add(palavras[i]);
-		 }
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				listaDeHastags.add(palavra);
+		}
 		 return listaDeHastags;
 	}
 	
@@ -142,6 +144,24 @@ public class Post {
 		 }
 		
 		return hastags;
+	}
+	
+	/*
+	 *  Metodo para validar hasTags. Se a Hastag nao tiver no primeiro
+	 *  caractere da palavra '#' o metodo retorna a palavra invalida
+	 *  Ex: "Um teste. #teste nova_mensagem #hastag" - retorno: nova_mensagem
+	 *  
+	 *  @param mensagem String
+	 *  @return boolean
+	 * */
+	public String validaHastgs(String mensagem) {
+	
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				 return palavra;
+		}
+		 return null;
 	}
 	
 	public Map<String, ArrayList<String>> getDicionarioHasTags() {
