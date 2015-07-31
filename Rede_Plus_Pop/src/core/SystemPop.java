@@ -3,6 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class SystemPop {
 	
@@ -119,13 +120,23 @@ public class SystemPop {
 	}
 
 	public void atualizaPerfil(String atributo, String valor) throws Exception {
-		//falta os outros atributos
 		if (usuarioLogado == null){
 			throw new Exception("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
-		}else{
+		}
 		if (atributo.equals("Nome")){
 			usuarioLogado.setNome(valor);
 		}
+		if (atributo.equals("Email")){
+			usuarioLogado.setEmail(valor);
+		}
+		if (atributo.equals("Senha")){
+			usuarioLogado.setSenha(valor);
+		}
+		if (atributo.equals("Data de nascimento")){
+			usuarioLogado.setDataNasc(valor);;
+		}
+		if (atributo.equals("Foto")){
+			usuarioLogado.setImagem(valor);
 		}
 	}
 
@@ -141,6 +152,10 @@ public class SystemPop {
 		return usuarioLogado.getPosts().get(post).toString();
 	}
 
+	public Map<String, ArrayList<String>> getDicionarioDeHastags(int post) {
+		return usuarioLogado.getPosts().get(post).getDicionarioHasTags();
+	}
+	
 	public String getPost(String atributo, int post) {
 		Post postAtual = usuarioLogado.getPosts().get(post);
 		if (atributo.equals("Conteudo")){

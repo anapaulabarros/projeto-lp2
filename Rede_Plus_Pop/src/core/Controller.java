@@ -1,5 +1,8 @@
 package core;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class Controller {
 	
 	public static final String CURTIR = "Curtir";
@@ -70,7 +73,10 @@ public class Controller {
 		return sistemaPop.getPost(atributo, post);
 	}
 
-
+	public Map<String, ArrayList<String>> getDicionarioDeHastags(int post) {
+		return sistemaPop.getDicionarioDeHastags(post);
+	}
+	
 	public String getConteudoPost(int indice, int post) throws Exception {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
