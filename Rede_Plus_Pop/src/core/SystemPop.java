@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +13,12 @@ public class SystemPop {
 	
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
+	private Map<String, ArrayList<String>> dicionarioHashtags;
 	
 	public SystemPop() {
 		usuarios = new ArrayList<Usuario>();
 		usuarioLogado = null;
+		dicionarioHashtags = new HashMap<String, ArrayList<String>>();
 	}
 	
 	public void cadastraUsuario(Usuario novoUsuario) throws Exception {
@@ -66,16 +69,7 @@ public class SystemPop {
 	}
 	public List<Usuario> getUsuarios() {
 		return usuarios;
-	}
-	
-	public void postar(String mensagem) throws Exception {
-		if(getUsuarioLogado() == null){
-			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
-		}
-		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
-		usuarioLogado.postar(novoPost);
-	}
-	
+	}	
 	
 	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws Exception {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
@@ -151,10 +145,6 @@ public class SystemPop {
 	public String getPost(int post) {
 		return usuarioLogado.getPosts().get(post).toString();
 	}
-
-	public Map<String, ArrayList<String>> getDicionarioDeHastags(int post) {
-		return usuarioLogado.getPosts().get(post).getDicionarioHasTags();
-	}
 	
 	public String getPost(String atributo, int post) {
 		Post postAtual = usuarioLogado.getPosts().get(post);
@@ -177,5 +167,87 @@ public class SystemPop {
 			throw new Exception("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
 		}
 		return postAtual.getConteudo(indice);
+	}
+
+	public Map<String, ArrayList<String>> getDicionarioHashtags() {
+		return dicionarioHashtags;
+	}
+
+	public void criaPost(String mensagem, String data) throws Exception {
+		if(getUsuarioLogado() == null){
+			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
+		}
+		if(!filtraHashtags(mensagem).isEmpty())
+			dicionarioHashtags = dicionarioDeHashtags(mensagem);
+		if(validaHashtags(mensagem) != null){
+			throw new Exception("Nao eh possivel criar o post. As hashtags devem comecar com '#'.Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+		}
+		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
+		usuarioLogado.postar(novoPost);
+	}
+	
+	
+	/*
+	 *  Metodo para retornar a mensagem sem as hasTags de um Post
+	 *  Ex: "uma mensagem de um usuario. #teste" - retrono: "Uma mensagem de um usuario." 
+	 *  @param mensagem String
+	 *  @return String
+	 * */
+	public String filtraMensagem(String mensagem) {
+		return mensagem.substring(0, mensagem.indexOf("#"));
+	}
+	
+	/*
+	 *  Metodo para filtrar todas as hasTags que uma mensagem possui, retorna apenas uma lista de hasTags
+	 *  Ex: "Uma mensagem. #teste" - retorno : ['#teste']
+	 *  @param mensagem String
+	 *  @return List<String>
+	 * */
+	public List<String> filtraHashtags(String mensagem) {
+		List<String> listaDeHastags = new ArrayList<String>();
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				listaDeHastags.add(palavra);
+		}
+		 return listaDeHastags;
+	}
+	
+	/*
+	 * Método para armazenar um dicionario de hastags e suas mensagens associadas
+	 * Ex: [#frio={faz muito frio hoje}]
+     * @param mensgem String 
+     * @return Map<String, ArrayList<String>>  
+	 * */
+	public Map<String, ArrayList<String>> dicionarioDeHashtags(String mensagem) {
+		List<String> listaDeHastags = filtraHashtags(mensagem);
+		String textoFiltrado = filtraMensagem(mensagem);
+		Map<String, ArrayList<String>> hastags = new HashMap<String, ArrayList<String>>();
+		
+		for(int i = 0; i < listaDeHastags.size(); i++) {
+			 if(!hastags.keySet().contains(listaDeHastags.get(i)))
+				 hastags.put(listaDeHastags.get(i), new ArrayList<String>());
+			 hastags.get(listaDeHastags.get(i)).add(textoFiltrado);
+		 }
+		
+		return hastags;
+	}
+	
+	/*
+	 *  Metodo para validar hasTags. Se a Hastag nao tiver no primeiro
+	 *  caractere da palavra '#' o metodo retorna a palavra invalida
+	 *  Ex: "Um teste. #teste nova_mensagem #hastag" - retorno: nova_mensagem
+	 *  
+	 *  @param mensagem String
+	 *  @return boolean
+	 * */
+	public String validaHashtags(String mensagem) {
+	
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				 return palavra;
+		}
+		 return null;
 	}
 }

@@ -1,7 +1,5 @@
 package core;
 
-import java.util.ArrayList;
-import java.util.Map;
 
 public class Controller {
 	
@@ -16,13 +14,17 @@ public class Controller {
 	}
 	
 	
-	public void cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
-		
-		if(imagem == null || imagem.equals(""))
-			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc));
-		else
-			sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, imagem));
-			
+	public Usuario cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
+		Usuario novo;
+		if(imagem == null || imagem.equals("")){
+			novo = new Usuario(nome, email, senha, dataNasc);
+			sistemaPop.cadastraUsuario(novo);
+			return novo;
+		}else{
+			novo = new Usuario(nome, email, senha, dataNasc, imagem);
+			sistemaPop.cadastraUsuario(novo);
+			return novo;
+		}
 	}
 	
 	public void login(String email, String senha) throws Exception {
@@ -31,10 +33,6 @@ public class Controller {
 	
 	public void logout() throws Exception  {
 		sistemaPop.logout();
-	}
-	
-	public void postar(String mensagem) throws Exception {
-		sistemaPop.postar(mensagem);
 	}
 	
 	public void curtir(int indexPost, String email) throws Exception {
@@ -72,13 +70,14 @@ public class Controller {
 	public String getPost(String atributo, int post) {
 		return sistemaPop.getPost(atributo, post);
 	}
-
-	public Map<String, ArrayList<String>> getDicionarioDeHastags(int post) {
-		return sistemaPop.getDicionarioDeHastags(post);
-	}
 	
 	public String getConteudoPost(int indice, int post) throws Exception {
 		return sistemaPop.getConteudoPost(indice, post);
+	}
+
+
+	public void criaPost(String mensagem, String data) throws Exception {
+		sistemaPop.criaPost(mensagem, data);
 	}
 
 }
