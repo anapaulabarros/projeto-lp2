@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.SystemPopExceptions;
+import treatmentsExceptions.UsuarioExceptions;
+
 public class SystemPop {
 	
 	public static final String CURTIR = "Curtir";
@@ -21,16 +25,16 @@ public class SystemPop {
 		dicionarioHashtags = new HashMap<String, ArrayList<String>>();
 	}
 	
-	public void cadastraUsuario(Usuario novoUsuario) throws Exception {
+	public void cadastraUsuario(Usuario novoUsuario) throws SystemPopExceptions {
 		if (getUsuarios().contains(novoUsuario))
-			throw new Exception("Usuario ja esta cadastrado no +Pop.");
+			throw new SystemPopExceptions("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
 	}
 
-	public boolean login(String email, String senha) throws Exception {
+	public boolean login(String email, String senha) throws SystemPopExceptions {
 		Usuario usuario = buscaUsuario(email);
 		if(usuario == null)
-			throw new Exception("Nao foi possivel realizar login. Um usuarix com email " + email + " nao esta cadastradx.");
+			throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix com email " + email + " nao esta cadastradx.");
 		else{
 			if(usuario.getSenha().equals(senha)){
 				if (usuarioLogado == null){
@@ -38,19 +42,19 @@ public class SystemPop {
 					return true;
 				}
 				else {
-					throw new Exception("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome());
+					throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome());
 				}	
 			}
 			else{
-				throw new Exception("Nao foi possivel realizar login. Senha invalida.");
+				throw new SystemPopExceptions("Nao foi possivel realizar login. Senha invalida.");
 			}		
 		}
 	}
 	
 	
-	public boolean logout() throws Exception {
+	public boolean logout() throws SystemPopExceptions {
 		if(usuarioLogado == null)
-			throw new Exception("Nao eh possivel realizar logout. Nenhum usuarix esta logadx no +pop.");
+			throw new SystemPopExceptions("Nao eh possivel realizar logout. Nenhum usuarix esta logadx no +pop.");
 		usuarioLogado = null;
 		return true;
 	}
@@ -71,16 +75,16 @@ public class SystemPop {
 		return usuarios;
 	}	
 	
-	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws Exception {
+	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws SystemPopExceptions {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
 		if(usuarioLogado == null)
-			throw new Exception("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
+			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
 		if(usuarioLogado.getEmail().equals(emailAmigo))
-			throw new Exception("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
+			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
 		if(amigoDoUsuarioLogado == null)
-			throw new Exception("Nao existe nenhum usuario com o email fornecido.");
+			throw new SystemPopExceptions("Nao existe nenhum usuario com o email fornecido.");
 		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
-			throw new Exception("Nao existe nenhum post no mural com esse indice.");
+			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
 		
 		if(opcao == CURTIR)
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
@@ -92,15 +96,15 @@ public class SystemPop {
 		//iniciar sistema		
 	}
 
-	public void fechaSistema() throws Exception {
+	public void fechaSistema() throws SystemPopExceptions {
 		if (usuarioLogado == null){
 			//fechar sistema
 		}else{
-			throw new Exception("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
+			throw new SystemPopExceptions("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
 		}
 	}
 
-	public String getInfoUsuario(String atributo) throws Exception {
+	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
 		if (atributo.equals("Nome")){
 			return usuarioLogado.getNome();
 		} else if (atributo.equals("Data de Nascimento")){
@@ -108,14 +112,14 @@ public class SystemPop {
 		} else if (atributo.equals("Foto")){
 			return usuarioLogado.getImagem();
 		} else if (atributo.equals("Senha")){
-			throw new Exception("A senha dx usuarix eh protegida.");
+			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
 		}
 		return null;
 	}
 
-	public void atualizaPerfil(String atributo, String valor) throws Exception {
+	public void atualizaPerfil(String atributo, String valor) throws UsuarioExceptions, Exception {
 		if (usuarioLogado == null){
-			throw new Exception("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
+			throw new SystemPopExceptions("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
 		}
 		if (atributo.equals("Nome")){
 			usuarioLogado.setNome(valor);
@@ -134,11 +138,11 @@ public class SystemPop {
 		}
 	}
 
-	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception {
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws SystemPopExceptions, UsuarioExceptions {
 		if (velhaSenha.equals(usuarioLogado.getSenha())){
 			usuarioLogado.setSenha(valor);
 		}else{
-			throw new Exception("Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
+			throw new SystemPopExceptions("Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
 		}
 	}
 	
@@ -158,13 +162,13 @@ public class SystemPop {
 		return null;
 	}
 
-	public String getConteudoPost(int indice, int post) throws Exception {
+	public String getConteudoPost(int indice, int post) throws SystemPopExceptions {
 		Post postAtual = usuarioLogado.getPosts().get(post);
 		if (indice < 0){
-			throw new Exception("Requisicao invalida. O indice deve ser maior ou igual a zero.");
+			throw new SystemPopExceptions("Requisicao invalida. O indice deve ser maior ou igual a zero.");
 		}
 		if (indice >= postAtual.getQuantidadeItens()){
-			throw new Exception("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
+			throw new SystemPopExceptions("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
 		}
 		return postAtual.getConteudo(indice);
 	}
@@ -173,14 +177,14 @@ public class SystemPop {
 		return dicionarioHashtags;
 	}
 
-	public void criaPost(String mensagem, String data) throws Exception {
+	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions {
 		if(getUsuarioLogado() == null){
-			throw new Exception("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
+			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
 		if(!filtraHashtags(mensagem).isEmpty())
 			dicionarioHashtags = dicionarioDeHashtags(mensagem);
 		if(validaHashtags(mensagem) != null){
-			throw new Exception("Nao eh possivel criar o post. As hashtags devem comecar com '#'.Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+			throw new SystemPopExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'.Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
 		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
 		usuarioLogado.postar(novoPost);

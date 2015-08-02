@@ -1,5 +1,9 @@
 package core;
 
+import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.SystemPopExceptions;
+import treatmentsExceptions.UsuarioExceptions;
+
 
 public class Controller {
 	
@@ -14,7 +18,8 @@ public class Controller {
 	}
 	
 	
-	public Usuario cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
+	public Usuario cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws SystemPopExceptions,
+					UsuarioExceptions, Exception {
 		Usuario novo;
 		if(imagem == null || imagem.equals("")){
 			novo = new Usuario(nome, email, senha, dataNasc);
@@ -27,19 +32,19 @@ public class Controller {
 		}
 	}
 	
-	public void login(String email, String senha) throws Exception {
+	public void login(String email, String senha) throws SystemPopExceptions {
 		sistemaPop.login(email, senha);
 	}
 	
-	public void logout() throws Exception  {
+	public void logout() throws SystemPopExceptions  {
 		sistemaPop.logout();
 	}
 	
-	public void curtir(int indexPost, String email) throws Exception {
+	public void curtir(int indexPost, String email) throws SystemPopExceptions {
 		sistemaPop.interagirComPost(indexPost, email, CURTIR);
 	}
 	
-	public void rejeitar(int indexPost, String email) throws Exception {
+	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
 		sistemaPop.interagirComPost(indexPost, email, REJEITAR);
 	}
 
@@ -47,19 +52,19 @@ public class Controller {
 		sistemaPop.iniciaSistema();		
 	}
 
-	public void fechaSistema() throws Exception {
+	public void fechaSistema() throws SystemPopExceptions {
 		sistemaPop.fechaSistema();
 	}
 
-	public String getInfoUsuario(String atributo) throws Exception {
+	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
 		return sistemaPop.getInfoUsuario(atributo);
 	}
 
-	public void atualizaPerfil(String atributo, String valor) throws Exception {
+	public void atualizaPerfil(String atributo, String valor) throws SystemPopExceptions,Exception {
 		sistemaPop.atualizaPerfil(atributo, valor);		
 	}
 
-	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception {
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws SystemPopExceptions,Exception {
 		sistemaPop.atualizaPerfil(atributo, valor, velhaSenha);
 	}
 
@@ -71,12 +76,12 @@ public class Controller {
 		return sistemaPop.getPost(atributo, post);
 	}
 	
-	public String getConteudoPost(int indice, int post) throws Exception {
+	public String getConteudoPost(int indice, int post) throws SystemPopExceptions, PostExceptions {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
 
 
-	public void criaPost(String mensagem, String data) throws Exception {
+	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions {
 		sistemaPop.criaPost(mensagem, data);
 	}
 

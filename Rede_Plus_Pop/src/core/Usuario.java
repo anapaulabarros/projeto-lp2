@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.UsuarioExceptions;
+
 public class Usuario {
 	
 	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
@@ -23,18 +26,18 @@ public class Usuario {
 	private List<Post> posts;
 	private List<Usuario> amigos;
 	
-	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
+	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
 		if(nome == null || nome.equals("") || nome.equals(" "))
-			throw new Exception("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 		if(email == null || email.equals("") || validaEmail(email) == false)
-			throw new Exception("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 		if(senha == null || senha.equals("") || senha.length() < 3)
-			throw new Exception("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
+			throw new UsuarioExceptions("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
 		if(dataNasc == null || dataNasc.equals("") || validaData(dataNasc) == false)
-			throw new Exception("Erro no cadastro de Usuarios. Data nao existe.");
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Data nao existe.");
 		if(validaDiaDaData(dataNasc) == false)
-			throw new Exception("Erro no cadastro de Usuarios. Formato de data esta invalida.");
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de data esta invalida.");
 		
 		this.nome = nome;
 		this.email = email;
@@ -45,7 +48,7 @@ public class Usuario {
 		this.amigos = new ArrayList<Usuario>();
 	}
 	
-	public Usuario(String nome, String email, String senha, String dataNasc) throws Exception {
+	public Usuario(String nome, String email, String senha, String dataNasc) throws UsuarioExceptions, Exception {
 		this(nome, email, senha, dataNasc, "resources/defaultImage.png");
 	}
 
@@ -53,9 +56,9 @@ public class Usuario {
 		return nome;
 	}
 
-	public void setNome(String nome) throws Exception {
+	public void setNome(String nome) throws UsuarioExceptions {
 		if(nome == null || nome.equals(""))
-			throw new Exception("Nome nao pode ser nulo ou vazio.");
+			throw new UsuarioExceptions("Nome nao pode ser nulo ou vazio.");
 		this.nome = nome;
 	}
 
@@ -63,9 +66,9 @@ public class Usuario {
 		return email;
 	}
 
-	public void setEmail(String email) throws Exception {
+	public void setEmail(String email) throws UsuarioExceptions {
 		if(email == null || email.equals(""))
-			throw new Exception("Email nao pode ser nulo ou vazio.");
+			throw new UsuarioExceptions("Email nao pode ser nulo ou vazio.");
 		this.email = email;
 	}
 
@@ -81,9 +84,9 @@ public class Usuario {
 		return imagem;
 	}
 
-	public void setImagem(String imagem) throws Exception {
+	public void setImagem(String imagem) throws UsuarioExceptions {
 		if(nome == null || nome.equals(""))
-			throw new Exception("Imagem nao pode ser nula ou vazia.");
+			throw new UsuarioExceptions("Imagem nao pode ser nula ou vazia.");
 		this.imagem = imagem;
 	}
 
@@ -92,7 +95,7 @@ public class Usuario {
 		return dataFormat.format(dataNasc);
 	}
 
-	public void setDataNasc(String dataNasc) throws Exception {
+	public void setDataNasc(String dataNasc) throws UsuarioExceptions, Exception {
 		this.dataNasc = formataData(dataNasc);
 	}
 
@@ -104,7 +107,7 @@ public class Usuario {
 		return amigos;
 	}
 
-	public void postar(Post novoPost) throws Exception {
+	public void postar(Post novoPost) throws PostExceptions {
 		posts.add(novoPost);
 	}
 	

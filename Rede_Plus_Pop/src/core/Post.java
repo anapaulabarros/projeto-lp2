@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import treatmentsExceptions.PostExceptions;
+
 public class Post {
 	public static final String CURTIR = "Curtir";
 	public static final String REJEITAR = "Rejeitar";
@@ -19,11 +21,11 @@ public class Post {
 	private List<String> listaHashtag;
 
 	
-	public Post(String mensagem, Date dataPublicao) throws Exception {
+	public Post(String mensagem, Date dataPublicao) throws PostExceptions {
 		if(mensagem == null || mensagem.equals(""))
-			throw new Exception("A mensagem nao pode ser nula ou vazia.");
+			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
 		if(mensagem.length() > 200){
-			throw new Exception("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
+			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
 		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
