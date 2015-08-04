@@ -74,7 +74,7 @@ public class Usuario {
 
 	public void setNome(String nome) throws UsuarioExceptions {
 		if(nome == null || nome.equals(""))
-			throw new UsuarioExceptions("Nome nao pode ser nulo ou vazio.");
+			throw new UsuarioExceptions("Erro na atualizacao de perfil. Nome dx usuarix nao pode ser vazio.");
 		this.nome = nome;
 	}
 
@@ -83,6 +83,8 @@ public class Usuario {
 	}
 
 	public void setEmail(String email) throws UsuarioExceptions {
+		if(validaEmail(email) == false)
+			throw new UsuarioExceptions("Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
 		if(email == null || email.equals(""))
 			throw new UsuarioExceptions("Email nao pode ser nulo ou vazio.");
 		this.email = email;

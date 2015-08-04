@@ -10,19 +10,13 @@ import core.Usuario;
 public class TestUsuario {
 
 	@Test
-	public void TestConstrututorUsuarioComImagem() {
+	public void TestConstrututorUsuarioComImagem()  {
 		try{
-			Usuario id1 = new Usuario("Fulaninho", "alguem@email.com","senha_besta", "1025/01/1990", "resources/foto.jpg");
+			Usuario id1 = new Usuario("Fulaninho", "alguem@email.com","senha_besta", "25/01/1990", "resources/foto.jpg");
 			Assert.assertEquals("Fulaninho", id1.getNome());
 			Assert.assertEquals("resources/foto.jpg", id1.getImagem());
-			//Assert.assertEquals("25/01/1990", id1.getDataNasc());
+			Assert.assertEquals("1990-01-25", id1.getDataNasc());
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		Controller novoController = new Controller();
-		try {
-			novoController.login("madona@email.com", "iamawesome");
-		} catch (SystemPopExceptions e) {
 			System.out.println(e.getMessage());
 		}
 	}
