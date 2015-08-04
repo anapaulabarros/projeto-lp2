@@ -47,6 +47,10 @@ public class Controller {
 	public void fechaSistema() throws SystemPopExceptions {
 		sistemaPop.fechaSistema();
 	}
+	
+	public void removeUsuario(String email) throws SystemPopExceptions {
+		sistemaPop.removeUsuario(email);
+	}
 
 	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
 		return sistemaPop.getInfoUsuario(atributo);

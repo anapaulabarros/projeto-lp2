@@ -29,14 +29,10 @@ public class Usuario {
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
 		validaNome(nome);
-		if(email == null || email.equals("") || validaEmail(email) == false)
-			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
-		if(senha == null || senha.equals("") || senha.length() < 3)
-			throw new UsuarioExceptions("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
-		if(dataNasc == null || dataNasc.equals("") || validaData(dataNasc) == false)
-			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Data nao existe.");
-		if(validaDiaDaData(dataNasc) == false)
-			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de data esta invalida.");
+		validaEmailUsuario(email);
+		validaSenha(senha);
+		validaDia(dataNasc);
+		validaDataCompleta(dataNasc);
 		
 		this.nome = nome;
 		this.email = email;
@@ -45,6 +41,26 @@ public class Usuario {
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
+	}
+
+	private void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
+		if(dataNasc == null || dataNasc.equals("") || validaData(dataNasc) == false)
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Data nao existe.");
+	}
+
+	private void validaDia(String dataNasc) throws UsuarioExceptions {
+		if(validaDiaDaData(dataNasc) == true)
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de data esta invalida.");
+	}
+
+	private void validaSenha(String senha) throws UsuarioExceptions {
+		if(senha == null || senha.equals("") || senha.length() < 3)
+			throw new UsuarioExceptions("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
+	}
+
+	private void validaEmailUsuario(String email) throws UsuarioExceptions {
+		if(email == null || email.equals("") || validaEmail(email) == false)
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 	}
 
 	private void validaNome(String nome) throws UsuarioExceptions {
@@ -180,9 +196,9 @@ public class Usuario {
      */
     public boolean validaDiaDaData(String data) {
     	String[] dia = data.split("/");
-    	if(dia.length >= 4)
-			return false;
-    	return true;
+    	if(dia[0].length() > 2)
+			return true;
+    	return false;
     }
 	@Override
 	public String toString() {

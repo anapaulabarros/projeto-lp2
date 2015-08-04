@@ -42,7 +42,7 @@ public class SystemPop {
 					return true;
 				}
 				else {
-					throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome());
+					throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome() + ".");
 				}	
 			}
 			else{
@@ -51,6 +51,12 @@ public class SystemPop {
 		}
 	}
 	
+	public void removeUsuario(String emailDoUsuario) throws SystemPopExceptions {
+		Usuario usuarioParaRemover = buscaUsuario(emailDoUsuario);
+		if(usuarioParaRemover == null)
+			throw new SystemPopExceptions("Erro ao remover usuario. Um usuarix com email " + emailDoUsuario + " nao esta cadastradx.");
+		usuarios.remove(usuarioParaRemover);
+	}
 	
 	public boolean logout() throws SystemPopExceptions {
 		if(usuarioLogado == null)
@@ -122,7 +128,7 @@ public class SystemPop {
 		Usuario usuario = buscaUsuario(email);
 		String retorno = "";
 		if (usuario == null){
-			throw new Exception("Um usuarix com email " + email + "nao esta cadastradx.");
+			throw new Exception("Um usuarix com email " + email + " nao esta cadastradx.");
 		}
 		if (atributo.equals("Nome")){
 			retorno = usuario.getNome();
