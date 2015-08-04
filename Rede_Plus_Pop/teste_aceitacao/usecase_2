@@ -38,4 +38,4 @@ expect "resources/fofinho.jpg" getInfoUsuario atributo="Foto"
 expect "1962-09-17" getInfoUsuario atributo="Data de Nascimento"
 
 logout
-fecharSistema
+fechaSistema

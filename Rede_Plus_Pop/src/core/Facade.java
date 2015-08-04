@@ -14,10 +14,6 @@ public class Facade {
 		controller.iniciaSistema();
 	}
 	
-	public void fechaSistema() throws Exception{
-		controller.fechaSistema();
-	}
-	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
 		return controller.cadastraUsuario(nome, email, senha, dataNasc, imagem);
 	}
@@ -46,8 +42,8 @@ public class Facade {
 		controller.logout();
 	}
 	
-	public void fecharSistema() throws Exception {
-		controller.fecharSistema();
+	public void fechaSistema() throws Exception {
+		controller.fechaSistema();
 	}
 	
 	public void atualizaPerfil(String atributo, String valor) throws Exception{
