@@ -32,6 +32,10 @@ public class Controller {
 		sistemaPop.logout();
 	}
 	
+	public void fecharSistema() throws SystemPopExceptions  {
+		sistemaPop.fecharSistema();
+	}
+	
 	public void curtir(int indexPost, String email) throws SystemPopExceptions {
 		sistemaPop.interagirComPost(indexPost, email, CURTIR);
 	}

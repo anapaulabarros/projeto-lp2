@@ -46,6 +46,10 @@ public class Facade {
 		controller.logout();
 	}
 	
+	public void fecharSistema() throws Exception {
+		controller.fecharSistema();
+	}
+	
 	public void atualizaPerfil(String atributo, String valor) throws Exception{
 		controller.atualizaPerfil(atributo, valor);
 	}

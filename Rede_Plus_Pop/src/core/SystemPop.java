@@ -65,6 +65,16 @@ public class SystemPop {
 		return true;
 	}
 	
+	/*
+	 * Metodo que ainda precisa ver o seu funcionamento
+	 * nao entendi bem para que esse metodo vai servir,
+	 * pois o lougout para mim é o mesmo funcionamento desse fecharSistema, 
+	 * precisamos pergutnar a Neto como será esse método.
+	 * */
+	public boolean fecharSistema(){
+		return true;
+	}
+	
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
@@ -149,7 +159,7 @@ public class SystemPop {
 		if (atributo.equals("Nome")){
 			usuarioLogado.setNome(valor);
 		}
-		if (atributo.equals("Email")){
+		if (atributo.equals("E-mail")){
 			usuarioLogado.setEmail(valor);
 		}
 		if (atributo.equals("Senha")){
