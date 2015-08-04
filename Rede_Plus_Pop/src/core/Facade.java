@@ -6,6 +6,10 @@ public class Facade {
 	
 	private Controller controller;
 	
+	public Facade(){
+		controller = new Controller();
+	}
+	
 	public void iniciaSistema(){
 		controller.iniciaSistema();
 	}
@@ -14,12 +18,20 @@ public class Facade {
 		controller.fechaSistema();
 	}
 	
-	public Usuario cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
+	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
 		return controller.cadastraUsuario(nome, email, senha, dataNasc, imagem);
+	}
+	
+	public String cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
+		return this.cadastraUsuario(nome, email, senha, dataNasc, "resources/default.jpg");
 	}
 	
 	public String getInfoUsuario(String atributo) throws Exception{
 		return controller.getInfoUsuario(atributo);
+	}
+	
+	public String getInfoUsuario(String atributo, String usuario) throws Exception{
+		return controller.getInfoUsuario(atributo, usuario);
 	}
 	
 	public void login(String email, String senha) throws Exception{

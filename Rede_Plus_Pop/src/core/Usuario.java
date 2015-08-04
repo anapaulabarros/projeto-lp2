@@ -28,8 +28,7 @@ public class Usuario {
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
-		if(nome == null || nome.equals("") || nome.equals(" "))
-			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
+		validaNome(nome);
 		if(email == null || email.equals("") || validaEmail(email) == false)
 			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 		if(senha == null || senha.equals("") || senha.length() < 3)
@@ -47,9 +46,10 @@ public class Usuario {
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
 	}
-	
-	public Usuario(String nome, String email, String senha, String dataNasc) throws UsuarioExceptions, Exception {
-		this(nome, email, senha, dataNasc, "resources/defaultImage.png");
+
+	private void validaNome(String nome) throws UsuarioExceptions {
+		if(nome == null || nome.equals("") || nome.trim().equals(""))
+			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 	}
 
 	public String getNome() {

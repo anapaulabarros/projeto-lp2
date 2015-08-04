@@ -105,16 +105,35 @@ public class SystemPop {
 	}
 
 	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
+		String retorno = "";
 		if (atributo.equals("Nome")){
-			return usuarioLogado.getNome();
+			retorno = usuarioLogado.getNome();
 		} else if (atributo.equals("Data de Nascimento")){
-			return usuarioLogado.getDataNasc();
+			retorno = usuarioLogado.getDataNasc();
 		} else if (atributo.equals("Foto")){
-			return usuarioLogado.getImagem();
+			retorno = usuarioLogado.getImagem();
 		} else if (atributo.equals("Senha")){
 			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
 		}
-		return null;
+		return retorno;
+	}
+	
+	public String getInfoUsuario(String atributo, String email) throws Exception {
+		Usuario usuario = buscaUsuario(email);
+		String retorno = "";
+		if (usuario == null){
+			throw new Exception("Um usuarix com email " + email + "nao esta cadastradx.");
+		}
+		if (atributo.equals("Nome")){
+			retorno = usuario.getNome();
+		} else if (atributo.equals("Data de Nascimento")){
+			retorno = usuario.getDataNasc();
+		} else if (atributo.equals("Foto")){
+			retorno = usuario.getImagem();
+		} else if (atributo.equals("Senha")){
+			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
+		}
+		return retorno;
 	}
 
 	public void atualizaPerfil(String atributo, String valor) throws UsuarioExceptions, Exception {
@@ -254,4 +273,5 @@ public class SystemPop {
 		}
 		 return null;
 	}
+
 }

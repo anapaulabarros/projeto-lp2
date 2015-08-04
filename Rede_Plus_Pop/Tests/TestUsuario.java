@@ -24,7 +24,7 @@ public class TestUsuario {
 	@Test
 	public void TestConstrututorUsuarioSemFoto() {
 		try {
-			Usuario id2 = new Usuario("Madona", "madonna@email.com","iamawesome", "16/08/1958");
+			Usuario id2 = new Usuario("Madona", "madonna@email.com","iamawesome", "16/08/1958", "resources/default.jpg");
 
 			Assert.assertEquals("Madona", id2.getNome());
 			Assert.assertEquals("resources/defaultImage.png", id2.getImagem());

@@ -18,18 +18,10 @@ public class Controller {
 	}
 	
 	
-	public Usuario cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws SystemPopExceptions,
-					UsuarioExceptions, Exception {
-		Usuario novo;
-		if(imagem == null || imagem.equals("")){
-			novo = new Usuario(nome, email, senha, dataNasc);
-			sistemaPop.cadastraUsuario(novo);
-			return novo;
-		}else{
-			novo = new Usuario(nome, email, senha, dataNasc, imagem);
-			sistemaPop.cadastraUsuario(novo);
-			return novo;
-		}
+	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws SystemPopExceptions,
+			UsuarioExceptions, Exception {
+		sistemaPop.cadastraUsuario(new Usuario(nome, email, senha, dataNasc, imagem));
+		return email;
 	}
 	
 	public void login(String email, String senha) throws SystemPopExceptions {
@@ -83,6 +75,11 @@ public class Controller {
 
 	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions {
 		sistemaPop.criaPost(mensagem, data);
+	}
+
+
+	public String getInfoUsuario(String atributo, String usuario) throws Exception {
+		return sistemaPop.getInfoUsuario(atributo, usuario);
 	}
 
 }
