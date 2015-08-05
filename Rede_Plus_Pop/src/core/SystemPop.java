@@ -25,10 +25,12 @@ public class SystemPop {
 		dicionarioHashtags = new HashMap<String, ArrayList<String>>();
 	}
 	
-	public void cadastraUsuario(Usuario novoUsuario) throws SystemPopExceptions {
+	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
+		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, imagem);
 		if (getUsuarios().contains(novoUsuario))
 			throw new SystemPopExceptions("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
+		return email;
 	}
 
 	public boolean login(String email, String senha) throws SystemPopExceptions {
@@ -80,6 +82,15 @@ public class SystemPop {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}	
+	
+	
+	public void curtir(int indexPost, String email) throws SystemPopExceptions {
+		interagirComPost(indexPost, email, CURTIR);
+	}
+	
+	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
+		interagirComPost(indexPost, email, REJEITAR);
+	}
 	
 	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws SystemPopExceptions {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);

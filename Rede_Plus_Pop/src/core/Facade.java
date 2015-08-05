@@ -1,21 +1,22 @@
 package core;
 
+import treatmentsExceptions.SystemPopExceptions;
 import easyaccept.EasyAccept;
 
 public class Facade {
 	
-	private Controller controller;
+	private SystemPop sistemaPop;
 	
 	public Facade(){
-		controller = new Controller();
+		sistemaPop = new SystemPop();
 	}
 	
 	public void iniciaSistema(){
-		controller.iniciaSistema();
+		sistemaPop.iniciaSistema();
 	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
-		return controller.cadastraUsuario(nome, email, senha, dataNasc, imagem);
+		return sistemaPop.cadastraUsuario(nome, email, senha, dataNasc, imagem);
 	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
@@ -23,51 +24,59 @@ public class Facade {
 	}
 	
 	public String getInfoUsuario(String atributo) throws Exception{
-		return controller.getInfoUsuario(atributo);
+		return sistemaPop.getInfoUsuario(atributo);
 	}
 	
 	public String getInfoUsuario(String atributo, String usuario) throws Exception{
-		return controller.getInfoUsuario(atributo, usuario);
+		return sistemaPop.getInfoUsuario(atributo, usuario);
 	}
 	
 	public void login(String email, String senha) throws Exception{
-		controller.login(email, senha);
+		sistemaPop.login(email, senha);
 	}
 	
 	public void removeUsuario(String email) throws Exception{
-		controller.removeUsuario(email);
+		sistemaPop.removeUsuario(email);
 	}
 	
 	public void logout() throws Exception{
-		controller.logout();
+		sistemaPop.logout();
 	}
 	
 	public void fechaSistema() throws Exception {
-		controller.fechaSistema();
+		sistemaPop.fechaSistema();
 	}
 	
 	public void atualizaPerfil(String atributo, String valor) throws Exception{
-		controller.atualizaPerfil(atributo, valor);
+		sistemaPop.atualizaPerfil(atributo, valor);
 	}
 	
 	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception{
-		controller.atualizaPerfil(atributo, valor, velhaSenha);
+		sistemaPop.atualizaPerfil(atributo, valor, velhaSenha);
 	}
 	
 	public String getPost(int post){
-		return controller.getPost(post);
+		return sistemaPop.getPost(post);
 	}
 	
 	public String getPost(String atributo, int post){
-		return controller.getPost(atributo, post);
+		return sistemaPop.getPost(atributo, post);
 	}
 	
 	public String getConteudoPost(int indice, int post) throws Exception{
-		return controller.getConteudoPost(indice, post);
+		return sistemaPop.getConteudoPost(indice, post);
 	}
 	
 	public void criaPost(String mensagem, String data) throws Exception{
-		controller.criaPost(mensagem, data);
+		sistemaPop.criaPost(mensagem, data);
+	}
+	
+	public void curtir(int indexPost, String email) throws SystemPopExceptions {
+		sistemaPop.curtir(indexPost, email);
+	}
+	
+	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
+		sistemaPop.rejeitar(indexPost, email);
 	}
 
 	public static void main(String[] args) {

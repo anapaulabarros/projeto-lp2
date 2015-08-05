@@ -3,7 +3,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import treatmentsExceptions.SystemPopExceptions;
-import core.Controller;
 import core.Usuario;
 
 
