@@ -43,27 +43,27 @@ public class Usuario {
 		this.amigos = new ArrayList<Usuario>();
 	}
 
-	private void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
-		if(dataNasc == null || dataNasc.equals("") || validaData(dataNasc) == false)
+	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
+		if(dataNasc == null || dataNasc.equals("") || validaIntervalosDeData(dataNasc) == false)
 			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Data nao existe.");
 	}
 
-	private void validaDia(String dataNasc) throws UsuarioExceptions {
+	public void validaDia(String dataNasc) throws UsuarioExceptions {
 		if(validaDiaDaData(dataNasc) == true)
 			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de data esta invalida.");
 	}
 
-	private void validaSenha(String senha) throws UsuarioExceptions {
+	public void validaSenha(String senha) throws UsuarioExceptions {
 		if(senha == null || senha.equals("") || senha.length() < 3)
 			throw new UsuarioExceptions("A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
 	}
 
-	private void validaEmailUsuario(String email) throws UsuarioExceptions {
+	public void validaEmailUsuario(String email) throws UsuarioExceptions {
 		if(email == null || email.equals("") || validaEmail(email) == false)
 			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 	}
 
-	private void validaNome(String nome) throws UsuarioExceptions {
+	public void validaNome(String nome) throws UsuarioExceptions {
 		if(nome == null || nome.equals("") || nome.trim().equals(""))
 			throw new UsuarioExceptions("Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 	}
@@ -113,8 +113,12 @@ public class Usuario {
 		return dataFormat.format(dataNasc);
 	}
 
-	public void setDataNasc(String dataNasc) throws UsuarioExceptions, Exception {
-		this.dataNasc = formataData(dataNasc);
+	public void setDataNasc(String novaDataNasc) throws UsuarioExceptions, Exception {
+		if(validaDiaDaData(novaDataNasc) == true || validaIntervalosDeData(novaDataNasc) == false)
+			throw new UsuarioExceptions("Erro na atualizacao de perfil. Formato de data esta invalida.");
+		if( isDateValid(novaDataNasc) == false)
+			throw new UsuarioExceptions("Erro na atualizacao de perfil. Data nao existe.");
+		this.dataNasc = formataData(novaDataNasc);
 	}
 
 	public List<Post> getPosts() {
@@ -141,9 +145,10 @@ public class Usuario {
      * retorna null.
      * @param data String no formato dd/MM/yyyy a ser formatada 
      * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
+	 * @throws ParseException 
      * @throws Exception Caso a String esteja no formato errado 
      */  
-    private static Date formataData(String data) throws Exception {   
+    private Date formataData(String data) throws UsuarioExceptions, ParseException {   
         if (data == null || data.equals(""))  
             return null;  
           
@@ -174,20 +179,21 @@ public class Usuario {
     
     
     /** 
-     * Valida uma data fornecida pelo usuario ao criar um novo usuario  
+     * Valida um intervalo data fornecida pelo usuario ao criar um novo usuario  
      * retorna boolean Ex: 32/10/2010 - retorna false..
      * @param data String 
      * @return boolean true para datas validas e false para datas invalidas 
      */
-    public boolean validaData(String data) {
+    public boolean validaIntervalosDeData(String data) {
 		String[] valores = data.split("/");
-		if(Integer.parseInt(valores[0]) < 1 || Integer.parseInt(valores[0]) > 31)
+		
+		if(!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})") || Integer.parseInt(valores[0]) < 1 || Integer.parseInt(valores[0]) > 31)
 			return false;
-		if(Integer.parseInt(valores[1]) < 1 || Integer.parseInt(valores[1]) > 12)
+		if(!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})") || Integer.parseInt(valores[1]) < 1 || Integer.parseInt(valores[1]) > 12)
 			return false;
-		if(Integer.parseInt(valores[2]) < 1)
+		if(!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})") || Integer.parseInt(valores[2]) < 1)
 			return false;
-		return true;
+    	return true;
 	}
     
     /** 
@@ -202,6 +208,31 @@ public class Usuario {
 			return true;
     	return false;
     }
+    
+    public boolean validaAnoDeData(String data) {
+    	String sfd = "dd/MM/yyyy";
+    	 try {
+             DateFormat df = new SimpleDateFormat(sfd);
+             df.setLenient(false);
+             df.parse(data);
+             return true;
+         } catch (ParseException e) {
+             return false;
+         }
+    		
+    }
+    
+    public boolean isDateValid(String strDate) {
+    	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    	formatter.setLenient(false);
+    	try {
+    	    Date date= formatter.parse(strDate);
+    	    return true;
+    	} catch (ParseException e) {
+    	    return false;
+    	}
+    }
+    
 	@Override
 	public String toString() {
 		return "Nome: " + this.nome + QUEBRA_DE_LINHA

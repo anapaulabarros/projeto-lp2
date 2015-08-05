@@ -16,7 +16,7 @@ atualizaPerfil atributo="Senha" valor="fafa_S2" velhaSenha="will_S2"
 
 expect "Fatima Bernardes Bonner" getInfoUsuario atributo="Nome"
 expect "resources/fofinho.jpg" getInfoUsuario atributo="Foto"
-expect "1962-09-17" getInfoUsuario atributo="Data de Nascimento"
+expect "1972-09-17" getInfoUsuario atributo="Data de Nascimento"
 
 #Casos para tratamento de erros.
 expectError "Erro na atualizacao de perfil. Nome dx usuarix nao pode ser vazio." atualizaPerfil atributo="Nome" valor=""
@@ -35,7 +35,7 @@ login email="fafa_bernardes@email.com.br" senha="fafa_S2"
 
 expect "Fatima Bernardes Bonner" getInfoUsuario atributo="Nome"
 expect "resources/fofinho.jpg" getInfoUsuario atributo="Foto"
-expect "1962-09-17" getInfoUsuario atributo="Data de Nascimento"
+expect "1972-09-17" getInfoUsuario atributo="Data de Nascimento"
 
 logout
 fechaSistema

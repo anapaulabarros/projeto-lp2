@@ -166,8 +166,8 @@ public class SystemPop {
 		if (atributo.equals("Senha")){
 			usuarioLogado.setSenha(valor);
 		}
-		if (atributo.equals("Data de nascimento")){
-			usuarioLogado.setDataNasc(valor);;
+		if (atributo.equals("Data de Nascimento")){
+			usuarioLogado.setDataNasc(valor);
 		}
 		if (atributo.equals("Foto")){
 			usuarioLogado.setImagem(valor);
