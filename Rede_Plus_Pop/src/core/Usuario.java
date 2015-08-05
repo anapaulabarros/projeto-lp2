@@ -209,19 +209,6 @@ public class Usuario {
     	return false;
     }
     
-    public boolean validaAnoDeData(String data) {
-    	String sfd = "dd/MM/yyyy";
-    	 try {
-             DateFormat df = new SimpleDateFormat(sfd);
-             df.setLenient(false);
-             df.parse(data);
-             return true;
-         } catch (ParseException e) {
-             return false;
-         }
-    		
-    }
-    
     public boolean isDateValid(String strDate) {
     	DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     	formatter.setLenient(false);
