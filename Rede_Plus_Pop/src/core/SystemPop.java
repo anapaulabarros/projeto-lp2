@@ -1,5 +1,8 @@
 package core;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -213,16 +216,16 @@ public class SystemPop {
 		return dicionarioHashtags;
 	}
 
-	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions {
+	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions, ParseException {
 		if(getUsuarioLogado() == null){
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
 		if(!filtraHashtags(mensagem).isEmpty())
 			dicionarioHashtags = dicionarioDeHashtags(mensagem);
 		if(validaHashtags(mensagem) != null){
-			throw new SystemPopExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'.Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+			throw new SystemPopExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
-		Post novoPost = new Post(mensagem, new Date(System.currentTimeMillis()));
+		Post novoPost = new Post(mensagem, data);
 		usuarioLogado.postar(novoPost);
 	}
 	
@@ -290,5 +293,27 @@ public class SystemPop {
 		}
 		 return null;
 	}
+		
+	/** 
+     * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
+     * retorna null.
+     * @param data String no formato dd/MM/yyyy a ser formatada 
+     * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
+	 * @throws ParseException 
+     * @throws Exception Caso a String esteja no formato errado 
+     */  
+    private Date formataData(String data) throws UsuarioExceptions, ParseException {   
+        if (data == null || data.equals(""))  
+            return null;  
+          
+        Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+            date = (java.util.Date)formatter.parse(data);  
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    } 
 
 }

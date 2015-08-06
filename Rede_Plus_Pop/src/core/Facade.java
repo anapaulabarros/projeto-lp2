@@ -80,7 +80,7 @@ public class Facade {
 	}
 
 	public static void main(String[] args) {
-		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2"};
+		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3"};
 		EasyAccept.main(args);
 	}
 
