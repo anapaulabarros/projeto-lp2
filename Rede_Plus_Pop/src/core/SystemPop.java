@@ -244,28 +244,4 @@ public class SystemPop {
 		
 		return hastags;
 	}
-
-		
-	/** 
-     * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
-     * retorna null.
-     * @param data String no formato dd/MM/yyyy a ser formatada 
-     * @return Date Objeto Date ou null caso receba uma String vazia ou nula 
-	 * @throws ParseException 
-     * @throws Exception Caso a String esteja no formato errado 
-     */  
-    private Date formataData(String data) throws UsuarioExceptions, ParseException {   
-        if (data == null || data.equals(""))  
-            return null;  
-          
-        Date date = null;  
-        try {  
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-            date = (java.util.Date)formatter.parse(data);  
-        } catch (ParseException e) {              
-            throw e;  
-        }  
-        return date;  
-    } 
-
 }
