@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import treatmentsExceptions.SystemPopExceptions;
+import core.Facade;
 import core.Usuario;
 
 
@@ -18,6 +19,16 @@ public class TestUsuario {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
+		Facade sistema = new Facade();
+		try {
+			sistema.cadastraUsuario("Fulaninho", "alguem@email.com", "senha_besta", "25/01/1990", "resources/foto.jpg");
+			sistema.login("alguem@email.com", "senha_besta");
+			sistema.criaPost("Eu nao sou preconceituosa, mais aqui esta cheio de anta nordestina. #anta #separa", "01/08/2015 12:00:00");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	
 	@Test
