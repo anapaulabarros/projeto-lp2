@@ -24,9 +24,9 @@ public class Post {
 			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
 		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
-		conteudo.add(filtraTexto(mensagem));
-		conteudo.add(filtraMidias(mensagem));
-		conteudo.add(filtraHashtags(mensagem));
+		this.conteudo.add(filtraTexto(mensagem));
+		this.conteudo.add(filtraMidias(mensagem));
+		this.conteudo.add(filtraHashtags(mensagem));
 		if(conteudo.get(0).length() > 200){
 			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
@@ -41,9 +41,12 @@ public class Post {
 		
 	}
 	
+	/*
+	 * so a mensagem do post
+	 */
 	public String filtraTexto(String mensagem) {
         List<String> conteudo = new ArrayList<String>();
-        String[] palavras = mensagem.split("[ ]");
+        String[] palavras = mensagem.split(" ");
         for (String palavra : palavras) {
             if(!palavra.startsWith("#"))
                 conteudo.add(palavra);
@@ -53,6 +56,7 @@ public class Post {
 	
 	
 	/*
+	 * mensagem + midias
 	 *  Metodo para retornar a mensagem sem as hasTags de um Post
 	 *  Ex: "uma mensagem de um usuario. #teste" - retrono: "Uma mensagem de um usuario." 
 	 *  @param mensagem String
@@ -62,8 +66,15 @@ public class Post {
 		return mensagem.substring(0, mensagem.indexOf("<"));
 	}
 	
-	public String filtraMidias(String mensagem){
-		return mensagem.substring(mensagem.indexOf("<"), mensagem.indexOf(">"));
+	public  String filtraMidias(String mensagem) {
+		List<String> conteudo = new ArrayList<String>();
+		String[] palavras = mensagem.split(" ");
+		for (String palavra : palavras) {
+		    if(palavra.startsWith("<")) {
+		    	conteudo.add(palavra);
+		    }
+		}
+		return String.join(" ", conteudo);
 	}
 	
 	public String filtraHashtags(String mensagem) {
