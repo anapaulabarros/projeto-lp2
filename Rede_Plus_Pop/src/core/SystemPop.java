@@ -230,13 +230,16 @@ public class SystemPop {
      * @param mensgem String 
      * @return Map<String, ArrayList<String>>  
 	 * */
-	public Map<String, ArrayList<String>> dicionarioDeHashtags(List<String> listaDeHastags, String textoFiltrado, String mensagem) {
+	public Map<String, ArrayList<String>> dicionarioDeHashtags(String listaDeHastags, String textoFiltrado, String mensagem) {
 		Map<String, ArrayList<String>> hastags = new HashMap<String, ArrayList<String>>();
-		
-		for(int i = 0; i < listaDeHastags.size(); i++) {
-			 if(!hastags.keySet().contains(listaDeHastags.get(i)))
-				 hastags.put(listaDeHastags.get(i), new ArrayList<String>());
-			 hastags.get(listaDeHastags.get(i)).add(textoFiltrado);
+		List<String> listaHastags = new ArrayList<String>();
+		for(String hashtag: listaDeHastags.split(" ")){
+			listaHastags.add(hashtag);
+		}
+		for(int i = 0; i < listaHastags.size(); i++) {
+			 if(!hastags.keySet().contains(listaHastags.get(i)))
+				 hastags.put(listaHastags.get(i), new ArrayList<String>());
+			 hastags.get(listaHastags.get(i)).add(textoFiltrado);
 		 }
 		
 		return hastags;

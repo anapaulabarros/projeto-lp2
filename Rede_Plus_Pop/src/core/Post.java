@@ -25,6 +25,8 @@ public class Post {
 		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
 		conteudo.add(filtraTexto(mensagem));
+		conteudo.add(filtraMidias(mensagem));
+		conteudo.add(filtraHashtags(mensagem));
 		if(conteudo.get(0).length() > 200){
 			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
@@ -43,7 +45,7 @@ public class Post {
         List<String> conteudo = new ArrayList<String>();
         String[] palavras = mensagem.split("[ ]");
         for (String palavra : palavras) {
-            if(!palavra.startsWith("<"))
+            if(!palavra.startsWith("#"))
                 conteudo.add(palavra);
         }
         return String.join(" ", conteudo);
@@ -57,23 +59,15 @@ public class Post {
 	 *  @return String
 	 * */
 	public String filtraMensagem(String mensagem) {
-		return mensagem.substring(0, mensagem.indexOf("#"));
+		return mensagem.substring(0, mensagem.indexOf("<"));
 	}
 	
-	/*
-	 *  Metodo para filtrar todas as hasTags que uma mensagem possui, retorna apenas uma lista de hasTags
-	 *  Ex: "Uma mensagem. #teste" - retorno : ['#teste']
-	 *  @param mensagem String
-	 *  @return List<String>
-	 * */
-	public List<String> filtraHashtags(String mensagem) {
-		List<String> listaDeHastags = new ArrayList<String>();
-		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
-		for (String palavra : palavras) {
-			if(!palavra.startsWith("#"))
-				listaDeHastags.add(palavra);
-		}
-		 return listaDeHastags;
+	public String filtraMidias(String mensagem){
+		return mensagem.substring(mensagem.indexOf("<"), mensagem.indexOf(">"));
+	}
+	
+	public String filtraHashtags(String mensagem) {
+		return mensagem.substring(mensagem.indexOf("#"), mensagem.length());
 	}
 	
 	/*
@@ -103,7 +97,7 @@ public class Post {
 	}
 
 	public String getMensagem() {
-		return mensagem;
+		return conteudo.get(0);
 	}
 
 	public String getConteudo(int indice) {
