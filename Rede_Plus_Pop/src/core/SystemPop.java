@@ -220,41 +220,12 @@ public class SystemPop {
 		if(getUsuarioLogado() == null){
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
-		if(validaHashtags(mensagem) != null){
-			throw new SystemPopExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
-		}
-		if(!filtraHashtags(mensagem).isEmpty())
-			dicionarioHashtags = dicionarioDeHashtags(mensagem);
 		Post novoPost = new Post(mensagem, data);
+		if(!novoPost.filtraHashtags(mensagem).isEmpty())
+			dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 		usuarioLogado.postar(novoPost);
 	}
 	
-	
-	/*
-	 *  Metodo para retornar a mensagem sem as hasTags de um Post
-	 *  Ex: "uma mensagem de um usuario. #teste" - retrono: "Uma mensagem de um usuario." 
-	 *  @param mensagem String
-	 *  @return String
-	 * */
-	public String filtraMensagem(String mensagem) {
-		return mensagem.substring(0, mensagem.indexOf("#"));
-	}
-	
-	/*
-	 *  Metodo para filtrar todas as hasTags que uma mensagem possui, retorna apenas uma lista de hasTags
-	 *  Ex: "Uma mensagem. #teste" - retorno : ['#teste']
-	 *  @param mensagem String
-	 *  @return List<String>
-	 * */
-	public List<String> filtraHashtags(String mensagem) {
-		List<String> listaDeHastags = new ArrayList<String>();
-		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
-		for (String palavra : palavras) {
-			if(!palavra.startsWith("#"))
-				listaDeHastags.add(palavra);
-		}
-		 return listaDeHastags;
-	}
 	
 	/*
 	 * Método para armazenar um dicionario de hastags e suas mensagens associadas
@@ -262,9 +233,7 @@ public class SystemPop {
      * @param mensgem String 
      * @return Map<String, ArrayList<String>>  
 	 * */
-	public Map<String, ArrayList<String>> dicionarioDeHashtags(String mensagem) {
-		List<String> listaDeHastags = filtraHashtags(mensagem);
-		String textoFiltrado = filtraMensagem(mensagem);
+	public Map<String, ArrayList<String>> dicionarioDeHashtags(List<String> listaDeHastags, String textoFiltrado, String mensagem) {
 		Map<String, ArrayList<String>> hastags = new HashMap<String, ArrayList<String>>();
 		
 		for(int i = 0; i < listaDeHastags.size(); i++) {
@@ -275,24 +244,7 @@ public class SystemPop {
 		
 		return hastags;
 	}
-	
-	/*
-	 *  Metodo para validar hasTags. Se a Hastag nao tiver no primeiro
-	 *  caractere da palavra '#' o metodo retorna a palavra invalida
-	 *  Ex: "Um teste. #teste nova_mensagem #hastag" - retorno: nova_mensagem
-	 *  
-	 *  @param mensagem String
-	 *  @return boolean
-	 * */
-	public String validaHashtags(String mensagem) {
-	
-		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
-		for (String palavra : palavras) {
-			if(!palavra.startsWith("#"))
-				 return palavra;
-		}
-		 return null;
-	}
+
 		
 	/** 
      * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  

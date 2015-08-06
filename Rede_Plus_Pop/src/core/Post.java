@@ -27,11 +27,12 @@ public class Post {
 			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
 		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
-		for (String item: mensagem.split(" ")){
-			conteudo.add(item);
-		}
+		conteudo.add(filtraTexto(mensagem));
 		if(conteudo.get(0).length() > 200){
 			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
+		}
+		if(validaHashtags(mensagem) != null){
+			throw new PostExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
 		this.dataPublicacao = formataData(dataPublicao);
 		popularidade = 0;
@@ -39,6 +40,61 @@ public class Post {
 		unlikes = 0;
 		listaHashtag = new ArrayList<String>();	
 		
+	}
+	
+	public String filtraTexto(String mensagem) {
+        List<String> conteudo = new ArrayList<String>();
+        String[] palavras = mensagem.split("[ ]");
+        for (String palavra : palavras) {
+            if(!palavra.startsWith("<"))
+                conteudo.add(palavra);
+        }
+        return String.join(" ", conteudo);
+    }
+	
+	
+	/*
+	 *  Metodo para retornar a mensagem sem as hasTags de um Post
+	 *  Ex: "uma mensagem de um usuario. #teste" - retrono: "Uma mensagem de um usuario." 
+	 *  @param mensagem String
+	 *  @return String
+	 * */
+	public String filtraMensagem(String mensagem) {
+		return mensagem.substring(0, mensagem.indexOf("#"));
+	}
+	
+	/*
+	 *  Metodo para filtrar todas as hasTags que uma mensagem possui, retorna apenas uma lista de hasTags
+	 *  Ex: "Uma mensagem. #teste" - retorno : ['#teste']
+	 *  @param mensagem String
+	 *  @return List<String>
+	 * */
+	public List<String> filtraHashtags(String mensagem) {
+		List<String> listaDeHastags = new ArrayList<String>();
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				listaDeHastags.add(palavra);
+		}
+		 return listaDeHastags;
+	}
+	
+	/*
+	 *  Metodo para validar hasTags. Se a Hastag nao tiver no primeiro
+	 *  caractere da palavra '#' o metodo retorna a palavra invalida
+	 *  Ex: "Um teste. #teste nova_mensagem #hastag" - retorno: nova_mensagem
+	 *  
+	 *  @param mensagem String
+	 *  @return boolean
+	 * */
+	public String validaHashtags(String mensagem) {
+	
+		String[] palavras = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String palavra : palavras) {
+			if(!palavra.startsWith("#"))
+				 return palavra;
+		}
+		 return null;
 	}
 	
 	public String getListaHashtag() {
@@ -74,7 +130,7 @@ public class Post {
 	}
 
 	public String getDataPublicacao() {
-		DateFormat dataFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+		DateFormat dataFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		return dataFormat.format(dataPublicacao);
 	}
 
