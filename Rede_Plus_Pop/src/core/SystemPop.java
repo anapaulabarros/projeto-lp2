@@ -220,11 +220,11 @@ public class SystemPop {
 		if(getUsuarioLogado() == null){
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
-		if(!filtraHashtags(mensagem).isEmpty())
-			dicionarioHashtags = dicionarioDeHashtags(mensagem);
 		if(validaHashtags(mensagem) != null){
 			throw new SystemPopExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
+		if(!filtraHashtags(mensagem).isEmpty())
+			dicionarioHashtags = dicionarioDeHashtags(mensagem);
 		Post novoPost = new Post(mensagem, data);
 		usuarioLogado.postar(novoPost);
 	}
