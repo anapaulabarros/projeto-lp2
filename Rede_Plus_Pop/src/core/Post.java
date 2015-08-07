@@ -22,7 +22,6 @@ public class Post {
 	public Post(String mensagem, String dataPublicao) throws PostExceptions, ParseException {
 		if(mensagem == null || mensagem.equals(""))
 			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
-		this.mensagem = mensagem;
 		this.conteudo = new ArrayList<String>();
 		this.conteudo.add(filtraTexto(mensagem));
 		this.conteudo.add(filtraMidias(mensagem));
@@ -33,6 +32,7 @@ public class Post {
 		if(validaHashtags(mensagem) != null){
 			throw new PostExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
+		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
 		popularidade = 0;
 		likes = 0;

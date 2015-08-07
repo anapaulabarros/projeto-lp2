@@ -218,8 +218,8 @@ public class SystemPop {
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
 		Post novoPost = new Post(mensagem, data);
-		if(!novoPost.filtraHashtags(mensagem).isEmpty())
-			dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
+		//if(!novoPost.filtraHashtags(mensagem).isEmpty())
+		//	dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 		usuarioLogado.postar(novoPost);
 	}
 	

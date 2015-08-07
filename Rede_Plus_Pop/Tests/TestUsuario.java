@@ -24,7 +24,9 @@ public class TestUsuario {
 		try {
 			sistema.cadastraUsuario("Fulaninho", "alguem@email.com", "senha_besta", "25/01/1990", "resources/foto.jpg");
 			sistema.login("alguem@email.com", "senha_besta");
-			sistema.criaPost("Eu nao sou preconceituosa, mais aqui esta cheio de anta nordestina. #anta #separa", "01/08/2015 12:00:00");
+			String texto = "Hoje o sol me acordou. Foi muito cansativo sair da cama pois ainda estava com muito sono. Gostaria ter"
+					+ " mais tempo para dormir. Ainda bem que tinha tapioca e cuscuz no cafe da manha para dar a energia. #cafe #acorda";
+			sistema.criaPost(texto, "01/08/2015 12:00:00");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
