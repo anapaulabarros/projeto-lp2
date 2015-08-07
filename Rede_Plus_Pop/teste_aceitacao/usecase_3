@@ -42,4 +42,4 @@ expect "Nao sei porque tanto recalque, o que eh bonito eh pra se mostrar." getCo
 expect "$arquivo_audio:musicas/poderosas.mp3" getConteudoPost indice=1 post=1
 
 logout
-fecharSistema
+fechaSistema

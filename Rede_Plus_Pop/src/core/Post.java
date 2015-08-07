@@ -1,10 +1,14 @@
 package core;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.UsuarioExceptions;
 
 public class Post {
 	public static final String CURTIR = "Curtir";
@@ -101,7 +105,8 @@ public class Post {
 	
 	public String getListaHashtag() {
 		String retorno = "";
-		for (String hashtag: listaHashtag){
+		String[] palavras = filtraHashtags(mensagem).split(" ");
+		for (String hashtag: palavras){
 			retorno = retorno + hashtag + ",";
 		}
 		return retorno.substring(0, retorno.length() - 1);
@@ -154,9 +159,14 @@ public class Post {
 		this.unlikes += 1;
 	}
 
-
+	public String getDataPostFormatada() {
+		String[] data = dataPublicacao.split("[/, ]");
+		return data[2]+"-"+data[1]+"-"+data[0] + dataPublicacao.substring(10, dataPublicacao.length());
+	}
+	
+    
 	@Override
 	public String toString(){
-		return this.mensagem + " (" + this.dataPublicacao + ")";
+		return this.mensagem + " (" + getDataPostFormatada() + ")";
 	}
 }

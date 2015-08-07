@@ -191,7 +191,7 @@ public class SystemPop {
 		if (atributo.equals("Conteudo")){
 			return postAtual.getMensagem();
 		} else if(atributo.equals("Data")){
-			return postAtual.getDataPublicacao();
+			return postAtual.getDataPostFormatada();
 		} else if (atributo.equals("Hashtags")){
 			return postAtual.getListaHashtag();
 		}
