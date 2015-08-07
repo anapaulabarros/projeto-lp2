@@ -47,23 +47,11 @@ public class Post {
         List<String> conteudo = new ArrayList<String>();
         String[] palavras = mensagem.split(" ");
         for (String palavra : palavras) {
-            if(!palavra.startsWith("#"))
+            if(!palavra.startsWith("#") && !palavra.startsWith("<"))
                 conteudo.add(palavra);
         }
         return String.join(" ", conteudo);
     }
-	
-	
-	/*
-	 * mensagem + midias
-	 *  Metodo para retornar a mensagem sem as hasTags de um Post
-	 *  Ex: "uma mensagem de um usuario. #teste" - retrono: "Uma mensagem de um usuario." 
-	 *  @param mensagem String
-	 *  @return String
-	 * */
-	public String filtraMensagem(String mensagem) {
-		return mensagem.substring(0, mensagem.indexOf("<"));
-	}
 	
 	public  String filtraMidias(String mensagem) {
 		List<String> conteudo = new ArrayList<String>();
@@ -108,7 +96,13 @@ public class Post {
 	}
 
 	public String getMensagem() {
-		return conteudo.get(0);
+		String retorno = "";
+		if (filtraMidias(mensagem).isEmpty()){
+			retorno = retorno + filtraTexto(mensagem);
+		}else{
+			retorno = retorno + filtraTexto(mensagem) + " " + filtraMidias(mensagem);
+		}
+		return retorno;
 	}
 
 	public String getConteudo(int indice) {
