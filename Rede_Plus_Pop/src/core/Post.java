@@ -1,14 +1,11 @@
 package core;
 
-import java.text.DateFormat;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import treatmentsExceptions.PostExceptions;
-import treatmentsExceptions.UsuarioExceptions;
 
 public class Post {
 	public static final String CURTIR = "Curtir";
@@ -20,7 +17,6 @@ public class Post {
 	private int popularidade;
 	private int unlikes;
 	private String dataPublicacao;
-	private List<String> listaHashtag;
 
 	
 	public Post(String mensagem, String dataPublicao) throws PostExceptions, ParseException {
@@ -41,7 +37,6 @@ public class Post {
 		popularidade = 0;
 		likes = 0;
 		unlikes = 0;
-		listaHashtag = new ArrayList<String>();	
 		
 	}
 	
