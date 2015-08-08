@@ -14,6 +14,17 @@ public class Facade {
 	public void iniciaSistema(){
 		sistemaPop.iniciaSistema();
 	}
+	public void fechaSistema() throws Exception {
+		sistemaPop.fechaSistema();
+	}
+	
+	public void login(String email, String senha) throws Exception{
+		sistemaPop.login(email, senha);
+	}
+	
+	public void logout() throws Exception{
+		sistemaPop.logout();
+	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
 		return sistemaPop.cadastraUsuario(nome, email, senha, dataNasc, imagem);
@@ -31,20 +42,8 @@ public class Facade {
 		return sistemaPop.getInfoUsuario(atributo, usuario);
 	}
 	
-	public void login(String email, String senha) throws Exception{
-		sistemaPop.login(email, senha);
-	}
-	
 	public void removeUsuario(String email) throws Exception{
 		sistemaPop.removeUsuario(email);
-	}
-	
-	public void logout() throws Exception{
-		sistemaPop.logout();
-	}
-	
-	public void fechaSistema() throws Exception {
-		sistemaPop.fechaSistema();
 	}
 	
 	public void atualizaPerfil(String atributo, String valor) throws Exception{
@@ -53,6 +52,10 @@ public class Facade {
 	
 	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception{
 		sistemaPop.atualizaPerfil(atributo, valor, velhaSenha);
+	}
+	
+	public void criaPost(String mensagem, String data) throws Exception{
+		sistemaPop.criaPost(mensagem, data);
 	}
 	
 	public String getPost(int post){
@@ -67,9 +70,6 @@ public class Facade {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
 	
-	public void criaPost(String mensagem, String data) throws Exception{
-		sistemaPop.criaPost(mensagem, data);
-	}
 	
 	public void curtir(int indexPost, String email) throws SystemPopExceptions {
 		sistemaPop.curtir(indexPost, email);

@@ -14,10 +14,6 @@ import treatmentsExceptions.UsuarioExceptions;
 
 public class Usuario {
 	
-	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
-	public static final String CURTIR = "Curtir";
-	public static final String REJEITAR = "Rejeitar";
-	
 	private String nome;
 	private String email;
 	private String senha;
@@ -134,10 +130,10 @@ public class Usuario {
 	}
 	
 	public void interagirPost(int indexPost, String opcao) {
-		if(opcao.equals(CURTIR))
-			posts.get(indexPost).setPopularidade(CURTIR);
-		if(opcao.equals(REJEITAR))
-			posts.get(indexPost).setPopularidade(REJEITAR);
+		if(opcao.equals(SystemPop.CURTIR))
+			posts.get(indexPost).setPopularidade(SystemPop.CURTIR);
+		if(opcao.equals(SystemPop.REJEITAR))
+			posts.get(indexPost).setPopularidade(SystemPop.REJEITAR);
 	}
 	
 	/** 
@@ -222,10 +218,10 @@ public class Usuario {
     
 	@Override
 	public String toString() {
-		return "Nome: " + this.nome + QUEBRA_DE_LINHA
-				+ "Email:  " + this.email + QUEBRA_DE_LINHA
-				+ "Senha:  *******" +  QUEBRA_DE_LINHA 
-				+ "Data de Nascimento: " + getDataNasc() + QUEBRA_DE_LINHA
+		return "Nome: " + this.nome + SystemPop.QUEBRA_DE_LINHA
+				+ "Email:  " + this.email + SystemPop.QUEBRA_DE_LINHA
+				+ "Senha:  *******" +  SystemPop.QUEBRA_DE_LINHA 
+				+ "Data de Nascimento: " + getDataNasc() + SystemPop.QUEBRA_DE_LINHA
 				+ "Posts: " + this.posts;
 	}
 }

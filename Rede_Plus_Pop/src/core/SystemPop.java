@@ -12,6 +12,15 @@ import treatmentsExceptions.UsuarioExceptions;
 
 public class SystemPop {
 	
+	private static final String HASHTAGS = "Hashtags";
+	private static final String CONTEUDO = "Conteudo";
+	private static final String DATA = "Data";
+	private static final String FOTO = "Foto";
+	private static final String E_MAIL = "E-mail";
+	private static final String SENHA = "Senha";
+	private static final String DATA_DE_NASCIMENTO = "Data de Nascimento";
+	private static final String NOME = "Nome";
+	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
 	public static final String CURTIR = "Curtir";
 	public static final String REJEITAR = "Rejeitar";
 	
@@ -123,13 +132,13 @@ public class SystemPop {
 
 	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
 		String retorno = "";
-		if (atributo.equals("Nome")){
+		if (atributo.equals(NOME)){
 			retorno = usuarioLogado.getNome();
-		} else if (atributo.equals("Data de Nascimento")){
+		} else if (atributo.equals(DATA_DE_NASCIMENTO)){
 			retorno = usuarioLogado.getDataNasc();
-		} else if (atributo.equals("Foto")){
+		} else if (atributo.equals(FOTO)){
 			retorno = usuarioLogado.getImagem();
-		} else if (atributo.equals("Senha")){
+		} else if (atributo.equals(SENHA)){
 			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
 		}
 		return retorno;
@@ -141,13 +150,13 @@ public class SystemPop {
 		if (usuario == null){
 			throw new Exception("Um usuarix com email " + email + " nao esta cadastradx.");
 		}
-		if (atributo.equals("Nome")){
+		if (atributo.equals(NOME)){
 			retorno = usuario.getNome();
-		} else if (atributo.equals("Data de Nascimento")){
+		} else if (atributo.equals(DATA_DE_NASCIMENTO)){
 			retorno = usuario.getDataNasc();
-		} else if (atributo.equals("Foto")){
+		} else if (atributo.equals(FOTO)){
 			retorno = usuario.getImagem();
-		} else if (atributo.equals("Senha")){
+		} else if (atributo.equals(SENHA)){
 			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
 		}
 		return retorno;
@@ -157,19 +166,19 @@ public class SystemPop {
 		if (usuarioLogado == null){
 			throw new SystemPopExceptions("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
 		}
-		if (atributo.equals("Nome")){
+		if (atributo.equals(NOME)){
 			usuarioLogado.setNome(valor);
 		}
-		if (atributo.equals("E-mail")){
+		if (atributo.equals(E_MAIL)){
 			usuarioLogado.setEmail(valor);
 		}
-		if (atributo.equals("Senha")){
+		if (atributo.equals(SENHA)){
 			usuarioLogado.setSenha(valor);
 		}
-		if (atributo.equals("Data de Nascimento")){
+		if (atributo.equals(DATA_DE_NASCIMENTO)){
 			usuarioLogado.setDataNasc(valor);
 		}
-		if (atributo.equals("Foto")){
+		if (atributo.equals(FOTO)){
 			usuarioLogado.setImagem(valor);
 		}
 	}
@@ -188,11 +197,11 @@ public class SystemPop {
 	
 	public String getPost(String atributo, int post) {
 		Post postAtual = usuarioLogado.getPosts().get(post);
-		if (atributo.equals("Conteudo")){
+		if (atributo.equals(CONTEUDO)){
 			return postAtual.getMensagem();
-		} else if(atributo.equals("Data")){
+		} else if(atributo.equals(DATA)){
 			return postAtual.getDataPostFormatada();
-		} else if (atributo.equals("Hashtags")){
+		} else if (atributo.equals(HASHTAGS)){
 			return postAtual.getListaHashtag();
 		}
 		return null;

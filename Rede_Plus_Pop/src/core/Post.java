@@ -8,8 +8,6 @@ import java.util.List;
 import treatmentsExceptions.PostExceptions;
 
 public class Post {
-	public static final String CURTIR = "Curtir";
-	public static final String REJEITAR = "Rejeitar";
 	
 	private String mensagem;
 	private List<String> conteudo;
@@ -20,18 +18,13 @@ public class Post {
 
 	
 	public Post(String mensagem, String dataPublicao) throws PostExceptions, ParseException {
-		if(mensagem == null || mensagem.equals(""))
-			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
+		verificaConteudoDaMensagem(mensagem);
 		this.conteudo = new ArrayList<String>();
 		this.conteudo.add(filtraTexto(mensagem));
 		this.conteudo.add(filtraMidias(mensagem));
 		this.conteudo.add(filtraHashtags(mensagem));
-		if(conteudo.get(0).length() > 200){
-			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
-		}
-		if(validaHashtags(mensagem) != null){
-			throw new PostExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
-		}
+		verificaTamanhoDaMensagem();
+		verificaValidadeDasHastags(mensagem);
 		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
 		popularidade = 0;
@@ -39,9 +32,31 @@ public class Post {
 		unlikes = 0;
 		
 	}
+
+	private void verificaValidadeDasHastags(String mensagem)
+			throws PostExceptions {
+		if(validaHashtags(mensagem) != null){
+			throw new PostExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+		}
+	}
+
+	private void verificaTamanhoDaMensagem() throws PostExceptions {
+		if(conteudo.get(0).length() > 200){
+			throw new PostExceptions("Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
+		}
+	}
+
+	private void verificaConteudoDaMensagem(String mensagem)
+			throws PostExceptions {
+		if(mensagem == null || mensagem.equals(""))
+			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
+	}
 	
 	/*
-	 * so a mensagem do post
+	 * metodo para retornar apenas o texto do post
+	 * removendo conteudo de midias, audios e hastags
+	 * @param String mensagem
+	 * @return String conteudo
 	 */
 	public String filtraTexto(String mensagem) {
         List<String> conteudo = new ArrayList<String>();
@@ -53,6 +68,12 @@ public class Post {
         return String.join(" ", conteudo);
     }
 	
+	/*
+	 * metodo para retornar apenas as midias do post
+	 * removendo conteudo de textos e hastags
+	 * @param String mensagem
+	 * @return String conteudo
+	 */
 	public  String filtraMidias(String mensagem) {
 		List<String> conteudo = new ArrayList<String>();
 		String[] palavras = mensagem.split(" ");
@@ -64,6 +85,13 @@ public class Post {
 		return String.join(" ", conteudo);
 	}
 	
+	
+	/*
+	 * metodo para retornar apenas as hastags do post
+	 * removendo conteudo de midias e texto
+	 * @param String mensagem
+	 * @return String hastags
+	 */
 	public String filtraHashtags(String mensagem) {
 		return mensagem.substring(mensagem.indexOf("#"), mensagem.length());
 	}
@@ -130,11 +158,11 @@ public class Post {
 	}
 
 	public void setPopularidade(String opcao) {
-		if(opcao == CURTIR) {
+		if(opcao == SystemPop.CURTIR) {
 			this.popularidade += 1;
 			setLike();
 		}
-		if(opcao == REJEITAR) {
+		if(opcao == SystemPop.REJEITAR) {
 			this.popularidade -= 1;
 			setUnlike();
 		}
@@ -150,7 +178,7 @@ public class Post {
 
 	public String getDataPostFormatada() {
 		String[] data = dataPublicacao.split("[/, ]");
-		return data[2]+"-"+data[1]+"-"+data[0] + dataPublicacao.substring(10, dataPublicacao.length());
+		return data[2]+"-"+data[1]+"-"+data[0]+" "+data[3];
 	}
 	
     
