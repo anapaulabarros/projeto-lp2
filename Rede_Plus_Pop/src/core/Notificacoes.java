@@ -10,7 +10,7 @@ public class Notificacoes {
 	
 	public Notificacoes(){
 		this.notificacoes = new LinkedList<String>();
-		this.iterator = notificacoes.iterator();
+		this.iterator = notificacoes.listIterator();
 	}
 
 	public int getNotificacoes() {
@@ -25,7 +25,8 @@ public class Notificacoes {
 		if (!iterator.hasNext()){
 			throw new Exception("Nao ha mais notificacoes.");
 		} 
-		return (String) iterator.next();
+		
+		return iterator.next();
 	}
 
 }
