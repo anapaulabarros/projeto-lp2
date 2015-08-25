@@ -253,4 +253,20 @@ public class SystemPop {
 		
 		return hastags;
 	}
+
+	public void adicionaAmigo(String usuario) {
+		usuarioLogado.adicionaAmigo(usuario);
+	}
+
+	public int getNotificacoes() {
+		return usuarioLogado.getNotificacoes();
+	}
+
+	public String getNextNotificacao() throws Exception {
+		return usuarioLogado.getNextNotificacao();
+	}
+
+	public void rejeitaAmizade(String usuario) {
+		usuarioLogado.rejeitaAmizade(usuario);
+	}
 }

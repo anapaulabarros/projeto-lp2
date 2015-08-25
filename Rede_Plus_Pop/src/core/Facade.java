@@ -78,7 +78,23 @@ public class Facade {
 	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
 		sistemaPop.rejeitar(indexPost, email);
 	}
+	
+	public void adicionaAmigo(String usuario){
+		sistemaPop.adicionaAmigo(usuario);
+	}
 
+	public int getNotificacoes(){
+		return sistemaPop.getNotificacoes();
+	}
+	
+	public String getNextNotificacao() throws Exception{
+		return sistemaPop.getNextNotificacao();
+	}
+	
+	public void rejeitaAmizade(String usuario){
+		sistemaPop.rejeitaAmizade(usuario);
+	}
+	
 	public static void main(String[] args) {
 		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4"};
 		EasyAccept.main(args);

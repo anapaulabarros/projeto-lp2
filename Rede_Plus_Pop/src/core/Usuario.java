@@ -21,6 +21,7 @@ public class Usuario {
 	private Date dataNasc;
 	private List<Post> posts;
 	private List<Usuario> amigos;
+	private Notificacoes notificacoes;
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
@@ -37,6 +38,7 @@ public class Usuario {
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
+		this.notificacoes = new Notificacoes();
 	}
 
 	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
@@ -223,5 +225,21 @@ public class Usuario {
 				+ "Senha:  *******" +  SystemPop.QUEBRA_DE_LINHA 
 				+ "Data de Nascimento: " + getDataNasc() + SystemPop.QUEBRA_DE_LINHA
 				+ "Posts: " + this.posts;
+	}
+
+	public int getNotificacoes() {
+		return this.notificacoes.getNotificacoes();
+	}
+
+	public String getNextNotificacao() throws Exception {
+		return this.notificacoes.getNextNotificacao();
+	}
+
+	public void rejeitaAmizade(String usuario) {
+		
+	}
+
+	public void adicionaAmigo(String usuario) {
+		
 	}
 }
