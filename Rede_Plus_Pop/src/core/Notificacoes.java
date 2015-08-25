@@ -18,6 +18,10 @@ public class Notificacoes {
 		return this.notificacoes.size();
 	}
 
+	public void addNotificacoes(String novaNotificacao) {
+		this.notificacoes.add(novaNotificacao);
+	}
+	
 	public String getNextNotificacao() throws Exception {
 		if (!iterator.hasNext()){
 			throw new Exception("Nao ha mais notificacoes.");

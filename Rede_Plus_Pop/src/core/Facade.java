@@ -79,7 +79,7 @@ public class Facade {
 		sistemaPop.rejeitar(indexPost, email);
 	}
 	
-	public void adicionaAmigo(String usuario){
+	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
 		sistemaPop.adicionaAmigo(usuario);
 	}
 

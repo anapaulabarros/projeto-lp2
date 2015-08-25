@@ -227,6 +227,11 @@ public class Usuario {
 				+ "Posts: " + this.posts;
 	}
 
+	
+	public void adicionaNotificacao(String novaNotificacao) {
+		notificacoes.addNotificacoes(novaNotificacao);
+	}
+	
 	public int getNotificacoes() {
 		return this.notificacoes.getNotificacoes();
 	}
@@ -241,5 +246,13 @@ public class Usuario {
 
 	public void adicionaAmigo(String usuario) {
 		
+	}
+	
+	public boolean buscaAmigo(String emailAmigo) {
+		for (Usuario usuario : amigos) {
+			if(usuario.getEmail().equals(emailAmigo))
+				return true;
+		}
+		return false;
 	}
 }

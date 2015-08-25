@@ -253,8 +253,16 @@ public class SystemPop {
 		
 		return hastags;
 	}
-
-	public void adicionaAmigo(String usuario) {
+	
+	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
+		if (buscaUsuario(usuario) == null)
+			throw new SystemPopExceptions("O usuario " + usuario + " nao esta cadastrado no +pop.");
+		if (usuarioLogado.buscaAmigo(usuario) == true)
+			throw new SystemPopExceptions("O usuario " + usuario + " ja eh seu amigo.");
+		
+		Usuario candidatoAmigo = buscaUsuario(usuario);
+		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " quer sua amizade."); // Envia notificacao para o Futuro Amigo
+		
 		usuarioLogado.adicionaAmigo(usuario);
 	}
 
