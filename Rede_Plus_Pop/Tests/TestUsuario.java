@@ -11,22 +11,34 @@ public class TestUsuario {
 
 	@Test
 	public void TestConstrututorUsuarioComImagem()  {
-		try{
+		/*try{
 			Usuario id1 = new Usuario("Fulaninho", "alguem@email.com","senha_besta", "25/01/1990", "resources/foto.jpg");
 			Assert.assertEquals("Fulaninho", id1.getNome());
 			Assert.assertEquals("resources/foto.jpg", id1.getImagem());
 			Assert.assertEquals("1990-01-25", id1.getDataNasc());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		}
+		}*/
 		
 		Facade sistema = new Facade();
 		try {
-			sistema.cadastraUsuario("Fulaninho", "alguem@email.com", "senha_besta", "25/01/1990", "resources/foto.jpg");
-			sistema.login("alguem@email.com", "senha_besta");
+			sistema.cadastraUsuario("Maria", "maria@email.com", "senha_besta", "25/01/1990", "resources/foto.jpg");
+			sistema.cadastraUsuario("Jose", "jose@email.com", "senha_123", "25/01/1990", "resources/foto.jpg");
+			sistema.login("maria@email.com", "senha_besta");
 			String texto = "Hoje o sol me acordou. Foi muito cansativo sair da cama pois ainda estava com muito sono. Gostaria ter"
 					+ " mais tempo para dormir. Ainda bem que tinha tapioca e cuscuz no cafe da manha para dar a energia. #cafe #acorda";
 			sistema.criaPost(texto, "01/08/2015 12:00:00");
+			
+			sistema.adicionaAmigo("jose@email.com");
+			
+			sistema.logout();
+			
+			sistema.login("jose@email.com", "senha_123");
+			System.out.println(sistema.getInfoUsuario("Nome"));
+			System.out.println(sistema.getNotificacoes());
+			System.out.println(sistema.getNextNotificacao()); //mostra as notificacoes do usuario logado
+			//System.out.println("adasdas");
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

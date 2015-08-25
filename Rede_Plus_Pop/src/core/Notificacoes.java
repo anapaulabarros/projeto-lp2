@@ -1,16 +1,15 @@
 package core;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
 public class Notificacoes {
 	
-	private List<String> notificacoes;
-	private Iterator iterator;
+	private LinkedList<String> notificacoes;
+	private Iterator<String> iterator;
 	
 	public Notificacoes(){
-		this.notificacoes = new ArrayList<String>();
+		this.notificacoes = new LinkedList<String>();
 		this.iterator = notificacoes.iterator();
 	}
 
@@ -19,7 +18,7 @@ public class Notificacoes {
 	}
 
 	public void addNotificacoes(String novaNotificacao) {
-		this.notificacoes.add(novaNotificacao);
+		this.notificacoes.addFirst(novaNotificacao);
 	}
 	
 	public String getNextNotificacao() throws Exception {
