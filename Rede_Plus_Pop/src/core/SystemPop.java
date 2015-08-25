@@ -286,7 +286,7 @@ public class SystemPop {
 		if (usuarioLogado.getNotificacoes() == 0)
 			throw new SystemPopExceptions(candidatoAmigo.getNome() + " nao lhe enviou solicitacoes de amizade.");
 		
-		//usuarioLogado.rejeitaAmizade(usuario);
+		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " rejeitou sua amizade."); // envia notificacao para o usuario que mandou o convite
 	}
 	
 	public void aceitaAmizade(String usuario) {
