@@ -241,18 +241,23 @@ public class Usuario {
 	}
 
 	public void rejeitaAmizade(String usuario) {
-		
+		//Usuario umAmigo = buscaAmigo(usuario);
+		//umAmigo.adicionaNotificacao(getNome() + " rejeitou sua amizade.");
 	}
 
 	public void adicionaAmigo(String usuario) {
-		
+			
 	}
 	
-	public boolean buscaAmigo(String emailAmigo) {
+	public int getQtdAmigos() {
+		return amigos.size();
+	}
+	
+	public Usuario buscaAmigo(String emailAmigo) {
 		for (Usuario usuario : amigos) {
 			if(usuario.getEmail().equals(emailAmigo))
-				return true;
+				return usuario;
 		}
-		return false;
+		return null;
 	}
 }

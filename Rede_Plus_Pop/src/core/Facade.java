@@ -91,10 +91,17 @@ public class Facade {
 		return sistemaPop.getNextNotificacao();
 	}
 	
-	public void rejeitaAmizade(String usuario){
+	public void rejeitaAmizade(String usuario) throws SystemPopExceptions {
 		sistemaPop.rejeitaAmizade(usuario);
 	}
 	
+	public void aceitaAmizade(String usuario) throws SystemPopExceptions {
+		sistemaPop.aceitaAmizade(usuario);
+	}
+	
+	public int getQtdAmigos() {
+		return sistemaPop.getQtdAmigos();
+	}
 	public static void main(String[] args) {
 		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4"};
 		EasyAccept.main(args);

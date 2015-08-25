@@ -254,10 +254,14 @@ public class SystemPop {
 		return hastags;
 	}
 	
+	public void adicionaNotificacao(String notificacao) {
+		usuarioLogado.adicionaNotificacao(notificacao);
+	}
+	
 	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
 		if (buscaUsuario(usuario) == null)
 			throw new SystemPopExceptions("O usuario " + usuario + " nao esta cadastrado no +pop.");
-		if (usuarioLogado.buscaAmigo(usuario) == true)
+		if (usuarioLogado.buscaAmigo(usuario) != null)
 			throw new SystemPopExceptions("O usuario " + usuario + " ja eh seu amigo.");
 		
 		Usuario candidatoAmigo = buscaUsuario(usuario);
@@ -274,7 +278,21 @@ public class SystemPop {
 		return usuarioLogado.getNextNotificacao();
 	}
 
-	public void rejeitaAmizade(String usuario) {
-		usuarioLogado.rejeitaAmizade(usuario);
+	public void rejeitaAmizade(String usuario) throws SystemPopExceptions {
+		if (buscaUsuario(usuario) == null)
+			throw new SystemPopExceptions("O usuario " + usuario + " nao esta cadastrado no +pop.");
+		
+		Usuario candidatoAmigo = buscaUsuario(usuario);
+		if (usuarioLogado.getNotificacoes() == 0)
+			throw new SystemPopExceptions(candidatoAmigo.getNome() + " nao lhe enviou solicitacoes de amizade.");
+		
+		//usuarioLogado.rejeitaAmizade(usuario);
+	}
+	
+	public void aceitaAmizade(String usuario) {
+		
+	}
+	public int getQtdAmigos() {
+		return usuarioLogado.getQtdAmigos();
 	}
 }
