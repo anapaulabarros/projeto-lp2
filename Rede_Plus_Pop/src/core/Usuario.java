@@ -257,11 +257,19 @@ public class Usuario {
 	public void aceitaAmizade(Usuario novoAmigo) {
 			amigos.add(novoAmigo);
 	}
+	public void removeAmizade(Usuario exAmigo) {
+		amigos.remove(exAmigo);
+	}
 	
 	public int getQtdAmigos() {
 		return amigos.size();
 	}
 	
+	/* Pesquisa se um usuario possui amizade com o usuario logado
+	 * retorna Usuario caso exista a amizade e null para falso. 
+	 * @param emailAmgi String
+	 * @return Usuario 
+	 */
 	public Usuario buscaAmigo(String emailAmigo) {
 		for (Usuario usuario : amigos) {
 			if(usuario.getEmail().equals(emailAmigo))

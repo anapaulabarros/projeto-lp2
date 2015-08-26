@@ -82,6 +82,10 @@ public class Facade {
 	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
 		sistemaPop.adicionaAmigo(usuario);
 	}
+	
+	public void removeAmigo(String emailUsuario) throws SystemPopExceptions {
+		sistemaPop.removeAmigo(emailUsuario);
+	}
 
 	public int getNotificacoes(){
 		return sistemaPop.getNotificacoes();
