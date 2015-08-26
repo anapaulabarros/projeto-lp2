@@ -1,16 +1,17 @@
 package core;
 
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Notificacoes {
 	
-	private LinkedList<String> notificacoes;
+	private Deque<String> notificacoes;
 	private Iterator<String> iterator;
 	
 	public Notificacoes(){
 		this.notificacoes = new LinkedList<String>();
-		this.iterator = notificacoes.listIterator();
+		this.iterator = notificacoes.iterator();
 	}
 
 	public int getNotificacoes() {
@@ -18,7 +19,11 @@ public class Notificacoes {
 	}
 
 	public void addNotificacoes(String novaNotificacao) {
-		this.notificacoes.addFirst(novaNotificacao);
+		this.notificacoes.addLast(novaNotificacao);
+	}
+	
+	public void removeNoticicacao() {
+		this.notificacoes.removeLast();
 	}
 	
 	public String getNextNotificacao() throws Exception {
