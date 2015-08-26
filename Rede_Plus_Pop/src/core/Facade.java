@@ -1,5 +1,6 @@
 package core;
 
+
 import treatmentsExceptions.SystemPopExceptions;
 import easyaccept.EasyAccept;
 
@@ -70,8 +71,7 @@ public class Facade {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
 	
-	
-	public void curtir(int indexPost, String email) throws SystemPopExceptions {
+	public void curtirPost(String email,int indexPost) throws SystemPopExceptions {
 		sistemaPop.curtir(indexPost, email);
 	}
 	

@@ -20,6 +20,7 @@ public class Usuario {
 	private String imagem;
 	private Date dataNasc;
 	private List<Post> posts;
+	private List<String> emailsSolicitacoes;
 	private List<Usuario> amigos;
 	private Notificacoes notificacoes;
 	
@@ -39,6 +40,7 @@ public class Usuario {
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
 		this.notificacoes = new Notificacoes();
+		this.emailsSolicitacoes = new ArrayList<String>();
 	}
 
 	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
@@ -232,6 +234,14 @@ public class Usuario {
 		notificacoes.addNotificacoes(novaNotificacao);
 	}
 	
+	public void adicionaEmailNotificacao(String emailNotificacao) {
+		emailsSolicitacoes.add(emailNotificacao);
+	}
+	
+	public List<String> getEmailsNotificacao() {
+		return emailsSolicitacoes;
+	}
+	
 	public int getNotificacoes() {
 		return this.notificacoes.getNotificacoes();
 	}
@@ -240,13 +250,12 @@ public class Usuario {
 		return this.notificacoes.getNextNotificacao();
 	}
 
-	public void rejeitaAmizade(String usuario) {
-		//Usuario umAmigo = buscaAmigo(usuario);
-		//umAmigo.adicionaNotificacao(getNome() + " rejeitou sua amizade.");
+	public void rejeitaAmizade() {
+		notificacoes.removeNotificacao(); //apenas remove a notificacao de solicitacao
 	}
 
-	public void adicionaAmigo(String usuario) {
-			
+	public void aceitaAmizade(Usuario novoAmigo) {
+			amigos.add(novoAmigo);
 	}
 	
 	public int getQtdAmigos() {

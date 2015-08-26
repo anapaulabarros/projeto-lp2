@@ -112,8 +112,12 @@ public class SystemPop {
 		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
 			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
 		
-		if(opcao == CURTIR)
+		if(opcao == CURTIR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
+			//envia notificacao para o usuario que enviou o post
+			amigoDoUsuarioLogado.adicionaNotificacao(usuarioLogado.getNome() + " "
+					+ "curtiu seu post de " + amigoDoUsuarioLogado.getPosts().get(idPost).getDataPostFormatada() + ".");
+		}
 		if(opcao == REJEITAR)
 			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR);
 	}
@@ -262,8 +266,9 @@ public class SystemPop {
 		
 		Usuario candidatoAmigo = buscaUsuario(usuario);
 		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " quer sua amizade."); // Envia notificacao para o Futuro Amigo
+		candidatoAmigo.adicionaEmailNotificacao(usuarioLogado.getEmail()); //sempre que houver uma notificacao, armazene o email do usuario quem enviou a notificacao
 		
-		usuarioLogado.adicionaAmigo(usuario);
+		//usuarioLogado.adicionaAmigo(usuario);
 	}
 
 	public int getNotificacoes() {
@@ -274,18 +279,27 @@ public class SystemPop {
 		return usuarioLogado.getNextNotificacao();
 	}
 
-	public void rejeitaAmizade(String usuario) throws SystemPopExceptions {
-		if (buscaUsuario(usuario) == null)
-			throw new SystemPopExceptions("O usuario " + usuario + " nao esta cadastrado no +pop.");
+	public void rejeitaAmizade(String emailRejeitado) throws SystemPopExceptions {
+		if (buscaUsuario(emailRejeitado) == null)
+			throw new SystemPopExceptions("O usuario " + emailRejeitado + " nao esta cadastrado no +pop.");
 		
-		Usuario candidatoAmigo = buscaUsuario(usuario);
-		if (usuarioLogado.getNotificacoes() == 0)
+		Usuario candidatoAmigo = buscaUsuario(emailRejeitado);
+		if (!usuarioLogado.getEmailsNotificacao().contains(emailRejeitado)) // verifica se usuario logado tem alguma notificacao
 			throw new SystemPopExceptions(candidatoAmigo.getNome() + " nao lhe enviou solicitacoes de amizade.");
 		
 		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " rejeitou sua amizade."); // envia notificacao para o usuario que mandou o convite
+		//usuarioLogado.rejeitaAmizade();
 	}
 	
-	public void aceitaAmizade(String usuario) {
+	public void aceitaAmizade(String emailNovoAmigo) throws SystemPopExceptions{
+		if (buscaUsuario(emailNovoAmigo) == null)
+			throw new SystemPopExceptions("O usuario " + emailNovoAmigo + " nao esta cadastrado no +pop.");
+		
+		Usuario novoAmigo = buscaUsuario(emailNovoAmigo);
+		usuarioLogado.aceitaAmizade(novoAmigo);
+		novoAmigo.aceitaAmizade(usuarioLogado);
+		
+		novoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " aceitou sua amizade.");
 		
 	}
 	public int getQtdAmigos() {

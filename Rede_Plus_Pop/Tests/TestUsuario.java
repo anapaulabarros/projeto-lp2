@@ -37,7 +37,11 @@ public class TestUsuario {
 			System.out.println(sistema.getInfoUsuario("Nome"));
 			System.out.println(sistema.getNotificacoes());
 			System.out.println(sistema.getNextNotificacao()); //mostra as notificacoes do usuario logado
-			//System.out.println("adasdas");
+			
+			sistema.rejeitaAmizade("maria@email.com");
+		
+			//System.out.println(sistema.getNextNotificacao());
+			sistema.rejeitaAmizade("ana@email.com");
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

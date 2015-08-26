@@ -1,17 +1,15 @@
 package core;
 
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Notificacoes {
 	
-	private Deque<String> notificacoes;
-	private Iterator<String> iterator;
+	private List<String> notificacoes;
 	
 	public Notificacoes(){
-		this.notificacoes = new LinkedList<String>();
-		this.iterator = notificacoes.iterator();
+		this.notificacoes = new ArrayList<String>();
 	}
 
 	public int getNotificacoes() {
@@ -19,19 +17,19 @@ public class Notificacoes {
 	}
 
 	public void addNotificacoes(String novaNotificacao) {
-		this.notificacoes.addLast(novaNotificacao);
+		this.notificacoes.add(novaNotificacao);
 	}
-	
-	public void removeNoticicacao() {
-		this.notificacoes.removeLast();
+	public void removeNotificacao() {
+		this.notificacoes.remove(this.notificacoes.size() - 1);
 	}
 	
 	public String getNextNotificacao() throws Exception {
-		if (!iterator.hasNext()){
+		if (this.notificacoes.size() == 0){
 			throw new Exception("Nao ha mais notificacoes.");
 		} 
-		
-		return iterator.next();
+		String mensagem = this.notificacoes.get(0);
+		this.notificacoes.remove(0);
+		return mensagem;
 	}
 
 }
