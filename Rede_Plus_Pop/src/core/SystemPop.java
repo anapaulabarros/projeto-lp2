@@ -324,4 +324,22 @@ public class SystemPop {
 	public String getTipoPopularidade() {
 		return usuarioLogado.getTipoPopularidade();
 	}
+
+	public int getPopsPost(int post) {
+		return usuarioLogado.getPosts().get(post).getPopularidade();
+	}
+
+	public int getPopsPost(int post, String email) {
+		Usuario usuario = buscaUsuario(email);
+		return usuario.getPosts().get(post).getPopularidade();
+	}
+
+	public int getCurtidaPorPost(int post) {
+		return usuarioLogado.getPosts().get(post).getCurtidas();
+	}
+
+	public int getCurtidaPorPost(int post, String email) {
+		Usuario usuario = buscaUsuario(email);
+		return usuario.getPosts().get(post).getCurtidas();
+	}
 }

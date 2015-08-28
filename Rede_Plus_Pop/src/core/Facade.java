@@ -75,7 +75,7 @@ public class Facade {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.CURTIR);
 	}
 	
-	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
+	public void rejeitarPost(String email, int indexPost) throws SystemPopExceptions {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.REJEITAR);
 	}
 	
@@ -113,6 +113,22 @@ public class Facade {
 	
 	public String getTipoPopularidade(){
 		return sistemaPop.getTipoPopularidade();
+	}
+	
+	public int getPopsPost(int post){
+		return sistemaPop.getPopsPost(post);
+	}
+	
+	public int getPopsPost(int post, String usuario){
+		return sistemaPop.getPopsPost(post, usuario);
+	}
+	
+	public int getCurtidaPorPost(int post){
+		return sistemaPop.getCurtidaPorPost(post);
+	}
+	
+	public int getCurtidaPorPost(int post, String usuario){
+		return sistemaPop.getCurtidaPorPost(post, usuario);
 	}
 	
 	public static void main(String[] args) {

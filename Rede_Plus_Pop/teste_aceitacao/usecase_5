@@ -20,7 +20,7 @@ adicionaAmigo usuario="madonna@email.com"
 
 expect "Normal" getTipoPopularidade
 
-criaPost mensagem="Odeio andar de elevador. Onde estao as escadas?" data="27/08/2015 09:30:00"
+criaPost mensagem="Odeio andar de elevador. #amoescadas" data="27/08/2015 09:30:00"
 logout
 
 
@@ -39,7 +39,7 @@ curtirPost amigo="fafa_bernardes@email.com.br" post=0
 
 expectError "Voce ja rejeitou esse post." rejeitarPost amigo="naza_foguete@hotmail.com" post=0
 
-criaPost mensagem="Very happy with my new friends. #divas" data="27/08/2015 10:30:00"
+criaPost mensagem="Very happy with my new friends <3 #divas" data="27/08/2015 10:30:00"
 criaPost mensagem="Download my new single I'm Cantora for free. <audio>musicas/im_cantora.mp3</audio>" data="27/08/2015 10:40:00"
 logout
 
