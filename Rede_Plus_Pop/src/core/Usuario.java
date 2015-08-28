@@ -165,6 +165,7 @@ public class Usuario {
 			this.popularidade.curtir(post);
 		if(opcao.equals(SystemPop.REJEITAR))
 			this.popularidade.rejeitar(post);
+		atualizaPops();
 	}
 	
 	public void atualizaPops(){
