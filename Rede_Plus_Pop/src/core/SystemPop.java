@@ -90,15 +90,6 @@ public class SystemPop {
 	}
 	public List<Usuario> getUsuarios() {
 		return usuarios;
-	}	
-	
-	
-	public void curtir(int indexPost, String email) throws SystemPopExceptions {
-		interagirComPost(indexPost, email, CURTIR);
-	}
-	
-	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
-		interagirComPost(indexPost, email, REJEITAR);
 	}
 	
 	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws SystemPopExceptions {
@@ -324,5 +315,13 @@ public class SystemPop {
 	
 	public int getQtdAmigos() {
 		return usuarioLogado.getQtdAmigos();
+	}
+
+	public void setPops(int pops) {
+		usuarioLogado.setPops(pops);
+	}
+
+	public String getTipoPopularidade() {
+		return usuarioLogado.getTipoPopularidade();
 	}
 }

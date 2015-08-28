@@ -11,9 +11,9 @@ public class Post {
 	
 	private String mensagem;
 	private List<String> conteudo;
-	private int likes;
+	private int curtidas;
 	private int popularidade;
-	private int unlikes;
+	private int rejeitadas;
 	private String dataPublicacao;
 
 	
@@ -28,8 +28,8 @@ public class Post {
 		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
 		popularidade = 0;
-		likes = 0;
-		unlikes = 0;
+		curtidas = 0;
+		rejeitadas = 0;
 		
 	}
 
@@ -141,39 +141,32 @@ public class Post {
 		return this.conteudo.size();
 	}
 	
-	public int getLikes() {
-		return likes;
+	public int getCurtidas() {
+		return curtidas;
 	}
 
 	public int getPopularidade() {
 		return popularidade;
 	}
 
-	public int getUnlikes() {
-		return unlikes;
+	public int getRejeitadas() {
+		return rejeitadas;
 	}
 
 	public String getDataPublicacao() { 
 		return dataPublicacao;
 	}
 
-	public void setPopularidade(String opcao) {
-		if(opcao == SystemPop.CURTIR) {
-			this.popularidade += 1;
-			setLike();
-		}
-		if(opcao == SystemPop.REJEITAR) {
-			this.popularidade -= 1;
-			setUnlike();
-		}
+	public void setPopularidade(int pontos) {
+		this.popularidade = this.popularidade + pontos;
 	}
 	
-	public void setLike() {
-		this.likes += 1;
+	public void setCurtidas() {
+		this.curtidas += 1;
 	}
 	
-	public void setUnlike() {
-		this.unlikes += 1;
+	public void setRejeitadas() {
+		this.rejeitadas += 1;
 	}
 
 	public String getDataPostFormatada() {

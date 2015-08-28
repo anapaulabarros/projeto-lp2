@@ -23,6 +23,8 @@ public class Usuario {
 	private List<String> emailsSolicitacoes;
 	private List<Usuario> amigos;
 	private Notificacoes notificacoes;
+	private TipoPopularidade popularidade;
+	private int pops;
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
@@ -41,6 +43,8 @@ public class Usuario {
 		this.amigos = new ArrayList<Usuario>();
 		this.notificacoes = new Notificacoes();
 		this.emailsSolicitacoes = new ArrayList<String>();
+		this.popularidade = new Normal();
+		this.pops = 0;
 	}
 
 	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
@@ -129,15 +133,47 @@ public class Usuario {
 		return amigos;
 	}
 
+	public String getTipoPopularidade() {
+		return popularidade.toString();
+	}
+
+	public int getPops() {
+		return pops;
+	}
+
+	public void setPops(int pops) {
+		this.pops = pops;
+	}
+
 	public void postar(Post novoPost) throws PostExceptions {
 		posts.add(novoPost);
 	}
 	
+	public void atualizaNivel(){
+		if (pops <= 500){
+			this.popularidade = new Normal();
+		} else if (pops > 500 && pops < 1000){
+			this.popularidade = new CelebridadePop();
+		} else{
+			this.popularidade = new IconePop();
+		}
+	}
+	
 	public void interagirPost(int indexPost, String opcao) {
+		Post post = posts.get(indexPost);
 		if(opcao.equals(SystemPop.CURTIR))
-			posts.get(indexPost).setPopularidade(SystemPop.CURTIR);
+			this.popularidade.curtir(post);
 		if(opcao.equals(SystemPop.REJEITAR))
-			posts.get(indexPost).setPopularidade(SystemPop.REJEITAR);
+			this.popularidade.rejeitar(post);
+	}
+	
+	public void atualizaPops(){
+		int pops = 0;
+		for (Post post: posts){
+			pops = pops + post.getPopularidade();
+		}
+		setPops(pops);
+		atualizaNivel();
 	}
 	
 	/** 

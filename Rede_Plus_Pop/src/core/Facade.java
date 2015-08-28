@@ -72,11 +72,11 @@ public class Facade {
 	}
 	
 	public void curtirPost(String email,int indexPost) throws SystemPopExceptions {
-		sistemaPop.curtir(indexPost, email);
+		sistemaPop.interagirComPost(indexPost, email, sistemaPop.CURTIR);
 	}
 	
 	public void rejeitar(int indexPost, String email) throws SystemPopExceptions {
-		sistemaPop.rejeitar(indexPost, email);
+		sistemaPop.interagirComPost(indexPost, email, sistemaPop.REJEITAR);
 	}
 	
 	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
@@ -106,8 +106,17 @@ public class Facade {
 	public int getQtdAmigos() {
 		return sistemaPop.getQtdAmigos();
 	}
+	
+	public void setPops(int pops){
+		sistemaPop.setPops(pops);
+	}
+	
+	public String getTipoPopularidade(){
+		return sistemaPop.getTipoPopularidade();
+	}
+	
 	public static void main(String[] args) {
-		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4"};
+		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5"};
 		EasyAccept.main(args);
 	}
 
