@@ -29,8 +29,10 @@ public class TestUsuario {
 			String texto = "Hoje o sol me acordou. Foi muito cansativo sair da cama pois ainda estava com muito sono. Gostaria ter"
 					+ " mais tempo para dormir. Ainda bem que tinha tapioca e cuscuz no cafe da manha para dar a energia. #cafe #acorda";
 			sistema.criaPost(texto, "27/08/2015 12:00:00");
+			sistema.criaPost(texto, "28/08/2015 12:00:00");
 			sistema.adicionaAmigo("jose@email.com");
-			
+
+			System.out.println(sistema.getPost("Data", 1));
 			sistema.logout();
 		//-------------------------------------------------------------
 			sistema.login("jose@email.com", "senha_123");
@@ -40,12 +42,13 @@ public class TestUsuario {
 			System.out.println(sistema.getPopsUsuario());
 			
 			sistema.curtirPost("maria@email.com", 0);
+			sistema.curtirPost("maria@email.com", 1);
 		//-------------------------------------------------------------
 			sistema.logout();
 			
 			sistema.login("maria@email.com", "senha_besta");
 			System.out.println(sistema.getTipoPopularidade());
-			System.out.println(sistema.getPopsPost (0));
+			System.out.println(sistema.getPopsUsuario());
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -66,7 +66,6 @@ logout
 
 
 login email="naza_foguete@hotmail.com" senha="belzinha"
-
 #fafa ganha 10
 curtirPost amigo="fafa_bernardes@email.com.br" post=0
 #madonna ganhou 10
@@ -84,6 +83,7 @@ expect 1 getCurtidaPorPost post=0
 expect 2 getCurtidaPorPost post=0 usuario="madonna@email.com"
 expect 1 getRejeicaoPorPost post=0
 expect 10 getPopsUsuario
+
 expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
 expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
 expect 1091 getPopsUsuario usuario="madonna@email.com"
