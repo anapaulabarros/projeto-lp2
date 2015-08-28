@@ -44,6 +44,7 @@ public class TestUsuario {
 			sistema.logout();
 			
 			sistema.login("maria@email.com", "senha_besta");
+			System.out.println(sistema.getTipoPopularidade());
 			System.out.println(sistema.getPopsPost (0));
 			
 		} catch (Exception e) {

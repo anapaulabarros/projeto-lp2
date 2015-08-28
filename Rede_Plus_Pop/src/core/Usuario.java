@@ -167,12 +167,14 @@ public class Usuario {
 		}
 	}
 	
-	public void interagirPost(int indexPost, String opcao) {
+	public void interagirPost(int indexPost, String opcao, String tipoPopularidade) {
 		Post post = posts.get(indexPost);
-		if(opcao.equals(SystemPop.CURTIR))
+		if(opcao.equals(SystemPop.CURTIR)) {
 			this.popularidade.curtir(post);
+		}
 		if(opcao.equals(SystemPop.REJEITAR))
 			this.popularidade.rejeitar(post);
+		
 		setPops(post.getPopularidade());
 		atualizaNivel();
 	}

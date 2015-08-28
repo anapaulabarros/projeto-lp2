@@ -23,6 +23,9 @@ public class SystemPop {
 	public static final String QUEBRA_DE_LINHA = System.getProperty("line.separator");
 	public static final String CURTIR = "Curtir";
 	public static final String REJEITAR = "Rejeitar";
+	public static final String ICONE_POP = "IconePop";
+	public static final String CELEBRIDADE = "CelebridadePop";
+	public static final String NORMAL = "Normal";
 	
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
@@ -105,11 +108,11 @@ public class SystemPop {
 			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
 		
 		if(opcao == CURTIR) {
-			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
+			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR, usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "curtiu";
 		}
 		if(opcao == REJEITAR) {
-			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR);
+			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR, usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "rejeitou";
 		}
 		

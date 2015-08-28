@@ -9,7 +9,7 @@ public class CelebridadePop implements TipoPopularidade {
 	public void curtir(Post post) {
 		int pontos = 25;
 		if (comparaDatas(post.getDataPublicacao())) {
-			pontos =  pontos + 5;
+			pontos =  pontos + 10;
 		}
 		post.setPopularidade(pontos);
 		post.setCurtidas();
