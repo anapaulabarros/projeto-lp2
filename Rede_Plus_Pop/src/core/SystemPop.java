@@ -324,12 +324,12 @@ public class SystemPop {
 	}
 
 	public String getTipoPopularidade() {
-		return usuarioLogado.getTipoPopularidade();
+		return usuarioLogado.getStringPopularidade();
 	}
 	
 	public String getTipoPopularidade(String email) {
 		Usuario usuario = buscaUsuario(email);
-		return usuario.getTipoPopularidade();
+		return usuario.getStringPopularidade();
 	}
 
 	public int getPopsPost(int post) throws Exception {

@@ -140,7 +140,11 @@ public class Usuario {
 		return amigos;
 	}
 
-	public String getTipoPopularidade() {
+	public TipoPopularidade getTipoPopularidade() {
+		return this.popularidade;
+	}
+	
+	public String getStringPopularidade(){
 		return popularidade.toString();
 	}
 
@@ -167,13 +171,13 @@ public class Usuario {
 		}
 	}
 	
-	public void interagirPost(int indexPost, String opcao, String tipoPopularidade) {
+	public void interagirPost(int indexPost, String opcao, TipoPopularidade tipoPopularidade) {
 		Post post = posts.get(indexPost);
 		if(opcao.equals(SystemPop.CURTIR)) {
-			this.popularidade.curtir(post);
+			tipoPopularidade.curtir(post);
 		}
 		if(opcao.equals(SystemPop.REJEITAR))
-			this.popularidade.rejeitar(post);
+			tipoPopularidade.rejeitar(post);
 		
 		setPops(post.getPopularidade());
 		atualizaNivel();
