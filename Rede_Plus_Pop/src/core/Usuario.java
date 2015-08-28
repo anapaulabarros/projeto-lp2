@@ -142,7 +142,8 @@ public class Usuario {
 	}
 
 	public void setPops(int pops) {
-		this.pops = pops;
+		this.pops = this.pops + pops;
+		atualizaNivel();
 	}
 
 	public void postar(Post novoPost) throws PostExceptions {
@@ -152,7 +153,7 @@ public class Usuario {
 	public void atualizaNivel(){
 		if (pops <= 500){
 			this.popularidade = new Normal();
-		} else if (pops > 500 && pops < 1000){
+		} else if (pops > 500 && pops <= 1000){
 			this.popularidade = new CelebridadePop();
 		} else{
 			this.popularidade = new IconePop();
@@ -165,10 +166,11 @@ public class Usuario {
 			this.popularidade.curtir(post);
 		if(opcao.equals(SystemPop.REJEITAR))
 			this.popularidade.rejeitar(post);
-		atualizaPops();
+		setPops(post.getPopularidade());
+		atualizaNivel();
 	}
 	
-	public void atualizaPops(){
+	/*public void atualizaPops(){
 		int pops = 0;
 		for (Post post: posts){
 			pops = pops + post.getPopularidade();
@@ -176,7 +178,7 @@ public class Usuario {
 		setPops(pops);
 		atualizaNivel();
 	}
-	
+	*/
 	/** 
      * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
      * retorna null.

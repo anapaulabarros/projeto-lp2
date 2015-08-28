@@ -6,7 +6,7 @@ cadastraUsuario nome="Dilma Rousseff" email="dilma_bolada@brasil.com" senha="rai
 
 login email="dilma_bolada@brasil.com" senha="rainha"
 #set pontuacao pra mudar o tipo?
-setPops pops=500
+setPops pops=501
 expect "CelebridadePop" getTipoPopularidade
 
 criaPost mensagem="Mamae tambem esta no snap! Podem me seguir la: DILMABOLADA.Brasil, patria conectada. #DivaDoMaisPlus #rainhaDaNacao" data="27/08/2015 11:04:00"
@@ -26,7 +26,7 @@ logout
 
 login email="madonna@email.com" senha="iamawesome"
 #set pontuacao pra mudar o tipo?
-setPops pops=1000
+setPops pops=1001
 expect "IconePop" getTipoPopularidade
 
 aceitaAmizade usuario="naza_foguete@hotmail.com"
@@ -45,7 +45,7 @@ logout
 
 login email="fafa_bernardes@email.com.br" senha="fafa_S2"
 #set pontuacao pra mudar o tipo?
-setPops pops=500
+setPops pops=501
 expect "CelebridadePop" getTipoPopularidade
 
 aceitaAmizade usuario="madonna@email.com"
@@ -81,9 +81,9 @@ expect 1 getCurtidaPorPost post=0
 expect 2 getCurtidaPorPost post=0 usuario="madonna@email.com"
 expect 1 getRejeicaoPorPost post=0
 expect 10 getPopsUsuario
-expect 500 getPopsUsuario usuario="dilma_bolada@brasil.com"
-expect 560 getPopsUsuario usuario="fafa_bernardes@email.com.br"
-expect 1090 getPopsUsuario usuario="madonna@email.com"
+expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
+expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
+expect 1091 getPopsUsuario usuario="madonna@email.com"
 
 expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
 expectError "Post nao encontrado no sistema." getCurtidaPorPost post=3

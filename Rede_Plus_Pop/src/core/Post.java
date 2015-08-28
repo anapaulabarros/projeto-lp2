@@ -27,7 +27,7 @@ public class Post {
 		verificaValidadeDasHastags(mensagem);
 		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
-		popularidade = 0;
+		this.popularidade = 0;
 		curtidas = 0;
 		rejeitadas = 0;
 		
