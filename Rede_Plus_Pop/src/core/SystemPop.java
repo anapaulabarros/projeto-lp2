@@ -106,7 +106,6 @@ public class SystemPop {
 		
 		if(opcao == CURTIR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR);
-			
 			palavraInteracao = "curtiu";
 		}
 		if(opcao == REJEITAR) {

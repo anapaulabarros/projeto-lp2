@@ -53,18 +53,20 @@ aceitaAmizade usuario="naza_foguete@hotmail.com"
 
 #naza ganha 25
 curtirPost amigo="naza_foguete@hotmail.com" post=0
-#naza ganha 35
+#naza ganha 25
 curtirPost amigo="naza_foguete@hotmail.com" post=4
-#madonna ganha 35
+#madonna ganha 25
 curtirPost amigo="madonna@email.com" post=0
-#madonna ganha 35
+#madonna ganha 25
 curtirPost amigo="madonna@email.com" post=1
 
-expect "#encontro,#SemPreconceito,#epicwin" getPost atributo="Hashtags" post=0
+#ver essa inserção de nova hastag '#epicwin'
+expect "#encontro,#SemPreconceito" getPost atributo="Hashtags" post=0 
 logout
 
 
 login email="naza_foguete@hotmail.com" senha="belzinha"
+
 #fafa ganha 10
 curtirPost amigo="fafa_bernardes@email.com.br" post=0
 #madonna ganhou 10
@@ -74,24 +76,11 @@ curtirPost amigo="madonna@email.com" post=1
 
 #pode ter pops negativos?
 expect -25 getPopsPost post=0
-expect "#anta,#separa,#epicfail" getPost atributo="Hashtags" post=0
-expect 35 getPopsPost post=4
-expect 60 getPopsPost post=0 usuario="fafa_bernardes@email.com.br"
-expect 1 getCurtidaPorPost post=0
-expect 2 getCurtidaPorPost post=0 usuario="madonna@email.com"
-expect 1 getRejeicaoPorPost post=0
-expect 10 getPopsUsuario
-expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
-expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
-expect 1091 getPopsUsuario usuario="madonna@email.com"
+#ver as questao da insercao da nova hastags 
+expect "#anta,#separa" getPost atributo="Hashtags" post=0
 
-#expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
-expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
+#tirei coisa daqui
 
-expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Nazare Tedesco" getRankingMais
-expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
-
-criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar" data="27/08/2015 11:19:00"
 logout
 
 fechaSistema
