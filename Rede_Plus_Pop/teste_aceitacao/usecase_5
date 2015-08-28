@@ -37,7 +37,7 @@ rejeitarPost amigo="naza_foguete@hotmail.com" post=0
 #fafa ganha 50 e fica epicwin
 curtirPost amigo="fafa_bernardes@email.com.br" post=0
 
-expectError "Voce ja rejeitou esse post." rejeitarPost amigo="naza_foguete@hotmail.com" post=0
+#expectError "Voce ja rejeitou esse post." rejeitarPost amigo="naza_foguete@hotmail.com" post=0
 
 criaPost mensagem="Very happy with my new friends <3 #divas" data="27/08/2015 10:30:00"
 criaPost mensagem="Download my new single I'm Cantora for free. <audio>musicas/im_cantora.mp3</audio>" data="27/08/2015 10:40:00"
@@ -85,8 +85,8 @@ expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
 expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
 expect 1091 getPopsUsuario usuario="madonna@email.com"
 
-expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
-expectError "Post nao encontrado no sistema." getCurtidaPorPost post=3
+#expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
+expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 
 expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Nazare Tedesco" getRankingMais
 expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos

@@ -324,22 +324,46 @@ public class SystemPop {
 	public String getTipoPopularidade() {
 		return usuarioLogado.getTipoPopularidade();
 	}
-
-	public int getPopsPost(int post) {
-		return usuarioLogado.getPosts().get(post).getPopularidade();
-	}
-
-	public int getPopsPost(int post, String email) {
+	
+	public String getTipoPopularidade(String email) {
 		Usuario usuario = buscaUsuario(email);
-		return usuario.getPosts().get(post).getPopularidade();
+		return usuario.getTipoPopularidade();
 	}
 
-	public int getCurtidaPorPost(int post) {
-		return usuarioLogado.getPosts().get(post).getCurtidas();
+	public int getPopsPost(int post) throws Exception {
+		return usuarioLogado.getPostEspecifico(post).getPopularidade();
 	}
 
-	public int getCurtidaPorPost(int post, String email) {
+	public int getPopsPost(int post, String email) throws Exception {
 		Usuario usuario = buscaUsuario(email);
-		return usuario.getPosts().get(post).getCurtidas();
+		return usuario.getPostEspecifico(post).getPopularidade();
 	}
+
+	public int getCurtidaPorPost(int post) throws Exception {
+		return usuarioLogado.getPostEspecifico(post).getCurtidas();
+	}
+
+	public int getCurtidaPorPost(int post, String email) throws Exception {
+		Usuario usuario = buscaUsuario(email);
+		return usuario.getPostEspecifico(post).getCurtidas();
+	}
+
+	public int getRejeicaoPorPost(int post) throws Exception {
+		return usuarioLogado.getPostEspecifico(post).getRejeitadas();
+	}
+	
+	public int getRejeicaoPorPost(int post, String email) throws Exception {
+		Usuario usuario = buscaUsuario(email);
+		return usuario.getPostEspecifico(post).getRejeitadas();
+	}
+
+	public int getPopsUsuario() {
+		return usuarioLogado.getPops();
+	}
+
+	public int getPopsUsuario(String email) {
+		Usuario usuario = buscaUsuario(email);
+		return usuario.getPops();
+	}
+
 }

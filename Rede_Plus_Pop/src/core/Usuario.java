@@ -129,6 +129,13 @@ public class Usuario {
 		return posts;
 	}
 	
+	public Post getPostEspecifico(int indexPost) throws PostExceptions{
+		if (indexPost >= posts.size()){
+			throw new PostExceptions("Post nao encontrado no sistema.");
+		}
+		return posts.get(indexPost);
+	}
+	
 	public List<Usuario> getAmigos() {
 		return amigos;
 	}

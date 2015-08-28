@@ -115,20 +115,40 @@ public class Facade {
 		return sistemaPop.getTipoPopularidade();
 	}
 	
-	public int getPopsPost(int post){
+	public String getTipoPopularidade(String email){
+		return sistemaPop.getTipoPopularidade(email);
+	}
+	
+	public int getPopsPost(int post) throws Exception{
 		return sistemaPop.getPopsPost(post);
 	}
 	
-	public int getPopsPost(int post, String usuario){
+	public int getPopsPost(int post, String usuario) throws Exception{
 		return sistemaPop.getPopsPost(post, usuario);
 	}
 	
-	public int getCurtidaPorPost(int post){
+	public int getCurtidaPorPost(int post) throws Exception{
 		return sistemaPop.getCurtidaPorPost(post);
 	}
 	
-	public int getCurtidaPorPost(int post, String usuario){
+	public int getCurtidaPorPost(int post, String usuario) throws Exception{
 		return sistemaPop.getCurtidaPorPost(post, usuario);
+	}
+	
+	public int getRejeicaoPorPost(int post) throws Exception{
+		return sistemaPop.getRejeicaoPorPost(post);
+	}
+	
+	public int getRejeicaoPorPost(int post, String usuario) throws Exception{
+		return sistemaPop.getRejeicaoPorPost(post, usuario);
+	}
+	
+	public int getPopsUsuario(){
+		return sistemaPop.getPopsUsuario();
+	}
+	
+	public int getPopsUsuario(String usuario){
+		return sistemaPop.getPopsUsuario(usuario);
 	}
 	
 	public static void main(String[] args) {
