@@ -26,6 +26,7 @@ public class TestUsuario {
 			sistema.cadastraUsuario("Jose", "jose@email.com", "senha_123", "25/01/1990", "resources/foto.jpg");
 			
 			sistema.login("maria@email.com", "senha_besta");
+			System.out.println("MARIA");
 			String texto = "Hoje o sol me acordou. Foi muito cansativo sair da cama pois ainda estava com muito sono. Gostaria ter"
 					+ " mais tempo para dormir. Ainda bem que tinha tapioca e cuscuz no cafe da manha para dar a energia. #cafe #acorda";
 			sistema.criaPost(texto, "27/08/2015 12:00:00");
@@ -36,6 +37,7 @@ public class TestUsuario {
 			sistema.logout();
 		//-------------------------------------------------------------
 			sistema.login("jose@email.com", "senha_123");
+			System.out.println("JOSE");
 			sistema.setPops(600);
 			sistema.aceitaAmizade("maria@email.com");
 			System.out.println(sistema.getTipoPopularidade());
@@ -43,12 +45,24 @@ public class TestUsuario {
 			
 			sistema.curtirPost("maria@email.com", 0);
 			sistema.curtirPost("maria@email.com", 1);
-		//-------------------------------------------------------------
-			sistema.logout();
 			
+			sistema.criaPost(texto, "28/08/2015 12:00:00");
+			sistema.logout();
+		//-------------------------------------------------------------
 			sistema.login("maria@email.com", "senha_besta");
+			System.out.println("MARIA");
 			System.out.println(sistema.getTipoPopularidade());
 			System.out.println(sistema.getPopsUsuario());
+			sistema.curtirPost("jose@email.com", 0);
+			sistema.logout();
+		//-------------------------------------------------------------
+			sistema.login("jose@email.com", "senha_123");
+			System.out.println("JOSE");
+			sistema.aceitaAmizade("maria@email.com");
+			System.out.println(sistema.getTipoPopularidade());
+			System.out.println(sistema.getPopsUsuario());
+
+			sistema.logout();
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
