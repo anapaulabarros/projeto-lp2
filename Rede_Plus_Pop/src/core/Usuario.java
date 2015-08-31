@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 import treatmentsExceptions.PostExceptions;
 import treatmentsExceptions.UsuarioExceptions;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario>{
 	
 	private String nome;
 	private String email;
@@ -328,5 +328,13 @@ public class Usuario {
 				return usuario;
 		}
 		return null;
+	}
+	
+	@Override
+	public int compareTo(Usuario outroUsuario) {
+		if(this.pops == outroUsuario.pops)
+			return 0;
+		else
+			return this.pops > outroUsuario.pops ? 1 : -1;
 	}
 }
