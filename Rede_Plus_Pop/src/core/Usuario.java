@@ -335,6 +335,6 @@ public class Usuario implements Comparable<Usuario>{
 		if(this.pops == outroUsuario.pops)
 			return 0;
 		else
-			return this.pops > outroUsuario.pops ? 1 : -1;
+			return this.pops > outroUsuario.pops ? -1 : 1;
 	}
 }

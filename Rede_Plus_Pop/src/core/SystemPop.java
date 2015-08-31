@@ -2,6 +2,8 @@ package core;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -367,5 +369,36 @@ public class SystemPop {
 		Usuario usuario = buscaUsuario(email);
 		return usuario.getPops();
 	}
+	
+	/*
+	 * Método que recupera os
+	 * nomes dos 3 usuários mais 
+	 * populares da rede social
+	 * 
+	 */
+	public String getRankingMais() {
+		if (usuarios.size() != 0) {
+			Collections.sort(usuarios);
+			return  "(1) " + usuarios.get(0).getNome() + 
+					", (2) " + usuarios.get(1).getNome() +
+					", (3) " + usuarios.get(2).getNome();
+		}
+		return "";
+	}
 
+	/*
+	 * Método que recupera os
+	 * nomes dos 3 usuários menos 
+	 * populares da rede social
+	 * 
+	 */
+	public String getRankingMenos() {
+		if (usuarios.size() != 0) {
+			Collections.sort(usuarios);
+			return  "(1) " + usuarios.get(usuarios.size() - 1).getNome() + 
+					", (2) " + usuarios.get(usuarios.size() - 2).getNome() +
+					", (3) " + usuarios.get(usuarios.size() - 3).getNome();
+		}
+		return "";
+	}
 }
