@@ -21,6 +21,7 @@ adicionaAmigo usuario="madonna@email.com"
 expect "Normal" getTipoPopularidade
 
 criaPost mensagem="Odeio andar de elevador. #amoescadas" data="27/08/2015 09:30:00"
+
 logout
 
 
@@ -83,17 +84,17 @@ expect 0 getPopsUsuario
 
 
 expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
-expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
-expect 1091 getPopsUsuario usuario="madonna@email.com"
+expect 511 getPopsUsuario usuario="fafa_bernardes@email.com.br"
+expect 1071 getPopsUsuario usuario="madonna@email.com"
 
 
 #expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
 expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 
-expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Nazare Tedesco" getRankingMais
+expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Dilma Rousseff" getRankingMais
 expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
-criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar" data="27/08/2015 11:19:00"
 
+criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar" data="27/08/2015 11:19:00"
 logout
 
 fechaSistema
