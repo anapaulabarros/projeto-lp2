@@ -1,6 +1,9 @@
 package core;
 
 
+import java.io.ObjectInputStream.GetField;
+import java.util.List;
+
 import treatmentsExceptions.SystemPopExceptions;
 import easyaccept.EasyAccept;
 
