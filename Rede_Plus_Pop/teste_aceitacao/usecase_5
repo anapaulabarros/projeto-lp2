@@ -34,8 +34,6 @@ adicionaAmigo usuario="fafa_bernardes@email.com.br"
 
 #naza perde 50 e fica epicfail
 rejeitarPost amigo="naza_foguete@hotmail.com" post=0
-#fafa ganha 50 e fica epicwin
-curtirPost amigo="fafa_bernardes@email.com.br" post=0
 
 #expectError "Voce ja rejeitou esse post." rejeitarPost amigo="naza_foguete@hotmail.com" post=0
 
@@ -78,22 +76,22 @@ expect -25 getPopsPost post=0
 #ver as questao da insercao da nova hastags 
 expect "#anta,#separa" getPost atributo="Hashtags" post=0
 expect 25 getPopsPost post=4
-expect 60 getPopsPost post=0 usuario="fafa_bernardes@email.com.br"
 expect 1 getCurtidaPorPost post=0
 expect 2 getCurtidaPorPost post=0 usuario="madonna@email.com"
 expect 1 getRejeicaoPorPost post=0
-expect 10 getPopsUsuario
+expect 0 getPopsUsuario
+
 
 expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
 expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
 expect 1091 getPopsUsuario usuario="madonna@email.com"
+
 
 #expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
 expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 
 expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Nazare Tedesco" getRankingMais
 expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
-
 criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar" data="27/08/2015 11:19:00"
 
 logout
