@@ -187,6 +187,7 @@ public class Usuario implements Comparable<Usuario>{
 			tipoPopularidade.rejeitar(post);
 			post.setRejeitadas();
 		}
+		atualizaPops();
 		atualizaNivel();
 	}
 	
