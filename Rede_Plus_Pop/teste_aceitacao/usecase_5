@@ -65,8 +65,6 @@ logout
 
 
 login email="naza_foguete@hotmail.com" senha="belzinha"
-#fafa ganha 10
-curtirPost amigo="fafa_bernardes@email.com.br" post=0
 #madonna ganhou 10
 curtirPost amigo="madonna@email.com" post=0
 #madonna ganhou 10
