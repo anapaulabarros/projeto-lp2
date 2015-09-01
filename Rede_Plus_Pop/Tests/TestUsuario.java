@@ -101,8 +101,12 @@ public class TestUsuario {
 			
 			sistema.iniciaSistema();
 
+			sistema.cadastraUsuario("Madonna", MADONNA_EMAIL, "iamawesome", "16/08/1958", "resources/madonna.jpg");
+			sistema.cadastraUsuario("Fatima Bernardes", FAFA, "fafa_S2", "17/09/1962", "resources/fatima.jpg");
+			sistema.cadastraUsuario("Nazare Tedesco", NAZA_FOGUETE, "belzinha", "17/09/1962", "resources/naza.jpg");
 			sistema.cadastraUsuario("Dilma Rousseff", DILMA_BOLADA, "rainha", "14/12/1947", "resources/dilma.jpg");
 
+			
 			sistema.login(DILMA_BOLADA, "rainha");
 			sistema.setPops(501);
 			Assert.assertEquals("CelebridadePop", sistema.getTipoPopularidade());
@@ -172,6 +176,7 @@ public class TestUsuario {
 			
 		}catch(Exception e){
 			Assert.fail();
+			//System.out.println(e.getMessage());
 		}
 	}
 
