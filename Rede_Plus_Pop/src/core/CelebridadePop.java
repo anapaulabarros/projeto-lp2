@@ -7,7 +7,7 @@ public class CelebridadePop implements TipoPopularidade {
 
 	@Override
 	public void curtir(Post post) {
-		int pontos = 25;
+		int pontos = +25;
 		if (comparaDatas(post.getDataPostFormatada()) == true) {
 			pontos =  pontos + 10;
 		}
@@ -18,7 +18,7 @@ public class CelebridadePop implements TipoPopularidade {
 	@Override
 	public void rejeitar(Post post) {
 		int pontos = -25;
-		if (comparaDatas(post.getDataPublicacao())) {
+		if (comparaDatas(post.getDataPublicacao()) == true) {
 			pontos =  pontos - 10;
 		}
 		post.setPopularidade(pontos);
