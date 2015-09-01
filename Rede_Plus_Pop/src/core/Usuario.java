@@ -25,6 +25,7 @@ public class Usuario implements Comparable<Usuario>{
 	private Notificacoes notificacoes;
 	private TipoPopularidade popularidade;
 	private int pops;
+	private int magica;
 	
 	public Usuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
 		
@@ -45,6 +46,7 @@ public class Usuario implements Comparable<Usuario>{
 		this.emailsSolicitacoes = new ArrayList<String>();
 		this.popularidade = new Normal();
 		this.pops = 0;
+		this.magica = 0;
 	}
 
 	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
@@ -153,7 +155,13 @@ public class Usuario implements Comparable<Usuario>{
 	}
 
 	public void setPops(int pops) {
-		this.pops = this.pops + pops;
+		this.pops = pops;
+		atualizaNivel();
+	}
+
+	public void setMagica(int pops) {
+		this.magica = pops;
+		setPops(magica);
 		atualizaNivel();
 	}
 
@@ -179,19 +187,18 @@ public class Usuario implements Comparable<Usuario>{
 		if(opcao.equals(SystemPop.REJEITAR))
 			tipoPopularidade.rejeitar(post);
 		
-		setPops(post.getPopularidade());
 		atualizaNivel();
 	}
 	
-	/*public void atualizaPops(){
-		int pops = 0;
+	public void atualizaPops(){
+		int pops = this.magica;
 		for (Post post: posts){
 			pops = pops + post.getPopularidade();
 		}
 		setPops(pops);
 		atualizaNivel();
 	}
-	*/
+	
 	/** 
      * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,  
      * retorna null.
@@ -337,4 +344,5 @@ public class Usuario implements Comparable<Usuario>{
 		else
 			return this.pops > outroUsuario.pops ? -1 : 1;
 	}
+
 }

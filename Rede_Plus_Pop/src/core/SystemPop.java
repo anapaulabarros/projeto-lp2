@@ -321,7 +321,7 @@ public class SystemPop {
 	}
 
 	public void setPops(int pops) {
-		usuarioLogado.setPops(pops);
+		usuarioLogado.setMagica(pops);
 	}
 
 	public String getTipoPopularidade() {
