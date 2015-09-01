@@ -12,7 +12,6 @@ public class CelebridadePop implements TipoPopularidade {
 			pontos =  pontos + 10;
 		}
 		post.setPopularidade(pontos);
-		post.setCurtidas();
 	}
 
 	@Override
@@ -22,7 +21,6 @@ public class CelebridadePop implements TipoPopularidade {
 			pontos =  pontos - 10;
 		}
 		post.setPopularidade(pontos);
-		post.setRejeitadas();
 	}
 	
 	private boolean comparaDatas(String umaData) {

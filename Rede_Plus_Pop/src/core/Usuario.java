@@ -156,13 +156,11 @@ public class Usuario implements Comparable<Usuario>{
 
 	public void setPops(int pops) {
 		this.pops = pops;
-		atualizaNivel();
 	}
 
 	public void setMagica(int pops) {
 		this.magica = pops;
-		setPops(magica);
-		atualizaNivel();
+		atualizaPops();
 	}
 
 	public void postar(Post novoPost) throws PostExceptions {
@@ -183,10 +181,12 @@ public class Usuario implements Comparable<Usuario>{
 		Post post = posts.get(indexPost);
 		if(opcao.equals(SystemPop.CURTIR)) {
 			tipoPopularidade.curtir(post);
+			post.setCurtidas();
 		}
-		if(opcao.equals(SystemPop.REJEITAR))
+		if(opcao.equals(SystemPop.REJEITAR)){
 			tipoPopularidade.rejeitar(post);
-		
+			post.setRejeitadas();
+		}
 		atualizaNivel();
 	}
 	
