@@ -161,6 +161,11 @@ public class Facade {
 		return sistemaPop.getRankingMenos();
 	}
 	
+	public void atualizaRankings() {
+		sistemaPop.getRankingMenos();
+		sistemaPop.getRankingMais();
+	}
+	
 	public Map<String, Integer> getMaisPopHastags() {
 		return sistemaPop.getRankigHastagsMais();
 	}

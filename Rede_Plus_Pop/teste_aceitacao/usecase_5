@@ -90,6 +90,8 @@ expect 1071 getPopsUsuario usuario="madonna@email.com"
 #expectError "Voce ja curtiu esse post." curtirPost amigo="madonna@email.com" post=0
 expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 
+atualizaRankings
+
 expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Dilma Rousseff" getRankingMais
 expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
 
