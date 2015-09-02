@@ -31,11 +31,13 @@ public class SystemPop {
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
 	private Map<String, ArrayList<String>> dicionarioHashtags;
+	private Map<String, Integer> contadorDeHastags;
 	
 	public SystemPop() {
 		usuarios = new ArrayList<Usuario>();
 		usuarioLogado = null;
 		dicionarioHashtags = new HashMap<String, ArrayList<String>>();
+		contadorDeHastags = new HashMap<String, Integer>();
 	}
 	
 	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
@@ -99,14 +101,8 @@ public class SystemPop {
 	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws SystemPopExceptions {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
 		String palavraInteracao = "";
-		if(usuarioLogado == null)
-			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
-		if(usuarioLogado.getEmail().equals(emailAmigo))
-			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
-		if(amigoDoUsuarioLogado == null)
-			throw new SystemPopExceptions("Nao existe nenhum usuario com o email fornecido.");
-		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
-			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
+		
+		validaInteracaoPost(idPost, emailAmigo, amigoDoUsuarioLogado);
 		
 		if(opcao == CURTIR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR, usuarioLogado.getTipoPopularidade());
@@ -120,6 +116,19 @@ public class SystemPop {
 		//envia notificacao para o usuario que enviou o post, se curtiu ou rejeitou o post
 		amigoDoUsuarioLogado.adicionaNotificacao(usuarioLogado.getNome() + " "
 				+ palavraInteracao + " seu post de " + amigoDoUsuarioLogado.getPosts().get(idPost).getDataPostFormatada() + ".");
+	}
+
+	//metodo para validar a interacao do usuario logado com um post de um amigo
+	private void validaInteracaoPost(int idPost, String emailAmigo,
+			Usuario amigoDoUsuarioLogado) throws SystemPopExceptions {
+		if(usuarioLogado == null)
+			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
+		if(usuarioLogado.getEmail().equals(emailAmigo))
+			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
+		if(amigoDoUsuarioLogado == null)
+			throw new SystemPopExceptions("Nao existe nenhum usuario com o email fornecido.");
+		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
+			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
 	}
 
 	public void iniciaSistema() {
@@ -225,15 +234,17 @@ public class SystemPop {
 	public Map<String, ArrayList<String>> getDicionarioHashtags() {
 		return dicionarioHashtags;
 	}
-
+	
 	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions, ParseException {
 		if(getUsuarioLogado() == null){
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
 		Post novoPost = new Post(mensagem, data);
-		//if(!novoPost.filtraHashtags(mensagem).isEmpty())
-		//	dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 		usuarioLogado.postar(novoPost);
+		
+		if(novoPost.filtraHashtags(mensagem) != null || novoPost.filtraHashtags(mensagem) != "")
+			HastagsMaisPop(novoPost.filtraHashtags(mensagem));
+			//dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 	}
 	
 	
@@ -258,6 +269,24 @@ public class SystemPop {
 		return hastags;
 	}
 	
+	/*
+	 * Metodo para armazenar no Map, a quantidade de vezes que cada hastag apareceu 
+	 * em um novo post criado
+	 * Ex: [#frio=1, #calo=2]
+	 * @param listaDeHastags String
+	 * @return Map<String, Integer> 
+	 */
+	public void HastagsMaisPop(String listaDeHastags) {
+		List<String> listaHastags = new ArrayList<String>();
+		for(String hashtag: listaDeHastags.split(" ")){
+			listaHastags.add(hashtag);
+		}
+		for(int i = 0; i < listaHastags.size(); i++) {
+			 if(!contadorDeHastags.keySet().contains(listaHastags.get(i)))
+				 contadorDeHastags.put(listaHastags.get(i), 1);
+			 contadorDeHastags.get(contadorDeHastags.get(i) + 1);
+		 }
+	}
 	public int getNotificacoes() {
 		return usuarioLogado.getNotificacoes();
 	}
@@ -399,5 +428,9 @@ public class SystemPop {
 					", (3) " + usuarios.get(usuarios.size() - 3).getNome();
 		}
 		return "";
+	}
+	
+	public Map<String, Integer> getRankigHastagsMais() {
+		return contadorDeHastags;
 	}
 }

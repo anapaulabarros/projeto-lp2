@@ -1,6 +1,8 @@
 package core;
 
 
+import java.util.Map;
+
 import treatmentsExceptions.SystemPopExceptions;
 import easyaccept.EasyAccept;
 
@@ -157,6 +159,10 @@ public class Facade {
 	
 	public String getRankingMenos() {
 		return sistemaPop.getRankingMenos();
+	}
+	
+	public Map<String, Integer> getMaisPopHastags() {
+		return sistemaPop.getRankigHastagsMais();
 	}
 	
 	public static void main(String[] args) {
