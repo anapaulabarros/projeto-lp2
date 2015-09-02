@@ -121,7 +121,7 @@ public class TestUsuario {
 
 			Assert.assertEquals("Normal", sistema.getTipoPopularidade());
 
-			sistema.criaPost("Odeio andar de elevador. #amoescadas", "27/08/2015 09:30:00");
+			sistema.criaPost("Odeio andar de elevador.", "27/08/2015 09:30:00");
 			sistema.criaPost("Nao aguento pessoas falsianes. #falsianeemtodolugar", "27/08/2015 09:49:00");
 
 			sistema.logout();

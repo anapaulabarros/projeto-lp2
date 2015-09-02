@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import treatmentsExceptions.PostExceptions;
 import treatmentsExceptions.SystemPopExceptions;
@@ -242,9 +245,12 @@ public class SystemPop {
 		Post novoPost = new Post(mensagem, data);
 		usuarioLogado.postar(novoPost);
 		
-		if(novoPost.filtraHashtags(mensagem) != null || novoPost.filtraHashtags(mensagem) != "")
-			HastagsMaisPop(novoPost.filtraHashtags(mensagem));
-			//dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
+		if(mensagem.contains("#")){
+			if(novoPost.filtraHashtags(mensagem) != null || novoPost.filtraHashtags(mensagem) != "")
+				HastagsMaisPop(novoPost.filtraHashtags(mensagem));
+				//dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
+		}
+		
 	}
 	
 	
@@ -277,6 +283,7 @@ public class SystemPop {
 	 * @return Map<String, Integer> 
 	 */
 	public void HastagsMaisPop(String listaDeHastags) {
+		int valuesCopy;
 		List<String> listaHastags = new ArrayList<String>();
 		for(String hashtag: listaDeHastags.split(" ")){
 			listaHastags.add(hashtag);
@@ -284,7 +291,11 @@ public class SystemPop {
 		for(int i = 0; i < listaHastags.size(); i++) {
 			 if(!contadorDeHastags.keySet().contains(listaHastags.get(i)))
 				 contadorDeHastags.put(listaHastags.get(i), 1);
-			 contadorDeHastags.get(contadorDeHastags.get(i) + 1);
+			 else 
+			 {
+			 	valuesCopy = contadorDeHastags.get(listaHastags.get(i));
+			    contadorDeHastags.put(listaHastags.get(i), valuesCopy + 1);
+			 }
 		 }
 	}
 	public int getNotificacoes() {
@@ -431,6 +442,7 @@ public class SystemPop {
 	}
 	
 	public Map<String, Integer> getRankigHastagsMais() {
+		
 		return contadorDeHastags;
 	}
 }

@@ -9,7 +9,7 @@ login email="dilma_bolada@brasil.com" senha="rainha"
 setPops pops=501
 expect "CelebridadePop" getTipoPopularidade
 
-criaPost mensagem="Mamae tambem esta no snap! Podem me seguir la: DILMABOLADA.Brasil, patria conectada. #DivaDoMaisPlus #rainhaDaNacao" data="27/08/2015 11:04:00"
+criaPost mensagem="Mamae tambem esta no snap! Podem me seguir la: DILMABOLADA.Brasil, patria conectada. #DivaDoMaisPlus #rainhaDaNacao #DivaDoMaisPlus" data="27/08/2015 11:04:00"
 adicionaAmigo usuario="naza_foguete@hotmail.com"
 logout
 
@@ -93,7 +93,7 @@ expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Dilma Rousseff" getRankingMais
 expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
 
-criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar" data="27/08/2015 11:19:00"
+criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar #amoescadas #DivaDoMaisPlus" data="27/08/2015 11:19:00"
 
 expect "asdsads" getMaisPopHastags
 
