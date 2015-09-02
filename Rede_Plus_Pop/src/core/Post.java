@@ -124,7 +124,7 @@ public class Post {
 
 	public String getListaHashtag() {
 		String retorno = "";
-		String[] palavras = filtraHashtags(mensagem).split(" ");
+		String[] palavras = conteudo.get(2).split(" ");
 		for (String hashtag : palavras) {
 			retorno = retorno + hashtag + ",";
 		}
@@ -176,6 +176,11 @@ public class Post {
 
 	public void setRejeitadas() {
 		this.rejeitadas += 1;
+	}
+	
+	public void adicionaHashtag(String hashtag){
+		String adicionar = conteudo.get(2) + " " + hashtag;
+		conteudo.set(2, adicionar);
 	}
 
 	public String getDataPostFormatada() {

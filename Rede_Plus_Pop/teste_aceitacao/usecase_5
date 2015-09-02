@@ -35,6 +35,7 @@ adicionaAmigo usuario="fafa_bernardes@email.com.br"
 
 #naza perde 50 e fica epicfail
 rejeitarPost amigo="naza_foguete@hotmail.com" post=0
+curtirPost amigo="fafa_bernardes@email.com.br" post=0
 
 #expectError "Voce ja rejeitou esse post." rejeitarPost amigo="naza_foguete@hotmail.com" post=0
 
@@ -60,7 +61,7 @@ curtirPost amigo="madonna@email.com" post=0
 curtirPost amigo="madonna@email.com" post=1
 
 #ver essa inserção de nova hastag '#epicwin'
-expect "#encontro,#SemPreconceito" getPost atributo="Hashtags" post=0 
+expect "#encontro,#SemPreconceito,#epicwin" getPost atributo="Hashtags" post=0 
 logout
 
 
@@ -73,7 +74,7 @@ curtirPost amigo="madonna@email.com" post=1
 #pode ter pops negativos?
 expect -25 getPopsPost post=0
 #ver as questao da insercao da nova hastags 
-expect "#anta,#separa" getPost atributo="Hashtags" post=0
+expect "#anta,#separa,#epicfail" getPost atributo="Hashtags" post=0
 expect 25 getPopsPost post=4
 expect 1 getCurtidaPorPost post=0
 expect 2 getCurtidaPorPost post=0 usuario="madonna@email.com"
@@ -82,7 +83,7 @@ expect 0 getPopsUsuario
 
 
 expect 501 getPopsUsuario usuario="dilma_bolada@brasil.com"
-expect 511 getPopsUsuario usuario="fafa_bernardes@email.com.br"
+expect 561 getPopsUsuario usuario="fafa_bernardes@email.com.br"
 expect 1071 getPopsUsuario usuario="madonna@email.com"
 
 
