@@ -1,12 +1,15 @@
 package core;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import treatmentsExceptions.PostExceptions;
 
-public class Post {
+public class Post implements Comparable<Post> {
 
 	private String mensagem;
 	private List<String> conteudo;
@@ -191,5 +194,34 @@ public class Post {
 	@Override
 	public String toString() {
 		return this.mensagem + " (" + getDataPostFormatada() + ")";
+	}
+	
+	/*
+	 * Metodo para orderna os Post pela data de publicacao 
+	 */
+	@Override
+	public int compareTo(Post outroPost) {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			Date dataPostAtual = formatter.parse(this.dataPublicacao);
+			Date dataOutroPost = formatter.parse(outroPost.dataPublicacao);
+			if(dataOutroPost == dataPostAtual)
+				return 0;
+			else if(dataPostAtual.compareTo(dataOutroPost) == -1)
+				  return 1;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	/*
+	 * Metodo para ordenar os post pela sua popularidade 
+	 */
+	public int comparePorPopularidade(Post outroPost) {
+		if(this.popularidade == outroPost.popularidade)
+			return 0;
+		else
+			return this.popularidade > outroPost.popularidade ? -1 : 1;
 	}
 }
