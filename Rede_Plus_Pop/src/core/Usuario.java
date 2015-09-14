@@ -394,8 +394,8 @@ public class Usuario implements Comparable<Usuario> {
 		}
 		return listaPost;
 	}
-
-	public void atualizaFeed() {
+	
+	public void adicionaPostsNoFeed(){
 		List<Post> postsAdicionar = new ArrayList<Post>();
 		for (Usuario amigo : amigos) {
 			if (amigo.getStringPopularidade().equals("Normal")) {
@@ -409,25 +409,15 @@ public class Usuario implements Comparable<Usuario> {
 				this.feed.adicionaPost(post);
 			}
 		}
+	}
 
+	public void atualizaFeed() {
+		adicionaPostsNoFeed();
 		this.feed.atualiza();
 	}
 
 	public void atualizaFeedPopularidade() {
-		List<Post> postsAdicionar = new ArrayList<Post>();
-		for (Usuario amigo : amigos) {
-			if (amigo.getStringPopularidade().equals("Normal")) {
-				postsAdicionar = amigo.getPostsRecentes(2);
-			} else if (amigo.getStringPopularidade().equals("CelebridadePop")) {
-				postsAdicionar = amigo.getPostsRecentes(4);
-			} else if (amigo.getStringPopularidade().equals("IconePop")) {
-				postsAdicionar = amigo.getPostsRecentes(6);
-			}
-			for (Post post : postsAdicionar) {
-				this.feed.adicionaPost(post);
-			}
-		}
-
+		adicionaPostsNoFeed();
 		this.feed.atualizaPorPopularidade();
 	}
 	
