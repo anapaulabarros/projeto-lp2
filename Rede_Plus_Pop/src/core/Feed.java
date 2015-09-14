@@ -20,14 +20,10 @@ public class Feed {
 		Collections.sort(posts);
 	}
 	
-	public void atualizaPorPopularidade() {
-		Collections.sort(posts, ordernePorPopularidade());
-	}
-	
 	/**
 	 * Ordena a lista de post por popularidade  usando comparator
 	 */
-	public void ordernePorPopularidade() {
+	public void atualizaPorPopularidade() {
 		Collections.sort(posts, new Comparator<Post>() {
 
 			@Override
