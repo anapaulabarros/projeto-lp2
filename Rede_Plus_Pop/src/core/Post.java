@@ -208,10 +208,10 @@ public class Post implements Comparable<Post> {
 			if(dataOutroPost == dataPostAtual)
 				return 0;
 			else if(dataPostAtual.compareTo(dataOutroPost) == -1)
-				  return 1;
+				  return -1;
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return -1;
+		return 1;
 	}
 }

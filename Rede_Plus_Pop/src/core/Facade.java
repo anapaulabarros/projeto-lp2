@@ -1,5 +1,6 @@
 package core;
 
+import java.util.List;
 import java.util.Map;
 
 import treatmentsExceptions.SystemPopExceptions;
@@ -169,6 +170,10 @@ public class Facade {
 		return sistemaPop.getRankigHastagsMais();
 	}
 
+	public void atualizaFeed() {
+		sistemaPop.atualizaFeed();
+	}
+	
 	public static void main(String[] args) {
 		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5"};
 		EasyAccept.main(args);

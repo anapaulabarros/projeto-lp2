@@ -441,4 +441,8 @@ public class SystemPop {
 	public Map<String, Integer> getRankigHastagsMais() {
 		return contadorDeHastags;
 	}
+	
+	public void atualizaFeed() {
+		usuarioLogado.atualizaFeed();
+	}
 }

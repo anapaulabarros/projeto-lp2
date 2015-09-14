@@ -23,7 +23,7 @@ public class Feed {
 	/**
 	 * Ordena a lista de post por popularidade  usando comparator
 	 */
-	public void atualizaPorPopularidade() {
+	/*public void atualizaPorPopularidade() {
 		Collections.sort(posts, new Comparator<Post>() {
 
 			@Override
@@ -37,5 +37,5 @@ public class Feed {
 				}
 			}
 		});
-	}
+	}*/
 }
