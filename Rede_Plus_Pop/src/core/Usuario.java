@@ -386,7 +386,8 @@ public class Usuario implements Comparable<Usuario> {
 		List<Post> listaPost = new ArrayList<Post>();
 		int tamanho = this.posts.size();
 		for (int i = tamanho; i > tamanho - quantidade; i++) {
-			listaPost.add(this.posts.get(i));
+			if(this.posts.get(i) != null)
+				listaPost.add(this.posts.get(i));
 		}
 		return listaPost;
 	}
