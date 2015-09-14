@@ -385,9 +385,11 @@ public class Usuario implements Comparable<Usuario> {
 	public List<Post> getPostsRecentes(int quantidade) {
 		List<Post> listaPost = new ArrayList<Post>();
 		int tamanho = this.posts.size();
-		for (int i = tamanho; i > tamanho - quantidade; i++) {
-			if(this.posts.get(i) != null)
-				listaPost.add(this.posts.get(i));
+		if(tamanho <= quantidade) {
+			for (int i = tamanho; i > tamanho - quantidade; i++) {
+				if(this.posts.get(i) != null)
+					listaPost.add(this.posts.get(i));
+			}
 		}
 		return listaPost;
 	}
@@ -398,14 +400,15 @@ public class Usuario implements Comparable<Usuario> {
 			if (amigo.getStringPopularidade().equals("Normal")) {
 				postsAdicionar = amigo.getPostsRecentes(2);
 			} else if (amigo.getStringPopularidade().equals("CelebridadePop")) {
-				postsAdicionar = amigo.getPostsRecentes(4);
+				//postsAdicionar = amigo.getPostsRecentes(4);
 			} else if (amigo.getStringPopularidade().equals("IconePop")) {
-				postsAdicionar = amigo.getPostsRecentes(6);
+				//postsAdicionar = amigo.getPostsRecentes(6);
 			}
 			for (Post post : postsAdicionar) {
 				this.feed.adicionaPost(post);
 			}
 		}
+		
 		this.feed.atualiza();
 	}
 	
