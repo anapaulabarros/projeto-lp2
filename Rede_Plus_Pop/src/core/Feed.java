@@ -19,4 +19,27 @@ public class Feed {
 	public void atualiza(){
 		Collections.sort(posts);
 	}
+	
+	public void atualizaPorPopularidade() {
+		Collections.sort(posts, new comparePorPopularidade());
+	}
+	
+	/**
+	 * Ordena a lista de post por popularidade  usando comparator
+	 */
+	public void comparePorPopularidade() {
+		Collections.sort(Post, new Comparator<Post>() {
+
+			@Override
+			public int compare(Post post1, Post post2) {
+				if (post1.getPopularidade() > post2.getPopularidade()) {
+					return 1;
+				} else if (post1.getPopularidade() == post2.getPopularidade()) {
+					return 0;
+				} else {
+					return -1;
+				}
+			}
+		});
+	}
 }

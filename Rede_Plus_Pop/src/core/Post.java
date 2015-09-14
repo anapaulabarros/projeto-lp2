@@ -214,14 +214,4 @@ public class Post implements Comparable<Post> {
 		}
 		return -1;
 	}
-	
-	/*
-	 * Metodo para ordenar os post pela sua popularidade 
-	 */
-	public int comparePorPopularidade(Post outroPost) {
-		if(this.popularidade == outroPost.popularidade)
-			return 0;
-		else
-			return this.popularidade > outroPost.popularidade ? -1 : 1;
-	}
 }
