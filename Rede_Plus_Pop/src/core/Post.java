@@ -217,9 +217,6 @@ public class Post implements Comparable<Post>, Comparator<Post> {
 	}
 	
 	public int compare(Post post1, Post post2) {
-		if(post1.getPopularidade() == post2.getPopularidade())
-			return 0;
-		else
-			return post1.getPopularidade() > post2.getPopularidade() ? 1 : -1;
+		return 0;
     }
 }
