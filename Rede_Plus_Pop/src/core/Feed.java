@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Feed {
@@ -21,21 +22,18 @@ public class Feed {
 	}
 	
 	/**
-	 * Ordena a lista de post por popularidade  usando comparator
+	 * Atualiza os post por ordem de popularidade
 	 */
-	/*public void atualizaPorPopularidade() {
+	public void atualizaPorPopularidade() {
 		Collections.sort(posts, new Comparator<Post>() {
 
 			@Override
 			public int compare(Post post1, Post post2) {
-				if (post1.getPopularidade() > post2.getPopularidade()) {
-					return 1;
-				} else if (post1.getPopularidade() == post2.getPopularidade()) {
+				if(post1.getPopularidade() == post2.getPopularidade())
 					return 0;
-				} else {
-					return -1;
-				}
+				else
+					return post1.getPopularidade() > post2.getPopularidade() ? 1 : -1;
 			}
 		});
-	}*/
+	}
 }

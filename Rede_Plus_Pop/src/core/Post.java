@@ -4,12 +4,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 import treatmentsExceptions.PostExceptions;
 
-public class Post implements Comparable<Post> {
+public class Post implements Comparable<Post>, Comparator<Post> {
 
 	private String mensagem;
 	private List<String> conteudo;
@@ -214,4 +215,11 @@ public class Post implements Comparable<Post> {
 		}
 		return 1;
 	}
+	
+	public int compare(Post post1, Post post2) {
+		if(post1.getPopularidade() == post2.getPopularidade())
+			return 0;
+		else
+			return post1.getPopularidade() > post2.getPopularidade() ? 1 : -1;
+    }
 }

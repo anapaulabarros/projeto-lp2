@@ -445,4 +445,8 @@ public class SystemPop {
 	public void atualizaFeed() {
 		usuarioLogado.atualizaFeed();
 	}
+	
+	public void atualizaFeedPopularidade() {
+		usuarioLogado.atualizaFeedPopularidade();
+	}
 }
