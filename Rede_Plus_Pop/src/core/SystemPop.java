@@ -1,5 +1,6 @@
 package core;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -36,7 +37,7 @@ public class SystemPop {
 	private Usuario usuarioLogado;
 	private Map<String, ArrayList<String>> dicionarioHashtags;
 	private Map<String, Integer> contadorDeHastags;
-	private ObjectOutputStream oos;
+	//private ObjectOutputStream oos;
 	
 	public SystemPop() {
 		usuarios = new ArrayList<Usuario>();
@@ -455,31 +456,26 @@ public class SystemPop {
 		usuarioLogado.atualizaFeedPopularidade();
 	}
 	
-	public void salvaHistoricoPosts() {
+	public void salvaHistoricoPosts() throws IOException {
 		List<String> postString = new ArrayList<String>();
 		
 		for(int i = 0; i < usuarios.size(); i++) {
 			Usuario usuarioAtual = usuarios.get(i);
 			postString.add(usuarioAtual.getNome());
 			for(int j = 0; j < usuarioAtual.getPosts().size(); j++) {
-				Post postAtual = usuarioLogado.getPosts().get(j);
-				postString.add("Post #" + i + " " + postAtual.toString());
+				Post postAtual = usuarioAtual.getPosts().get(j);
+				postString.add("Post #" + (j + 1) + " " + postAtual.toString());
 			}
 			postString.add("--------------------------");
 		}
 		
-		try {
-			FileOutputStream  meuArquivo = new FileOutputStream("./arquivos/historicoDePosts.txt");
-			oos = new ObjectOutputStream(meuArquivo);
-			oos.writeObject(postString);
-			oos.flush();
-			oos.close();
-			meuArquivo.flush();
-			meuArquivo.close();
-			
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		FileOutputStream  meuArquivo = new FileOutputStream("./arquivos/historicoDePosts.txt");
+		ObjectOutputStream oos = new ObjectOutputStream(meuArquivo);
+		oos.writeObject(postString);
+		oos.flush();
+		oos.close();
+		meuArquivo.flush();
+		meuArquivo.close();
 		
 	}
 }

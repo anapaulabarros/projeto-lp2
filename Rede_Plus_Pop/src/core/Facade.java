@@ -1,5 +1,6 @@
 package core;
 
+import java.io.IOException;
 import java.util.Map;
 
 import treatmentsExceptions.SystemPopExceptions;
@@ -177,7 +178,7 @@ public class Facade {
 		sistemaPop.atualizaFeedPopularidade();
 	}
 	
-	public void salvaHistoricoPost() {
+	public void salvaHistoricoPost() throws IOException {
 		sistemaPop.salvaHistoricoPosts();
 	}
 	

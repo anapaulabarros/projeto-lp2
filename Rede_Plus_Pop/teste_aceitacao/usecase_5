@@ -101,10 +101,8 @@ atualizaFeed
 atualizaFeedPopularidade
 
 
-salvaHistoricoPost
-
 logout
 
-
+#salvaHistoricoPost
 
 fechaSistema
