@@ -450,12 +450,14 @@ public class SystemPop {
 		usuarioLogado.atualizaFeedPopularidade();
 	}
 	
-	public List<String> getPostUsuarioLogodo() {
+	public List<String> salvaHistoricoPosts() {
 		List<String> postString = new ArrayList<String>();
+		postString.add(usuarioLogado.getNome());
 		for(int i = 0; i < usuarioLogado.getPosts().size(); i++) {
 			Post postAtual = usuarioLogado.getPosts().get(i);
 			postString.add("Post #" + i + " " + postAtual.toString());
 		}
+		postString.add("--------------------------");
 		return postString;
 	}
 }

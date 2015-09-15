@@ -178,8 +178,8 @@ public class Facade {
 		sistemaPop.atualizaFeedPopularidade();
 	}
 	
-	public List<String> getPostUsuarioLogodo() {
-		return sistemaPop.getPostUsuarioLogodo();
+	public List<String> salvaHistoricoPosts() {
+		return sistemaPop.salvaHistoricoPosts();
 	}
 	
 	public static void main(String[] args) {
