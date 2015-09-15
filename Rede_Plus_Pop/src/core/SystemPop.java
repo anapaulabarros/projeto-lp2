@@ -457,12 +457,16 @@ public class SystemPop {
 	
 	public void salvaHistoricoPosts() {
 		List<String> postString = new ArrayList<String>();
-		postString.add(usuarioLogado.getNome());
-		for(int i = 0; i < usuarioLogado.getPosts().size(); i++) {
-			Post postAtual = usuarioLogado.getPosts().get(i);
-			postString.add("Post #" + i + " " + postAtual.toString());
+		
+		for(int i = 0; i < usuarios.size(); i++) {
+			Usuario usuarioAtual = usuarios.get(i);
+			postString.add(usuarioAtual.getNome());
+			for(int j = 0; j < usuarioAtual.getPosts().size(); j++) {
+				Post postAtual = usuarioLogado.getPosts().get(j);
+				postString.add("Post #" + i + " " + postAtual.toString());
+			}
+			postString.add("--------------------------");
 		}
-		postString.add("--------------------------");
 		
 		try {
 			FileOutputStream  meuArquivo = new FileOutputStream("./arquivos/historicoDePosts.txt");

@@ -97,13 +97,14 @@ expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" get
 
 criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar #amoescadas #DivaDoMaisPlus" data="27/08/2015 11:19:00"
 
-salvaHistoricoPost
-
 atualizaFeed
 atualizaFeedPopularidade
 
 
+salvaHistoricoPost
+
 logout
+
 
 
 fechaSistema
