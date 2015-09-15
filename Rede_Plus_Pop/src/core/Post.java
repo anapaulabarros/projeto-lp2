@@ -1,5 +1,6 @@
 package core;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import treatmentsExceptions.PostExceptions;
 
-public class Post implements Comparable<Post>, Comparator<Post> {
+public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 
 	private String mensagem;
 	private List<String> conteudo;

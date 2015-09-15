@@ -1,5 +1,8 @@
 package core;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,10 +31,12 @@ public class SystemPop {
 	public static final String CELEBRIDADE = "CelebridadePop";
 	public static final String NORMAL = "Normal";
 	
+	
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
 	private Map<String, ArrayList<String>> dicionarioHashtags;
 	private Map<String, Integer> contadorDeHastags;
+	private ObjectOutputStream oos;
 	
 	public SystemPop() {
 		usuarios = new ArrayList<Usuario>();
@@ -450,7 +455,7 @@ public class SystemPop {
 		usuarioLogado.atualizaFeedPopularidade();
 	}
 	
-	public List<String> salvaHistoricoPosts() {
+	public void salvaHistoricoPosts() {
 		List<String> postString = new ArrayList<String>();
 		postString.add(usuarioLogado.getNome());
 		for(int i = 0; i < usuarioLogado.getPosts().size(); i++) {
@@ -458,6 +463,19 @@ public class SystemPop {
 			postString.add("Post #" + i + " " + postAtual.toString());
 		}
 		postString.add("--------------------------");
-		return postString;
+		
+		try {
+			FileOutputStream  meuArquivo = new FileOutputStream("./arquivos/historicoDePosts.txt");
+			oos = new ObjectOutputStream(meuArquivo);
+			oos.writeObject(postString);
+			oos.flush();
+			oos.close();
+			meuArquivo.flush();
+			meuArquivo.close();
+			
+		} catch (IOException e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 }

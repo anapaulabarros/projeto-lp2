@@ -1,6 +1,5 @@
 package core;
 
-import java.util.List;
 import java.util.Map;
 
 import treatmentsExceptions.SystemPopExceptions;
@@ -178,8 +177,8 @@ public class Facade {
 		sistemaPop.atualizaFeedPopularidade();
 	}
 	
-	public List<String> salvaHistoricoPosts() {
-		return sistemaPop.salvaHistoricoPosts();
+	public void salvaHistoricoPost() {
+		sistemaPop.salvaHistoricoPosts();
 	}
 	
 	public static void main(String[] args) {
