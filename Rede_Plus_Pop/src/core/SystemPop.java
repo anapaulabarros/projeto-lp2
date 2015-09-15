@@ -205,7 +205,7 @@ public class SystemPop {
 	}
 	
 	public String getPost(int post) {
-		return usuarioLogado.getPosts().get(post).toString();
+		return usuarioLogado.getPosts().get(post).getPostString();
 	}
 	
 	public String getPost(String atributo, int post) {

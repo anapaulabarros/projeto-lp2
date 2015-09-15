@@ -192,9 +192,16 @@ public class Post implements Comparable<Post>, Comparator<Post> {
 		return data[2] + "-" + data[1] + "-" + data[0] + " " + data[3];
 	}
 
+	/*
+	 * Metodo para retornar o post em formato de String 
+	 */
+	public String getPostString() {
+		return this.mensagem + " (" + getDataPostFormatada() + ")";
+	}
+	
 	@Override
 	public String toString() {
-		return this.mensagem + " (" + getDataPostFormatada() + ")";
+		return this.mensagem + " (" + getDataPostFormatada() + ") ";
 	}
 	
 	/*
