@@ -478,4 +478,21 @@ public class SystemPop {
 		meuArquivo.close();
 		
 	}
+	
+	public void salvaDadosUsuarios() throws IOException{
+		List<String> dadosString = new ArrayList<String>();
+		
+		for(int i = 0; i < usuarios.size(); i++) {
+			dadosString.add("Usuario #" + i + SystemPop.QUEBRA_DE_LINHA);
+			dadosString.add(usuarios.get(i).toString() + SystemPop.QUEBRA_DE_LINHA + "--------------------------");
+		}
+		
+		FileOutputStream  meuArquivo = new FileOutputStream("./arquivos/DadosUsuarios.txt");
+		ObjectOutputStream oos = new ObjectOutputStream(meuArquivo);
+		oos.writeObject(dadosString);
+		oos.flush();
+		oos.close();
+		meuArquivo.flush();
+		meuArquivo.close();
+	}
 }

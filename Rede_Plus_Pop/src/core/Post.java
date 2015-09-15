@@ -202,6 +202,9 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 	
 	@Override
 	public String toString() {
+		String hastags = "";
+		if(this.mensagem.contains("#"))
+			hastags = getConteudo(2); 
 		return  getDataPostFormatada() + 
 				SystemPop.QUEBRA_DE_LINHA + 
 				"Conteudo:" + 
@@ -210,7 +213,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 				SystemPop.QUEBRA_DE_LINHA +
 				getConteudo(1)  +
 				SystemPop.QUEBRA_DE_LINHA +
-				getConteudo(2)  +
+				hastags +
 				SystemPop.QUEBRA_DE_LINHA +
 				"+Pop: " + getPopularidade();
 		

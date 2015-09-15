@@ -107,17 +107,17 @@ public class TestUsuario {
 			sistema.cadastraUsuario("Dilma Rousseff", DILMA_BOLADA, "rainha", "14/12/1947", "resources/dilma.jpg");
 
 			
-			/*sistema.login(DILMA_BOLADA, "rainha");
+			sistema.login(DILMA_BOLADA, "rainha");
 			sistema.setPops(501);
 			Assert.assertEquals("CelebridadePop", sistema.getTipoPopularidade());
 
 			sistema.adicionaAmigo(NAZA_FOGUETE);
-			sistema.logout(); */
+			sistema.logout(); 
 
 			sistema.login(NAZA_FOGUETE, "belzinha");
-		//	sistema.aceitaAmizade(DILMA_BOLADA);
-		//	sistema.adicionaAmigo(FAFA);
-		//	sistema.adicionaAmigo(MADONNA_EMAIL);
+			sistema.aceitaAmizade(DILMA_BOLADA);
+			sistema.adicionaAmigo(FAFA);
+			sistema.adicionaAmigo(MADONNA_EMAIL);
 
 			Assert.assertEquals("Normal", sistema.getTipoPopularidade());
 
@@ -125,9 +125,8 @@ public class TestUsuario {
 			sistema.criaPost("Nao aguento pessoas falsianes. #falsianeemtodolugar", "27/08/2015 09:49:00");
 
 			sistema.logout();
-			sistema.salvaHistoricoPost();
 
-			/*sistema.login(MADONNA_EMAIL, "iamawesome");
+			sistema.login(MADONNA_EMAIL, "iamawesome");
 			sistema.setPops(1001);
 			Assert.assertEquals("IconePop", sistema.getTipoPopularidade());
 
@@ -173,7 +172,7 @@ public class TestUsuario {
 			Assert.assertEquals("(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner", sistema.getRankingMenos());
 
 			sistema.logout();
-			*/
+			
 			sistema.fechaSistema();
 			
 		}catch(Exception e){

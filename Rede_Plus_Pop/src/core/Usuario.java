@@ -1,5 +1,6 @@
 package core;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +14,7 @@ import java.util.regex.Pattern;
 import treatmentsExceptions.PostExceptions;
 import treatmentsExceptions.UsuarioExceptions;
 
-public class Usuario implements Comparable<Usuario> {
+public class Usuario implements Comparable<Usuario>, Serializable {
 
 	private String nome;
 	private String email;
@@ -312,13 +313,20 @@ public class Usuario implements Comparable<Usuario> {
 		}
 	}
 
-	@Override
-	public String toString() {
+	public String dadosUsuarioString() {
 		return "Nome: " + this.nome + SystemPop.QUEBRA_DE_LINHA + "Email:  "
 				+ this.email + SystemPop.QUEBRA_DE_LINHA + "Senha:  *******"
 				+ SystemPop.QUEBRA_DE_LINHA + "Data de Nascimento: "
 				+ getDataNasc() + SystemPop.QUEBRA_DE_LINHA + "Posts: "
-				+ this.posts;
+				+ this.posts; 
+	}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + this.nome + SystemPop.QUEBRA_DE_LINHA + "Email:  "
+				+ this.email + SystemPop.QUEBRA_DE_LINHA + "Senha: " + this.senha
+				+ SystemPop.QUEBRA_DE_LINHA + "Data de Nascimento: "
+				+ getDataNasc();
 	}
 
 	public void adicionaNotificacao(String novaNotificacao) {

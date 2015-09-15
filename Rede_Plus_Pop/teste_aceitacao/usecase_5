@@ -103,6 +103,6 @@ atualizaFeedPopularidade
 
 logout
 
-#salvaHistoricoPost
-
+salvaHistoricoPost
+salvaDadosUsuarioArquivo
 fechaSistema
