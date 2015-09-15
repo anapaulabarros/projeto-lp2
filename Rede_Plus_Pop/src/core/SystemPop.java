@@ -449,4 +449,13 @@ public class SystemPop {
 	public void atualizaFeedPopularidade() {
 		usuarioLogado.atualizaFeedPopularidade();
 	}
+	
+	public List<String> getPostUsuarioLogodo() {
+		List<String> postString = new ArrayList<String>();
+		for(int i = 0; i < usuarioLogado.getPosts().size(); i++) {
+			Post postAtual = usuarioLogado.getPosts().get(i);
+			postString.add("Post #" + i + " " + postAtual.toString());
+		}
+		return postString;
+	}
 }

@@ -201,7 +201,18 @@ public class Post implements Comparable<Post>, Comparator<Post> {
 	
 	@Override
 	public String toString() {
-		return this.mensagem + " (" + getDataPostFormatada() + ") ";
+		return  getDataPostFormatada() + 
+				SystemPop.QUEBRA_DE_LINHA + 
+				"Conteudo:" + 
+				SystemPop.QUEBRA_DE_LINHA + 
+				getConteudo(0) +
+				SystemPop.QUEBRA_DE_LINHA +
+				getConteudo(1)  +
+				SystemPop.QUEBRA_DE_LINHA +
+				getConteudo(2)  +
+				SystemPop.QUEBRA_DE_LINHA +
+				"+Pop: " + getPopularidade();
+		
 	}
 	
 	/*

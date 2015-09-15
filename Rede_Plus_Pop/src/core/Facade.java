@@ -177,6 +177,11 @@ public class Facade {
 	public void atualizaFeedPopularidade() {
 		sistemaPop.atualizaFeedPopularidade();
 	}
+	
+	public List<String> getPostUsuarioLogodo() {
+		return sistemaPop.getPostUsuarioLogodo();
+	}
+	
 	public static void main(String[] args) {
 		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5"};
 		EasyAccept.main(args);
