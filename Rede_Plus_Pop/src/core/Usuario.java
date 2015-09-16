@@ -10,8 +10,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import treatmentsExceptions.AtualizaPerfilException;
+import treatmentsExceptions.ErroCadastroException;
 import treatmentsExceptions.PostException;
-import treatmentsExceptions.UsuarioExceptions;
+import treatmentsExceptions.PostNaoEncontradoException;
 
 public class Usuario implements Comparable<Usuario>, Serializable {
 
@@ -30,7 +32,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	private Feed feed;
 
 	public Usuario(String nome, String email, String senha, String dataNasc,
-			String imagem) throws UsuarioExceptions, Exception {
+			String imagem) throws Exception {
 
 		validaNome(nome);
 		validaEmailUsuario(email);
@@ -53,34 +55,34 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		this.feed = new Feed();
 	}
 
-	public void validaDataCompleta(String dataNasc) throws UsuarioExceptions {
+	public void validaDataCompleta(String dataNasc) throws ErroCadastroException {
 		if (dataNasc == null || dataNasc.equals("")
 				|| validaIntervalosDeData(dataNasc) == false)
-			throw new UsuarioExceptions(
+			throw new ErroCadastroException(
 					"Erro no cadastro de Usuarios. Data nao existe.");
 	}
 
-	public void validaDia(String dataNasc) throws UsuarioExceptions {
+	public void validaDia(String dataNasc) throws ErroCadastroException {
 		if (validaDiaDaData(dataNasc) == true)
-			throw new UsuarioExceptions(
+			throw new ErroCadastroException(
 					"Erro no cadastro de Usuarios. Formato de data esta invalida.");
 	}
 
-	public void validaSenha(String senha) throws UsuarioExceptions {
+	public void validaSenha(String senha) throws ErroCadastroException {
 		if (senha == null || senha.equals("") || senha.length() < 3)
-			throw new UsuarioExceptions(
+			throw new ErroCadastroException(
 					"A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
 	}
 
-	public void validaEmailUsuario(String email) throws UsuarioExceptions {
+	public void validaEmailUsuario(String email) throws ErroCadastroException {
 		if (email == null || email.equals("") || validaEmail(email) == false)
-			throw new UsuarioExceptions(
+			throw new ErroCadastroException(
 					"Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
 	}
 
-	public void validaNome(String nome) throws UsuarioExceptions {
+	public void validaNome(String nome) throws ErroCadastroException {
 		if (nome == null || nome.equals("") || nome.trim().equals(""))
-			throw new UsuarioExceptions(
+			throw new ErroCadastroException(
 					"Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 	}
 
@@ -88,9 +90,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return nome;
 	}
 
-	public void setNome(String nome) throws UsuarioExceptions {
+	public void setNome(String nome) throws AtualizaPerfilException {
 		if (nome == null || nome.equals(""))
-			throw new UsuarioExceptions(
+			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Nome dx usuarix nao pode ser vazio.");
 		this.nome = nome;
 	}
@@ -99,12 +101,12 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return email;
 	}
 
-	public void setEmail(String email) throws UsuarioExceptions {
+	public void setEmail(String email) throws AtualizaPerfilException {
 		if (validaEmail(email) == false)
-			throw new UsuarioExceptions(
+			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
 		if (email == null || email.equals(""))
-			throw new UsuarioExceptions("Email nao pode ser nulo ou vazio.");
+			throw new AtualizaPerfilException("Email nao pode ser nulo ou vazio.");
 		this.email = email;
 	}
 
@@ -120,9 +122,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return imagem;
 	}
 
-	public void setImagem(String imagem) throws UsuarioExceptions {
+	public void setImagem(String imagem) throws AtualizaPerfilException {
 		if (nome == null || nome.equals(""))
-			throw new UsuarioExceptions("Imagem nao pode ser nula ou vazia.");
+			throw new AtualizaPerfilException("Imagem nao pode ser nula ou vazia.");
 		this.imagem = imagem;
 	}
 
@@ -131,14 +133,13 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return dataFormat.format(dataNasc);
 	}
 
-	public void setDataNasc(String novaDataNasc) throws UsuarioExceptions,
-			Exception {
+	public void setDataNasc(String novaDataNasc) throws AtualizaPerfilException, ParseException{
 		if (validaDiaDaData(novaDataNasc) == true
 				|| validaIntervalosDeData(novaDataNasc) == false)
-			throw new UsuarioExceptions(
+			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Formato de data esta invalida.");
 		if (isDateValid(novaDataNasc) == false)
-			throw new UsuarioExceptions(
+			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Data nao existe.");
 		this.dataNasc = formataData(novaDataNasc);
 	}
@@ -147,9 +148,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return posts;
 	}
 
-	public Post getPostEspecifico(int indexPost) throws PostException {
+	public Post getPostEspecifico(int indexPost) throws PostNaoEncontradoException {
 		if (indexPost >= posts.size()) {
-			throw new PostException("Post nao encontrado no sistema.");
+			throw new PostNaoEncontradoException();
 		}
 		return posts.get(indexPost);
 	}
@@ -228,8 +229,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	 * @throws Exception
 	 *             Caso a String esteja no formato errado
 	 */
-	private Date formataData(String data) throws UsuarioExceptions,
-			ParseException {
+	private Date formataData(String data) throws ParseException {
 		if (data == null || data.equals(""))
 			return null;
 

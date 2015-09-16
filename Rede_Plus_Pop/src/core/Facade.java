@@ -3,7 +3,6 @@ package core;
 import java.io.IOException;
 import java.util.Map;
 
-import treatmentsExceptions.SystemPopExceptions;
 import easyaccept.EasyAccept;
 
 public class Facade {
@@ -73,19 +72,19 @@ public class Facade {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
 	
-	public void curtirPost(String email,int indexPost) throws SystemPopExceptions {
+	public void curtirPost(String email,int indexPost) throws Exception {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.CURTIR);
 	}
 	
-	public void rejeitarPost(String email, int indexPost) throws SystemPopExceptions {
+	public void rejeitarPost(String email, int indexPost) throws Exception {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.REJEITAR);
 	}
 	
-	public void adicionaAmigo(String usuario) throws SystemPopExceptions {
+	public void adicionaAmigo(String usuario) throws Exception {
 		sistemaPop.adicionaAmigo(usuario);
 	}
 	
-	public void removeAmigo(String emailUsuario) throws SystemPopExceptions {
+	public void removeAmigo(String emailUsuario) throws Exception {
 		sistemaPop.removeAmigo(emailUsuario);
 	}
 
@@ -97,11 +96,11 @@ public class Facade {
 		return sistemaPop.getNextNotificacao();
 	}
 	
-	public void rejeitaAmizade(String usuario) throws SystemPopExceptions {
+	public void rejeitaAmizade(String usuario) throws Exception {
 		sistemaPop.rejeitaAmizade(usuario);
 	}
 	
-	public void aceitaAmizade(String usuario) throws SystemPopExceptions {
+	public void aceitaAmizade(String usuario) throws Exception {
 		sistemaPop.aceitaAmizade(usuario);
 	}
 	

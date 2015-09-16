@@ -10,9 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import treatmentsExceptions.AtualizaPerfilException;
+import treatmentsExceptions.EntradaException;
+import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
-import treatmentsExceptions.SystemPopExceptions;
-import treatmentsExceptions.UsuarioExceptions;
 
 public class SystemPop {
 	
@@ -45,18 +46,18 @@ public class SystemPop {
 		contadorDeHastags = new HashMap<String, Integer>();
 	}
 	
-	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws UsuarioExceptions, Exception {
+	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception {
 		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, imagem);
 		if (getUsuarios().contains(novoUsuario))
-			throw new SystemPopExceptions("Usuario ja esta cadastrado no +Pop.");
+			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
 		usuarios.add(novoUsuario);
 		return email;
 	}
 
-	public boolean login(String email, String senha) throws SystemPopExceptions {
+	public boolean login(String email, String senha) throws Exception {
 		Usuario usuario = buscaUsuario(email);
 		if(usuario == null)
-			throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix com email " + email + " nao esta cadastradx.");
+			throw new LogicaException("Nao foi possivel realizar login. Um usuarix com email " + email + " nao esta cadastradx.");
 		else{
 			if(usuario.getSenha().equals(senha)){
 				if (usuarioLogado == null){
@@ -64,25 +65,25 @@ public class SystemPop {
 					return true;
 				}
 				else {
-					throw new SystemPopExceptions("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome() + ".");
+					throw new LogicaException("Nao foi possivel realizar login. Um usuarix ja esta logadx: " + usuarioLogado.getNome() + ".");
 				}	
 			}
 			else{
-				throw new SystemPopExceptions("Nao foi possivel realizar login. Senha invalida.");
+				throw new EntradaException("Nao foi possivel realizar login. Senha invalida.");
 			}		
 		}
 	}
 	
-	public void removeUsuario(String emailDoUsuario) throws SystemPopExceptions {
+	public void removeUsuario(String emailDoUsuario) throws LogicaException {
 		Usuario usuarioParaRemover = buscaUsuario(emailDoUsuario);
 		if(usuarioParaRemover == null)
-			throw new SystemPopExceptions("Erro ao remover usuario. Um usuarix com email " + emailDoUsuario + " nao esta cadastradx.");
+			throw new LogicaException("Erro ao remover usuario. Um usuarix com email " + emailDoUsuario + " nao esta cadastradx.");
 		usuarios.remove(usuarioParaRemover);
 	}
 	
-	public boolean logout() throws SystemPopExceptions {
+	public boolean logout() throws LogicaException {
 		if(usuarioLogado == null)
-			throw new SystemPopExceptions("Nao eh possivel realizar logout. Nenhum usuarix esta logadx no +pop.");
+			throw new LogicaException("Nao eh possivel realizar logout. Nenhum usuarix esta logadx no +pop.");
 		usuarioLogado = null;
 		return true;
 	}
@@ -103,7 +104,7 @@ public class SystemPop {
 		return usuarios;
 	}
 	
-	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws SystemPopExceptions {
+	public void interagirComPost(int idPost, String emailAmigo, String opcao) throws LogicaException {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
 		String palavraInteracao = "";
 		
@@ -125,30 +126,30 @@ public class SystemPop {
 
 	//metodo para validar a interacao do usuario logado com um post de um amigo
 	private void validaInteracaoPost(int idPost, String emailAmigo,
-			Usuario amigoDoUsuarioLogado) throws SystemPopExceptions {
+			Usuario amigoDoUsuarioLogado) throws LogicaException {
 		if(usuarioLogado == null)
-			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
+			throw new LogicaException("Nao eh possivel realizar interacao com o post, nao ha nenhum usuario logado.");
 		if(usuarioLogado.getEmail().equals(emailAmigo))
-			throw new SystemPopExceptions("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
+			throw new LogicaException("Nao eh possivel realizar interacao com o post, voce precisa escolher um amigo para interagir com os posts.");
 		if(amigoDoUsuarioLogado == null)
-			throw new SystemPopExceptions("Nao existe nenhum usuario com o email fornecido.");
+			throw new LogicaException("Nao existe nenhum usuario com o email fornecido.");
 		if(amigoDoUsuarioLogado.getPosts().size() == 0 || idPost > amigoDoUsuarioLogado.getPosts().size())
-			throw new SystemPopExceptions("Nao existe nenhum post no mural com esse indice.");
+			throw new LogicaException("Nao existe nenhum post no mural com esse indice.");
 	}
 
 	public void iniciaSistema() {
 		//iniciar sistema		
 	}
 
-	public void fechaSistema() throws SystemPopExceptions {
+	public void fechaSistema() throws LogicaException {
 		if (usuarioLogado == null){
 			//fechar sistema
 		}else{
-			throw new SystemPopExceptions("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
+			throw new LogicaException("Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
 		}
 	}
 
-	public String getInfoUsuario(String atributo) throws SystemPopExceptions {
+	public String getInfoUsuario(String atributo) throws LogicaException {
 		String retorno = "";
 		if (atributo.equals(NOME)){
 			retorno = usuarioLogado.getNome();
@@ -157,16 +158,16 @@ public class SystemPop {
 		} else if (atributo.equals(FOTO)){
 			retorno = usuarioLogado.getImagem();
 		} else if (atributo.equals(SENHA)){
-			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
+			throw new LogicaException("A senha dx usuarix eh protegida.");
 		}
 		return retorno;
 	}
 	
-	public String getInfoUsuario(String atributo, String email) throws Exception {
+	public String getInfoUsuario(String atributo, String email) throws LogicaException {
 		Usuario usuario = buscaUsuario(email);
 		String retorno = "";
 		if (usuario == null){
-			throw new Exception("Um usuarix com email " + email + " nao esta cadastradx.");
+			throw new LogicaException("Um usuarix com email " + email + " nao esta cadastradx.");
 		}
 		if (atributo.equals(NOME)){
 			retorno = usuario.getNome();
@@ -175,14 +176,14 @@ public class SystemPop {
 		} else if (atributo.equals(FOTO)){
 			retorno = usuario.getImagem();
 		} else if (atributo.equals(SENHA)){
-			throw new SystemPopExceptions("A senha dx usuarix eh protegida.");
+			throw new LogicaException("A senha dx usuarix eh protegida.");
 		}
 		return retorno;
 	}
 
-	public void atualizaPerfil(String atributo, String valor) throws UsuarioExceptions, Exception {
+	public void atualizaPerfil(String atributo, String valor) throws Exception {
 		if (usuarioLogado == null){
-			throw new SystemPopExceptions("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
+			throw new AtualizaPerfilException("Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
 		}
 		if (atributo.equals(NOME)){
 			usuarioLogado.setNome(valor);
@@ -201,11 +202,11 @@ public class SystemPop {
 		}
 	}
 
-	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws SystemPopExceptions, UsuarioExceptions {
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws EntradaException{
 		if (velhaSenha.equals(usuarioLogado.getSenha())){
 			usuarioLogado.setSenha(valor);
 		}else{
-			throw new SystemPopExceptions("Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
+			throw new AtualizaPerfilException("Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
 		}
 	}
 	
@@ -225,13 +226,13 @@ public class SystemPop {
 		return null;
 	}
 
-	public String getConteudoPost(int indice, int post) throws SystemPopExceptions {
+	public String getConteudoPost(int indice, int post) throws LogicaException {
 		Post postAtual = usuarioLogado.getPosts().get(post);
 		if (indice < 0){
-			throw new SystemPopExceptions("Requisicao invalida. O indice deve ser maior ou igual a zero.");
+			throw new LogicaException("Requisicao invalida. O indice deve ser maior ou igual a zero.");
 		}
 		if (indice >= postAtual.getQuantidadeItens()){
-			throw new SystemPopExceptions("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
+			throw new LogicaException("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
 		}
 		return postAtual.getConteudo(indice);
 	}
@@ -240,9 +241,9 @@ public class SystemPop {
 		return dicionarioHashtags;
 	}
 	
-	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostException, ParseException {
+	public void criaPost(String mensagem, String data) throws Exception {
 		if(getUsuarioLogado() == null){
-			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
+			throw new LogicaException("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}
 		Post novoPost = new Post(mensagem, data);
 		usuarioLogado.postar(novoPost);
@@ -308,11 +309,11 @@ public class SystemPop {
 		return usuarioLogado.getNextNotificacao();
 	}
 	
-	public void adicionaAmigo(String emailFuturoAmigo) throws SystemPopExceptions {
+	public void adicionaAmigo(String emailFuturoAmigo) throws LogicaException {
 		if (buscaUsuario(emailFuturoAmigo) == null)
-			throw new SystemPopExceptions("O usuario " + emailFuturoAmigo + " nao esta cadastrado no +pop.");
+			throw new LogicaException("O usuario " + emailFuturoAmigo + " nao esta cadastrado no +pop.");
 		if (usuarioLogado.buscaAmigo(emailFuturoAmigo) != null)
-			throw new SystemPopExceptions("O usuario " + emailFuturoAmigo + " ja possui uma amizade com voce.");
+			throw new LogicaException("O usuario " + emailFuturoAmigo + " ja possui uma amizade com voce.");
 		
 		Usuario candidatoAmigo = buscaUsuario(emailFuturoAmigo);
 		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " quer sua amizade."); // Envia notificacao para o Futuro Amigo
@@ -320,9 +321,9 @@ public class SystemPop {
 		
 	}
 	
-	public void aceitaAmizade(String emailNovoAmigo) throws SystemPopExceptions{
+	public void aceitaAmizade(String emailNovoAmigo) throws LogicaException{
 		if (buscaUsuario(emailNovoAmigo) == null)
-			throw new SystemPopExceptions("O usuario " + emailNovoAmigo + " nao esta cadastrado no +pop.");
+			throw new LogicaException("O usuario " + emailNovoAmigo + " nao esta cadastrado no +pop.");
 		
 		Usuario novoAmigo = buscaUsuario(emailNovoAmigo);
 		usuarioLogado.aceitaAmizade(novoAmigo);
@@ -332,22 +333,22 @@ public class SystemPop {
 		
 	}
 
-	public void rejeitaAmizade(String emailRejeitado) throws SystemPopExceptions {
+	public void rejeitaAmizade(String emailRejeitado) throws LogicaException {
 		if (buscaUsuario(emailRejeitado) == null)
-			throw new SystemPopExceptions("O usuario " + emailRejeitado + " nao esta cadastrado no +pop.");
+			throw new LogicaException("O usuario " + emailRejeitado + " nao esta cadastrado no +pop.");
 		
 		Usuario candidatoAmigo = buscaUsuario(emailRejeitado);
 		if (!usuarioLogado.getEmailsNotificacao().contains(emailRejeitado)) // verifica se usuario logado tem alguma notificacao
-			throw new SystemPopExceptions(candidatoAmigo.getNome() + " nao lhe enviou solicitacoes de amizade.");
+			throw new LogicaException(candidatoAmigo.getNome() + " nao lhe enviou solicitacoes de amizade.");
 		
 		candidatoAmigo.adicionaNotificacao(usuarioLogado.getNome() + " rejeitou sua amizade."); // envia notificacao para o usuario que mandou o convite
 	}
 	
-	public void removeAmigo(String emailExAmigo) throws SystemPopExceptions {
+	public void removeAmigo(String emailExAmigo) throws LogicaException {
 		if (buscaUsuario(emailExAmigo) == null)
-			throw new SystemPopExceptions("O usuario " + emailExAmigo + " nao esta cadastrado no +pop.");
+			throw new LogicaException("O usuario " + emailExAmigo + " nao esta cadastrado no +pop.");
 		if (usuarioLogado.buscaAmigo(emailExAmigo) == null)
-			throw new SystemPopExceptions("O usuario " + emailExAmigo + " nao possui uma amizade com voce.");
+			throw new LogicaException("O usuario " + emailExAmigo + " nao possui uma amizade com voce.");
 		
 		//remove amizade
 		Usuario exAmigo = buscaUsuario(emailExAmigo);

@@ -1,29 +1,14 @@
 package treatmentsExceptions;
 
-public class PostException extends Exception {
+public class PostException extends EntradaException {
 
-	private String message = null;
-
+	private String message = "Nao eh possivel criar o post.";
+	
 	public PostException() {
 		super();
 	}
-	
-	public PostException(String message){
+
+	public PostException(String message) {
 		super(message);
-        this.message = message;
 	}
-	
-	public PostException(Throwable cause) {
-        super(cause);
-    }
- 
-	@Override
-    public String toString() {
-        return message;
-    }
- 
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }
