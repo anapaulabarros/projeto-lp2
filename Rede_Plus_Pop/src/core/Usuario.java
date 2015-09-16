@@ -17,6 +17,7 @@ import treatmentsExceptions.PostNaoEncontradoException;
 
 public class Usuario implements Comparable<Usuario>, Serializable {
 
+	private final long serialVersionUID = 42L;
 	private String nome;
 	private String email;
 	private String senha;
@@ -30,6 +31,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	private int pops;
 	private int magica;
 	private Feed feed;
+	
 
 	public Usuario(String nome, String email, String senha, String dataNasc,
 			String imagem) throws Exception {

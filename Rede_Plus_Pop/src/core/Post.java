@@ -13,6 +13,7 @@ import treatmentsExceptions.PostException;
 
 public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 
+	private final long serialVersionUID = 42L;
 	private String mensagem;
 	private List<String> conteudo;
 	private int curtidas;
