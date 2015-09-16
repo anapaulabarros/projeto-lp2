@@ -1,19 +1,19 @@
 package treatmentsExceptions;
 
-public class PostExceptions extends Exception {
+public class PostException extends Exception {
 
 	private String message = null;
 
-	public PostExceptions() {
+	public PostException() {
 		super();
 	}
 	
-	public PostExceptions(String message){
+	public PostException(String message){
 		super(message);
         this.message = message;
 	}
 	
-	public PostExceptions(Throwable cause) {
+	public PostException(Throwable cause) {
         super(cause);
     }
  

@@ -9,7 +9,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.PostException;
 
 public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 
@@ -20,7 +20,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 	private int rejeitadas;
 	private String dataPublicacao;
 
-	public Post(String mensagem, String dataPublicao) throws PostExceptions,
+	public Post(String mensagem, String dataPublicao) throws PostException,
 			ParseException {
 		verificaConteudoDaMensagem(mensagem);
 		this.conteudo = new ArrayList<String>();
@@ -39,23 +39,23 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 
 	}
 
-	private void verificaValidadeDasHastags(String mensagem) throws PostExceptions {
+	private void verificaValidadeDasHastags(String mensagem) throws PostException {
 		if (validaHashtags(mensagem) != null) {
-			throw new PostExceptions("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+			throw new PostException("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
 	}
 
-	private void verificaTamanhoDaMensagem() throws PostExceptions {
+	private void verificaTamanhoDaMensagem() throws PostException {
 		if (conteudo.get(0).length() > 200) {
-			throw new PostExceptions(
+			throw new PostException(
 					"Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
 	}
 
 	private void verificaConteudoDaMensagem(String mensagem)
-			throws PostExceptions {
+			throws PostException {
 		if (mensagem == null || mensagem.equals(""))
-			throw new PostExceptions("A mensagem nao pode ser nula ou vazia.");
+			throw new PostException("A mensagem nao pode ser nula ou vazia.");
 	}
 
 	/*

@@ -1,6 +1,5 @@
 package core;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.PostException;
 import treatmentsExceptions.SystemPopExceptions;
 import treatmentsExceptions.UsuarioExceptions;
 
@@ -241,7 +240,7 @@ public class SystemPop {
 		return dicionarioHashtags;
 	}
 	
-	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostExceptions, ParseException {
+	public void criaPost(String mensagem, String data) throws SystemPopExceptions,PostException, ParseException {
 		if(getUsuarioLogado() == null){
 			throw new SystemPopExceptions("Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");		
 		}

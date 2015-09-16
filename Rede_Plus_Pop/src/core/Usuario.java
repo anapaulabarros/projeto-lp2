@@ -5,13 +5,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import treatmentsExceptions.PostExceptions;
+import treatmentsExceptions.PostException;
 import treatmentsExceptions.UsuarioExceptions;
 
 public class Usuario implements Comparable<Usuario>, Serializable {
@@ -148,9 +147,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return posts;
 	}
 
-	public Post getPostEspecifico(int indexPost) throws PostExceptions {
+	public Post getPostEspecifico(int indexPost) throws PostException {
 		if (indexPost >= posts.size()) {
-			throw new PostExceptions("Post nao encontrado no sistema.");
+			throw new PostException("Post nao encontrado no sistema.");
 		}
 		return posts.get(indexPost);
 	}
@@ -180,7 +179,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		atualizaPops();
 	}
 
-	public void postar(Post novoPost) throws PostExceptions {
+	public void postar(Post novoPost) throws PostException {
 		posts.add(novoPost);
 	}
 
