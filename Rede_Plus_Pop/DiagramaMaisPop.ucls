@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="core.Facade" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Facade.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="175" y="175"/>    
