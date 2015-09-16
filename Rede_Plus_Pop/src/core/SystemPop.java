@@ -37,7 +37,6 @@ public class SystemPop {
 	private Usuario usuarioLogado;
 	private Map<String, ArrayList<String>> dicionarioHashtags;
 	private Map<String, Integer> contadorDeHastags;
-	//private ObjectOutputStream oos;
 	
 	public SystemPop() {
 		usuarios = new ArrayList<Usuario>();

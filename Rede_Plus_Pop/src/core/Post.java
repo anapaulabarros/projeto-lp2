@@ -21,6 +21,14 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 	private int rejeitadas;
 	private String dataPublicacao;
 
+	/**
+	 * construtor da classe Post e os seus atributos
+	 * 
+	 * @param mensagem
+	 * @param dataPublicao
+	 * @throws PostException
+	 * @throws ParseException
+	 */
 	public Post(String mensagem, String dataPublicao) throws PostException,
 			ParseException {
 		verificaConteudoDaMensagem(mensagem);
@@ -59,7 +67,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 			throw new PostException("A mensagem nao pode ser nula ou vazia.");
 	}
 
-	/*
+	/**
 	 * metodo para retornar apenas o texto do post removendo conteudo de midias,
 	 * audios e hastags
 	 * 
@@ -77,7 +85,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		return String.join(" ", conteudo);
 	}
 
-	/*
+	/**
 	 * metodo para retornar apenas as midias do post removendo conteudo de
 	 * textos e hastags
 	 * 
@@ -96,7 +104,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		return String.join(" ", conteudo);
 	}
 
-	/*
+	/**
 	 * metodo para retornar apenas as hastags do post removendo conteudo de
 	 * midias e texto
 	 * 
@@ -108,7 +116,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		return mensagem.substring(mensagem.indexOf("#"), mensagem.length());
 	}
 
-	/*
+	/**
 	 * Metodo para validar hasTags. Se a Hastag nao tiver no primeiro caractere
 	 * da palavra '#' o metodo retorna a palavra invalida Ex:
 	 * "Um teste. #teste nova_mensagem #hastag" - retorno: nova_mensagem
@@ -220,8 +228,11 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		
 	}
 	
-	/*
-	 * Metodo para orderna os Post pela data de publicacao 
+	/**
+	 * Metodo para ordernar os Posts pela data de publicacao
+	 * 
+	 *  @param Post - outroPost
+	 *  @return int
 	 */
 	@Override
 	public int compareTo(Post outroPost) {

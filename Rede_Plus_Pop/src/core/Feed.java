@@ -22,7 +22,10 @@ public class Feed {
 	}
 	
 	/**
-	 * Atualiza os post por ordem de popularidade
+	 * Atualiza os posts por ordem de popularidade
+	 * 
+	 * @param void
+	 * @return void
 	 */
 	public void atualizaPorPopularidade() {
 		Collections.sort(posts, new Comparator<Post>() {

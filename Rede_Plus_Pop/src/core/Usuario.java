@@ -32,7 +32,16 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	private int magica;
 	private Feed feed;
 	
-
+	/**
+	 *  Construtor da classe Usuario, com seus atributos.
+	 *  
+	 * @param nome
+	 * @param email
+	 * @param senha
+	 * @param dataNasc
+	 * @param imagem
+	 * @throws Exception
+	 */
 	public Usuario(String nome, String email, String senha, String dataNasc,
 			String imagem) throws Exception {
 
@@ -249,8 +258,8 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	 * Valida um email fornecido pelo usuario ao criar um novo usuario retorna
 	 * boolean Ex: alguem@mail - retorna false..
 	 * 
-	 * @param email
-	 *            String
+	 * @param String - email
+	 *         
 	 * @return boolean true para emails validos e false para emails invalidos
 	 */
 	public boolean validaEmail(String email) {
@@ -267,9 +276,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	 * Valida um intervalo data fornecida pelo usuario ao criar um novo usuario
 	 * retorna boolean Ex: 32/10/2010 - retorna false..
 	 * 
-	 * @param data
-	 *            String
-	 * @return boolean true para datas validas e false para datas invalidas
+	 * @param String - data
+	 *            
+	 * @return boolean true - para datas validas e false para datas invalidas
 	 */
 	public boolean validaIntervalosDeData(String data) {
 		String[] valores = data.split("/");
@@ -292,9 +301,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	 * Valida o dia da data fornecida pelo usuario ao criar um novo usuario
 	 * retorna boolean Ex: 1510/10/2010 - retorna false.
 	 * 
-	 * @param data
-	 *            String
-	 * @return boolean true para dias validos e false para dias invalidos
+	 * @param String - data
+	 *            
+	 * @return boolean - true para dias validos e false para dias invalidos
 	 */
 	public boolean validaDiaDaData(String data) {
 		String[] dia = data.split("/");
@@ -367,13 +376,13 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return amigos.size();
 	}
 
-	/*
+	/**
 	 * Pesquisa se um usuario possui amizade com o usuario logado retorna
 	 * Usuario caso exista a amizade e null para falso.
 	 * 
-	 * @param emailAmgi String
+	 * @param String - emailAmgi 
 	 * 
-	 * @return Usuario
+	 * @return Usuario - retorna um usuario caso encontre senao retorna null
 	 */
 	public Usuario buscaAmigo(String emailAmigo) {
 		for (Usuario usuario : amigos) {
@@ -403,7 +412,13 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		}
 		return listaPost;
 	}
-	
+	/**
+	 * Metodo para adicionar post no feed de noticias do usuario logado no 
+	 * sistema
+	 * 
+	 * @param void
+	 * @return void
+	 */
 	public void adicionaPostsNoFeed(){
 		List<Post> postsAdicionar = new ArrayList<Post>();
 		for (Usuario amigo : amigos) {
