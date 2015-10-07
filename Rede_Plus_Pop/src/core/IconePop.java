@@ -17,4 +17,9 @@ public class IconePop implements TipoPopularidade {
 	public String toString(){
 		return "IconePop";
 	}
+	
+	@Override
+	public int qtdPosts() {
+		return 6;
+	}
 }

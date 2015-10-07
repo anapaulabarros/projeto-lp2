@@ -422,19 +422,25 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	public void adicionaPostsNoFeed(){
 		List<Post> postsAdicionar = new ArrayList<Post>();
 		for (Usuario amigo : amigos) {
+			postsAdicionar = amigo.getPostsRecentes(amigo.getQtdPost());
+			/*
 			if (amigo.getStringPopularidade().equals("Normal")) {
 				postsAdicionar = amigo.getPostsRecentes(2);
 			} else if (amigo.getStringPopularidade().equals("CelebridadePop")) {
 				postsAdicionar = amigo.getPostsRecentes(4);
 			} else if (amigo.getStringPopularidade().equals("IconePop")) {
 				postsAdicionar = amigo.getPostsRecentes(6);
-			}
+			}*/
 			for (Post post : postsAdicionar) {
 				this.feed.adicionaPost(post);
 			}
 		}
 	}
 
+	public int getQtdPost(){
+		return popularidade.qtdPosts();
+	}
+	
 	public void atualizaFeed() {
 		adicionaPostsNoFeed();
 		this.feed.atualiza();

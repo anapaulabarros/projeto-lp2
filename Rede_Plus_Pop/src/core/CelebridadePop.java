@@ -35,5 +35,10 @@ public class CelebridadePop implements TipoPopularidade {
 	public String toString(){
 		return "CelebridadePop";
 	}
+	
+	public int qtdPosts() {
+		return 4;
+	}
+
 
 }
