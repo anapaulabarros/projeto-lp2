@@ -3,7 +3,6 @@ package core;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,7 +12,6 @@ import java.util.Map;
 import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.EntradaException;
 import treatmentsExceptions.LogicaException;
-import treatmentsExceptions.PostException;
 
 public class SystemPop {
 	
@@ -334,8 +332,8 @@ public class SystemPop {
 		usuarioLogado.postar(novoPost);
 		
 		if(mensagem.contains("#")){
-			if(novoPost.filtraHashtags(mensagem) != null || novoPost.filtraHashtags(mensagem) != "")
-				HastagsMaisPop(novoPost.filtraHashtags(mensagem));
+			if(UtilPost.filtraHashtags(mensagem) != null || UtilPost.filtraHashtags(mensagem) != "")
+				HastagsMaisPop(UtilPost.filtraHashtags(mensagem));
 				//dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 		}
 		
