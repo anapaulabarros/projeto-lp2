@@ -18,6 +18,8 @@ import treatmentsExceptions.PostNaoEncontradoException;
 public class Usuario implements Comparable<Usuario>, Serializable {
 
 	private final long serialVersionUID = 42L;
+	private static final int VALOR_500 = 500;
+	private static final int VALOR_1000 = 1000;
 	private String nome;
 	private String email;
 	private String senha;
@@ -45,16 +47,16 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	public Usuario(String nome, String email, String senha, String dataNasc,
 			String imagem) throws Exception {
 
-		validaNome(nome);
-		validaEmailUsuario(email);
-		validaSenha(senha);
-		validaDia(dataNasc);
-		validaDataCompleta(dataNasc);
+		UtilUsuario.validaNome(nome);
+		UtilUsuario.validaEmailUsuario(email);
+		UtilUsuario.validaSenha(senha);
+		UtilUsuario.validaDia(dataNasc);
+		UtilUsuario.validaDataCompleta(dataNasc);
 
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.dataNasc = formataData(dataNasc);
+		this.dataNasc = UtilUsuario.formataData(dataNasc);
 		this.imagem = imagem;
 		posts = new ArrayList<Post>();
 		this.amigos = new ArrayList<Usuario>();
@@ -64,37 +66,6 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		this.pops = 0;
 		this.magica = 0;
 		this.feed = new Feed();
-	}
-
-	public void validaDataCompleta(String dataNasc) throws ErroCadastroException {
-		if (dataNasc == null || dataNasc.equals("")
-				|| validaIntervalosDeData(dataNasc) == false)
-			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Data nao existe.");
-	}
-
-	public void validaDia(String dataNasc) throws ErroCadastroException {
-		if (validaDiaDaData(dataNasc) == true)
-			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Formato de data esta invalida.");
-	}
-
-	public void validaSenha(String senha) throws ErroCadastroException {
-		if (senha == null || senha.equals("") || senha.length() < 3)
-			throw new ErroCadastroException(
-					"A senha nao pode ser nula, vazia ou menor que 3 caracteres.");
-	}
-
-	public void validaEmailUsuario(String email) throws ErroCadastroException {
-		if (email == null || email.equals("") || validaEmail(email) == false)
-			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
-	}
-
-	public void validaNome(String nome) throws ErroCadastroException {
-		if (nome == null || nome.equals("") || nome.trim().equals(""))
-			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
 	}
 
 	public String getNome() {
@@ -113,7 +84,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 
 	public void setEmail(String email) throws AtualizaPerfilException {
-		if (validaEmail(email) == false)
+		if (UtilUsuario.validaEmail(email) == false)
 			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Formato de e-mail esta invalido.");
 		if (email == null || email.equals(""))
@@ -145,14 +116,14 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 
 	public void setDataNasc(String novaDataNasc) throws AtualizaPerfilException, ParseException{
-		if (validaDiaDaData(novaDataNasc) == true
-				|| validaIntervalosDeData(novaDataNasc) == false)
+		if (UtilUsuario.validaDiaDaData(novaDataNasc) == true
+				|| UtilUsuario.validaIntervalosDeData(novaDataNasc) == false)
 			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Formato de data esta invalida.");
-		if (isDateValid(novaDataNasc) == false)
+		if (UtilUsuario.isDateValid(novaDataNasc) == false)
 			throw new AtualizaPerfilException(
 					"Erro na atualizacao de perfil. Data nao existe.");
-		this.dataNasc = formataData(novaDataNasc);
+		this.dataNasc = UtilUsuario.formataData(novaDataNasc);
 	}
 
 	public List<Post> getPosts() {
@@ -196,9 +167,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 
 	public void atualizaNivel() {
-		if (pops <= 500) {
+		if (pops <= VALOR_500) {
 			this.popularidade = new Normal();
-		} else if (pops > 500 && pops <= 1000) {
+		} else if (pops > VALOR_500 && pops <= VALOR_1000) {
 			this.popularidade = new CelebridadePop();
 		} else {
 			this.popularidade = new IconePop();
@@ -229,100 +200,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		atualizaNivel();
 	}
 
-	/**
-	 * Converte uma String para um objeto Date. Caso a String seja vazia ou
-	 * nula, retorna null.
-	 * 
-	 * @param data
-	 *            String no formato dd/MM/yyyy a ser formatada
-	 * @return Date Objeto Date ou null caso receba uma String vazia ou nula
-	 * @throws ParseException
-	 * @throws Exception
-	 *             Caso a String esteja no formato errado
-	 */
-	private Date formataData(String data) throws ParseException {
-		if (data == null || data.equals(""))
-			return null;
-
-		Date date = null;
-		try {
-			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-			date = (java.util.Date) formatter.parse(data);
-		} catch (ParseException e) {
-			throw e;
-		}
-		return date;
-	}
-
-	/**
-	 * Valida um email fornecido pelo usuario ao criar um novo usuario retorna
-	 * boolean Ex: alguem@mail - retorna false..
-	 * 
-	 * @param String - email
-	 *         
-	 * @return boolean true para emails validos e false para emails invalidos
-	 */
-	public boolean validaEmail(String email) {
-		Pattern p = Pattern
-				.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
-		Matcher emailFiltrado = p.matcher(email);
-		if (emailFiltrado.find()) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Valida um intervalo data fornecida pelo usuario ao criar um novo usuario
-	 * retorna boolean Ex: 32/10/2010 - retorna false..
-	 * 
-	 * @param String - data
-	 *            
-	 * @return boolean true - para datas validas e false para datas invalidas
-	 */
-	public boolean validaIntervalosDeData(String data) {
-		String[] valores = data.split("/");
-
-		if (!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})")
-				|| Integer.parseInt(valores[0]) < 1
-				|| Integer.parseInt(valores[0]) > 31)
-			return false;
-		if (!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})")
-				|| Integer.parseInt(valores[1]) < 1
-				|| Integer.parseInt(valores[1]) > 12)
-			return false;
-		if (!data.matches("([0-9]{2})/([0-9]{2})/([0-9]{4})")
-				|| Integer.parseInt(valores[2]) < 1)
-			return false;
-		return true;
-	}
-
-	/**
-	 * Valida o dia da data fornecida pelo usuario ao criar um novo usuario
-	 * retorna boolean Ex: 1510/10/2010 - retorna false.
-	 * 
-	 * @param String - data
-	 *            
-	 * @return boolean - true para dias validos e false para dias invalidos
-	 */
-	public boolean validaDiaDaData(String data) {
-		String[] dia = data.split("/");
-		if (dia[0].length() > 2)
-			return true;
-		return false;
-	}
-
-	public boolean isDateValid(String strDate) {
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		formatter.setLenient(false);
-		try {
-			Date date = formatter.parse(strDate);
-			return true;
-		} catch (ParseException e) {
-			return false;
-		}
-	}
-
+	
 	public String dadosUsuarioString() {
 		return "Nome: " + this.nome + SystemPop.QUEBRA_DE_LINHA + "Email:  "
 				+ this.email + SystemPop.QUEBRA_DE_LINHA + "Senha:  *******"
@@ -423,14 +301,6 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		List<Post> postsAdicionar = new ArrayList<Post>();
 		for (Usuario amigo : amigos) {
 			postsAdicionar = amigo.getPostsRecentes(amigo.getQtdPost());
-			/*
-			if (amigo.getStringPopularidade().equals("Normal")) {
-				postsAdicionar = amigo.getPostsRecentes(2);
-			} else if (amigo.getStringPopularidade().equals("CelebridadePop")) {
-				postsAdicionar = amigo.getPostsRecentes(4);
-			} else if (amigo.getStringPopularidade().equals("IconePop")) {
-				postsAdicionar = amigo.getPostsRecentes(6);
-			}*/
 			for (Post post : postsAdicionar) {
 				this.feed.adicionaPost(post);
 			}
