@@ -68,6 +68,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		this.feed = new Feed();
 	}
 
+	
 	public String getNome() {
 		return nome;
 	}

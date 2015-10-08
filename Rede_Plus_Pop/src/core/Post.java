@@ -48,7 +48,6 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 
 	}
 
-
 	public String getListaHashtag() {
 		String retorno = "";
 		String[] palavras = conteudo.get(2).split(" ");

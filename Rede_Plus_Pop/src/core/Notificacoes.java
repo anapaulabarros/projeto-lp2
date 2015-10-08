@@ -34,7 +34,7 @@ public class Notificacoes {
 	public void removeNotificacao() {
 		this.notificacoes.remove(this.notificacoes.size() - 1);
 	}
-	
+
 	/**
 	 * Metodo para retornar a proxima notificacao que o usuario possui
 	 * @return String - mensagem
