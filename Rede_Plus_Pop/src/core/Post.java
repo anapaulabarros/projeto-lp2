@@ -34,11 +34,11 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		UtilPost.verificaConteudoDaMensagem(mensagem);
 		this.conteudo = new ArrayList<String>();
 		this.conteudo.add(UtilPost.filtraTexto(mensagem));
-		this.conteudo.add(UtilPost.filtraMidias(mensagem));
+		this.conteudo.add(String.join(" ", UtilPost.filtraMidias(mensagem)));
 		UtilPost.verificaTamanhoDaMensagem(conteudo);
 		if(mensagem.contains("#")){
 			UtilPost.verificaValidadeDasHastags(mensagem);
-			this.conteudo.add(UtilPost.filtraHashtags(mensagem));
+			this.conteudo.add(String.join(" ", UtilPost.filtraHashtags(mensagem)));
 		}
 		this.mensagem = mensagem;
 		this.dataPublicacao = dataPublicao;
@@ -49,12 +49,9 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 	}
 
 	public String getListaHashtag() {
-		String retorno = "";
-		String[] palavras = conteudo.get(2).split(" ");
-		for (String hashtag : palavras) {
-			retorno = retorno + hashtag + ",";
-		}
-		return retorno.substring(0, retorno.length() - 1);
+		String[] hashtags = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		String retorno = String.join(",", hashtags);
+		return retorno;
 	}
 
 	public String getMensagem() {
@@ -62,8 +59,10 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		if (UtilPost.filtraMidias(mensagem).isEmpty()) {
 			retorno = retorno + UtilPost.filtraTexto(mensagem);
 		} else {
-			retorno = retorno + UtilPost.filtraTexto(mensagem) + " "
-					+ UtilPost.filtraMidias(mensagem);
+			retorno = retorno + UtilPost.filtraTexto(mensagem);
+			for (String midia: UtilPost.filtraMidias(mensagem)){
+				retorno = retorno + " " + midia;
+			}
 		}
 		return retorno;
 	}
@@ -122,8 +121,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 	}
 	
 	public void adicionaHashtag(String hashtag){
-		String adicionar = conteudo.get(2) + " " + hashtag;
-		conteudo.set(2, adicionar);
+		this.mensagem = this.mensagem + " " + hashtag;
 	}
 
 	public String getDataPostFormatada() {

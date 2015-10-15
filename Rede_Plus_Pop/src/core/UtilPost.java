@@ -54,9 +54,9 @@ public class UtilPost {
 	 * 
 	 * @param String mensagem
 	 * 
-	 * @return String conteudo
+	 * @return List<String> conteudo
 	 */
-	public static String filtraMidias(String mensagem) {
+	public static List<String> filtraMidias(String mensagem) {
 		List<String> conteudo = new ArrayList<String>();
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
@@ -64,7 +64,7 @@ public class UtilPost {
 				conteudo.add(palavra);
 			}
 		}
-		return String.join(" ", conteudo);
+		return conteudo;
 	}
 
 	/**
@@ -77,8 +77,7 @@ public class UtilPost {
 	 */
 	public static List<String> filtraAudioVideo(String mensagem, int opcao) {
 		List<String> conteudoFinal = new ArrayList<String>();
-		String[] midias = filtraMidias(mensagem).split(" ");
-		for (String string : midias) {
+		for (String string : filtraMidias(mensagem)) {
 			if(opcao == 1 & string.startsWith("<audio>"))
 				conteudoFinal.add(string);
 			if(opcao == 2 & (string.startsWith("<video>")))
@@ -94,10 +93,15 @@ public class UtilPost {
 	 * 
 	 * @param String mensagem
 	 * 
-	 * @return String hastags
+	 * @return List<String> hastags
 	 */
-	public static String filtraHashtags(String mensagem) {
-		return mensagem.substring(mensagem.indexOf("#"), mensagem.length());
+	public static List<String> filtraHashtags(String mensagem) {
+		List<String> retorno = new ArrayList<String>();
+		String[] hashtags = mensagem.substring(mensagem.indexOf("#"), mensagem.length()).split(" ");
+		for (String hashtag: hashtags){
+			retorno.add(hashtag);
+		}
+		return retorno;
 	}
 
 	/**

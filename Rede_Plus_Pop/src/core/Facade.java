@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import treatmentsExceptions.LogicaException;
+import treatmentsExceptions.PostNaoEncontradoException;
 import easyaccept.EasyAccept;
 
 public class Facade {
@@ -186,11 +188,11 @@ public class Facade {
 		sistemaPop.salvaDadosUsuarios();
 	}
 	
-	public List<String> getMidiasAudioPost(int post) {
+	public List<String> getMidiasAudioPost(int post) throws LogicaException {
 		return sistemaPop.getConteudoMidiaAudioPost(post);
 	}
 	
-	public List<String> getMidiasVideoPost(int post) {
+	public List<String> getMidiasVideoPost(int post) throws LogicaException {
 		return sistemaPop.getConteudoMidiaVideoPost(post);
 	}
 	

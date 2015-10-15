@@ -12,6 +12,7 @@ import java.util.Map;
 import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.EntradaException;
 import treatmentsExceptions.LogicaException;
+import treatmentsExceptions.PostNaoEncontradoException;
 
 public class SystemPop {
 	
@@ -303,22 +304,23 @@ public class SystemPop {
 
 	public String getConteudoPost(int indice, int post) throws LogicaException {
 		Post postAtual = usuarioLogado.getPosts().get(post);
+		int qtdItens = postAtual.getQuantidadeItens();
 		if (indice < 0){
 			throw new LogicaException("Requisicao invalida. O indice deve ser maior ou igual a zero.");
 		}
-		if (indice >= postAtual.getQuantidadeItens()){
-			throw new LogicaException("Item #" + indice + " nao existe nesse post, ele possui apenas 3 itens distintos.");
+		if (indice >= qtdItens){
+			throw new LogicaException("Item #" + indice + " nao existe nesse post, ele possui apenas " + qtdItens + " itens distintos.");
 		}
 		return postAtual.getConteudo(indice);
 	}
 	
-	public List<String> getConteudoMidiaAudioPost(int post){
-		Post postAtual = usuarioLogado.getPosts().get(post);
+	public List<String> getConteudoMidiaAudioPost(int post) throws LogicaException{
+		Post postAtual = usuarioLogado.getPostEspecifico(post);
 		return postAtual.getMidiaAudio();
 	}
 	
-	public List<String> getConteudoMidiaVideoPost(int post){
-		Post postAtual = usuarioLogado.getPosts().get(post);
+	public List<String> getConteudoMidiaVideoPost(int post) throws LogicaException{
+		Post postAtual = usuarioLogado.getPostEspecifico(post);
 		return postAtual.getMidiaVideo();
 	}
 
@@ -342,11 +344,12 @@ public class SystemPop {
 		usuarioLogado.postar(novoPost);
 		
 		if(mensagem.contains("#")){
-			if(UtilPost.filtraHashtags(mensagem) != null || UtilPost.filtraHashtags(mensagem) != "")
-				HastagsMaisPop(UtilPost.filtraHashtags(mensagem));
+			if(UtilPost.filtraHashtags(mensagem) != null || !UtilPost.filtraHashtags(mensagem).isEmpty()){
+				String hashtags = String.join(" ", UtilPost.filtraHashtags(mensagem));
+				HastagsMaisPop(hashtags);
 				//dicionarioHashtags = dicionarioDeHashtags(novoPost.filtraHashtags(mensagem), novoPost.filtraMensagem(mensagem), mensagem);
 		}
-		
+		}
 	}
 	
 	
