@@ -311,6 +311,16 @@ public class SystemPop {
 		}
 		return postAtual.getConteudo(indice);
 	}
+	
+	public List<String> getConteudoMidiaAudioPost(int post){
+		Post postAtual = usuarioLogado.getPosts().get(post);
+		return postAtual.getMidiaAudio();
+	}
+	
+	public List<String> getConteudoMidiaVideoPost(int post){
+		Post postAtual = usuarioLogado.getPosts().get(post);
+		return postAtual.getMidiaVideo();
+	}
 
 	public Map<String, ArrayList<String>> getDicionarioHashtags() {
 		return dicionarioHashtags;

@@ -67,7 +67,24 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable{
 		}
 		return retorno;
 	}
+	
+	public List<String> getMidiaAudio() {
+		return UtilPost.filtraAudioVideo(mensagem, 1);
+	}
 
+	public int getQtdAudio() {
+		return UtilPost.filtraAudioVideo(mensagem, 1).size();
+	}
+	
+	public List<String> getMidiaVideo() {
+		return UtilPost.filtraAudioVideo(mensagem, 2);
+	}
+
+	public int getQtdVideo() {
+		return UtilPost.filtraAudioVideo(mensagem, 2).size();
+	}
+	
+	
 	public String getConteudo(int indice) {
 		return conteudo.get(indice);
 	}

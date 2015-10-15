@@ -60,13 +60,34 @@ public class UtilPost {
 		List<String> conteudo = new ArrayList<String>();
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
-			if (palavra.startsWith("<audio>") || palavra.startsWith("<imagem>")) {
+			if (palavra.startsWith("<audio>") || palavra.startsWith("<imagem>") || palavra.startsWith("<video>")) {
 				conteudo.add(palavra);
 			}
 		}
 		return String.join(" ", conteudo);
 	}
 
+	/**
+	 * metodo para retornar apenas os videos ou apenas os audios,
+	 * se o retorno for nulo entao nao existe conteudo de midia no post
+	 * 
+	 * @param String mensagem, int opcao: 1 para audio e 2 para video
+	 * 
+	 * @return List<String> conteudoDeMidiaEspecifica
+	 */
+	public static List<String> filtraAudioVideo(String mensagem, int opcao) {
+		List<String> conteudoFinal = new ArrayList<String>();
+		String[] midias = filtraMidias(mensagem).split(" ");
+		for (String string : midias) {
+			if(opcao == 1 & string.startsWith("<audio>"))
+				conteudoFinal.add(string);
+			if(opcao == 2 & (string.startsWith("<video>")))
+					conteudoFinal.add(string);
+		}
+		return conteudoFinal;
+	}
+	
+	
 	/**
 	 * metodo para retornar apenas as hastags do post removendo conteudo de
 	 * midias e texto

@@ -1,6 +1,7 @@
 package core;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import easyaccept.EasyAccept;
@@ -183,6 +184,14 @@ public class Facade {
 	
 	public void salvaDadosUsuarioArquivo() throws IOException {
 		sistemaPop.salvaDadosUsuarios();
+	}
+	
+	public List<String> getMidiasAudioPost(int post) {
+		return sistemaPop.getConteudoMidiaAudioPost(post);
+	}
+	
+	public List<String> getMidiasVideoPost(int post) {
+		return sistemaPop.getConteudoMidiaVideoPost(post);
 	}
 	
 	public static void main(String[] args) {
