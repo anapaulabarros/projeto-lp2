@@ -30,12 +30,13 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	 * @throws PostException
 	 * @throws ParseException
 	 */
-	public Post(String mensagem, String dataPublicao){
+	public Post(String mensagem, String dataPublicao) throws PostException{
 		this.conteudo = new ArrayList<String>();
 		this.texto = UtilPost.filtraTexto(mensagem);
 		for (String midia : UtilPost.filtraMidias(mensagem)) {
 			this.conteudo.add(midia);
 		}
+		UtilPost.verificaTamanhoDaMensagem(texto);
 		if (mensagem.contains("#")) {
 			for (String hashtag : UtilPost.filtraHashtags(mensagem)) {
 				this.conteudo.add(hashtag);
@@ -72,7 +73,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public String getTexto() {
 		return this.texto;
 	}
-
+	
 	public String getConteudo(int indice) {
 		if (indice == 0) {
 			return getTexto();
@@ -134,8 +135,8 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		if (this.mensagem.contains("#"))
 			hastags = getConteudo(2);
 		return getDataPostFormatada() + SystemPop.QUEBRA_DE_LINHA + "Conteudo:"
-				+ SystemPop.QUEBRA_DE_LINHA + getConteudo(0)
-				+ SystemPop.QUEBRA_DE_LINHA + getConteudo(1)
+				+ SystemPop.QUEBRA_DE_LINHA + this.texto
+				+ SystemPop.QUEBRA_DE_LINHA 
 				+ SystemPop.QUEBRA_DE_LINHA + hastags
 				+ SystemPop.QUEBRA_DE_LINHA + "+Pop: " + getPopularidade();
 

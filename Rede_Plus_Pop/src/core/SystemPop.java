@@ -15,6 +15,7 @@ import treatmentsExceptions.EntradaException;
 import treatmentsExceptions.ErroCadastroException;
 import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
+import treatmentsExceptions.PostNaoEncontradoException;
 
 public class SystemPop {
 
