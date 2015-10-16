@@ -7,11 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import treatmentsExceptions.AtualizaPerfilException;
-import treatmentsExceptions.ErroCadastroException;
 import treatmentsExceptions.PostException;
 import treatmentsExceptions.PostNaoEncontradoException;
 
@@ -42,17 +39,11 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	 * @param senha
 	 * @param dataNasc
 	 * @param imagem
+	 * @throws ParseException 
 	 * @throws Exception
 	 */
 	public Usuario(String nome, String email, String senha, String dataNasc,
-			String imagem) throws Exception {
-
-		UtilUsuario.validaNome(nome);
-		UtilUsuario.validaEmailUsuario(email);
-		UtilUsuario.validaSenha(senha);
-		UtilUsuario.validaDia(dataNasc);
-		UtilUsuario.validaDataCompleta(dataNasc);
-
+			String imagem) throws ParseException {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;

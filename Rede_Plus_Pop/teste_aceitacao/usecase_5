@@ -31,6 +31,7 @@ setPops pops=1001
 expect "IconePop" getTipoPopularidade
 
 aceitaAmizade usuario="naza_foguete@hotmail.com"
+#erro do outro teste
 adicionaAmigo usuario="fafa_bernardes@email.com.br"
 
 #naza perde 50 e fica epicfail

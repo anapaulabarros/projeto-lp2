@@ -17,8 +17,8 @@ public class UtilPost {
 		}
 	}
 
-	public static void verificaTamanhoDaMensagem(List<String> conteudo) throws PostException {
-		if (conteudo.get(0).length() > 200) {
+	public static void verificaTamanhoDaMensagem(String conteudo) throws PostException {
+		if (conteudo.length() > 200) {
 			throw new PostException(
 					"Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
 		}
@@ -67,25 +67,6 @@ public class UtilPost {
 		return conteudo;
 	}
 
-	/**
-	 * metodo para retornar apenas os videos ou apenas os audios,
-	 * se o retorno for nulo entao nao existe conteudo de midia no post
-	 * 
-	 * @param String mensagem, int opcao: 1 para audio e 2 para video
-	 * 
-	 * @return List<String> conteudoDeMidiaEspecifica
-	 */
-	public static List<String> filtraAudioVideo(String mensagem, int opcao) {
-		List<String> conteudoFinal = new ArrayList<String>();
-		for (String string : filtraMidias(mensagem)) {
-			if(opcao == 1 & string.startsWith("<audio>"))
-				conteudoFinal.add(string);
-			if(opcao == 2 & (string.startsWith("<video>")))
-					conteudoFinal.add(string);
-		}
-		return conteudoFinal;
-	}
-	
 	
 	/**
 	 * metodo para retornar apenas as hastags do post removendo conteudo de
