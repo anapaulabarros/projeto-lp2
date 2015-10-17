@@ -47,26 +47,16 @@ public class UtilPost {
 		}
 		return String.join(" ", conteudo);
 	}
-
-	/**
-	 * metodo para retornar apenas as midias do post removendo conteudo de
-	 * textos e hastags
-	 * 
-	 * @param String mensagem
-	 * 
-	 * @return List<String> conteudo
-	 */
-	public static List<String> filtraMidias(String mensagem) {
+	
+	public static String removehastags(String mensagem) {
 		List<String> conteudo = new ArrayList<String>();
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
-			if (palavra.startsWith("<audio>") || palavra.startsWith("<imagem>") || palavra.startsWith("<video>")) {
+			if (!palavra.startsWith("#"))
 				conteudo.add(palavra);
-			}
 		}
-		return conteudo;
+		return String.join(" ", conteudo);
 	}
-
 	
 	/**
 	 * metodo para retornar apenas as hastags do post removendo conteudo de

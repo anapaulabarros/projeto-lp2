@@ -17,6 +17,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	private String mensagem;
 	private String texto;
 	private List<String> conteudo;
+	private List<ConteudoMidia> conteudoMidias;
 	private int curtidas;
 	private int popularidade;
 	private int rejeitadas;
@@ -33,9 +34,6 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public Post(String mensagem, String dataPublicao) throws PostException{
 		this.conteudo = new ArrayList<String>();
 		this.texto = UtilPost.filtraTexto(mensagem);
-		for (String midia : UtilPost.filtraMidias(mensagem)) {
-			this.conteudo.add(midia);
-		}
 		UtilPost.verificaTamanhoDaMensagem(texto);
 		if (mensagem.contains("#")) {
 			for (String hashtag : UtilPost.filtraHashtags(mensagem)) {
@@ -58,18 +56,37 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	}
 
 	public String getMensagemCompleta() {
-		String retorno = "";
-		if (UtilPost.filtraMidias(mensagem).isEmpty()) {
-			retorno = retorno + UtilPost.filtraTexto(mensagem);
-		} else {
-			retorno = retorno + UtilPost.filtraTexto(mensagem);
-			for (String midia : UtilPost.filtraMidias(mensagem)) {
-				retorno = retorno + " " + midia;
-			}
-		}
-		return retorno;
+		return UtilPost.removehastags(mensagem);
 	}
 
+	
+	/**
+	 * metodo para retornar apenas as midias do post removendo conteudo de
+	 * textos e hastags
+	 * 
+	 * @param String mensagem
+	 * 
+	 * @return List<ConteudoMidia> conteudoMidias
+	 */
+	public  void filtraMidias(String mensagem) {
+		String[] palavras = mensagem.split(" ");
+		for (String palavra : palavras) {
+			if (palavra.startsWith("<audio>")) {
+				ConteudoMidia novaMidia = new Audio(palavra);
+				conteudoMidias.add(novaMidia);
+			}
+			else if(palavra.startsWith("<video>")) {
+				ConteudoMidia novaMidia = new Video(palavra);
+				conteudoMidias.add(novaMidia);
+			}
+			else if(palavra.startsWith("<imagem>")) {
+				ConteudoMidia novaMidia = new Imagem(palavra);
+				conteudoMidias.add(novaMidia);
+			}
+		}
+	}
+	
+	
 	public String getTexto() {
 		return this.texto;
 	}
@@ -78,7 +95,10 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		if (indice == 0) {
 			return getTexto();
 		}
-		return conteudo.get(indice - 1);
+		else if(indice == 1) {
+			return conteudo.toString();
+		}
+		return conteudoMidias.toString();
 	}
 
 	public int getQuantidadeItens() {
@@ -136,7 +156,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 			hastags = getConteudo(2);
 		return getDataPostFormatada() + SystemPop.QUEBRA_DE_LINHA + "Conteudo:"
 				+ SystemPop.QUEBRA_DE_LINHA + this.texto
-				+ SystemPop.QUEBRA_DE_LINHA 
+				+ SystemPop.QUEBRA_DE_LINHA  + conteudoMidias
 				+ SystemPop.QUEBRA_DE_LINHA + hastags
 				+ SystemPop.QUEBRA_DE_LINHA + "+Pop: " + getPopularidade();
 

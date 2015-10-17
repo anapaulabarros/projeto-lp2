@@ -105,6 +105,7 @@ public class TestUsuario {
 			sistema.login(MADONNA_EMAIL, "iamawesome");
 			
 			sistema.criaPost("Odeio andar de elevador. <audio>resources/teste_audio.mp3</audio> #teste", "16/10/2015 14:20:00");
+			System.out.println(sistema.getConteudoPost(0, 0));
 		
 			
 			/*sistema.cadastraUsuario("Fatima Bernardes Bonner", FAFA, "fafa_S2", "17/09/1962", "resources/fatima.jpg");
