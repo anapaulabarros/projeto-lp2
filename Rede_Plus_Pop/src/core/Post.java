@@ -130,11 +130,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public void setRejeitadas() {
 		this.rejeitadas += 1;
 	}
-
-	public void adicionaHashtag(String hashtag) {
-		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
-	}
-
+	
 	public String getDataPostFormatada() {
 		String[] data = dataPublicacao.split("[/, ]");
 		return data[2] + "-" + data[1] + "-" + data[0] + " " + data[3];
@@ -146,6 +142,11 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public String getPostString() {
 		return this.mensagemCompleta + " (" + getDataPostFormatada() + ")";
 	}
+
+	public void adicionaHashtag(String hashtag) {
+		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
+	}
+
 
 	@Override
 	public String toString() {

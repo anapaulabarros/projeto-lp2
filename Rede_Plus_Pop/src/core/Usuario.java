@@ -59,7 +59,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		this.feed = new Feed();
 	}
 
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -282,6 +282,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		}
 		return listaPost;
 	}
+	
 	/**
 	 * Metodo para adicionar post no feed de noticias do usuario logado no 
 	 * sistema
