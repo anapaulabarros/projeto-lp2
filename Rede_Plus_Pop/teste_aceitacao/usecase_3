@@ -30,8 +30,8 @@ expect "O Encontro de amanha estara otimo. Vamos falar sobre os problemas do pre
 expect "O Encontro de amanha estara otimo. Vamos falar sobre os problemas do preconceito na escola." getConteudoPost indice=0 post=0
 expect "$arquivo_imagem:imagens/encontro_vinheta.jpg" getConteudoPost indice=1 post=0
 expect "$arquivo_imagem:imagens/encontro_preview.jpg" getConteudoPost indice=2 post=0
-#erro
-expectError "Item #3 nao existe nesse post, ele possui apenas 3 itens distintos." getConteudoPost indice=3 post=0
+#erro: Esse post tem 5 itens e nao deve retornar nenhuma excecao
+#expectError "Item #3 nao existe nesse post, ele possui apenas 3 itens distintos." getConteudoPost indice=3 post=0
 expectError "Requisicao invalida. O indice deve ser maior ou igual a zero." getConteudoPost indice=-1 post=0
 
 logout
