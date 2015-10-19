@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="core.Facade" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Facade.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="core.Facade" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="175" y="175"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="core.SystemPop" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/SystemPop.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="core.SystemPop" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/SystemPop.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="553" y="361"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="core.Usuario" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Usuario.java" 
-    binary="false" corner="BOTTOM_LEFT">    
+  <class id="3" language="java" name="core.Usuario" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Usuario.java" binary="false" corner="BOTTOM_LEFT">    
     <position height="-1" width="-1" x="970" y="385"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="core.Post" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Post.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="core.Post" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Post.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1276" y="704"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="5" language="java" name="core.TipoPopularidade" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/TipoPopularidade.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="5" language="java" name="core.TipoPopularidade" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/TipoPopularidade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1207" y="-178"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="core.Notificacoes" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/Notificacoes.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="core.Notificacoes" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Notificacoes.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1232" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="core.Feed" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Feed.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="core.Feed" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Feed.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1013" y="924"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="core.CelebridadePop" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/CelebridadePop.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="core.CelebridadePop" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/CelebridadePop.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1425" y="-127"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="core.IconePop" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/IconePop.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="core.IconePop" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/IconePop.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1360" y="53"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="core.Normal" project="Rede_Plus_Pop" file="/Rede_Plus_Pop/src/core/Normal.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="core.Normal" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Normal.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1212" y="56"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="treatmentsExceptions.EntradaException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/EntradaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="treatmentsExceptions.EntradaException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/EntradaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1647" y="13"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +100,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="treatmentsExceptions.LogicaException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/LogicaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="treatmentsExceptions.LogicaException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/LogicaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1856" y="-150"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="treatmentsExceptions.PostException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/PostException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="treatmentsExceptions.PostException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/PostException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1487" y="216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="treatmentsExceptions.PostNaoEncontradoException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/PostNaoEncontradoException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="treatmentsExceptions.PostNaoEncontradoException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/PostNaoEncontradoException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1881" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +128,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="treatmentsExceptions.AtualizaPerfilException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/AtualizaPerfilException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="treatmentsExceptions.AtualizaPerfilException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/AtualizaPerfilException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1660" y="218"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -136,8 +138,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="treatmentsExceptions.ErroCadastroException" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/treatmentsExceptions/ErroCadastroException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="treatmentsExceptions.ErroCadastroException" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/treatmentsExceptions/ErroCadastroException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1851" y="216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -145,8 +148,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="core.UtilPost" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/UtilPost.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="17" language="java" name="core.UtilPost" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/UtilPost.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1582" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -154,8 +157,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="core.UtilUsuario" project="Rede_Plus_Pop" 
-    file="/Rede_Plus_Pop/src/core/UtilUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="18" language="java" name="core.UtilUsuario" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/UtilUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1868" y="579"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -175,133 +178,133 @@
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <realization id="23">    
-    <end type="SOURCE" refId="10"/>    
+  <realization id="22">    
+    <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
-  <association id="24">    
+  <association id="23">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="25" name="notificacoes">        
+      <attribute id="24" name="notificacoes">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="27">    
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="posts">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="29">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="5"/>  
   </realization>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="11"/>  
   </generalization>  
-  <association id="29">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="30" name="sistemaPop">        
+  <association id="31">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="32" name="posts">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <bendpoint x="837" y="874"/>    
+    <bendpoint x="840" y="895"/>    
+    <bendpoint x="859" y="896"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="35" name="amigos">        
+        <position height="0" width="0" x="34" y="60"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="34" y="60"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="38" name="usuarios">        
+        <position height="18" width="50" x="762" y="401"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="34" y="60"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="41" name="sistemaPop">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <association id="34">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="35" name="posts">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="36" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
+  <association id="43">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="38" name="posts">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="39" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="41" name="feed">        
+      <attribute id="44" name="feed">        
         <position height="0" width="0" x="-4" y="-96"/>      
       </attribute>      
-      <multiplicity id="42" minimum="0" maximum="1">        
+      <multiplicity id="45" minimum="0" maximum="1">        
         <position height="0" width="0" x="-4" y="-96"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="43">    
-    <bendpoint x="837" y="874"/>    
-    <bendpoint x="840" y="895"/>    
-    <bendpoint x="859" y="896"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="44" name="amigos">        
-        <position height="0" width="0" x="34" y="60"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="34" y="60"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
+  <generalization id="46">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="47">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="47" name="usuarios">        
-        <position height="18" width="50" x="762" y="401"/>      
-      </attribute>      
-      <multiplicity id="48" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="34" y="60"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="49">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="50">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="51" name="usuarioLogado">        
+      <attribute id="48" name="usuarioLogado">        
         <position height="18" width="80" x="757" y="353"/>      
       </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
+      <multiplicity id="49" minimum="0" maximum="1">        
         <position height="16" width="23" x="786" y="375"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <realization id="50">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

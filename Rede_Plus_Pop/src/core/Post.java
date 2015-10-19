@@ -14,10 +14,10 @@ import treatmentsExceptions.PostException;
 public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
 	private final long serialVersionUID = 42L;
-	private String mensagem;
+	private String mensagemCompleta;
 	private String texto;
-	private List<String> conteudo;
 	private List<ConteudoMidia> conteudoMidias;
+	private List<String> hashtags;
 	private int curtidas;
 	private int popularidade;
 	private int rejeitadas;
@@ -31,16 +31,18 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	 * @throws PostException
 	 * @throws ParseException
 	 */
-	public Post(String mensagem, String dataPublicao) throws PostException{
-		this.conteudo = new ArrayList<String>();
+	public Post(String mensagem, String dataPublicao) throws PostException {
+		this.conteudoMidias = new ArrayList<ConteudoMidia>();
+		filtraMidias(mensagem);
+		this.hashtags = new ArrayList<String>();
 		this.texto = UtilPost.filtraTexto(mensagem);
 		UtilPost.verificaTamanhoDaMensagem(texto);
 		if (mensagem.contains("#")) {
 			for (String hashtag : UtilPost.filtraHashtags(mensagem)) {
-				this.conteudo.add(hashtag);
+				this.hashtags.add(hashtag);
 			}
 		}
-		this.mensagem = mensagem;
+		this.mensagemCompleta = mensagem;
 		this.dataPublicacao = dataPublicao;
 		this.popularidade = 0;
 		curtidas = 0;
@@ -49,60 +51,56 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	}
 
 	public String getListaHashtag() {
-		String[] hashtags = mensagem.substring(mensagem.indexOf("#"),
-				mensagem.length()).split(" ");
-		String retorno = String.join(",", hashtags);
+		String retorno = String.join(",", UtilPost.filtraHashtags(mensagemCompleta));
 		return retorno;
 	}
 
 	public String getMensagemCompleta() {
-		return UtilPost.removehastags(mensagem);
+		return UtilPost.removehastags(mensagemCompleta);
 	}
 
-	
 	/**
 	 * metodo para retornar apenas as midias do post removendo conteudo de
 	 * textos e hastags
 	 * 
-	 * @param String mensagem
+	 * @param String
+	 *            mensagem
 	 * 
 	 * @return List<ConteudoMidia> conteudoMidias
 	 */
-	public  void filtraMidias(String mensagem) {
+	public void filtraMidias(String mensagem) {
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
 			if (palavra.startsWith("<audio>")) {
 				ConteudoMidia novaMidia = new Audio(palavra);
 				conteudoMidias.add(novaMidia);
-			}
-			else if(palavra.startsWith("<video>")) {
+			} else if (palavra.startsWith("<video>")) {
 				ConteudoMidia novaMidia = new Video(palavra);
 				conteudoMidias.add(novaMidia);
-			}
-			else if(palavra.startsWith("<imagem>")) {
+			} else if (palavra.startsWith("<imagem>")) {
 				ConteudoMidia novaMidia = new Imagem(palavra);
 				conteudoMidias.add(novaMidia);
 			}
 		}
 	}
-	
-	
+
 	public String getTexto() {
 		return this.texto;
 	}
-	
+
 	public String getConteudo(int indice) {
 		if (indice == 0) {
 			return getTexto();
 		}
-		else if(indice == 1) {
-			return conteudo.toString();
+		else if(indice >= 1 && indice <= conteudoMidias.size()) {
+			return conteudoMidias.get(indice - 1).toString();
+		} else {
+		return hashtags.get(indice - conteudoMidias.size());
 		}
-		return conteudoMidias.toString();
 	}
 
 	public int getQuantidadeItens() {
-		return this.conteudo.size() + 1;
+		return this.conteudoMidias.size() + hashtags.size() + 1;
 	}
 
 	public int getCurtidas() {
@@ -134,7 +132,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	}
 
 	public void adicionaHashtag(String hashtag) {
-		this.mensagem = this.mensagem + " " + hashtag;
+		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
 	}
 
 	public String getDataPostFormatada() {
@@ -146,18 +144,18 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	 * Metodo para retornar o post em formato de String
 	 */
 	public String getPostString() {
-		return this.mensagem + " (" + getDataPostFormatada() + ")";
+		return this.mensagemCompleta + " (" + getDataPostFormatada() + ")";
 	}
 
 	@Override
 	public String toString() {
-		String hastags = "";
-		if (this.mensagem.contains("#"))
-			hastags = getConteudo(2);
+		String hashtags = "";
+		if (this.mensagemCompleta.contains("#"))
+			hashtags = this.hashtags.toString();
 		return getDataPostFormatada() + SystemPop.QUEBRA_DE_LINHA + "Conteudo:"
 				+ SystemPop.QUEBRA_DE_LINHA + this.texto
-				+ SystemPop.QUEBRA_DE_LINHA  + conteudoMidias
-				+ SystemPop.QUEBRA_DE_LINHA + hastags
+				+ SystemPop.QUEBRA_DE_LINHA + conteudoMidias
+				+ SystemPop.QUEBRA_DE_LINHA + hashtags
 				+ SystemPop.QUEBRA_DE_LINHA + "+Pop: " + getPopularidade();
 
 	}
