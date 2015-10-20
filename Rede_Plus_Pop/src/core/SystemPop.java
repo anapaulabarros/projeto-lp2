@@ -33,7 +33,7 @@ public class SystemPop {
 	public static final String ICONE_POP = "IconePop";
 	public static final String CELEBRIDADE = "CelebridadePop";
 	public static final String NORMAL = "Normal";
-	private static final Object MENSAGEM = "Mensagem";
+	private static final String MENSAGEM = "Mensagem";
 
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
@@ -41,7 +41,7 @@ public class SystemPop {
 	private Map<String, Integer> contadorDeHastags;
 
 	/**
-	 * construtor da classe SystemPop, ela é o controller do projeto entao cabe
+	 * construtor da classe SystemPop, ela eh o controller do projeto entao cabe
 	 * a ela toda gerencia e administracao de dados em que o sistema manipula ao
 	 * longo do seu funcionamento
 	 * 
@@ -404,7 +404,7 @@ public class SystemPop {
 	}
 
 	/*
-	 * Método para armazenar um dicionario de hastags e suas mensagens
+	 * Mï¿½todo para armazenar um dicionario de hastags e suas mensagens
 	 * associadas Ex: [#frio={faz muito frio hoje}]
 	 * 
 	 * @param mensgem String

@@ -1,11 +1,8 @@
 package core;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
-import treatmentsExceptions.LogicaException;
-import treatmentsExceptions.PostNaoEncontradoException;
 import easyaccept.EasyAccept;
 
 public class Facade {

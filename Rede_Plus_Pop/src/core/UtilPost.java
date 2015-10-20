@@ -95,5 +95,8 @@ public class UtilPost {
 		return null;
 	}
 
+	public static String cortaCaminhoMidia(String caminho){
+		return caminho.substring(caminho.indexOf(">") + 1, caminho.lastIndexOf("<"));
+	}
 
 }

@@ -36,7 +36,6 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		filtraMidias(mensagem);
 		this.hashtags = new ArrayList<String>();
 		this.texto = UtilPost.filtraTexto(mensagem);
-		UtilPost.verificaTamanhoDaMensagem(texto);
 		if (mensagem.contains("#")) {
 			for (String hashtag : UtilPost.filtraHashtags(mensagem)) {
 				this.hashtags.add(hashtag);
@@ -72,12 +71,15 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
 			if (palavra.startsWith("<audio>")) {
+				palavra = UtilPost.cortaCaminhoMidia(palavra);
 				ConteudoMidia novaMidia = new Audio(palavra);
 				conteudoMidias.add(novaMidia);
 			} else if (palavra.startsWith("<video>")) {
+				palavra = UtilPost.cortaCaminhoMidia(palavra);
 				ConteudoMidia novaMidia = new Video(palavra);
 				conteudoMidias.add(novaMidia);
 			} else if (palavra.startsWith("<imagem>")) {
+				palavra = UtilPost.cortaCaminhoMidia(palavra);
 				ConteudoMidia novaMidia = new Imagem(palavra);
 				conteudoMidias.add(novaMidia);
 			}

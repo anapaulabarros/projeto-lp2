@@ -6,6 +6,6 @@ public class Imagem extends ConteudoMidia {
 		super(caminho);
 	}
 	public String toString(){
-		return "$arquivo_imagem:" + caminho.substring(8, caminho.length() - 9);
+		return "$arquivo_imagem:" + caminho;
 	}
 }
