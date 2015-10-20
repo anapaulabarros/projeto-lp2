@@ -22,7 +22,6 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	private int rejeitadas;
 	private String dataPublicacao;
 
-
 	public Post(String mensagemCompleta, String texto,
 			List<ConteudoMidia> conteudo, List<String> hashtags, String data) {
 		this.mensagemCompleta = mensagemCompleta;
@@ -35,12 +34,57 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		this.rejeitadas = 0;
 	}
 
+	public void adicionaHashtag(String hashtag) {
+		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
+		this.hashtags.add(hashtag);
+	}
+
+	@Override
+	public String toString() {
+		String hashtags = "";
+		if (this.mensagemCompleta.contains("#"))
+			hashtags = this.hashtags.toString();
+		return getDataPostFormatada() + SystemPop.QUEBRA_DE_LINHA + "Conteudo:"
+				+ SystemPop.QUEBRA_DE_LINHA + this.texto
+				+ SystemPop.QUEBRA_DE_LINHA + conteudoMidias
+				+ SystemPop.QUEBRA_DE_LINHA + hashtags
+				+ SystemPop.QUEBRA_DE_LINHA + "+Pop: " + getPopularidade();
+
+	}
+
+	/**
+	 * Metodo para ordernar os Posts pela data de publicacao
+	 * 
+	 * @param Post
+	 *            - outroPost
+	 * @return int
+	 */
+	@Override
+	public int compareTo(Post outroPost) {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			Date dataPostAtual = formatter.parse(this.dataPublicacao);
+			Date dataOutroPost = formatter.parse(outroPost.dataPublicacao);
+			if (dataOutroPost == dataPostAtual)
+				return 0;
+			else if (dataPostAtual.compareTo(dataOutroPost) == -1)
+				return -1;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return 1;
+	}
+
+	public int compare(Post post1, Post post2) {
+		return 0;
+	}
+
 	public String getListaHashtag() {
 		if (!this.hashtags.isEmpty()) {
 			String retorno = String.join(",", this.hashtags);
 			return retorno;
 		}
-		return null;
+		return "";
 	}
 
 	public String getMensagemSemHashtags() {
@@ -96,55 +140,8 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		return data[2] + "-" + data[1] + "-" + data[0] + " " + data[3];
 	}
 
-	/*
-	 * Metodo para retornar o post em formato de String
-	 */
+	// Metodo para retornar o post em formato de String
 	public String getPostString() {
 		return this.mensagemCompleta + " (" + getDataPostFormatada() + ")";
-	}
-
-	public void adicionaHashtag(String hashtag) {
-		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
-		this.hashtags.add(hashtag);
-	}
-
-	@Override
-	public String toString() {
-		String hashtags = "";
-		if (this.mensagemCompleta.contains("#"))
-			hashtags = this.hashtags.toString();
-		return getDataPostFormatada() + SystemPop.QUEBRA_DE_LINHA + "Conteudo:"
-				+ SystemPop.QUEBRA_DE_LINHA + this.texto
-				+ SystemPop.QUEBRA_DE_LINHA + conteudoMidias
-				+ SystemPop.QUEBRA_DE_LINHA + hashtags
-				+ SystemPop.QUEBRA_DE_LINHA + "+Pop: " + getPopularidade();
-
-	}
-
-	/**
-	 * Metodo para ordernar os Posts pela data de publicacao
-	 * 
-	 * @param Post
-	 *            - outroPost
-	 * @return int
-	 */
-	@Override
-	public int compareTo(Post outroPost) {
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			Date dataPostAtual = formatter.parse(this.dataPublicacao);
-			Date dataOutroPost = formatter.parse(outroPost.dataPublicacao);
-			if (dataOutroPost == dataPostAtual)
-				return 0;
-			else if (dataPostAtual.compareTo(dataOutroPost) == -1)
-				return -1;
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return 1;
-	}
-
-	public int compare(Post post1, Post post2) {
-		return 0;
 	}
 }
