@@ -1,4 +1,6 @@
-package core;
+package popularidade;
+
+import core.Post;
 
 public class Normal implements TipoPopularidade {
 

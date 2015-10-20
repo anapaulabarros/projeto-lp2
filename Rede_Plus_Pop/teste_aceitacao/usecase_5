@@ -5,7 +5,6 @@ iniciaSistema
 cadastraUsuario nome="Dilma Rousseff" email="dilma_bolada@brasil.com" senha="rainha" dataNasc="14/12/1947" imagem="resources/dilma.jpg"
 
 login email="dilma_bolada@brasil.com" senha="rainha"
-#set pontuacao pra mudar o tipo?
 setPops pops=501
 expect "CelebridadePop" getTipoPopularidade
 
@@ -26,12 +25,10 @@ logout
 
 
 login email="madonna@email.com" senha="iamawesome"
-#set pontuacao pra mudar o tipo?
 setPops pops=1001
 expect "IconePop" getTipoPopularidade
 
 aceitaAmizade usuario="naza_foguete@hotmail.com"
-#erro do outro teste
 adicionaAmigo usuario="fafa_bernardes@email.com.br"
 
 #naza perde 50 e fica epicfail
@@ -45,7 +42,6 @@ criaPost mensagem="Download my new single I'm Cantora for free. <audio>musicas/i
 logout
 
 login email="fafa_bernardes@email.com.br" senha="fafa_S2"
-#set pontuacao pra mudar o tipo?
 setPops pops=501
 expect "CelebridadePop" getTipoPopularidade
 
@@ -61,7 +57,6 @@ curtirPost amigo="madonna@email.com" post=0
 #madonna ganha 25
 curtirPost amigo="madonna@email.com" post=1
 
-#ver essa inserção de nova hastag '#epicwin'
 expect "#encontro,#SemPreconceito,#epicwin" getPost atributo="Hashtags" post=0 
 logout
 
@@ -72,9 +67,7 @@ curtirPost amigo="madonna@email.com" post=0
 #madonna ganhou 10
 curtirPost amigo="madonna@email.com" post=1
 
-#pode ter pops negativos?
 expect -25 getPopsPost post=0
-#ver as questao da insercao da nova hastags 
 expect "#anta,#separa,#epicfail" getPost atributo="Hashtags" post=0
 expect 25 getPopsPost post=4
 expect 1 getCurtidaPorPost post=0

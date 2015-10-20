@@ -1,7 +1,9 @@
-package core;
+package popularidade;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import core.Post;
 
 public class CelebridadePop implements TipoPopularidade {
 

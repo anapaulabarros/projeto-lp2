@@ -1,4 +1,6 @@
-package core;
+package popularidade;
+
+import core.Post;
 
 public interface TipoPopularidade {
 	

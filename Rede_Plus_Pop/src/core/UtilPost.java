@@ -3,9 +3,13 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
+import midias.ConteudoMidia;
+import midias.MidiaFactory;
 import treatmentsExceptions.PostException;
 
 public class UtilPost {
+	
+	private static MidiaFactory fabricaDeMidias;
 
 	public UtilPost() {
 		
@@ -39,13 +43,13 @@ public class UtilPost {
 	 * @return String conteudo
 	 */
 	public static String filtraTexto(String mensagem) {
-		List<String> conteudo = new ArrayList<String>();
+		List<String> conteudoTotal = new ArrayList<String>();
 		String[] palavras = mensagem.split(" ");
 		for (String palavra : palavras) {
 			if (!palavra.startsWith("#") && !palavra.startsWith("<"))
-				conteudo.add(palavra);
+				conteudoTotal.add(palavra);
 		}
-		return String.join(" ", conteudo);
+		return String.join(" ", conteudoTotal);
 	}
 	
 	public static String removehastags(String mensagem) {
@@ -99,4 +103,25 @@ public class UtilPost {
 		return caminho.substring(caminho.indexOf(">") + 1, caminho.lastIndexOf("<"));
 	}
 
+	/**
+	 * metodo para criar as midias do post removendo conteudo de
+	 * textos e hastags
+	 * 
+	 * @param String
+	 *            mensagem
+	 * 
+	 * @return List<ConteudoMidia> conteudoMidias
+	 */
+	public static List<ConteudoMidia> criaMidias(String mensagem) {
+		UtilPost.fabricaDeMidias = new MidiaFactory();
+		String[] palavras = mensagem.split(" ");
+		List<ConteudoMidia> conteudo = new ArrayList<ConteudoMidia>();
+		for (String palavra : palavras) {
+			if (palavra.startsWith("<")) {
+				ConteudoMidia novaMidia = fabricaDeMidias.criaMidia(palavra);
+				conteudo.add(novaMidia);
+			}
+		}
+		return conteudo;
+	}
 }

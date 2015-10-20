@@ -10,12 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import midias.ConteudoMidia;
 import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.EntradaException;
-import treatmentsExceptions.ErroCadastroException;
 import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
-import treatmentsExceptions.PostNaoEncontradoException;
 
 public class SystemPop {
 
@@ -346,7 +345,7 @@ public class SystemPop {
 		} else if (atributo.equals(HASHTAGS)) {
 			return postAtual.getListaHashtag();
 		} else if (atributo.equals(MENSAGEM)) {
-			return postAtual.getMensagemCompleta();
+			return postAtual.getMensagemSemHashtags();
 		}
 		return null;
 	}
@@ -371,7 +370,7 @@ public class SystemPop {
 	}
 
 	/**
-	 * Metodo para um uusario criar um novo post, o post eh adicionado na sua
+	 * Metodo para um usuario criar um novo post, o post eh adicionado na sua
 	 * lista de posts.
 	 * 
 	 * @param String
@@ -387,24 +386,26 @@ public class SystemPop {
 			throw new LogicaException(
 					"Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");
 		}
+		
 		UtilPost.verificaConteudoDaMensagem(mensagem);
 		UtilPost.verificaTamanhoDaMensagem(UtilPost.filtraTexto(mensagem));
+		
+		String texto = UtilPost.filtraTexto(mensagem);
+		List<ConteudoMidia> conteudo = UtilPost.criaMidias(mensagem);
+		List<String> hashtags = new ArrayList<String>();
 
 		if (mensagem.contains("#")) {
 			UtilPost.verificaValidadeDasHastags(mensagem);
-			if (UtilPost.filtraHashtags(mensagem) != null
-					|| !UtilPost.filtraHashtags(mensagem).isEmpty()) {
-				String hashtags = String.join(" ",
-						UtilPost.filtraHashtags(mensagem));
-				HastagsMaisPop(hashtags);
-			}
+			hashtags = UtilPost.filtraHashtags(mensagem);
+			HastagsMaisPop(hashtags);
 		}
-		Post novoPost = new Post(mensagem, data);
+		
+		Post novoPost = new Post(mensagem, texto, conteudo, hashtags, data);
 		usuarioLogado.postar(novoPost);
 	}
 
 	/*
-	 * M�todo para armazenar um dicionario de hastags e suas mensagens
+	 * Metodo para armazenar um dicionario de hastags e suas mensagens
 	 * associadas Ex: [#frio={faz muito frio hoje}]
 	 * 
 	 * @param mensgem String
@@ -435,18 +436,14 @@ public class SystemPop {
 	 * 
 	 * @return Map<String, Integer>
 	 */
-	public void HastagsMaisPop(String listaDeHastags) {
+	public void HastagsMaisPop(List<String> listaDeHastags) {
 		int valuesCopy;
-		List<String> listaHastags = new ArrayList<String>();
-		for (String hashtag : listaDeHastags.split(" ")) {
-			listaHastags.add(hashtag);
-		}
-		for (int i = 0; i < listaHastags.size(); i++) {
-			if (!contadorDeHastags.keySet().contains(listaHastags.get(i)))
-				contadorDeHastags.put(listaHastags.get(i), 1);
+		for (int i = 0; i < listaDeHastags.size(); i++) {
+			if (!contadorDeHastags.keySet().contains(listaDeHastags.get(i)))
+				contadorDeHastags.put(listaDeHastags.get(i), 1);
 			else {
-				valuesCopy = contadorDeHastags.get(listaHastags.get(i));
-				contadorDeHastags.put(listaHastags.get(i), valuesCopy + 1);
+				valuesCopy = contadorDeHastags.get(listaDeHastags.get(i));
+				contadorDeHastags.put(listaDeHastags.get(i), valuesCopy + 1);
 			}
 		}
 	}

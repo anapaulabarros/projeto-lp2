@@ -4,12 +4,11 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import treatmentsExceptions.PostException;
+import midias.ConteudoMidia;
 
 public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
@@ -23,67 +22,29 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	private int rejeitadas;
 	private String dataPublicacao;
 
-	/**
-	 * construtor da classe Post e os seus atributos
-	 * 
-	 * @param mensagem
-	 * @param dataPublicao
-	 * @throws PostException
-	 * @throws ParseException
-	 */
-	public Post(String mensagem, String dataPublicao) throws PostException {
-		this.conteudoMidias = new ArrayList<ConteudoMidia>();
-		filtraMidias(mensagem);
-		this.hashtags = new ArrayList<String>();
-		this.texto = UtilPost.filtraTexto(mensagem);
-		if (mensagem.contains("#")) {
-			for (String hashtag : UtilPost.filtraHashtags(mensagem)) {
-				this.hashtags.add(hashtag);
-			}
-		}
-		this.mensagemCompleta = mensagem;
-		this.dataPublicacao = dataPublicao;
-		this.popularidade = 0;
-		curtidas = 0;
-		rejeitadas = 0;
 
+	public Post(String mensagemCompleta, String texto,
+			List<ConteudoMidia> conteudo, List<String> hashtags, String data) {
+		this.mensagemCompleta = mensagemCompleta;
+		this.texto = texto;
+		this.conteudoMidias = conteudo;
+		this.hashtags = hashtags;
+		this.dataPublicacao = data;
+		this.popularidade = 0;
+		this.curtidas = 0;
+		this.rejeitadas = 0;
 	}
 
 	public String getListaHashtag() {
-		String retorno = String.join(",", UtilPost.filtraHashtags(mensagemCompleta));
-		return retorno;
-	}
-
-	public String getMensagemCompleta() {
-		return UtilPost.removehastags(mensagemCompleta);
-	}
-
-	/**
-	 * metodo para retornar apenas as midias do post removendo conteudo de
-	 * textos e hastags
-	 * 
-	 * @param String
-	 *            mensagem
-	 * 
-	 * @return List<ConteudoMidia> conteudoMidias
-	 */
-	public void filtraMidias(String mensagem) {
-		String[] palavras = mensagem.split(" ");
-		for (String palavra : palavras) {
-			if (palavra.startsWith("<audio>")) {
-				palavra = UtilPost.cortaCaminhoMidia(palavra);
-				ConteudoMidia novaMidia = new Audio(palavra);
-				conteudoMidias.add(novaMidia);
-			} else if (palavra.startsWith("<video>")) {
-				palavra = UtilPost.cortaCaminhoMidia(palavra);
-				ConteudoMidia novaMidia = new Video(palavra);
-				conteudoMidias.add(novaMidia);
-			} else if (palavra.startsWith("<imagem>")) {
-				palavra = UtilPost.cortaCaminhoMidia(palavra);
-				ConteudoMidia novaMidia = new Imagem(palavra);
-				conteudoMidias.add(novaMidia);
-			}
+		if (!this.hashtags.isEmpty()) {
+			String retorno = String.join(",", this.hashtags);
+			return retorno;
 		}
+		return null;
+	}
+
+	public String getMensagemSemHashtags() {
+		return UtilPost.removehastags(mensagemCompleta);
 	}
 
 	public String getTexto() {
@@ -93,16 +54,13 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public String getConteudo(int indice) {
 		if (indice == 0) {
 			return getTexto();
-		}
-		else if(indice >= 1 && indice <= conteudoMidias.size()) {
-			return conteudoMidias.get(indice - 1).toString();
 		} else {
-		return hashtags.get(indice - conteudoMidias.size());
+			return conteudoMidias.get(indice - 1).toString();
 		}
 	}
 
 	public int getQuantidadeItens() {
-		return this.conteudoMidias.size() + hashtags.size() + 1;
+		return this.conteudoMidias.size() + 1;
 	}
 
 	public int getCurtidas() {
@@ -132,7 +90,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	public void setRejeitadas() {
 		this.rejeitadas += 1;
 	}
-	
+
 	public String getDataPostFormatada() {
 		String[] data = dataPublicacao.split("[/, ]");
 		return data[2] + "-" + data[1] + "-" + data[0] + " " + data[3];
@@ -147,8 +105,8 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
 	public void adicionaHashtag(String hashtag) {
 		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
+		this.hashtags.add(hashtag);
 	}
-
 
 	@Override
 	public String toString() {

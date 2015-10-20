@@ -1,4 +1,5 @@
-package core;
+package midias;
+
 
 public class Video extends ConteudoMidia {
 

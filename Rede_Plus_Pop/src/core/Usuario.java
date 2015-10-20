@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import popularidade.CelebridadePop;
+import popularidade.IconePop;
+import popularidade.Normal;
+import popularidade.TipoPopularidade;
 import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.PostException;
 import treatmentsExceptions.PostNaoEncontradoException;
