@@ -19,13 +19,13 @@ public class UtilUsuario {
 		if (dataNasc == null || dataNasc.equals("")
 				|| validaIntervalosDeData(dataNasc) == false)
 			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Data nao existe.");
+					"Data nao existe.");
 	}
 
 	public static void validaDia(String dataNasc) throws ErroCadastroException {
 		if (validaDiaDaData(dataNasc) == true)
 			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Formato de data esta invalida.");
+					"Formato de data esta invalida.");
 	}
 
 	public static void validaSenha(String senha) throws ErroCadastroException {
@@ -37,13 +37,13 @@ public class UtilUsuario {
 	public static void validaEmailUsuario(String email) throws ErroCadastroException {
 		if (email == null || email.equals("") || validaEmail(email) == false)
 			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Formato de e-mail esta invalido.");
+					"Formato de e-mail esta invalido.");
 	}
 
 	public static void validaNome(String nome) throws ErroCadastroException {
 		if (nome == null || nome.equals("") || nome.trim().equals(""))
 			throw new ErroCadastroException(
-					"Erro no cadastro de Usuarios. Nome dx usuarix nao pode ser vazio.");
+					"Nome dx usuarix nao pode ser vazio.");
 	}
 	
 	/**

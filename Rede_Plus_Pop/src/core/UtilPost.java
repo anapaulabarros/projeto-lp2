@@ -17,14 +17,14 @@ public class UtilPost {
 	
 	public static void verificaValidadeDasHastags(String mensagem) throws PostException {
 		if (validaHashtags(mensagem) != null) {
-			throw new PostException("Nao eh possivel criar o post. As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
+			throw new PostException("As hashtags devem comecar com '#'. Erro na hashtag: '" + validaHashtags(mensagem) + "'.");
 		}
 	}
 
 	public static void verificaTamanhoDaMensagem(String conteudo) throws PostException {
 		if (conteudo.length() > 200) {
 			throw new PostException(
-					"Nao eh possivel criar o post. O limite maximo da mensagem sao 200 caracteres.");
+					"O limite maximo da mensagem sao 200 caracteres.");
 		}
 	}
 

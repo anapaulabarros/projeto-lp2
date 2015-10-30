@@ -2,9 +2,8 @@ package treatmentsExceptions;
 
 public class PostNaoEncontradoException extends LogicaException {
 
-	private static String message = "Post nao encontrado no sistema.";
 
-	public PostNaoEncontradoException() {
-		super(message);
+	public PostNaoEncontradoException(String message) {
+		super("Post nao encontrado no sistema." + message);
 	}
 }

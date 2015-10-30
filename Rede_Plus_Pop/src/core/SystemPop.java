@@ -15,6 +15,7 @@ import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.EntradaException;
 import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
+import treatmentsExceptions.RealizaLoginException;
 
 public class SystemPop {
 
@@ -93,11 +94,11 @@ public class SystemPop {
 	 * @return boolean - true para sucesso e excecao para o nao sucesso ao logar
 	 * @throws Exception
 	 */
-	public boolean login(String email, String senha) throws Exception {
+	public boolean login(String email, String senha) throws RealizaLoginException {
 		Usuario usuario = buscaUsuario(email);
 		if (usuario == null)
-			throw new LogicaException(
-					"Nao foi possivel realizar login. Um usuarix com email "
+			throw new RealizaLoginException(
+					"Um usuarix com email "
 							+ email + " nao esta cadastradx.");
 		else {
 			if (usuario.getSenha().equals(senha)) {
@@ -105,13 +106,13 @@ public class SystemPop {
 					usuarioLogado = usuario;
 					return true;
 				} else {
-					throw new LogicaException(
-							"Nao foi possivel realizar login. Um usuarix ja esta logadx: "
+					throw new RealizaLoginException(
+							"Um usuarix ja esta logadx: "
 									+ usuarioLogado.getNome() + ".");
 				}
 			} else {
-				throw new EntradaException(
-						"Nao foi possivel realizar login. Senha invalida.");
+				throw new RealizaLoginException(
+						"Senha invalida.");
 			}
 		}
 	}
@@ -296,7 +297,7 @@ public class SystemPop {
 	 */
 	public void atualizaPerfil(String atributo, String valor) throws Exception {
 		if (usuarioLogado == null) {
-			throw new AtualizaPerfilException(
+			throw new LogicaException(
 					"Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
 		}
 		if (atributo.equals(NOME)) {
@@ -322,7 +323,7 @@ public class SystemPop {
 			usuarioLogado.setSenha(valor);
 		} else {
 			throw new AtualizaPerfilException(
-					"Erro na atualizacao de perfil. A senha fornecida esta incorreta.");
+					"A senha fornecida esta incorreta.");
 		}
 	}
 
