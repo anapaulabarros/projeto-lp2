@@ -42,5 +42,10 @@ public class CelebridadePop implements TipoPopularidade {
 		return 4;
 	}
 
+	@Override
+	public boolean isEpic() {
+		return false;
+	}
+
 
 }

@@ -152,20 +152,11 @@ public class Facade {
 		return sistemaPop.getPopsUsuario(usuario);
 	}
 	
-	public String getRankingMais() {
-		return sistemaPop.getRankingMais();
+	public String atualizaRankings() {
+		return sistemaPop.getRanking();
 	}
 	
-	public String getRankingMenos() {
-		return sistemaPop.getRankingMenos();
-	}
-	
-	public void atualizaRankings() {
-		sistemaPop.getRankingMenos();
-		sistemaPop.getRankingMais();
-	}
-	
-	public Map<String, Integer> getMaisPopHastags() {
+	public String getMaisPopHastags() {
 		return sistemaPop.getRankigHastagsMais();
 	}
 

@@ -97,14 +97,15 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	@Override
 	public int compareTo(Usuario outroUsuario) {
 		if (this.pops == outroUsuario.pops)
-			return 0;
+			return this.email.compareTo(outroUsuario.getEmail());
 		else
 			return this.pops > outroUsuario.pops ? -1 : 1;
 	}
 
 	public void postar(String mensagem, String texto, List<ConteudoMidia> conteudoMidias,
 			List<String> hashtags, String data) throws PostException {
-		posts.add(new Post(mensagem,texto, conteudoMidias, hashtags, data));
+		Post novo = new Post(mensagem,texto, conteudoMidias, hashtags, data); 
+		posts.add(novo);
 	}
 
 	public void atualizaNivel() {
@@ -271,6 +272,10 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 
 	public TipoPopularidade getTipoPopularidade() {
 		return this.popularidade;
+	}
+	
+	public boolean isEpic(){
+		return this.popularidade.isEpic();
 	}
 
 	public String getStringPopularidade() {

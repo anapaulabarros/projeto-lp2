@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
 	public void adicionaHashtag(String hashtag) {
 		this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
-		this.hashtags.add(hashtag);
+		this.hashtags.add(hashtag);		
 	}
 
 	@Override

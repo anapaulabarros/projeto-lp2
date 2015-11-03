@@ -38,7 +38,7 @@ public class SystemPop {
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
 	private Map<String, ArrayList<String>> dicionarioHashtags;
-	private Map<String, Integer> contadorDeHastags;
+	private TrendingTopics trends;
 
 	/**
 	 * construtor da classe SystemPop, ela eh o controller do projeto entao cabe
@@ -51,7 +51,7 @@ public class SystemPop {
 		usuarios = new ArrayList<Usuario>();
 		usuarioLogado = null;
 		dicionarioHashtags = new HashMap<String, ArrayList<String>>();
-		contadorDeHastags = new HashMap<String, Integer>();
+		trends = new TrendingTopics();
 	}
 
 	/**
@@ -68,17 +68,18 @@ public class SystemPop {
 	 * @param String
 	 *            - imagem
 	 * @return String - email
-	 * @throws ParseException 
-	 * @throws EntradaException 
+	 * @throws ParseException
+	 * @throws EntradaException
 	 */
 	public String cadastraUsuario(String nome, String email, String senha,
-			String dataNasc, String imagem) throws ParseException, EntradaException {
+			String dataNasc, String imagem) throws ParseException,
+			EntradaException {
 		UtilUsuario.validaNome(nome);
 		UtilUsuario.validaEmailUsuario(email);
 		UtilUsuario.validaSenha(senha);
 		UtilUsuario.validaDia(dataNasc);
 		UtilUsuario.validaDataCompleta(dataNasc);
-		
+
 		Usuario novoUsuario = new Usuario(nome, email, senha, dataNasc, imagem);
 		if (getUsuarios().contains(novoUsuario))
 			throw new EntradaException("Usuario ja esta cadastrado no +Pop.");
@@ -94,12 +95,12 @@ public class SystemPop {
 	 * @return boolean - true para sucesso e excecao para o nao sucesso ao logar
 	 * @throws Exception
 	 */
-	public boolean login(String email, String senha) throws RealizaLoginException {
+	public boolean login(String email, String senha)
+			throws RealizaLoginException {
 		Usuario usuario = buscaUsuario(email);
 		if (usuario == null)
-			throw new RealizaLoginException(
-					"Um usuarix com email "
-							+ email + " nao esta cadastradx.");
+			throw new RealizaLoginException("Um usuarix com email " + email
+					+ " nao esta cadastradx.");
 		else {
 			if (usuario.getSenha().equals(senha)) {
 				if (usuarioLogado == null) {
@@ -111,8 +112,7 @@ public class SystemPop {
 									+ usuarioLogado.getNome() + ".");
 				}
 			} else {
-				throw new RealizaLoginException(
-						"Senha invalida.");
+				throw new RealizaLoginException("Senha invalida.");
 			}
 		}
 	}
@@ -178,6 +178,7 @@ public class SystemPop {
 			throws LogicaException {
 		Usuario amigoDoUsuarioLogado = buscaUsuario(emailAmigo);
 		String palavraInteracao = "";
+		List<String> hashtagEpic = new ArrayList<String>();
 
 		validaInteracaoPost(idPost, emailAmigo, amigoDoUsuarioLogado);
 
@@ -185,11 +186,17 @@ public class SystemPop {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR,
 					usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "curtiu";
+			if (usuarioLogado.isEpic()){
+				hashtagEpic.add("EpicWin");
+			}
 		}
 		if (opcao == REJEITAR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR,
 					usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "rejeitou";
+			if (usuarioLogado.isEpic()){
+				hashtagEpic.add("EpicFail");
+			}
 		}
 
 		// envia notificacao para o usuario que enviou o post, se curtiu ou
@@ -200,6 +207,8 @@ public class SystemPop {
 				+ " seu post de "
 				+ amigoDoUsuarioLogado.getPosts().get(idPost)
 						.getDataPostFormatada() + ".");
+		
+		this.hastagsMaisPop(hashtagEpic);
 	}
 
 	// metodo para validar a interacao do usuario logado com um post de um amigo
@@ -335,7 +344,8 @@ public class SystemPop {
 	 * Metodo para obter uma determinada informacao de um post especifico do
 	 * usuario logado no sistema.
 	 * 
-	 * @param String - atributo
+	 * @param String
+	 *            - atributo
 	 * @param int - post
 	 * @return String - resultado
 	 */
@@ -379,18 +389,19 @@ public class SystemPop {
 	 * @param String
 	 *            - data
 	 * @return void
-	 * @throws LogicaException 
-	 * @throws PostException 
+	 * @throws LogicaException
+	 * @throws PostException
 	 */
-	public void criaPost(String mensagem, String data) throws LogicaException, PostException {
+	public void criaPost(String mensagem, String data) throws LogicaException,
+			PostException {
 		if (getUsuarioLogado() == null) {
 			throw new LogicaException(
 					"Nao eh possivel postar no mural, pois nao ha nenhum usuarix logadx.");
 		}
-		
+
 		UtilPost.verificaConteudoDaMensagem(mensagem);
 		UtilPost.verificaTamanhoDaMensagem(UtilPost.filtraTexto(mensagem));
-		
+
 		String texto = UtilPost.filtraTexto(mensagem);
 		List<ConteudoMidia> conteudo = UtilPost.criaMidias(mensagem);
 		List<String> hashtags = new ArrayList<String>();
@@ -398,10 +409,16 @@ public class SystemPop {
 		if (mensagem.contains("#")) {
 			UtilPost.verificaValidadeDasHastags(mensagem);
 			hashtags = UtilPost.filtraHashtags(mensagem);
-			HastagsMaisPop(hashtags);
+			hastagsMaisPop(hashtags);
 		}
-		
-		usuarioLogado.postar(mensagem, texto, conteudo, hashtags, data); //Quem cria o post eh o usuario
+
+		usuarioLogado.postar(mensagem, texto, conteudo, hashtags, data); // Quem
+																			// cria
+																			// o
+																			// post
+																			// eh
+																			// o
+																			// usuario
 	}
 
 	/*
@@ -428,22 +445,17 @@ public class SystemPop {
 		return hastags;
 	}
 
-	/*
-	 * Metodo para armazenar no Map, a quantidade de vezes que cada hastag
-	 * apareceu em um novo post criado Ex: [#frio=1, #calo=2]
-	 * 
-	 * @param listaDeHastags String
-	 * 
-	 * @return Map<String, Integer>
-	 */
-	public void HastagsMaisPop(List<String> listaDeHastags) {
-		int valuesCopy;
-		for (int i = 0; i < listaDeHastags.size(); i++) {
-			if (!contadorDeHastags.keySet().contains(listaDeHastags.get(i)))
-				contadorDeHastags.put(listaDeHastags.get(i), 1);
-			else {
-				valuesCopy = contadorDeHastags.get(listaDeHastags.get(i));
-				contadorDeHastags.put(listaDeHastags.get(i), valuesCopy + 1);
+	public void hastagsMaisPop(List<String> listaDeHastags) {
+		for (String hashtag : listaDeHastags) {
+			Marcador novo = new Marcador(hashtag);
+			if (!this.trends.getLista().contains(novo)) {
+				this.trends.adicionaMarcador(novo);
+			} else {
+				for (Marcador marcador : this.trends.getLista()) {
+					if (novo.equals(marcador)) {
+						marcador.aumentaOcorrencia();
+					}
+				}
 			}
 		}
 	}
@@ -507,14 +519,15 @@ public class SystemPop {
 
 		Usuario novoAmigo = buscaUsuario(emailNovoAmigo);
 		criaAmizade(novoAmigo);
-		
+
 	}
-	
+
 	/**
-	 * Metodo responsavel por criar a relacao de amizade entre dois usuarios
-	 * e enviar uma notificacao para o novoAmigo
+	 * Metodo responsavel por criar a relacao de amizade entre dois usuarios e
+	 * enviar uma notificacao para o novoAmigo
 	 * 
-	 * @param Usuario novoAmigo
+	 * @param Usuario
+	 *            novoAmigo
 	 * @return void
 	 */
 	private void criaAmizade(Usuario novoAmigo) {
@@ -537,10 +550,17 @@ public class SystemPop {
 	 */
 	public void rejeitaAmizade(String emailRejeitado) throws LogicaException {
 		if (buscaUsuario(emailRejeitado) == null)
-			throw new LogicaException("Um usuarix com email " + emailRejeitado + " nao esta cadastradx.");
+			throw new LogicaException("Um usuarix com email " + emailRejeitado
+					+ " nao esta cadastradx.");
 
 		Usuario candidatoAmigo = buscaUsuario(emailRejeitado);
-		if (!usuarioLogado.getEmailsNotificacao().contains(emailRejeitado)) // verifica se usuario logado tem alguma notificacao
+		if (!usuarioLogado.getEmailsNotificacao().contains(emailRejeitado)) // verifica
+																			// se
+																			// usuario
+																			// logado
+																			// tem
+																			// alguma
+																			// notificacao
 			throw new LogicaException(candidatoAmigo.getNome()
 					+ " nao lhe enviou solicitacoes de amizade.");
 
@@ -653,9 +673,14 @@ public class SystemPop {
 	public String getRankingMais() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			return "(1): " + usuarios.get(0).getNome() + ", (2): "
-					+ usuarios.get(1).getNome() + ", (3): "
-					+ usuarios.get(2).getNome();
+			Usuario primeiro = usuarios.get(0);
+			Usuario segundo = usuarios.get(1);
+			Usuario terceiro = usuarios.get(2);
+
+			return "(1) " + primeiro.getNome() + ": " + primeiro.getPops()
+					+ "; (2) " + segundo.getNome() + ": " + segundo.getPops()
+					+ "; (3) " + terceiro.getNome() + ": " + terceiro.getPops()
+					+ ";";
 		}
 		return "";
 	}
@@ -670,28 +695,32 @@ public class SystemPop {
 	public String getRankingMenos() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			return "(1): " + usuarios.get(usuarios.size() - 1).getNome()
-					+ ", (2): " + usuarios.get(usuarios.size() - 2).getNome()
-					+ ", (3): " + usuarios.get(usuarios.size() - 3).getNome();
+			Usuario primeiro = usuarios.get(usuarios.size() - 1);
+			Usuario segundo = usuarios.get(usuarios.size() - 2);
+			Usuario terceiro = usuarios.get(usuarios.size() - 3);
+
+			return "(1) " + primeiro.getNome() + ": " + primeiro.getPops()
+					+ "; (2) " + segundo.getNome() + ": " + segundo.getPops()
+					+ "; (3) " + terceiro.getNome() + ": " + terceiro.getPops()
+					+ ";";
 		}
 		return "";
 	}
 
 	/**
-	 * Metodo responsavel por exibir os tres usuarios mais e menos
-	 * populares da rede social.
+	 * Metodo responsavel por exibir os tres usuarios mais e menos populares da
+	 * rede social.
 	 * 
 	 * @param void
 	 * @return String - mais populares e os menos populares
 	 */
 	public String getRanking() {
-		return "Mais Populares: " + getRankingMais() +
-				" | " +
-				"Menos Populares: " + getRankingMenos();
+		return "Mais Populares: " + getRankingMais() + " | "
+				+ "Menos Populares: " + getRankingMenos();
 	}
-	
-	public Map<String, Integer> getRankigHastagsMais() {
-		return contadorDeHastags;
+
+	public String getRankigHastagsMais() {
+		return this.trends.getRanking();
 	}
 
 	/**

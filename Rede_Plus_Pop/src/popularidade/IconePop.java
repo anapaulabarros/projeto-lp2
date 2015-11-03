@@ -24,4 +24,9 @@ public class IconePop implements TipoPopularidade {
 	public int qtdPosts() {
 		return 6;
 	}
+
+	@Override
+	public boolean isEpic() {
+		return true;
+	}
 }

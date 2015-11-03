@@ -21,4 +21,9 @@ public class Normal implements TipoPopularidade {
 	public int qtdPosts() {
 		return 2;
 	}
+
+	@Override
+	public boolean isEpic() {
+		return false;
+	}
 }
