@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import midias.ConteudoMidia;
 import popularidade.CelebridadePop;
 import popularidade.IconePop;
 import popularidade.Normal;
@@ -101,8 +102,9 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 			return this.pops > outroUsuario.pops ? -1 : 1;
 	}
 
-	public void postar(Post novoPost) throws PostException {
-		posts.add(novoPost);
+	public void postar(String mensagem, String texto, List<ConteudoMidia> conteudoMidias,
+			List<String> hashtags, String data) throws PostException {
+		posts.add(new Post(mensagem,texto, conteudoMidias, hashtags, data));
 	}
 
 	public void atualizaNivel() {

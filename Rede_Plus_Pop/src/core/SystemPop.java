@@ -401,8 +401,7 @@ public class SystemPop {
 			HastagsMaisPop(hashtags);
 		}
 		
-		Post novoPost = new Post(mensagem, texto, conteudo, hashtags, data);
-		usuarioLogado.postar(novoPost);
+		usuarioLogado.postar(mensagem, texto, conteudo, hashtags, data); //Quem cria o post eh o usuario
 	}
 
 	/*
@@ -495,9 +494,7 @@ public class SystemPop {
 	}
 
 	/**
-	 * Metodo responsavel criar a amizade entre os dois usuarios, usando as
-	 * listas de amigos e as notificacoes para gerenciar a relacao de amizade
-	 * que sera criada.
+	 * Metodo responsavel gerenciar a criacao de amizade entre os dois usuarios.
 	 * 
 	 * @param emailNovoAmigo
 	 * @throws LogicaException
@@ -509,13 +506,24 @@ public class SystemPop {
 					+ " nao esta cadastrado no +pop.");
 
 		Usuario novoAmigo = buscaUsuario(emailNovoAmigo);
+		criaAmizade(novoAmigo);
+		
+	}
+	
+	/**
+	 * Metodo responsavel por criar a relacao de amizade entre dois usuarios
+	 * e enviar uma notificacao para o novoAmigo
+	 * 
+	 * @param Usuario novoAmigo
+	 * @return void
+	 */
+	private void criaAmizade(Usuario novoAmigo) {
 		usuarioLogado.aceitaAmizade(novoAmigo);
 		novoAmigo.aceitaAmizade(usuarioLogado);
 
 		novoAmigo.adicionaNotificacao(usuarioLogado.getNome()
 				+ " aceitou sua amizade."); // envia notificacao para o usuario
 											// que mandou o convite
-
 	}
 
 	/**
@@ -645,8 +653,8 @@ public class SystemPop {
 	public String getRankingMais() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			return "(1) " + usuarios.get(0).getNome() + ", (2) "
-					+ usuarios.get(1).getNome() + ", (3) "
+			return "(1): " + usuarios.get(0).getNome() + ", (2): "
+					+ usuarios.get(1).getNome() + ", (3): "
 					+ usuarios.get(2).getNome();
 		}
 		return "";
@@ -662,13 +670,26 @@ public class SystemPop {
 	public String getRankingMenos() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			return "(1) " + usuarios.get(usuarios.size() - 1).getNome()
-					+ ", (2) " + usuarios.get(usuarios.size() - 2).getNome()
-					+ ", (3) " + usuarios.get(usuarios.size() - 3).getNome();
+			return "(1): " + usuarios.get(usuarios.size() - 1).getNome()
+					+ ", (2): " + usuarios.get(usuarios.size() - 2).getNome()
+					+ ", (3): " + usuarios.get(usuarios.size() - 3).getNome();
 		}
 		return "";
 	}
 
+	/**
+	 * Metodo responsavel por exibir os tres usuarios mais e menos
+	 * populares da rede social.
+	 * 
+	 * @param void
+	 * @return String - mais populares e os menos populares
+	 */
+	public String getRanking() {
+		return "Mais Populares: " + getRankingMais() +
+				" | " +
+				"Menos Populares: " + getRankingMenos();
+	}
+	
 	public Map<String, Integer> getRankigHastagsMais() {
 		return contadorDeHastags;
 	}

@@ -86,8 +86,8 @@ expectError "Post nao encontrado no sistema." getCurtidaPorPost post=7
 
 atualizaRankings
 
-expect "(1) Madonna, (2) Fatima Bernardes Bonner, (3) Dilma Rousseff" getRankingMais
-expect "(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner" getRankingMenos
+expect "(1): Madonna, (2): Fatima Bernardes Bonner, (3): Dilma Rousseff" getRankingMais
+expect "(1): Nazare Tedesco, (2): Dilma Rousseff, (3): Fatima Bernardes Bonner" getRankingMenos
 
 criaPost mensagem="Nao aguento pessoas falsianes. #falsianeemtodolugar #amoescadas #DivaDoMaisPlus" data="27/08/2015 11:19:00"
 
