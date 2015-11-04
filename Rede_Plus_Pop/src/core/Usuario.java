@@ -293,7 +293,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 
 	public void setMagica(int pops) {
-		this.magica = pops;
+		this.magica = this.magica + pops;
 		atualizaPops();
 	}
 

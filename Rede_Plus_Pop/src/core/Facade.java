@@ -151,7 +151,7 @@ public class Facade {
 		return sistemaPop.getPopsUsuario(usuario);
 	}
 	
-	public String atualizaRankings() {
+	public String atualizaRanking() {
 		return sistemaPop.getRanking();
 	}
 	
