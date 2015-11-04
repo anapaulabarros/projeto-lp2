@@ -10,5 +10,5 @@ public interface TipoPopularidade {
 	
 	public int qtdPosts();
 	
-	public boolean isEpic();
+	public boolean isEpic(); 
 }

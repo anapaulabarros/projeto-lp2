@@ -14,6 +14,7 @@ import popularidade.IconePop;
 import popularidade.Normal;
 import popularidade.TipoPopularidade;
 import treatmentsExceptions.AtualizaPerfilException;
+import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
 import treatmentsExceptions.PostNaoEncontradoException;
 
@@ -138,7 +139,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		for (Post post : posts) {
 			pops = pops + post.getPopularidade();
 		}
-		setPops(pops);
+		adicionaPops(pops);
 		atualizaNivel();
 	}
 
@@ -259,9 +260,10 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 
 	public Post getPostEspecifico(int indexPost)
-			throws PostNaoEncontradoException {
+			throws LogicaException {
 		if (indexPost >= posts.size()) {
-			throw new PostNaoEncontradoException("");
+			throw new LogicaException("Post #" + indexPost + 
+					" nao existe. Usuarix possui apenas " +  getPosts().size() + " post(s).");
 		}
 		return posts.get(indexPost);
 	}
@@ -278,7 +280,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return this.popularidade.isEpic();
 	}
 
-	public String getStringPopularidade() {
+	public String getPopularidade() {
 		return popularidade.toString();
 	}
 
@@ -286,7 +288,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return pops;
 	}
 
-	public void setPops(int pops) {
+	public void adicionaPops(int pops) {
 		this.pops = pops;
 	}
 

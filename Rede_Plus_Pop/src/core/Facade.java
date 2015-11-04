@@ -107,11 +107,11 @@ public class Facade {
 		return sistemaPop.getQtdAmigos();
 	}
 	
-	public void setPops(int pops){
-		sistemaPop.setPops(pops);
+	public void adicionaPops(int pops){
+		sistemaPop.adicionaPops(pops);
 	}
 	
-	public String getTipoPopularidade(){
+	public String getPopularidade(){
 		return sistemaPop.getTipoPopularidade();
 	}
 	
@@ -127,15 +127,15 @@ public class Facade {
 		return sistemaPop.getPopsPost(post, usuario);
 	}
 	
-	public int getCurtidaPorPost(int post) throws Exception{
-		return sistemaPop.getCurtidaPorPost(post);
-	}
-	
 	public int getCurtidaPorPost(int post, String usuario) throws Exception{
 		return sistemaPop.getCurtidaPorPost(post, usuario);
 	}
 	
-	public int getRejeicaoPorPost(int post) throws Exception{
+	public int qtdCurtidasDePost(int post) throws Exception{
+		return sistemaPop.qtdCurtidasDePost(post);
+	}
+	
+	public int qtdRejeicoesDePost(int post) throws Exception{
 		return sistemaPop.getRejeicaoPorPost(post);
 	}
 	
@@ -147,7 +147,7 @@ public class Facade {
 		return sistemaPop.getPopsUsuario();
 	}
 	
-	public int getPopsUsuario(String usuario){
+	public int getPopsUsuario(String usuario) throws Exception {
 		return sistemaPop.getPopsUsuario(usuario);
 	}
 	
@@ -175,7 +175,8 @@ public class Facade {
 		sistemaPop.salvaDadosUsuarios();
 	}
 	public static void main(String[] args) {
-		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6", "teste_aceitacao/usecase_7"};
+		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3",
+				"teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6"};
 		EasyAccept.main(args);
 	}
 	

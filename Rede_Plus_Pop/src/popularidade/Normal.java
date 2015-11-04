@@ -15,7 +15,7 @@ public class Normal implements TipoPopularidade {
 	}
 
 	public String toString(){
-		return "Normal";
+		return "Normal Pop";
 	}
 	@Override
 	public int qtdPosts() {

@@ -35,7 +35,7 @@ public class CelebridadePop implements TipoPopularidade {
 	}
 	
 	public String toString(){
-		return "CelebridadePop";
+		return "Celebridade Pop";
 	}
 	
 	public int qtdPosts() {
@@ -46,6 +46,4 @@ public class CelebridadePop implements TipoPopularidade {
 	public boolean isEpic() {
 		return false;
 	}
-
-
 }

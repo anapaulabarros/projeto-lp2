@@ -599,12 +599,12 @@ public class SystemPop {
 		return usuarioLogado.getQtdAmigos();
 	}
 
-	public void setPops(int pops) {
+	public void adicionaPops(int pops) {
 		usuarioLogado.setMagica(pops);
 	}
 
 	public String getTipoPopularidade() {
-		return usuarioLogado.getStringPopularidade();
+		return usuarioLogado.getPopularidade();
 	}
 
 	/**
@@ -617,7 +617,7 @@ public class SystemPop {
 	 */
 	public String getTipoPopularidade(String email) {
 		Usuario usuario = buscaUsuario(email);
-		return usuario.getStringPopularidade();
+		return usuario.getPopularidade();
 	}
 
 	public int getPopsPost(int post) throws Exception {
@@ -637,7 +637,7 @@ public class SystemPop {
 	 * @return int - qtdCurtidas
 	 * @throws Exception
 	 */
-	public int getCurtidaPorPost(int post) throws Exception {
+	public int qtdCurtidasDePost(int post) throws LogicaException {
 		return usuarioLogado.getPostEspecifico(post).getCurtidas();
 	}
 
@@ -659,7 +659,9 @@ public class SystemPop {
 		return usuarioLogado.getPops();
 	}
 
-	public int getPopsUsuario(String email) {
+	public int getPopsUsuario(String email) throws LogicaException{
+		if(usuarioLogado != null)
+			throw new LogicaException("Erro na consulta de Pops. Um usuarix ainda esta logadx.");
 		Usuario usuario = buscaUsuario(email);
 		return usuario.getPops();
 	}

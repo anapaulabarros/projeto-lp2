@@ -17,7 +17,7 @@ public class IconePop implements TipoPopularidade {
 	}
 
 	public String toString(){
-		return "IconePop";
+		return "Icone Pop";
 	}
 	
 	@Override
@@ -29,4 +29,5 @@ public class IconePop implements TipoPopularidade {
 	public boolean isEpic() {
 		return true;
 	}
+		
 }
