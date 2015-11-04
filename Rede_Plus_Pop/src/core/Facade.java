@@ -1,7 +1,6 @@
 package core;
 
 import java.io.IOException;
-import java.util.Map;
 
 import easyaccept.EasyAccept;
 
@@ -176,7 +175,7 @@ public class Facade {
 		sistemaPop.salvaDadosUsuarios();
 	}
 	public static void main(String[] args) {
-		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5"};
+		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3", "teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6", "teste_aceitacao/usecase_7"};
 		EasyAccept.main(args);
 	}
 	
