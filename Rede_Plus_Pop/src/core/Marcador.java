@@ -32,7 +32,7 @@ public class Marcador implements Comparable<Marcador>{
 		if (this.ocorrencia > outroMarcador.getOcorrencia()){
 			return -1;
 		} else if (this.ocorrencia == outroMarcador.getOcorrencia()){
-			return this.hashtag.compareTo(outroMarcador.getHashtag());
+			return outroMarcador.getHashtag().compareTo(this.hashtag);
 		} else{
 			return 1;
 		}

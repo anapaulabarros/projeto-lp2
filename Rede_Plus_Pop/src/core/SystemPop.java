@@ -202,10 +202,17 @@ public class SystemPop {
 				+ amigoDoUsuarioLogado.getPostEspecifico(idPost)
 						.getDataPostFormatada() + ".");
 		
-		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpic()){
-			hashtagEpic = amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpic();
-			this.hastagsMaisPop(hashtagEpic);
+		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicWin()){
+			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicWin()){
+				hashtagEpic.add(epic);
+			}
 		}
+		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicFail()){
+			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicFail()){
+				hashtagEpic.add(epic);
+			}
+		}
+		this.hastagsMaisPop(hashtagEpic);
 	}
 
 	// metodo para validar a interacao do usuario logado com um post de um amigo

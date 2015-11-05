@@ -22,7 +22,8 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	private int popularidade;
 	private int rejeitadas;
 	private String dataPublicacao;
-	private boolean jaAdicionouEpic;
+	private boolean jaAdicionouEpicWin;
+	private boolean jaAdicionouEpicFail;
 
 	public Post(String mensagemCompleta, String texto,
 			List<ConteudoMidia> conteudo, List<String> hashtags, String data) {
@@ -34,7 +35,8 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		this.popularidade = 0;
 		this.curtidas = 0;
 		this.rejeitadas = 0;
-		this.jaAdicionouEpic = false;
+		this.jaAdicionouEpicWin = false;
+		this.jaAdicionouEpicFail = false;
 	}
 
 	public void adicionaHashtag(String hashtag) {
@@ -44,20 +46,28 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		}		
 	}
 	
-	public boolean getAdicionouEpic(){
-		return this.jaAdicionouEpic;
+	public boolean getAdicionouEpicWin(){
+		return this.jaAdicionouEpicWin;
 	}
 	
-	public List<String> containsEpic(){
+	public boolean getAdicionouEpicFail(){
+		return this.jaAdicionouEpicFail;
+	}
+	
+	public List<String> containsEpicWin(){
 		List<String> retorno = new ArrayList<String>();
 		if(this.hashtags.contains("#epicwin")){
 			retorno.add("#epicwin");
+			this.jaAdicionouEpicWin = true;
 		}
+		return retorno;
+	}
+	
+	public List<String> containsEpicFail(){
+		List<String> retorno = new ArrayList<String>();
 		if(this.hashtags.contains("#epicfail")){
 			retorno.add("#epicfail");
-		}
-		if(!retorno.isEmpty()){
-			this.jaAdicionouEpic = true;
+			this.jaAdicionouEpicFail = true;
 		}
 		return retorno;
 	}
