@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="false" 
-  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="core.Facade" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="175" y="175"/>    
+    <position height="-1" width="-1" x="147" y="175"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="core.SystemPop" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/SystemPop.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="575" y="366"/>    
+    <position height="-1" width="-1" x="546" y="367"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="core.Usuario" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Usuario.java" binary="false" corner="BOTTOM_LEFT">    
-    <position height="-1" width="-1" x="970" y="385"/>    
+    <position height="-1" width="-1" x="983" y="176"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="core.Post" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Post.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1276" y="704"/>    
+    <position height="-1" width="-1" x="1363" y="745"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <interface id="5" language="java" name="popularidade.TipoPopularidade" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/popularidade/TipoPopularidade.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1207" y="-178"/>    
+    <position height="-1" width="-1" x="1313" y="-229"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </interface>  
   <class id="6" language="java" name="core.Notificacoes" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Notificacoes.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1285" y="269"/>    
+    <position height="-1" width="-1" x="1291" y="263"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="core.Feed" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Feed.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1013" y="924"/>    
+    <position height="-1" width="-1" x="992" y="864"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="popularidade.CelebridadePop" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/popularidade/CelebridadePop.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1425" y="-127"/>    
+    <position height="-1" width="-1" x="1542" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="popularidade.IconePop" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/popularidade/IconePop.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1360" y="53"/>    
+    <position height="-1" width="-1" x="1399" y="28"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="popularidade.Normal" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/popularidade/Normal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1212" y="56"/>    
+    <position height="-1" width="-1" x="1254" y="30"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -150,7 +150,7 @@
   </class>  
   <class id="17" language="java" name="core.UtilPost" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/UtilPost.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1574" y="453"/>    
+    <position height="-1" width="-1" x="1676" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -159,7 +159,7 @@
   </class>  
   <class id="18" language="java" name="core.UtilUsuario" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/UtilUsuario.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1850" y="454"/>    
+    <position height="-1" width="-1" x="1953" y="433"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -168,7 +168,7 @@
   </class>  
   <class id="19" language="java" name="midias.ConteudoMidia" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/midias/ConteudoMidia.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1605" y="773"/>    
+    <position height="-1" width="-1" x="1681" y="771"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -177,7 +177,7 @@
   </class>  
   <class id="20" language="java" name="midias.Imagem" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/midias/Imagem.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1441" y="945"/>    
+    <position height="-1" width="-1" x="1839" y="933"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -186,7 +186,7 @@
   </class>  
   <class id="21" language="java" name="midias.Audio" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/midias/Audio.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1595" y="946"/>    
+    <position height="-1" width="-1" x="1589" y="939"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -195,7 +195,7 @@
   </class>  
   <class id="22" language="java" name="midias.Video" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/midias/Video.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1738" y="945"/>    
+    <position height="-1" width="-1" x="1713" y="934"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -204,188 +204,224 @@
   </class>  
   <class id="23" language="java" name="midias.MidiaFactory" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/midias/MidiaFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1819" y="732"/>    
+    <position height="-1" width="-1" x="1891" y="709"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <association id="25">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="26" name="posts">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="1155" y="777"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="29" name="usuarios">        
-        <position height="18" width="50" x="772" y="404"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="824" y="404"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <association id="35">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="36" name="conteudoMidias">        
-        <position height="18" width="83" x="1449" y="723"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-68" y="94"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="39" name="posts">        
-        <position height="18" width="35" x="1106" y="508"/>      
-      </attribute>      
-      <multiplicity id="40" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <realization id="42">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="43">    
-    <bendpoint x="837" y="874"/>    
-    <bendpoint x="840" y="895"/>    
-    <bendpoint x="859" y="896"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="44" name="amigos">        
-        <position height="0" width="0" x="34" y="60"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="34" y="60"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="47" name="popularidade">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="50" name="sistemaPop">        
-        <position height="18" width="63" x="323" y="230"/>      
-      </attribute>      
-      <multiplicity id="51" minimum="0" maximum="1">        
-        <position height="0" width="0" x="22" y="5"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="53" name="usuarioLogado">        
-        <position height="18" width="80" x="766" y="351"/>      
-      </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
-        <position height="16" width="23" x="786" y="375"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="55">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="56">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="57" name="notificacoes">        
-        <position height="18" width="67" x="1124" y="291"/>      
-      </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
-        <position height="16" width="23" x="1170" y="316"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="60" name="feed">        
-        <position height="0" width="0" x="-4" y="-96"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-4" y="-96"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="62">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="63">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="11"/>  
-  </generalization>  
-  <association id="64">    
+  <class id="24" language="java" name="core.Marcador" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/Marcador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="201" y="1031"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="core.TrendingTopics" project="114110443_AnaGabriela" 
+    file="/114110443_AnaGabriela/src/core/TrendingTopics.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="183" y="762"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="26">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="65" name="fabricaDeMidias">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="27" name="fabricaDeMidias">        
+        <position height="0" width="0" x="72" y="-23"/>      
       </attribute>      
-      <multiplicity id="66" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="72" y="-23"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="31">    
+    <bendpoint x="850" y="665"/>    
+    <bendpoint x="853" y="686"/>    
+    <bendpoint x="872" y="687"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="32" name="amigos">        
+        <position height="0" width="0" x="47" y="-149"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="47" y="-149"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="34">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="35">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="36" name="notificacoes">        
+        <position height="18" width="67" x="1150" y="205"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1171" y="244"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="39" name="trends"/>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="16" width="23" x="294" y="645"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="42" name="sistemaPop">        
+        <position height="18" width="63" x="295" y="235"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="1">        
+        <position height="16" width="23" x="302" y="264"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="45" name="conteudoMidias">        
+        <position height="18" width="83" x="1536" y="735"/>      
+      </attribute>      
+      <multiplicity id="46" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="8" y="92"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="47">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="48" name="listaMarcadores"/>      
+      <multiplicity id="49" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="50">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <association id="51">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="52" name="posts">        
+        <position height="18" width="35" x="1169" y="441"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1161" y="478"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <association id="55">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="56" name="popularidade">        
+        <position height="0" width="0" x="106" y="-51"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1195" y="-130"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="58">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="59">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="60" name="usuarioLogado">        
+        <position height="18" width="80" x="737" y="225"/>      
+      </attribute>      
+      <multiplicity id="61" minimum="0" maximum="1">        
+        <position height="16" width="23" x="764" y="248"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="63" name="feed">        
+        <position height="0" width="0" x="-25" y="-156"/>      
+      </attribute>      
+      <multiplicity id="64" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="-156"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="65">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="67">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="68" name="usuarios">        
+        <position height="18" width="50" x="757" y="304"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="771" y="330"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="71" name="posts">        
+        <position height="18" width="35" x="1136" y="785"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1148" y="818"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="73">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <generalization id="74">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
