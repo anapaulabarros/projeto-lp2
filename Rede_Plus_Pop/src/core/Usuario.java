@@ -100,7 +100,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		if (this.pops == outroUsuario.pops)
 			return this.email.compareTo(outroUsuario.getEmail());
 		else
-			return this.pops > outroUsuario.pops ? -1 : 1;
+			return this.pops > outroUsuario.pops ? 1 : -1;
 	}
 
 	public void postar(String mensagem, String texto, List<ConteudoMidia> conteudoMidias,
@@ -139,7 +139,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		for (Post post : posts) {
 			pops = pops + post.getPopularidade();
 		}
-		adicionaPops(pops);
+		setPops(pops);
 		atualizaNivel();
 	}
 
@@ -275,10 +275,6 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	public TipoPopularidade getTipoPopularidade() {
 		return this.popularidade;
 	}
-	
-	public boolean isEpic(){
-		return this.popularidade.isEpic();
-	}
 
 	public String getPopularidade() {
 		return popularidade.toString();
@@ -288,7 +284,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return pops;
 	}
 
-	public void adicionaPops(int pops) {
+	public void setPops(int pops) {
 		this.pops = pops;
 	}
 

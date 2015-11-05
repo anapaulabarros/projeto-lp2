@@ -9,6 +9,4 @@ public interface TipoPopularidade {
 	public void rejeitar(Post post);
 	
 	public int qtdPosts();
-	
-	public boolean isEpic(); 
 }

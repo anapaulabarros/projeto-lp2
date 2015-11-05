@@ -25,7 +25,7 @@ public class TrendingTopics {
 	}
 	
 	public String getRanking(){
-		String retorno = "Mais Populares: " + getRankingMais() + " | Menos Populares: " +  getRankingMenos();
+		String retorno = "Trending Topics: " + getRankingMais();
 		return retorno;
 	}
 

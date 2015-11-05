@@ -155,8 +155,8 @@ public class Facade {
 		return sistemaPop.getRanking();
 	}
 	
-	public String getMaisPopHastags() {
-		return sistemaPop.getRankigHastagsMais();
+	public String atualizaTrendingTopics() {
+		return sistemaPop.getTrendingTopics();
 	}
 
 	public void atualizaFeed() {
@@ -176,7 +176,7 @@ public class Facade {
 	}
 	public static void main(String[] args) {
 		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3",
-				"teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6"};
+				"teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6", "teste_aceitacao/usecase_7"};
 		EasyAccept.main(args);
 	}
 	

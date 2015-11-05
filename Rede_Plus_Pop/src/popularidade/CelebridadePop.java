@@ -41,9 +41,4 @@ public class CelebridadePop implements TipoPopularidade {
 	public int qtdPosts() {
 		return 4;
 	}
-
-	@Override
-	public boolean isEpic() {
-		return false;
-	}
 }

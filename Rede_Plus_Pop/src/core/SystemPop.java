@@ -186,17 +186,11 @@ public class SystemPop {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR,
 					usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "curtiu";
-			if (usuarioLogado.isEpic()){
-				hashtagEpic.add("EpicWin");
-			}
 		}
 		if (opcao == REJEITAR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, REJEITAR,
 					usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "rejeitou";
-			if (usuarioLogado.isEpic()){
-				hashtagEpic.add("EpicFail");
-			}
 		}
 
 		// envia notificacao para o usuario que enviou o post, se curtiu ou
@@ -205,10 +199,13 @@ public class SystemPop {
 				+ " "
 				+ palavraInteracao
 				+ " seu post de "
-				+ amigoDoUsuarioLogado.getPosts().get(idPost)
+				+ amigoDoUsuarioLogado.getPostEspecifico(idPost)
 						.getDataPostFormatada() + ".");
 		
-		this.hastagsMaisPop(hashtagEpic);
+		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpic()){
+			hashtagEpic = amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpic();
+			this.hastagsMaisPop(hashtagEpic);
+		}
 	}
 
 	// metodo para validar a interacao do usuario logado com um post de um amigo
@@ -659,9 +656,10 @@ public class SystemPop {
 		return usuarioLogado.getPops();
 	}
 
-	public int getPopsUsuario(String email) throws LogicaException{
-		if(usuarioLogado != null)
-			throw new LogicaException("Erro na consulta de Pops. Um usuarix ainda esta logadx.");
+	public int getPopsUsuario(String email) throws LogicaException {
+		if (usuarioLogado != null)
+			throw new LogicaException(
+					"Erro na consulta de Pops. Um usuarix ainda esta logadx.");
 		Usuario usuario = buscaUsuario(email);
 		return usuario.getPops();
 	}
@@ -675,13 +673,13 @@ public class SystemPop {
 	public String getRankingMais() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			Usuario primeiro = usuarios.get(0);
-			Usuario segundo = usuarios.get(1);
-			Usuario terceiro = usuarios.get(2);
+			Usuario primeiro = usuarios.get(usuarios.size() - 1);
+			Usuario segundo = usuarios.get(usuarios.size() - 2);
+			Usuario terceiro = usuarios.get(usuarios.size() - 3);
 
-			return "(1) " + primeiro.getNome() + ": " + primeiro.getPops()
-					+ "; (2) " + segundo.getNome() + ": " + segundo.getPops()
-					+ "; (3) " + terceiro.getNome() + ": " + terceiro.getPops()
+			return "(1) " + primeiro.getNome() + " " + primeiro.getPops()
+					+ "; (2) " + segundo.getNome() + " " + segundo.getPops()
+					+ "; (3) " + terceiro.getNome() + " " + terceiro.getPops()
 					+ ";";
 		}
 		return "";
@@ -697,13 +695,13 @@ public class SystemPop {
 	public String getRankingMenos() {
 		if (usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			Usuario primeiro = usuarios.get(usuarios.size() - 1);
-			Usuario segundo = usuarios.get(usuarios.size() - 2);
-			Usuario terceiro = usuarios.get(usuarios.size() - 3);
+			Usuario primeiro = usuarios.get(0);
+			Usuario segundo = usuarios.get(1);
+			Usuario terceiro = usuarios.get(2);
 
-			return "(1) " + primeiro.getNome() + ": " + primeiro.getPops()
-					+ "; (2) " + segundo.getNome() + ": " + segundo.getPops()
-					+ "; (3) " + terceiro.getNome() + ": " + terceiro.getPops()
+			return "(1) " + primeiro.getNome() + " " + primeiro.getPops()
+					+ "; (2) " + segundo.getNome() + " " + segundo.getPops()
+					+ "; (3) " + terceiro.getNome() + " " + terceiro.getPops()
 					+ ";";
 		}
 		return "";
@@ -721,7 +719,7 @@ public class SystemPop {
 				+ "Menos Populares: " + getRankingMenos();
 	}
 
-	public String getRankigHastagsMais() {
+	public String getTrendingTopics() {
 		return this.trends.getRanking();
 	}
 

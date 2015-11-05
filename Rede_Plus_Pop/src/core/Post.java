@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	private int popularidade;
 	private int rejeitadas;
 	private String dataPublicacao;
+	private boolean jaAdicionouEpic;
 
 	public Post(String mensagemCompleta, String texto,
 			List<ConteudoMidia> conteudo, List<String> hashtags, String data) {
@@ -32,6 +34,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		this.popularidade = 0;
 		this.curtidas = 0;
 		this.rejeitadas = 0;
+		this.jaAdicionouEpic = false;
 	}
 
 	public void adicionaHashtag(String hashtag) {
@@ -39,6 +42,24 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 			this.mensagemCompleta = this.mensagemCompleta + " " + hashtag;
 			this.hashtags.add(hashtag);
 		}		
+	}
+	
+	public boolean getAdicionouEpic(){
+		return this.jaAdicionouEpic;
+	}
+	
+	public List<String> containsEpic(){
+		List<String> retorno = new ArrayList<String>();
+		if(this.hashtags.contains("#epicwin")){
+			retorno.add("#epicwin");
+		}
+		if(this.hashtags.contains("#epicfail")){
+			retorno.add("#epicfail");
+		}
+		if(!retorno.isEmpty()){
+			this.jaAdicionouEpic = true;
+		}
+		return retorno;
 	}
 
 	@Override
