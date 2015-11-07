@@ -306,12 +306,13 @@ public class SystemPop {
 	 * @param atributo
 	 * @param valor
 	 * @throws Exception
+	 * @throws ParseException 
 	 * @return void
 	 */
-	public void atualizaPerfil(String atributo, String valor) throws Exception {
+	public void atualizaPerfil(String atributo, String valor) throws AtualizaPerfilException, ParseException {
 		if (usuarioLogado == null) {
-			throw new LogicaException(
-					"Nao eh possivel atualizar um perfil. Nenhum usuarix esta logadx no +pop.");
+			throw new AtualizaPerfilException(
+					"Nenhum usuarix esta logadx no +pop.");
 		}
 		if (atributo.equals(NOME)) {
 			usuarioLogado.setNome(valor);
