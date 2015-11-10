@@ -182,6 +182,24 @@ public class SystemPop {
 
 		validaInteracaoPost(idPost, emailAmigo, amigoDoUsuarioLogado);
 
+		palavraInteracao = verificaPalavraDeInteracaoPost(idPost, opcao,
+				amigoDoUsuarioLogado, palavraInteracao);
+
+		// envia notificacao para o usuario que enviou o post, se curtiu ou
+		// rejeitou o post
+		notificacaoDeInteracaoComPost(palavraInteracao, amigoDoUsuarioLogado, idPost);
+		
+		addHastagEpicWin(idPost, amigoDoUsuarioLogado, hashtagEpic);
+			
+		addHastagsEpicFail(idPost, amigoDoUsuarioLogado, hashtagEpic);
+		
+		this.hastagsMaisPop(hashtagEpic);
+	}
+
+	//metodo para verificar qual a palavra de interacao com o Post de um amigo
+	//capturar o tipo de popularidade
+	private String verificaPalavraDeInteracaoPost(int idPost, String opcao,
+			Usuario amigoDoUsuarioLogado, String palavraInteracao) {
 		if (opcao == CURTIR) {
 			amigoDoUsuarioLogado.interagirPost(idPost, CURTIR,
 					usuarioLogado.getTipoPopularidade());
@@ -192,27 +210,38 @@ public class SystemPop {
 					usuarioLogado.getTipoPopularidade());
 			palavraInteracao = "rejeitou";
 		}
+		return palavraInteracao;
+	}
 
-		// envia notificacao para o usuario que enviou o post, se curtiu ou
-		// rejeitou o post
+	//metodo para verifica e adicionar o EpicFail no Post do amigo
+	private void addHastagsEpicFail(int idPost, Usuario amigoDoUsuarioLogado,
+			List<String> hashtagEpic) throws LogicaException {
+		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicFail()){
+			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicFail()){
+				hashtagEpic.add(epic);
+			}
+		}
+	}
+	
+	//metodo para verificar e adicionar o EpicWin no Post do amigo
+	private void addHastagEpicWin(int idPost, Usuario amigoDoUsuarioLogado,
+			List<String> hashtagEpic) throws LogicaException {
+		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicWin()){
+			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicWin()){
+				hashtagEpic.add(epic);
+			}
+		}
+	}
+	
+	//metodo para adicionar uma notificacao na lista de notificacoes
+	//do amigo do Usuario logado ao receber uma interacao com um post especifico
+	private void notificacaoDeInteracaoComPost(String palavraInteracao, Usuario amigoDoUsuarioLogado, int idPost) throws LogicaException {
 		amigoDoUsuarioLogado.adicionaNotificacao(usuarioLogado.getNome()
 				+ " "
 				+ palavraInteracao
 				+ " seu post de "
 				+ amigoDoUsuarioLogado.getPostEspecifico(idPost)
 						.getDataPostFormatada() + ".");
-		
-		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicWin()){
-			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicWin()){
-				hashtagEpic.add(epic);
-			}
-		}
-		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicFail()){
-			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicFail()){
-				hashtagEpic.add(epic);
-			}
-		}
-		this.hastagsMaisPop(hashtagEpic);
 	}
 
 	// metodo para validar a interacao do usuario logado com um post de um amigo
@@ -424,30 +453,6 @@ public class SystemPop {
 																			// eh
 																			// o
 																			// usuario
-	}
-
-	/*
-	 * Metodo para armazenar um dicionario de hastags e suas mensagens
-	 * associadas Ex: [#frio={faz muito frio hoje}]
-	 * 
-	 * @param mensgem String
-	 * 
-	 * @return Map<String, ArrayList<String>>
-	 */
-	public Map<String, ArrayList<String>> dicionarioDeHashtags(
-			String listaDeHastags, String textoFiltrado, String mensagem) {
-		Map<String, ArrayList<String>> hastags = new HashMap<String, ArrayList<String>>();
-		List<String> listaHastags = new ArrayList<String>();
-		for (String hashtag : listaDeHastags.split(" ")) {
-			listaHastags.add(hashtag);
-		}
-		for (int i = 0; i < listaHastags.size(); i++) {
-			if (!hastags.keySet().contains(listaHastags.get(i)))
-				hastags.put(listaHastags.get(i), new ArrayList<String>());
-			hastags.get(listaHastags.get(i)).add(textoFiltrado);
-		}
-
-		return hastags;
 	}
 
 	public void hastagsMaisPop(List<String> listaDeHastags) {
