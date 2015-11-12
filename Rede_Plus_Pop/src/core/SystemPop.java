@@ -34,6 +34,8 @@ public class SystemPop {
 	public static final String CELEBRIDADE = "CelebridadePop";
 	public static final String NORMAL = "Normal";
 	private static final String MENSAGEM = "Mensagem";
+	public static final String EPICFAIL = "#epicfail";
+	public static final String EPICWIN = "#epicwin";
 
 	private List<Usuario> usuarios;
 	private Usuario usuarioLogado;
@@ -188,10 +190,9 @@ public class SystemPop {
 		// envia notificacao para o usuario que enviou o post, se curtiu ou
 		// rejeitou o post
 		notificacaoDeInteracaoComPost(palavraInteracao, amigoDoUsuarioLogado, idPost);
-		
-		addHastagEpicWin(idPost, amigoDoUsuarioLogado, hashtagEpic);
-			
+
 		addHastagsEpicFail(idPost, amigoDoUsuarioLogado, hashtagEpic);
+		addHastagEpicWin(idPost, amigoDoUsuarioLogado, hashtagEpic);
 		
 		this.hastagsMaisPop(hashtagEpic);
 	}
@@ -212,26 +213,26 @@ public class SystemPop {
 		}
 		return palavraInteracao;
 	}
-
-	//metodo para verifica e adicionar o EpicFail no Post do amigo
-	private void addHastagsEpicFail(int idPost, Usuario amigoDoUsuarioLogado,
-			List<String> hashtagEpic) throws LogicaException {
-		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicFail()){
-			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicFail()){
-				hashtagEpic.add(epic);
-			}
-		}
-	}
 	
-	//metodo para verificar e adicionar o EpicWin no Post do amigo
-	private void addHastagEpicWin(int idPost, Usuario amigoDoUsuarioLogado,
-			List<String> hashtagEpic) throws LogicaException {
-		if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicWin()){
-			for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpicWin()){
-				hashtagEpic.add(epic);
+	//metodo para verifica e adicionar o EpicFail no Post do amigo
+		private void addHastagsEpicFail(int idPost, Usuario amigoDoUsuarioLogado,
+				List<String> hashtagEpic) throws LogicaException {
+			if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicFail()){
+				for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpics(SystemPop.EPICFAIL)){
+					hashtagEpic.add(epic);
+				}
 			}
 		}
-	}
+		
+		//metodo para verificar e adicionar o EpicWin no Post do amigo
+		private void addHastagEpicWin(int idPost, Usuario amigoDoUsuarioLogado,
+				List<String> hashtagEpic) throws LogicaException {
+			if(!amigoDoUsuarioLogado.getPostEspecifico(idPost).getAdicionouEpicWin()){
+				for (String epic: amigoDoUsuarioLogado.getPostEspecifico(idPost).containsEpics(SystemPop.EPICWIN)){
+					hashtagEpic.add(epic);
+				}
+			}
+		}
 	
 	//metodo para adicionar uma notificacao na lista de notificacoes
 	//do amigo do Usuario logado ao receber uma interacao com um post especifico
@@ -676,48 +677,40 @@ public class SystemPop {
 		Usuario usuario = buscaUsuario(email);
 		return usuario.getPops();
 	}
-
+	
 	/**
-	 * Metodo que recupera os nomes dos 3 usuarios mais populares da rede social
+	 * Metodo que recupera os nomes dos 3 usuarios menos populares e 3 usuarios 
+	 * mais populares da rede social
 	 * 
 	 * @param void
-	 * @return String - tresPessasMaisPopulares
+	 * @return String - resultado
 	 */
-	public String getRankingMais() {
-		if (usuarios.size() != 0) {
+	public String getRankingUsuarios() {
+		String resultado = "Mais Populares: ";
+		if(usuarios.size() != 0) {
 			Collections.sort(usuarios);
-			Usuario primeiro = usuarios.get(usuarios.size() - 1);
-			Usuario segundo = usuarios.get(usuarios.size() - 2);
-			Usuario terceiro = usuarios.get(usuarios.size() - 3);
-
-			return "(1) " + primeiro.getNome() + " " + primeiro.getPops()
-					+ "; (2) " + segundo.getNome() + " " + segundo.getPops()
-					+ "; (3) " + terceiro.getNome() + " " + terceiro.getPops()
-					+ ";";
+			
+			//Usuarios mais populares
+			if(usuarios.get(usuarios.size() - 1) != null)
+				resultado += "(1) " + usuarios.get(usuarios.size() - 1).getNome() + " " + usuarios.get(usuarios.size() - 1).getPops();
+			if(usuarios.get(usuarios.size() - 2) != null)
+				resultado += "; (2) " + usuarios.get(usuarios.size() - 2).getNome() + " " + usuarios.get(usuarios.size() - 2).getPops();
+			if(usuarios.get(usuarios.size() - 3) != null)
+				resultado += "; (3) " + usuarios.get(usuarios.size() - 3).getNome() + " " + usuarios.get(usuarios.size() - 3).getPops();
+			
+			resultado  += "; | Menos Populares: ";
+			
+			//Usuarios menos populares
+			if(usuarios.get(0) != null)
+				resultado += "(1) " + usuarios.get(0).getNome() + " " + usuarios.get(0).getPops();
+			if(usuarios.get(1) != null)
+				resultado += "; (2) " + usuarios.get(1).getNome() + " " + usuarios.get(1).getPops();
+			if(usuarios.get(2) != null)
+				resultado += "; (3) " + usuarios.get(2).getNome() + " " + usuarios.get(2).getPops();
+			
+			resultado  += ";";
 		}
-		return "";
-	}
-
-	/**
-	 * Metodo que recupera os nomes dos 3 usuarios menos populares da rede
-	 * social
-	 * 
-	 * @param void
-	 * @return String - tresPessasMenosPopulares
-	 */
-	public String getRankingMenos() {
-		if (usuarios.size() != 0) {
-			Collections.sort(usuarios);
-			Usuario primeiro = usuarios.get(0);
-			Usuario segundo = usuarios.get(1);
-			Usuario terceiro = usuarios.get(2);
-
-			return "(1) " + primeiro.getNome() + " " + primeiro.getPops()
-					+ "; (2) " + segundo.getNome() + " " + segundo.getPops()
-					+ "; (3) " + terceiro.getNome() + " " + terceiro.getPops()
-					+ ";";
-		}
-		return "";
+		return resultado;
 	}
 
 	/**
@@ -728,8 +721,9 @@ public class SystemPop {
 	 * @return String - mais populares e os menos populares
 	 */
 	public String getRanking() {
-		return "Mais Populares: " + getRankingMais() + " | "
-				+ "Menos Populares: " + getRankingMenos();
+		//return "Mais Populares: " + getRankingMais() + " | "
+		//		+ "Menos Populares: " + getRankingMenos();
+		return getRankingUsuarios();
 	}
 
 	public String getTrendingTopics() {

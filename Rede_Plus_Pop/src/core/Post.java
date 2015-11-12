@@ -54,22 +54,21 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		return this.jaAdicionouEpicFail;
 	}
 	
-	public List<String> containsEpicWin(){
+	public List<String> containsEpics(String opcao) {
 		List<String> retorno = new ArrayList<String>();
-		if(this.hashtags.contains("#epicwin")){
-			retorno.add("#epicwin");
-			this.jaAdicionouEpicWin = true;
+		if(opcao.equals(SystemPop.EPICFAIL)){
+			if(this.hashtags.contains(SystemPop.EPICFAIL)){
+				retorno.add(SystemPop.EPICFAIL);
+				this.jaAdicionouEpicFail = true;
+			}
+		}else {
+			if(this.hashtags.contains(SystemPop.EPICWIN)){
+				retorno.add(SystemPop.EPICWIN);
+				this.jaAdicionouEpicWin = true;
+			}
 		}
 		return retorno;
-	}
-	
-	public List<String> containsEpicFail(){
-		List<String> retorno = new ArrayList<String>();
-		if(this.hashtags.contains("#epicfail")){
-			retorno.add("#epicfail");
-			this.jaAdicionouEpicFail = true;
-		}
-		return retorno;
+			
 	}
 
 	@Override
