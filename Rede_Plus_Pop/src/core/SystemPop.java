@@ -721,8 +721,6 @@ public class SystemPop {
 	 * @return String - mais populares e os menos populares
 	 */
 	public String getRanking() {
-		//return "Mais Populares: " + getRankingMais() + " | "
-		//		+ "Menos Populares: " + getRankingMenos();
 		return getRankingUsuarios();
 	}
 
