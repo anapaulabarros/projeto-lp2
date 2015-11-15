@@ -325,4 +325,21 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	public int getQtdPost() {
 		return popularidade.qtdPosts();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Usuario){
+			Usuario outro = (Usuario) obj;
+			return this.getEmail().equals(outro.getEmail());
+		}
+		return false;
+	}
 }
