@@ -5,156 +5,162 @@ import java.io.IOException;
 import easyaccept.EasyAccept;
 
 public class Facade {
-	
+
 	private SystemPop sistemaPop;
-	
-	public Facade(){
+
+	public Facade() {
 		sistemaPop = new SystemPop();
 	}
-	
-	public void iniciaSistema(){
+
+	public void iniciaSistema() {
 		sistemaPop.iniciaSistema();
 	}
+
 	public void fechaSistema() throws Exception {
 		sistemaPop.fechaSistema();
 	}
-	
-	public void login(String email, String senha) throws Exception{
+
+	public void login(String email, String senha) throws Exception {
 		sistemaPop.login(email, senha);
 	}
-	
-	public void logout() throws Exception{
+
+	public void logout() throws Exception {
 		sistemaPop.logout();
 	}
-	
-	public String cadastraUsuario(String nome, String email, String senha, String dataNasc, String imagem) throws Exception{
+
+	public String cadastraUsuario(String nome, String email, String senha,
+			String dataNasc, String imagem) throws Exception {
 		return sistemaPop.cadastraUsuario(nome, email, senha, dataNasc, imagem);
 	}
-	
-	public String cadastraUsuario(String nome, String email, String senha, String dataNasc) throws Exception{
-		return this.cadastraUsuario(nome, email, senha, dataNasc, "resources/default.jpg");
+
+	public String cadastraUsuario(String nome, String email, String senha,
+			String dataNasc) throws Exception {
+		return this.cadastraUsuario(nome, email, senha, dataNasc,
+				"resources/default.jpg");
 	}
-	
-	public String getInfoUsuario(String atributo) throws Exception{
+
+	public String getInfoUsuario(String atributo) throws Exception {
 		return sistemaPop.getInfoUsuario(atributo);
 	}
-	
-	public String getInfoUsuario(String atributo, String usuario) throws Exception{
+
+	public String getInfoUsuario(String atributo, String usuario)
+			throws Exception {
 		return sistemaPop.getInfoUsuario(atributo, usuario);
 	}
-	
-	public void removeUsuario(String email) throws Exception{
+
+	public void removeUsuario(String email) throws Exception {
 		sistemaPop.removeUsuario(email);
 	}
-	
-	public void atualizaPerfil(String atributo, String valor) throws Exception{
+
+	public void atualizaPerfil(String atributo, String valor) throws Exception {
 		sistemaPop.atualizaPerfil(atributo, valor);
 	}
-	
-	public void atualizaPerfil(String atributo, String valor, String velhaSenha) throws Exception{
+
+	public void atualizaPerfil(String atributo, String valor, String velhaSenha)
+			throws Exception {
 		sistemaPop.atualizaPerfil(atributo, valor, velhaSenha);
 	}
-	
-	public void criaPost(String mensagem, String data) throws Exception{
+
+	public void criaPost(String mensagem, String data) throws Exception {
 		sistemaPop.criaPost(mensagem, data);
 	}
-	
-	public String getPost(int post){
+
+	public String getPost(int post) {
 		return sistemaPop.getPost(post);
 	}
-	
-	public String getPost(String atributo, int post){
+
+	public String getPost(String atributo, int post) {
 		return sistemaPop.getPost(atributo, post);
 	}
-	
-	public String getConteudoPost(int indice, int post) throws Exception{
+
+	public String getConteudoPost(int indice, int post) throws Exception {
 		return sistemaPop.getConteudoPost(indice, post);
 	}
-	
-	public void curtirPost(String email,int indexPost) throws Exception {
+
+	public void curtirPost(String email, int indexPost) throws Exception {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.CURTIR);
 	}
-	
+
 	public void rejeitarPost(String email, int indexPost) throws Exception {
 		sistemaPop.interagirComPost(indexPost, email, sistemaPop.REJEITAR);
 	}
-	
+
 	public void adicionaAmigo(String usuario) throws Exception {
 		sistemaPop.adicionaAmigo(usuario);
 	}
-	
+
 	public void removeAmigo(String emailUsuario) throws Exception {
 		sistemaPop.removeAmigo(emailUsuario);
 	}
 
-	public int getNotificacoes(){
+	public int getNotificacoes() {
 		return sistemaPop.getNotificacoes();
 	}
-	
-	public String getNextNotificacao() throws Exception{
+
+	public String getNextNotificacao() throws Exception {
 		return sistemaPop.getNextNotificacao();
 	}
-	
+
 	public void rejeitaAmizade(String usuario) throws Exception {
 		sistemaPop.rejeitaAmizade(usuario);
 	}
-	
+
 	public void aceitaAmizade(String usuario) throws Exception {
 		sistemaPop.aceitaAmizade(usuario);
 	}
-	
+
 	public int getQtdAmigos() {
 		return sistemaPop.getQtdAmigos();
 	}
-	
-	public void adicionaPops(int pops){
+
+	public void adicionaPops(int pops) {
 		sistemaPop.adicionaPops(pops);
 	}
-	
-	public String getPopularidade(){
+
+	public String getPopularidade() {
 		return sistemaPop.getTipoPopularidade();
 	}
-	
-	public String getTipoPopularidade(String email){
+
+	public String getTipoPopularidade(String email) {
 		return sistemaPop.getTipoPopularidade(email);
 	}
-	
-	public int getPopsPost(int post) throws Exception{
+
+	public int getPopsPost(int post) throws Exception {
 		return sistemaPop.getPopsPost(post);
 	}
-	
-	public int getPopsPost(int post, String usuario) throws Exception{
+
+	public int getPopsPost(int post, String usuario) throws Exception {
 		return sistemaPop.getPopsPost(post, usuario);
 	}
-	
-	public int getCurtidaPorPost(int post, String usuario) throws Exception{
+
+	public int getCurtidaPorPost(int post, String usuario) throws Exception {
 		return sistemaPop.getCurtidaPorPost(post, usuario);
 	}
-	
-	public int qtdCurtidasDePost(int post) throws Exception{
+
+	public int qtdCurtidasDePost(int post) throws Exception {
 		return sistemaPop.qtdCurtidasDePost(post);
 	}
-	
-	public int qtdRejeicoesDePost(int post) throws Exception{
+
+	public int qtdRejeicoesDePost(int post) throws Exception {
 		return sistemaPop.getRejeicaoPorPost(post);
 	}
-	
-	public int getRejeicaoPorPost(int post, String usuario) throws Exception{
+
+	public int getRejeicaoPorPost(int post, String usuario) throws Exception {
 		return sistemaPop.getRejeicaoPorPost(post, usuario);
 	}
-	
-	public int getPopsUsuario(){
+
+	public int getPopsUsuario() {
 		return sistemaPop.getPopsUsuario();
 	}
-	
+
 	public int getPopsUsuario(String usuario) throws Exception {
 		return sistemaPop.getPopsUsuario(usuario);
 	}
-	
+
 	public String atualizaRanking() {
 		return sistemaPop.getRanking();
 	}
-	
+
 	public String atualizaTrendingTopics() {
 		return sistemaPop.getTrendingTopics();
 	}
@@ -162,22 +168,26 @@ public class Facade {
 	public void atualizaFeed() {
 		sistemaPop.atualizaFeed();
 	}
-	
+
 	public void atualizaFeedPopularidade() {
 		sistemaPop.atualizaFeedPopularidade();
 	}
-	
+
 	public void salvaHistoricoPost() throws IOException {
 		sistemaPop.salvaHistoricoPosts();
 	}
-	
+
 	public void salvaDadosUsuarioArquivo() throws IOException {
 		sistemaPop.salvaDadosUsuarios();
 	}
+
 	public static void main(String[] args) {
-		args = new String[] {"core.Facade", "teste_aceitacao/usecase_1", "teste_aceitacao/usecase_2", "teste_aceitacao/usecase_3",
-				"teste_aceitacao/usecase_4", "teste_aceitacao/usecase_5_neto", "teste_aceitacao/usecase_6", "teste_aceitacao/usecase_7"};
+		args = new String[] { "core.Facade", "testes/usecase_1",
+				"testes/usecase_2", "testes/usecase_3", "testes/usecase_4",
+				"testes/usecase_5_neto", "testes/usecase_6",
+				"testes/usecase_7", "testes/usecase_8", "testes/usecase_9",
+				"testes/usecase_dez" };
 		EasyAccept.main(args);
 	}
-	
+
 }
