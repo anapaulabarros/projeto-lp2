@@ -347,4 +347,17 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		return false;
 	}
 
+	public void ordenaFeed(String ordenacao) {
+		if (ordenacao.equalsIgnoreCase("data")) {
+			this.feed.ordenaPorData();
+		} else if (ordenacao.equalsIgnoreCase("popularidade")){
+			this.feed.atualizaPorPopularidade();
+		}
+		
+	}
+	
+	public List<Post> getFeed() {
+		return this.feed.getPosts();
+	}
+
 }

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import treatmentsExceptions.PostException;
+
 public class Feed {
 	
 	private List<Post> posts;
@@ -21,6 +23,10 @@ public class Feed {
 		Collections.sort(posts);
 	}
 	
+	public void ordenaPorData() {
+		Collections.sort(this.posts);
+	}
+	
 	/**
 	 * Atualiza os posts por ordem de popularidade
 	 * 
@@ -28,15 +34,23 @@ public class Feed {
 	 * @return void
 	 */
 	public void atualizaPorPopularidade() {
-		Collections.sort(posts, new Comparator<Post>() {
+		Collections.sort(this.posts, new Comparator<Post>() {
 
 			@Override
 			public int compare(Post post1, Post post2) {
-				if(post1.getPopularidade() == post2.getPopularidade())
+				if (post1.getPopularidade() > post2.getPopularidade()) {
+						return 1;
+					} else if (post1.getPopularidade() < post2.getPopularidade()) {
+						return -1;
+					} else {
 					return 0;
-				else
-					return post1.getPopularidade() > post2.getPopularidade() ? 1 : -1;
-			}
-		});
+					}
+				}
+			
+			});
 	}
+	public List<Post> getPosts() {
+		return posts;
+	}
+	public int sizeFeed(){return posts.size();}
 }

@@ -741,6 +741,16 @@ public class SystemPop {
 		usuarioLogado.atualizaFeedPopularidade();
 	}
 
+	public void ordenaFeed(String ordenacao) {
+		this.usuarioLogado.ordenaFeed(ordenacao);
+	}
+
+	public Post getPostFeedNoticiasRecentes(int indiceDoPost) {
+		ordenaFeed("Data");
+		System.out.println(usuarioLogado.getFeed());
+		return this.usuarioLogado.getFeed().get(indiceDoPost);
+	}
+	
 	/**
 	 * Metodo responsavel por salvar em arquivo o historico de todos os posts de
 	 * todos os usuarios no sistema.
