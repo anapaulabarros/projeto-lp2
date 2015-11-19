@@ -172,6 +172,10 @@ public class Facade {
 	public void atualizaFeedPopularidade() {
 		sistemaPop.atualizaFeedPopularidade();
 	}
+	
+	public int getTotalPosts(){
+		return sistemaPop.getTotalPosts();
+	}
 
 	public void salvaHistoricoPost() throws IOException {
 		sistemaPop.salvaHistoricoPosts();

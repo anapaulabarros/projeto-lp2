@@ -797,4 +797,8 @@ public class SystemPop {
 		meuArquivo.flush();
 		meuArquivo.close();
 	}
+
+	public int getTotalPosts() {
+		return usuarioLogado.getTotalPosts();
+	}
 }

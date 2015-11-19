@@ -315,7 +315,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		if (tamanho <= quantidade) {
 			listaPost = this.posts;
 		} else {
-			for (int i = tamanho; i > tamanho - quantidade; i++) {
+			for (int i = tamanho - quantidade; i > tamanho; i++) {
 				listaPost.add(this.posts.get(i));
 			}
 		}
@@ -324,6 +324,10 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 
 	public int getQtdPost() {
 		return popularidade.qtdPosts();
+	}
+	
+	public int getTotalPosts(){
+		return this.posts.size();
 	}
 
 	@Override
@@ -342,4 +346,5 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		}
 		return false;
 	}
+
 }
