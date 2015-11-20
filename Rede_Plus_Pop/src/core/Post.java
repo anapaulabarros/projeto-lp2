@@ -93,7 +93,7 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 	 */
 	@Override
 	public int compareTo(Post outroPost) {
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 		try {
 			Date dataPostAtual = formatter.parse(this.dataPublicacao);
 			Date dataOutroPost = formatter.parse(outroPost.dataPublicacao);

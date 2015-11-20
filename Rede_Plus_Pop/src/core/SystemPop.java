@@ -811,4 +811,6 @@ public class SystemPop {
 	public int getTotalPosts() {
 		return usuarioLogado.getTotalPosts();
 	}
+	
+	public List<Post> getFeedUsuarioLogado(){return usuarioLogado.getFeed();}
 }

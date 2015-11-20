@@ -1,6 +1,7 @@
 package core;
 
 import java.io.IOException;
+import java.util.List;
 
 import easyaccept.EasyAccept;
 
@@ -188,11 +189,12 @@ public class Facade {
 	public String getPostFeedNoticiasRecentes(int cahvePost) throws Exception {
 		return sistemaPop.getPostFeedNoticiasRecentes(cahvePost).getPostString();
 	}
+	public List<Post> getFeedUsuarioLogado(){return sistemaPop.getFeedUsuarioLogado();}
+	
 	public static void main(String[] args) {
 		args = new String[] { "core.Facade","testes/usecase_1","testes/usecase_2",
 				"testes/usecase_3", "testes/usecase_4" ,"testes/usecase_5_neto",
-				"testes/usecase_6","testes/usecase_7","testes/usecase_8", 
-				"testes/usecase_9","testes/usecase_dez"};
+				"testes/usecase_6","testes/usecase_7","testes/usecase_8"};
 		EasyAccept.main(args);
 	}
 

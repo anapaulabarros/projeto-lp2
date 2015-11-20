@@ -90,6 +90,7 @@ curtirPost usuario="isabel@princesa.com" post=2
 
 atualizaFeed
 
+
 #Posts mais recentes dos amigos.
 expect "Meu Sao Francisco, protejei minha filha e minha neta. #saoFranciso (2005-03-02 12:15:00)" getPostFeedNoticiasRecentes post=11
 expect "Bom dia meus amores. #cafeDaManha #familiaReunida (2005-01-14 08:25:00)" getPostFeedNoticiasRecentes post=10

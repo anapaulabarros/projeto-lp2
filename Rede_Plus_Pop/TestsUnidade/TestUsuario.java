@@ -102,18 +102,33 @@ public class TestUsuario {
 			sistema.iniciaSistema();
 
 			sistema.cadastraUsuario("Madonna", MADONNA_EMAIL, "iamawesome", "16/08/1958", "resources/madonna.jpg");
-			sistema.login(MADONNA_EMAIL, "iamawesome");
-			
-			sistema.criaPost("Odeio andar de elevador. <audio>resources/teste_audio.mp3</audio> #teste", "16/10/2015 14:20:00");
-			System.out.println(sistema.getConteudoPost(0, 0));
-		
-			
-			/*sistema.cadastraUsuario("Fatima Bernardes Bonner", FAFA, "fafa_S2", "17/09/1962", "resources/fatima.jpg");
+			sistema.cadastraUsuario("Fatima Bernardes Bonner", FAFA, "fafa_S2", "17/09/1962", "resources/fatima.jpg");
 			sistema.cadastraUsuario("Nazare Tedesco", NAZA_FOGUETE, "belzinha", "17/09/1962", "resources/naza.jpg");
 			sistema.cadastraUsuario("Dilma Rousseff", DILMA_BOLADA, "rainha", "14/12/1947", "resources/dilma.jpg");
 
 			
-			sistema.login(DILMA_BOLADA, "rainha");
+			sistema.login(MADONNA_EMAIL, "iamawesome");
+			sistema.criaPost("Ave Maria meu Deus. #senhoraDoDestino", "01/10/2004 00:00:00");
+			sistema.adicionaAmigo(FAFA);
+			
+			sistema.logout();
+			
+			
+			sistema.login(FAFA, "fafa_S2");
+			sistema.criaPost("Me diga o que voce fez com Lindalva, diga Nazareh. #cadeLindalva", "05/08/2004 03:54:00");
+			sistema.criaPost("To eh varada de fome. #varadaDeFome #senhoraDoDestino", "03/09/2004 11:30:00");
+			sistema.aceitaAmizade(MADONNA_EMAIL);
+			sistema.logout();
+			
+			sistema.login(MADONNA_EMAIL, "iamawesome");
+			sistema.atualizaFeed();
+			System.out.println(sistema.getFeedUsuarioLogado().get(0).getPostString());
+			System.out.println(sistema.getFeedUsuarioLogado().size());
+			sistema.logout();
+			
+			
+			
+			/*sistema.login(DILMA_BOLADA, "rainha");
 			sistema.setPops(501);
 			Assert.assertEquals("CelebridadePop", sistema.getTipoPopularidade());
 
@@ -177,7 +192,6 @@ public class TestUsuario {
 			Assert.assertEquals("(1) Madonna, (2) Fatima Bernardes Bonner, (3) Dilma Rousseff", sistema.getRankingMais());
 			Assert.assertEquals("(1) Nazare Tedesco, (2) Dilma Rousseff, (3) Fatima Bernardes Bonner", sistema.getRankingMenos());*/
 
-			sistema.logout();
 			
 			sistema.fechaSistema();
 			
