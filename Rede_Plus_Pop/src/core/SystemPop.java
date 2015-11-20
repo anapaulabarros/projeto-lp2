@@ -268,34 +268,11 @@ public class SystemPop {
 	}
 
 	public void iniciaSistema() {
-		try{
-			File arquivo = new File("arquivos/usuarios.dat");
-			FileInputStream fluxo = new FileInputStream(arquivo);
-			ObjectInputStream inputStream = new ObjectInputStream(fluxo);
-			
-			this.usuarios = (List<Usuario>) inputStream.readObject();
-
-			inputStream.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	public void fechaSistema() throws LogicaException {
 		if (usuarioLogado == null) {
-			try {
-				File arquivo = new File("arquivos/usuarios.dat");
-				FileOutputStream fluxo = new FileOutputStream(arquivo);
-				ObjectOutputStream outputStream = new ObjectOutputStream(fluxo);
-
-				outputStream.writeObject(this.usuarios);
-
-				outputStream.close();
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		} else {
 			throw new LogicaException(
 					"Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");
@@ -783,7 +760,7 @@ public class SystemPop {
 	 * @return void
 	 * @throws IOException
 	 */
-	public void salvaHistoricoPosts() throws IOException {
+	/*public void salvaHistoricoPosts() throws IOException {
 		List<String> postString = new ArrayList<String>();
 
 		for (int i = 0; i < usuarios.size(); i++) {
@@ -805,7 +782,7 @@ public class SystemPop {
 		meuArquivo.flush();
 		meuArquivo.close();
 
-	}
+	}*/
 
 	/**
 	 * Metodo responsavel por salvar em arquivo os dados dos perfis de todos os
@@ -814,7 +791,7 @@ public class SystemPop {
 	 * @return void
 	 * @throws IOException
 	 */
-	public void salvaDadosUsuarios() throws IOException {
+	/*public void salvaDadosUsuarios() throws IOException {
 		List<String> dadosString = new ArrayList<String>();
 
 		for (int i = 0; i < usuarios.size(); i++) {
@@ -831,7 +808,7 @@ public class SystemPop {
 		oos.close();
 		meuArquivo.flush();
 		meuArquivo.close();
-	}
+	}*/
 
 	public int getTotalPosts() {
 		return usuarioLogado.getTotalPosts();

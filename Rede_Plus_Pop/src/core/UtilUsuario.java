@@ -142,9 +142,12 @@ public class UtilUsuario {
 	}
 	
 	public static String formataEmailArquivo(String email){
+		StringBuilder sb = new StringBuilder();
+
 		String emailToString = email.replace("@", "[at]").replace(".", "");
-		emailToString = emailToString + "./arquivos/posts_" + emailToString + ".txt";
-		return emailToString;
+		sb.append("./arquivos/posts_" + emailToString + ".txt");
+
+		return sb.toString();
 	}
 
 }

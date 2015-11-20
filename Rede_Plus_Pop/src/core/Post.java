@@ -112,15 +112,29 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 		return 0;
 	}
 	
+	/**
+	 * Metodo para gerar uma String formatada dos post que serao salvos em 
+	 * um arquivo de texto para posteriomente serem manipulaos
+	 * @param indice POST
+	 * @return String
+	 */
 	public String formataParaArquivo(int indice){
-		String retorno = "";
-		retorno = retorno + "Post #" + indice + " - " + this.getDataPublicacao() + EOL
-				+ getConteudoMidias()
-				+ getHashtagsString() + EOL
-				+ "+Pop: " + getPopularidade() + EOL
-				+ EOL
-				+ EOL;
-		return retorno;
+		
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("Post #" + indice + " - " + this.getDataPublicacao() + SystemPop.QUEBRA_DE_LINHA);
+		sb.append("Conteudo:" + SystemPop.QUEBRA_DE_LINHA);
+		if(!(this.texto).isEmpty())
+			sb.append(this.texto + SystemPop.QUEBRA_DE_LINHA);
+		if(!(getConteudoMidias()).isEmpty())
+			sb.append(getConteudoMidias());
+		if(!(getHashtagsString()).isEmpty())
+			sb.append(getHashtagsString() + SystemPop.QUEBRA_DE_LINHA);
+		
+		sb.append("+Pop: " + getPopularidade() + SystemPop.QUEBRA_DE_LINHA + SystemPop.QUEBRA_DE_LINHA + SystemPop.QUEBRA_DE_LINHA);
+		
+		return sb.toString();
+		
 	}
 
 	private String getHashtagsString() {

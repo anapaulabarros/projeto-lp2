@@ -38,7 +38,6 @@ criaPost mensagem="Estava brincando com a minha prima e quebrei o forno da minha
 baixaPosts
 equalfiles ./testes/auxiliar/giovanna.txt ./arquivos/posts_eita_gio[at]emailcombr.txt
 logout
-
 login email="escolhido@hogwarts.com" senha="1grifinoria1"
 expectError "Erro ao baixar posts. O usuario nao possui posts." baixaPosts
 logout

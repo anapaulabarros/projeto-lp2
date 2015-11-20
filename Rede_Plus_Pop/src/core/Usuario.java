@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -360,30 +361,33 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 	}
 	
 	public void baixaPosts() throws LogicaException{
+		
 		if (this.posts.isEmpty()) {
 			throw new LogicaException("Erro ao baixar posts. O usuario nao possui posts.");
 		}
 
-		String nomeArquivo = UtilUsuario.formataEmailArquivo(this.email);
-		String postsString = "";
+		StringBuilder sb = new StringBuilder();
+		String nomeDoArquivo = UtilUsuario
+				.formataEmailArquivo(this.email);
 
-		File arquivo = new File(nomeArquivo);
-		BufferedWriter writer;
+		File arquivo = new File(nomeDoArquivo);
+		PrintWriter out;
 
 		try {
-			writer = new BufferedWriter(new FileWriter(arquivo));
+			out = new PrintWriter(new FileWriter(arquivo));
 
 			for (int i = 0; i < this.posts.size(); i++) {
-				postsString = postsString + posts.get(i).formataParaArquivo(i + 1);
+				sb.append(posts.get(i).formataParaArquivo(i + 1));
 			}
 
-			String postFormatado = postsString.trim();
+			String postFormatado = sb.toString().trim();
 
-			writer.write(postFormatado);
-			writer.close();
+			out.write(postFormatado);
+			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	public List<Post> getFeed() {
