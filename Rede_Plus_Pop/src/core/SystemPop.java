@@ -19,6 +19,7 @@ import treatmentsExceptions.RealizaLoginException;
 
 public class SystemPop {
 
+	private static final String ORDENA_POPULARIDADE = "Popularidade";
 	private static final String HASHTAGS = "Hashtags";
 	private static final String DATA = "Data";
 	private static final String FOTO = "Foto";
@@ -746,8 +747,7 @@ public class SystemPop {
 	}
 
 	public Post getPostFeedNoticiasRecentes(int indiceDoPost) {
-		ordenaFeed("Data");
-		System.out.println(usuarioLogado.getFeed());
+		ordenaFeed(DATA);
 		return this.usuarioLogado.getFeed().get(indiceDoPost);
 	}
 	
@@ -810,6 +810,11 @@ public class SystemPop {
 
 	public int getTotalPosts() {
 		return usuarioLogado.getTotalPosts();
+	}
+
+	public Post getPostFeedNoticiasPopulares(int chavePost) {
+		ordenaFeed(ORDENA_POPULARIDADE);
+		return this.usuarioLogado.getFeed().get(chavePost);
 	}
 	
 }

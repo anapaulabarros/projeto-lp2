@@ -186,8 +186,12 @@ public class Facade {
 		sistemaPop.salvaDadosUsuarios();
 	}
 	
-	public String getPostFeedNoticiasRecentes(int cahvePost) throws Exception {
-		return sistemaPop.getPostFeedNoticiasRecentes(cahvePost).getPostString();
+	public String getPostFeedNoticiasRecentes(int chavePost) throws Exception {
+		return sistemaPop.getPostFeedNoticiasRecentes(chavePost).getPostString();
+	}
+	
+	public String getPostFeedNoticiasMaisPopulares(int chavePost) throws Exception {
+		return sistemaPop.getPostFeedNoticiasPopulares(chavePost).getPostString();
 	}
 	
 	public static void main(String[] args) {
