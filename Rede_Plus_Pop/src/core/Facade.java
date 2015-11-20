@@ -3,6 +3,7 @@ package core;
 import java.io.IOException;
 import java.util.List;
 
+import treatmentsExceptions.LogicaException;
 import easyaccept.EasyAccept;
 
 public class Facade {
@@ -192,6 +193,10 @@ public class Facade {
 	
 	public String getPostFeedNoticiasMaisPopulares(int chavePost) throws Exception {
 		return sistemaPop.getPostFeedNoticiasPopulares(chavePost).getPostString();
+	}
+	
+	public void baixaPosts() throws LogicaException{
+		sistemaPop.baixarPosts();
 	}
 	
 	public static void main(String[] args) {

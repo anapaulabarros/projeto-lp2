@@ -816,5 +816,10 @@ public class SystemPop {
 		ordenaFeed(ORDENA_POPULARIDADE);
 		return this.usuarioLogado.getFeed().get(chavePost);
 	}
+
+	public void baixarPosts() throws LogicaException {
+		usuarioLogado.baixaPosts();
+		
+	}
 	
 }

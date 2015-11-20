@@ -1,5 +1,9 @@
 package core;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -16,7 +20,6 @@ import popularidade.TipoPopularidade;
 import treatmentsExceptions.AtualizaPerfilException;
 import treatmentsExceptions.LogicaException;
 import treatmentsExceptions.PostException;
-import treatmentsExceptions.PostNaoEncontradoException;
 
 public class Usuario implements Comparable<Usuario>, Serializable {
 
@@ -354,6 +357,33 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 			this.feed.atualizaPorPopularidade();
 		}
 		
+	}
+	
+	public void baixaPosts() throws LogicaException{
+		if (this.posts.isEmpty()) {
+			throw new LogicaException("Erro ao baixar posts. O usuario nao possui posts.");
+		}
+
+		String nomeArquivo = UtilUsuario.formataEmailArquivo(this.email);
+		String postsString = "";
+
+		File arquivo = new File(nomeArquivo);
+		BufferedWriter writer;
+
+		try {
+			writer = new BufferedWriter(new FileWriter(arquivo));
+
+			for (int i = 0; i < this.posts.size(); i++) {
+				postsString = postsString + posts.get(i).formataParaArquivo(i + 1);
+			}
+
+			String postFormatado = postsString.trim();
+
+			writer.write(postFormatado);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Post> getFeed() {

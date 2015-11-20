@@ -13,6 +13,7 @@ import midias.ConteudoMidia;
 
 public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
+	private static final String EOL = System.getProperty("line.separator");
 	private final long serialVersionUID = 42L;
 	private String mensagemCompleta;
 	private String texto;
@@ -109,6 +110,33 @@ public class Post implements Comparable<Post>, Comparator<Post>, Serializable {
 
 	public int compare(Post post1, Post post2) {
 		return 0;
+	}
+	
+	public String formataParaArquivo(int indice){
+		String retorno = "";
+		retorno = retorno + "Post #" + indice + " - " + this.getDataPublicacao() + EOL
+				+ getConteudoMidias()
+				+ getHashtagsString() + EOL
+				+ "+Pop: " + getPopularidade() + EOL
+				+ EOL
+				+ EOL;
+		return retorno;
+	}
+
+	private String getHashtagsString() {
+		String retorno = "";
+		for (String hashtag: this.hashtags){
+			retorno = retorno + hashtag + " ";
+		}
+		return retorno;
+	}
+
+	private String getConteudoMidias() {
+		String retorno = "";
+		for (ConteudoMidia midia: this.conteudoMidias){
+			retorno = retorno + midia.toString() + EOL;
+		}
+		return retorno;
 	}
 
 	public String getListaHashtag() {

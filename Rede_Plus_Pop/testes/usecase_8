@@ -118,3 +118,5 @@ expect "O nome dela eh Isabel, ainda nao me acostumei. #vivaIsabel #minhaDelicin
 expect "Ha mais de 20 anos eu sonho em lhe dar o que voce merece. #surraNazareh #apanhaLadra (2004-12-06 03:55:00)" getPostFeedNoticiasMaisPopulares post=2
 expect "Tiraram meu trono! Voces me pagam! #partiu #exilio (1889-11-17 04:30:00)" getPostFeedNoticiasMaisPopulares post=1
 expect "Gente eh ela, minha filha, Lindalva. #vivaLindalva #epicfail (2004-12-18 12:15:00)" getPostFeedNoticiasMaisPopulares post=0
+
+logout
