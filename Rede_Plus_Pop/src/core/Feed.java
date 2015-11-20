@@ -1,13 +1,12 @@
 package core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import treatmentsExceptions.PostException;
-
-public class Feed {
+public class Feed implements Serializable{
 	
 	private List<Post> posts;
 	

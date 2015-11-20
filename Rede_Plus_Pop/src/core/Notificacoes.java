@@ -1,10 +1,11 @@
 package core;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Notificacoes {
+public class Notificacoes implements Serializable{
 	
 	private List<String> notificacoes;
 	

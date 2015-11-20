@@ -1,6 +1,8 @@
 package midias;
 
-public class ConteudoMidia {
+import java.io.Serializable;
+
+public class ConteudoMidia implements Serializable{
 
 	String caminho;
 	

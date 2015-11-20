@@ -1,7 +1,10 @@
 package core;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -265,12 +268,34 @@ public class SystemPop {
 	}
 
 	public void iniciaSistema() {
-		// iniciar sistema
+		try{
+			File arquivo = new File("arquivos/usuarios.dat");
+			FileInputStream fluxo = new FileInputStream(arquivo);
+			ObjectInputStream inputStream = new ObjectInputStream(fluxo);
+			
+			this.usuarios = (List<Usuario>) inputStream.readObject();
+
+			inputStream.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void fechaSistema() throws LogicaException {
 		if (usuarioLogado == null) {
-			// fechar sistema
+			try {
+				File arquivo = new File("arquivos/usuarios.dat");
+				FileOutputStream fluxo = new FileOutputStream(arquivo);
+				ObjectOutputStream outputStream = new ObjectOutputStream(fluxo);
+
+				outputStream.writeObject(this.usuarios);
+
+				outputStream.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else {
 			throw new LogicaException(
 					"Nao foi possivel fechar o sistema. Um usuarix ainda esta logadx.");

@@ -1,8 +1,10 @@
 package popularidade;
 
+import java.io.Serializable;
+
 import core.Post;
 
-public interface TipoPopularidade {
+public interface TipoPopularidade extends Serializable{
 	
 	public void curtir(Post post);
 	
