@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="core.Facade" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Facade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="147" y="175"/>    
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="core.Usuario" project="114110443_AnaGabriela" 
     file="/114110443_AnaGabriela/src/core/Usuario.java" binary="false" corner="BOTTOM_LEFT">    
-    <position height="-1" width="-1" x="983" y="176"/>    
+    <position height="-1" width="-1" x="983" y="183"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -230,35 +230,32 @@
     </display>  
   </class>  
   <association id="26">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="27" name="fabricaDeMidias">        
-        <position height="0" width="0" x="72" y="-23"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="27" name="posts">        
+        <position height="18" width="35" x="1169" y="441"/>      
       </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
-        <position height="0" width="0" x="72" y="-23"/>      
+      <multiplicity id="28" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="1161" y="478"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="29">    
-    <end type="SOURCE" refId="16"/>    
+    <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="11"/>  
   </generalization>  
   <generalization id="30">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="11"/>  
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
   </generalization>  
   <association id="31">    
-    <bendpoint x="850" y="665"/>    
-    <bendpoint x="853" y="686"/>    
-    <bendpoint x="872" y="687"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="32" name="amigos">        
-        <position height="0" width="0" x="47" y="-149"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="32" name="usuarios">        
+        <position height="18" width="50" x="757" y="311"/>      
       </attribute>      
       <multiplicity id="33" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="47" y="-149"/>      
+        <position height="16" width="21" x="771" y="337"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
@@ -269,159 +266,167 @@
     <end type="TARGET" refId="5"/>  
   </realization>  
   <association id="35">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="36" name="notificacoes">        
-        <position height="18" width="67" x="1150" y="205"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="36" name="usuarioLogado">        
+        <position height="18" width="80" x="737" y="232"/>      
       </attribute>      
       <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="16" width="23" x="1171" y="244"/>      
+        <position height="16" width="23" x="764" y="255"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="38">    
+  <generalization id="38">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <association id="39">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="39" name="trends"/>      
-      <multiplicity id="40" minimum="0" maximum="1">        
+      <attribute id="40" name="trends">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="1">        
         <position height="16" width="23" x="294" y="645"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="42" name="sistemaPop">        
-        <position height="18" width="63" x="295" y="235"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="16" width="23" x="302" y="264"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="45" name="conteudoMidias">        
-        <position height="18" width="83" x="1536" y="735"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="8" y="92"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="48" name="listaMarcadores"/>      
-      <multiplicity id="49" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <association id="51">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="52" name="posts">        
-        <position height="18" width="35" x="1169" y="441"/>      
-      </attribute>      
-      <multiplicity id="53" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="1161" y="478"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="54">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <association id="55">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="56" name="popularidade">        
-        <position height="0" width="0" x="106" y="-51"/>      
-      </attribute>      
-      <multiplicity id="57" minimum="0" maximum="1">        
-        <position height="16" width="23" x="1195" y="-130"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="58">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="59">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="60" name="usuarioLogado">        
-        <position height="18" width="80" x="737" y="225"/>      
-      </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
-        <position height="16" width="23" x="764" y="248"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="63" name="feed">        
-        <position height="0" width="0" x="-25" y="-156"/>      
-      </attribute>      
-      <multiplicity id="64" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-25" y="-156"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="65">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <generalization id="66">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="67">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="68" name="usuarios">        
-        <position height="18" width="50" x="757" y="304"/>      
-      </attribute>      
-      <multiplicity id="69" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="771" y="330"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="70">    
+  <association id="42">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="71" name="posts">        
+      <attribute id="43" name="posts">        
         <position height="18" width="35" x="1136" y="785"/>      
       </attribute>      
-      <multiplicity id="72" minimum="0" maximum="2147483647">        
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
         <position height="16" width="21" x="1148" y="818"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="20"/>    
+  <realization id="45">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="46">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <association id="47">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="48" name="fabricaDeMidias">        
+        <position height="0" width="0" x="72" y="-23"/>      
+      </attribute>      
+      <multiplicity id="49" minimum="0" maximum="1">        
+        <position height="0" width="0" x="72" y="-23"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="51" name="feed">        
+        <position height="0" width="0" x="-25" y="-156"/>      
+      </attribute>      
+      <multiplicity id="52" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-25" y="-156"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="53">    
+    <end type="SOURCE" refId="22"/>    
     <end type="TARGET" refId="19"/>  
   </generalization>  
-  <generalization id="74">    
-    <end type="SOURCE" refId="15"/>    
+  <generalization id="54">    
+    <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="11"/>  
   </generalization>  
+  <association id="55">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="56" name="sistemaPop">        
+        <position height="18" width="63" x="295" y="235"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="16" width="23" x="302" y="264"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="59" name="conteudoMidias">        
+        <position height="18" width="83" x="1536" y="735"/>      
+      </attribute>      
+      <multiplicity id="60" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="8" y="92"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="62" name="listaMarcadores">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="63" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="65" name="notificacoes">        
+        <position height="18" width="67" x="1150" y="205"/>      
+      </attribute>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1171" y="244"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="68" name="popularidade">        
+        <position height="0" width="0" x="106" y="-51"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="16" width="23" x="1195" y="-130"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="70">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="71">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="72">    
+    <bendpoint x="812" y="787"/>    
+    <bendpoint x="864" y="792"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="73" name="amigos">        
+        <position height="0" width="0" x="47" y="-142"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="47" y="-142"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
