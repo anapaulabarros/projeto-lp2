@@ -122,8 +122,6 @@ public class TestUsuario {
 			
 			sistema.login(MADONNA_EMAIL, "iamawesome");
 			sistema.atualizaFeed();
-			System.out.println(sistema.getFeedUsuarioLogado().get(0).getPostString());
-			System.out.println(sistema.getFeedUsuarioLogado().size());
 			sistema.logout();
 			
 			

@@ -315,7 +315,7 @@ public class Usuario implements Comparable<Usuario>, Serializable {
 		if (tamanho <= quantidade) {
 			listaPost = this.posts;
 		} else {
-			for (int i = tamanho - quantidade; i > tamanho; i++) {
+			for (int i = tamanho - quantidade; i < tamanho; i++) {
 				listaPost.add(this.posts.get(i));
 			}
 		}

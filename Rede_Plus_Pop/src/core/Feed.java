@@ -52,5 +52,4 @@ public class Feed {
 	public List<Post> getPosts() {
 		return posts;
 	}
-	public int sizeFeed(){return posts.size();}
 }

@@ -189,7 +189,6 @@ public class Facade {
 	public String getPostFeedNoticiasRecentes(int cahvePost) throws Exception {
 		return sistemaPop.getPostFeedNoticiasRecentes(cahvePost).getPostString();
 	}
-	public List<Post> getFeedUsuarioLogado(){return sistemaPop.getFeedUsuarioLogado();}
 	
 	public static void main(String[] args) {
 		args = new String[] { "core.Facade","testes/usecase_1","testes/usecase_2",
