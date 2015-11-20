@@ -197,7 +197,7 @@ public class Facade {
 	public static void main(String[] args) {
 		args = new String[] { "core.Facade","testes/usecase_1","testes/usecase_2",
 				"testes/usecase_3", "testes/usecase_4" ,"testes/usecase_5_neto",
-				"testes/usecase_6","testes/usecase_7","testes/usecase_8"};
+				"testes/usecase_6","testes/usecase_7","testes/usecase_8","testes/usecase_9"};
 		EasyAccept.main(args);
 	}
 
